@@ -9,52 +9,119 @@ const config: Config = {
   ],
   theme: {
   	extend: {
+  		fontFamily: {
+  			sans: ['Pretendard', 'system-ui', 'sans-serif'],
+  		},
+  		fontSize: {
+  			'xs': ['0.75rem', { lineHeight: '1rem' }],
+  			'sm': ['0.875rem', { lineHeight: '1.25rem' }],
+  			'base': ['1rem', { lineHeight: '1.5rem' }],
+  			'lg': ['1.125rem', { lineHeight: '1.75rem' }],
+  			'xl': ['1.25rem', { lineHeight: '1.75rem' }],
+  			'2xl': ['1.5rem', { lineHeight: '2rem' }],
+  			'3xl': ['1.875rem', { lineHeight: '2.25rem' }],
+  			'4xl': ['2.25rem', { lineHeight: '2.5rem' }],
+  			'5xl': ['3rem', { lineHeight: '1' }],
+  		},
+  		fontWeight: {
+  			normal: '400',
+  			medium: '500',
+  			semibold: '600',
+  			bold: '700',
+  		},
   		colors: {
-  			background: 'hsl(var(--background))',
-  			foreground: 'hsl(var(--foreground))',
+  			background: {
+  				DEFAULT: '#FFFFFF',
+  				dark: '#0F172A',
+  			},
+  			foreground: {
+  				DEFAULT: '#1E293B',
+  				dark: '#F8FAFC',
+  			},
   			card: {
-  				DEFAULT: 'hsl(var(--card))',
-  				foreground: 'hsl(var(--card-foreground))'
+  				DEFAULT: '#FFFFFF',
+  				dark: '#1E293B',
+  				foreground: '#1E293B',
+  				'foreground-dark': '#F8FAFC',
   			},
   			popover: {
-  				DEFAULT: 'hsl(var(--popover))',
-  				foreground: 'hsl(var(--popover-foreground))'
+  				DEFAULT: '#FFFFFF',
+  				dark: '#1E293B',
+  				foreground: '#1E293B',
+  				'foreground-dark': '#F8FAFC',
   			},
   			primary: {
-  				DEFAULT: 'hsl(var(--primary))',
-  				foreground: 'hsl(var(--primary-foreground))'
+  				DEFAULT: '#6366F1',
+  				foreground: '#FFFFFF',
+  				light: '#818CF8',
+  				dark: '#4F46E5',
   			},
   			secondary: {
-  				DEFAULT: 'hsl(var(--secondary))',
-  				foreground: 'hsl(var(--secondary-foreground))'
+  				DEFAULT: '#10B981',
+  				foreground: '#FFFFFF',
+  				light: '#34D399',
+  				dark: '#059669',
   			},
   			muted: {
-  				DEFAULT: 'hsl(var(--muted))',
-  				foreground: 'hsl(var(--muted-foreground))'
+  				DEFAULT: '#94A3B8',
+  				foreground: '#475569',
   			},
   			accent: {
-  				DEFAULT: 'hsl(var(--accent))',
-  				foreground: 'hsl(var(--accent-foreground))'
+  				DEFAULT: '#F59E0B',
+  				foreground: '#FFFFFF',
+  				light: '#FBBF24',
+  				dark: '#D97706',
   			},
   			destructive: {
-  				DEFAULT: 'hsl(var(--destructive))',
-  				foreground: 'hsl(var(--destructive-foreground))'
+  				DEFAULT: '#EF4444',
+  				foreground: '#FFFFFF',
+  				light: '#F87171',
+  				dark: '#DC2626',
   			},
-  			border: 'hsl(var(--border))',
-  			input: 'hsl(var(--input))',
-  			ring: 'hsl(var(--ring))',
+  			border: '#E2E8F0',
+  			'border-dark': '#334155',
+  			input: '#E2E8F0',
+  			'input-dark': '#334155',
+  			ring: '#6366F1',
+  			'ring-dark': '#818CF8',
   			chart: {
-  				'1': 'hsl(var(--chart-1))',
-  				'2': 'hsl(var(--chart-2))',
-  				'3': 'hsl(var(--chart-3))',
-  				'4': 'hsl(var(--chart-4))',
-  				'5': 'hsl(var(--chart-5))'
+  				'1': '#6366F1',
+  				'2': '#10B981',
+  				'3': '#F59E0B',
+  				'4': '#EF4444',
+  				'5': '#8B5CF6'
   			}
   		},
   		borderRadius: {
-  			lg: 'var(--radius)',
-  			md: 'calc(var(--radius) - 2px)',
-  			sm: 'calc(var(--radius) - 4px)'
+  			'none': '0',
+  			'sm': '0.125rem',
+  			DEFAULT: '0.25rem',
+  			'md': '0.375rem',
+  			'lg': '0.5rem',
+  			'xl': '0.75rem',
+  			'2xl': '1rem',
+  			'3xl': '1.5rem',
+  			'full': '9999px',
+  		},
+  		spacing: {
+  			'0': '0',
+  			'1': '0.25rem',
+  			'2': '0.5rem',
+  			'3': '0.75rem',
+  			'4': '1rem',
+  			'5': '1.25rem',
+  			'6': '1.5rem',
+  			'8': '2rem',
+  			'10': '2.5rem',
+  			'12': '3rem',
+  			'16': '4rem',
+  			'20': '5rem',
+  			'24': '6rem',
+  			'32': '8rem',
+  			'40': '10rem',
+  			'48': '12rem',
+  			'56': '14rem',
+  			'64': '16rem',
   		}
   	}
   },
