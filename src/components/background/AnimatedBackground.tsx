@@ -18,9 +18,6 @@ function StarField() {
     positions[i3 + 2] = (Math.random() - 0.5) * 3;
   }
 
-  const geometry = new THREE.BufferGeometry();
-  geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-
   useFrame(() => {
     if (ref.current) {
       ref.current.rotation.x += 0.001;
@@ -29,7 +26,15 @@ function StarField() {
   });
 
   return (
-    <Points ref={ref} geometry={geometry}>
+    <Points ref={ref}>
+      <bufferGeometry>
+        <bufferAttribute
+          attach="attributes-position"
+          count={count}
+          array={positions}
+          itemSize={3}
+        />
+      </bufferGeometry>
       <PointMaterial
         size={0.01}
         color="#ffffff"
@@ -49,4 +54,4 @@ export default function AnimatedBackground() {
       </Canvas>
     </div>
   );
-} 
+}
