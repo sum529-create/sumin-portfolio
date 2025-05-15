@@ -1,13 +1,12 @@
 'use client';
 
-import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
 
 const Footer = () => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const isInView = useInView(ref, { once: true, margin: "0px" });
 
   const containerVariants = {
     hidden: { opacity: 0, y: 50 },
@@ -31,12 +30,6 @@ const Footer = () => {
       }
     }
   };
-
-  const socialLinks = [
-    { href: "mailto:your.email@example.com", label: "Email", icon: "✉️" },
-    { href: "https://github.com/yourusername", label: "GitHub", icon: "🐙" },
-    { href: "https://linkedin.com/in/yourusername", label: "LinkedIn", icon: "💼" }
-  ];
 
   return (
     <motion.footer
