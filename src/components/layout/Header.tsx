@@ -86,7 +86,7 @@ const Header = () => {
               transition={{ delay: i * 0.1 }}
             >
               <span
-                className={`relative text-foreground hover:text-primary transition-colors cursor-pointer`}
+                className={`relative hover:text-primary transition-colors cursor-pointer ${isScrolled ? 'text-foreground' : 'text-gray-100'}`}
               >
                 {item.label}
               </span>
