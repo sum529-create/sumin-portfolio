@@ -1,9 +1,7 @@
 'use client';
 
 import { useState, useEffect, useCallback, useMemo } from 'react';
-import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
-import { usePathname } from 'next/navigation';
 
 // 상수 정의
 const HEADER_HEIGHT = 80;
