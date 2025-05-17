@@ -69,10 +69,12 @@ export default function Home() {
           <ScrollAnimations>
            <div className="relative">
               {/* Hero Section */}
-              <HeroSection contentVisible={contentVisible}/>
+              <section id="home" className="min-h-screen flex items-center justify-center relative">
+                <HeroSection contentVisible={contentVisible}/>
+              </section>
 
               {/* About Section */}
-              <section className="min-h-screen py-20 relative">
+              <section id="about" className="min-h-screen py-20 relative">
                 <div className="container mx-auto px-4">
                   <h2 className="split-text text-3xl md:text-4xl font-bold text-center mb-12">
                     About Me
@@ -97,45 +99,8 @@ export default function Home() {
                 </div>
               </section>
 
-              {/* Experience Section */}
-              <section className="min-h-screen py-20 relative">
-                <div className="container mx-auto px-4">
-                  <h2 className="split-text text-3xl md:text-4xl font-bold text-center mb-12">
-                    Experience
-                  </h2>
-                  <div className="scroll-animate bg-card/50 backdrop-blur-sm rounded-lg p-8">
-                    <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
-                      <div>
-                        <h3 className="text-2xl font-semibold mb-1">{experienceData.company}</h3>
-                        <p className="text-lg mb-1">{experienceData.department}</p>
-                        <p className="text-muted-foreground">{experienceData.period}</p>
-                      </div>
-                    </div>
-
-                    <p className="mb-4">{experienceData.roleSummary}</p>
-
-                    <ul className="list-disc list-inside space-y-2 mb-6 text-muted-foreground">
-                      {experienceData.responsibilities.map((item, idx) => (
-                        <li key={idx}>{item}</li>
-                      ))}
-                    </ul>
-
-                    <div className="flex flex-wrap gap-2">
-                      {experienceData.techStack.map((tech) => (
-                        <span
-                          key={tech}
-                          className="px-3 py-1 bg-primary/10 rounded-full text-sm"
-                        >
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </section>
-
               {/* Skills Section */}
-              <section className="min-h-screen py-20 relative">
+              <section id="skills" className="min-h-screen py-20 relative">
                 <div className="container mx-auto px-4">
                   <h2 className="split-text text-3xl md:text-4xl font-bold text-center mb-12">
                     Skills
@@ -173,8 +138,45 @@ export default function Home() {
                 </div>
               </section>
 
+                            {/* Experience Section */}
+              <section id="experience" className="min-h-screen py-20 relative">
+                <div className="container mx-auto px-4">
+                  <h2 className="split-text text-3xl md:text-4xl font-bold text-center mb-12">
+                    Experience
+                  </h2>
+                  <div className="scroll-animate bg-card/50 backdrop-blur-sm rounded-lg p-8">
+                    <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
+                      <div>
+                        <h3 className="text-2xl font-semibold mb-1">{experienceData.company}</h3>
+                        <p className="text-lg mb-1">{experienceData.department}</p>
+                        <p className="text-muted-foreground">{experienceData.period}</p>
+                      </div>
+                    </div>
+
+                    <p className="mb-4">{experienceData.roleSummary}</p>
+
+                    <ul className="list-disc list-inside space-y-2 mb-6 text-muted-foreground">
+                      {experienceData.responsibilities.map((item, idx) => (
+                        <li key={idx}>{item}</li>
+                      ))}
+                    </ul>
+
+                    <div className="flex flex-wrap gap-2">
+                      {experienceData.techStack.map((tech) => (
+                        <span
+                          key={tech}
+                          className="px-3 py-1 bg-primary/10 rounded-full text-sm"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </section>
+
               {/* Projects Section */}
-              <section className="min-h-screen py-20 relative">
+              <section id="projects" className="min-h-screen py-20 relative">
                 <div className="container mx-auto px-4">
                   <h2 className="split-text text-3xl md:text-4xl font-bold text-center mb-12">
                     Projects
@@ -210,7 +212,7 @@ export default function Home() {
               </section>
 
               {/* Contact Section */}
-              <section className="min-h-screen py-20 relative">
+              <section id="contact" className="min-h-screen py-20 relative">
                 <div className="container mx-auto px-4">
                   <h2 className="split-text text-3xl md:text-4xl font-bold text-center mb-12">
                     Contact

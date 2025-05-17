@@ -8,24 +8,51 @@ import { usePathname } from 'next/navigation';
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState('');
   const pathname = usePathname();
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 0);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
   const navItems = [
+    { href: '#home', label: '홈' },
     { href: '#about', label: '나에 대해' },
     { href: '#skills', label: '내 기술' },
     { href: '#experience', label: '내 경력' },
     { href: '#projects', label: '내 작업' },
     { href: '#contact', label: '연락하기' },
   ];
+
+  useEffect(() => {
+    const handleScroll = () => {
+      // 스크롤 위치에 따른 헤더 스타일 변경
+      setIsScrolled(window.scrollY > 0);
+
+      // 현재 활성화된 섹션 찾기
+      const sections = navItems.map(item => item.href.substring(1));
+      const currentSection = sections.find(section => {
+        const element = document.getElementById(section);
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          return rect.top <= 100 && rect.bottom >= 100;
+        }
+        return false;
+      });
+
+      if (currentSection) {
+        setActiveSection(currentSection);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const handleNavClick = (e: React.MouseEvent<HTMLSpanElement>, href: string) => {
+    e.preventDefault();
+    const element = document.querySelector(href);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+      setIsMobileMenuOpen(false);
+    }
+  };
 
   const menuVariants = {
     closed: {
@@ -86,7 +113,14 @@ const Header = () => {
               transition={{ delay: i * 0.1 }}
             >
               <span
-                className={`relative hover:text-primary transition-colors cursor-pointer ${isScrolled ? 'text-foreground' : 'text-gray-100'}`}
+                onClick={(e) => handleNavClick(e, item.href)}
+                className={`relative hover:text-primary transition-colors cursor-pointer ${
+                  activeSection === item.href.substring(1)
+                    ? 'text-primary'
+                    : isScrolled
+                    ? 'text-foreground'
+                    : 'text-gray-100'
+                }`}
               >
                 {item.label}
               </span>
@@ -156,8 +190,12 @@ const Header = () => {
                       exit="closed"
                     >
                       <span
-                        className={`block text-xl font-semibold text-foreground hover:text-primary cursor-pointer`}
-                        onClick={() => setIsMobileMenuOpen(false)}
+                        onClick={(e) => handleNavClick(e, item.href)}
+                        className={`block text-xl font-semibold cursor-pointer transition-colors ${
+                          activeSection === item.href.substring(1)
+                            ? 'text-primary'
+                            : 'text-foreground hover:text-primary'
+                        }`}
                       >
                         {item.label}
                       </span>
