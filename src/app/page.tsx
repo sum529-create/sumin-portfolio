@@ -5,6 +5,8 @@ import MainLayout from '@/components/layout/MainLayout';
 import ScrollAnimations from '@/components/animations/ScrollAnimations';
 import { AnimatedBackground } from '@/components/background/AnimatedBackground';
 import HeroSection from '@/components/sections/HeroSection';
+import { experienceData } from '@/constants/experience';
+import { projectData } from '@/constants/projects';
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
@@ -78,7 +80,7 @@ export default function Home() {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
                     <div className="scroll-animate" data-direction="left">
                       <ul className="text-lg text-gray-100 space-y-2">
-                        <li>사용자가 ‘편하다’고 느끼는 순간을 만드는 걸 좋아합니다.</li>
+                        <li>사용자가 '편하다'고 느끼는 순간을 만드는 걸 좋아합니다.</li>
                         <li>깔끔한 UI, 직관적인 UX를 고민하는 프론트엔드 개발자입니다.</li>
                         <li>눈에 보이는 것부터 보이지 않는 흐름까지, 세심하게 신경 씁니다.</li>
                         <li>요즘은 React, Next.js, TypeScript 기반으로 이것저것 시도해보고 있어요.</li>
@@ -90,6 +92,43 @@ export default function Home() {
                       <div className="aspect-square bg-primary/10 rounded-lg flex items-center justify-center">
                         <span className="text-6xl">👨‍💻</span>
                       </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              {/* Experience Section */}
+              <section className="min-h-screen py-20 relative">
+                <div className="container mx-auto px-4">
+                  <h2 className="split-text text-3xl md:text-4xl font-bold text-center mb-12">
+                    Experience
+                  </h2>
+                  <div className="scroll-animate bg-card/50 backdrop-blur-sm rounded-lg p-8">
+                    <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
+                      <div>
+                        <h3 className="text-2xl font-semibold mb-1">{experienceData.company}</h3>
+                        <p className="text-lg mb-1">{experienceData.department}</p>
+                        <p className="text-muted-foreground">{experienceData.period}</p>
+                      </div>
+                    </div>
+
+                    <p className="mb-4">{experienceData.roleSummary}</p>
+
+                    <ul className="list-disc list-inside space-y-2 mb-6 text-muted-foreground">
+                      {experienceData.responsibilities.map((item, idx) => (
+                        <li key={idx}>{item}</li>
+                      ))}
+                    </ul>
+
+                    <div className="flex flex-wrap gap-2">
+                      {experienceData.techStack.map((tech) => (
+                        <span
+                          key={tech}
+                          className="px-3 py-1 bg-primary/10 rounded-full text-sm"
+                        >
+                          {tech}
+                        </span>
+                      ))}
                     </div>
                   </div>
                 </div>
@@ -141,20 +180,7 @@ export default function Home() {
                     Projects
                   </h2>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    {[
-                      {
-                        title: "포트폴리오 웹사이트",
-                        description: "Next.js와 Three.js를 활용한 인터랙티브한 포트폴리오 웹사이트",
-                        tech: ["Next.js", "Three.js", "GSAP", "Tailwind CSS"],
-                        image: "🎨"
-                      },
-                      {
-                        title: "프로젝트 2",
-                        description: "프로젝트 설명이 들어갈 자리입니다.",
-                        tech: ["React", "Node.js", "TypeScript"],
-                        image: "🚀"
-                      }
-                    ].map((project, i) => (
+                    {projectData.map((project, i) => (
                       <div
                         key={project.title}
                         className="scroll-animate bg-card/50 backdrop-blur-sm rounded-lg overflow-hidden"
