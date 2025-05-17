@@ -20,10 +20,11 @@ const Header = () => {
   }, []);
 
   const navItems = [
-    { href: '/about', label: 'About' },
-    { href: '/skills', label: 'Skills' },
-    { href: '/projects', label: 'Projects' },
-    { href: '/contact', label: 'Contact' },
+    { href: '#about', label: '나에 대해' },
+    { href: '#skills', label: '내 기술' },
+    { href: '#experience', label: '내 경력' },
+    { href: '#projects', label: '내 작업' },
+    { href: '#contact', label: '연락하기' },
   ];
 
   const menuVariants = {
@@ -155,7 +156,7 @@ const Header = () => {
                       exit="closed"
                     >
                       <span
-                        className={`block text-2xl font-semibold text-foreground hover:text-primary cursor-pointer`}
+                        className={`block text-xl font-semibold text-foreground hover:text-primary cursor-pointer`}
                         onClick={() => setIsMobileMenuOpen(false)}
                       >
                         {item.label}
