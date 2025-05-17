@@ -2,9 +2,9 @@
 
 import { useState, useEffect } from 'react';
 import MainLayout from '@/components/layout/MainLayout';
-import AnimatedBackground from '@/components/background/AnimatedBackground';
 import ScrollAnimations from '@/components/animations/ScrollAnimations';
 import { motion } from 'framer-motion';
+import { AnimatedBackground } from '@/components/background/AnimatedBackground';
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
