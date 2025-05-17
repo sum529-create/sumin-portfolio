@@ -3,16 +3,13 @@
 import { useState, useEffect } from 'react';
 import MainLayout from '@/components/layout/MainLayout';
 import ScrollAnimations from '@/components/animations/ScrollAnimations';
-import { motion, useScroll, useTransform } from 'framer-motion';
 import { AnimatedBackground } from '@/components/background/AnimatedBackground';
+import HeroSection from '@/components/sections/HeroSection';
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
   const [contentVisible, setContentVisible] = useState(false);
-  const { scrollY } = useScroll();
-  
-  // 스크롤에 따른 투명도 변화
-  const opacity = useTransform(scrollY, [0, 100], [1, 0]);
+
 
   useEffect(() => {
     // 초기 로딩 상태 설정
@@ -70,41 +67,7 @@ export default function Home() {
           <ScrollAnimations>
            <div className="relative">
               {/* Hero Section */}
-              <section className="min-h-screen flex items-center justify-center relative">
-                <div className="container mx-auto px-4 relative z-20">
-                  <motion.div
-                    className="max-w-4xl mx-auto text-center"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ 
-                      opacity: contentVisible ? 1 : 0,
-                      y: contentVisible ? 0 : 20
-                    }}
-                    transition={{ 
-                      duration: 0.8,
-                      ease: "easeOut"
-                    }}
-                    style={{ opacity }}
-                  >
-                    <motion.h1 
-                      className="text-4xl md:text-6xl font-bold text-white mb-6"
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.8, delay: 0.2 }}
-                    >
-                      안녕하세요, 프론트엔드 개발자 Sumin입니다
-                    </motion.h1>
-                    <motion.p 
-                      className="text-xl text-gray-100 mb-8"
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.8, delay: 0.4 }}
-                    >
-                      사용자 경험을 중요시하는 프론트엔드 개발자입니다.<br />
-                      새로운 기술을 배우고 적용하는 것을 좋아합니다.
-                    </motion.p>
-                  </motion.div>
-                </div>
-              </section>
+              <HeroSection contentVisible={contentVisible}/>
 
               {/* About Section */}
               <section className="min-h-screen py-20 relative">
@@ -114,11 +77,14 @@ export default function Home() {
                   </h2>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
                     <div className="scroll-animate" data-direction="left">
-                      <p className="text-lg text-muted-foreground">
-                        프론트엔드 개발에 대한 열정과 사용자 중심의 개발 철학을 가지고 있습니다.
-                        React, Next.js, TypeScript 등 최신 웹 기술 스택을 활용한 개발 경험이 있으며,
-                        지속적으로 새로운 기술을 학습하고 적용하는 것을 즐깁니다.
-                      </p>
+                      <ul className="text-lg text-gray-100 space-y-2">
+                        <li>사용자가 ‘편하다’고 느끼는 순간을 만드는 걸 좋아합니다.</li>
+                        <li>깔끔한 UI, 직관적인 UX를 고민하는 프론트엔드 개발자입니다.</li>
+                        <li>눈에 보이는 것부터 보이지 않는 흐름까지, 세심하게 신경 씁니다.</li>
+                        <li>요즘은 React, Next.js, TypeScript 기반으로 이것저것 시도해보고 있어요.</li>
+                        <li>새로운 기술을 배우는 걸 좋아하고, 기록하고 정리하는 걸 즐깁니다.</li>
+                      </ul>
+
                     </div>
                     <div className="scroll-animate" data-direction="right">
                       <div className="aspect-square bg-primary/10 rounded-lg flex items-center justify-center">
@@ -135,7 +101,7 @@ export default function Home() {
                   <h2 className="split-text text-3xl md:text-4xl font-bold text-center mb-12">
                     Skills
                   </h2>
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                     {[
                       {
                         category: "Frontend",
@@ -185,7 +151,7 @@ export default function Home() {
                       {
                         title: "프로젝트 2",
                         description: "프로젝트 설명이 들어갈 자리입니다.",
-                        tech: ["React", "Node.js", "MongoDB"],
+                        tech: ["React", "Node.js", "TypeScript"],
                         image: "🚀"
                       }
                     ].map((project, i) => (
@@ -226,18 +192,17 @@ export default function Home() {
                   <div className="max-w-2xl mx-auto">
                     <div className="scroll-animate bg-card/50 backdrop-blur-sm rounded-lg p-8">
                       <p className="text-center text-lg text-muted-foreground mb-8">
-                        새로운 프로젝트나 협업 기회에 대해 이야기하고 싶으시다면,
-                        언제든지 연락주세요!
+                        앞으로 더 나아가는 개발자가 되고 싶습니다.<br/>함께할 기회가 있다면 언제든지 환영입니다.
                       </p>
                       <div className="flex justify-center space-x-6">
                         <a
-                          href="mailto:your.email@example.com"
+                          href="mailto:nosumin29@gmail.com"
                           className="text-primary hover:text-primary/80 transition-colors"
                         >
                           ✉️ Email
                         </a>
                         <a
-                          href="https://github.com/yourusername"
+                          href="https://github.com/sum529-create"
                           target="_blank"
                           rel="noopener noreferrer"
                           className="text-primary hover:text-primary/80 transition-colors"
@@ -245,7 +210,7 @@ export default function Home() {
                           📦 GitHub
                         </a>
                         <a
-                          href="https://linkedin.com/in/yourusername"
+                          href="https://www.linkedin.com/in/%EC%88%98%EB%AF%BC-%EB%85%B8-077244364/"
                           target="_blank"
                           rel="noopener noreferrer"
                           className="text-primary hover:text-primary/80 transition-colors"
