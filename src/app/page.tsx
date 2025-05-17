@@ -39,6 +39,9 @@ export default function Home() {
       {/* 페이지 프리로더 */}
       <div 
         className="fixed inset-0 bg-[#050510] z-50 flex items-center justify-center transition-opacity duration-1000"
+        role="progressbar"
+        aria-busy={isLoading}
+        aria-label="페이지 로딩 중"
         style={{ 
           opacity: isLoading ? 1 : 0,
           visibility: isLoading ? 'visible' : 'hidden',
@@ -225,6 +228,7 @@ export default function Home() {
                       <div className="flex justify-center space-x-6">
                         <a
                           href="mailto:nosumin29@gmail.com"
+                          aria-label="이메일 보내기"
                           className="text-primary hover:text-primary/80 transition-colors"
                         >
                           ✉️ Email
@@ -233,6 +237,7 @@ export default function Home() {
                           href="https://github.com/sum529-create"
                           target="_blank"
                           rel="noopener noreferrer"
+                          aria-label="깃허브 이동하기"
                           className="text-primary hover:text-primary/80 transition-colors"
                         >
                           📦 GitHub
@@ -241,6 +246,7 @@ export default function Home() {
                           href="https://www.linkedin.com/in/%EC%88%98%EB%AF%BC-%EB%85%B8-077244364/"
                           target="_blank"
                           rel="noopener noreferrer"
+                          aria-label="링크드인 이동하기"
                           className="text-primary hover:text-primary/80 transition-colors"
                         >
                           💼 LinkedIn

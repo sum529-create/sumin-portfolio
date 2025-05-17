@@ -9,7 +9,6 @@ const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('');
-  const pathname = usePathname();
 
   const navItems = [
     { href: '#home', label: '홈' },
@@ -158,6 +157,8 @@ const Header = () => {
           className="md:hidden text-foreground"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           whileTap={{ scale: 0.95 }}
+          aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
+          aria-expanded={isMobileMenuOpen}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -165,6 +166,7 @@ const Header = () => {
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
+            aria-hidden="true"
           >
             <path
               strokeLinecap="round"
