@@ -3,12 +3,16 @@
 import { useState, useEffect } from 'react';
 import MainLayout from '@/components/layout/MainLayout';
 import ScrollAnimations from '@/components/animations/ScrollAnimations';
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { AnimatedBackground } from '@/components/background/AnimatedBackground';
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
   const [contentVisible, setContentVisible] = useState(false);
+  const { scrollY } = useScroll();
+  
+  // 스크롤에 따른 투명도 변화
+  const opacity = useTransform(scrollY, [0, 100], [1, 0]);
 
   useEffect(() => {
     // 초기 로딩 상태 설정
@@ -70,17 +74,34 @@ export default function Home() {
                 <div className="container mx-auto px-4 relative z-20">
                   <motion.div
                     className="max-w-4xl mx-auto text-center"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: contentVisible ? 1 : 0 }}
-                    transition={{ duration: 1, delay: 0.3 }}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ 
+                      opacity: contentVisible ? 1 : 0,
+                      y: contentVisible ? 0 : 20
+                    }}
+                    transition={{ 
+                      duration: 0.8,
+                      ease: "easeOut"
+                    }}
+                    style={{ opacity }}
                   >
-                    <h1 className="split-text text-4xl md:text-6xl font-bold text-foreground mb-6">
+                    <motion.h1 
+                      className="text-4xl md:text-6xl font-bold text-white mb-6"
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.8, delay: 0.2 }}
+                    >
                       안녕하세요, 프론트엔드 개발자 Sumin입니다
-                    </h1>
-                    <p className="split-text text-xl text-muted-foreground mb-8">
+                    </motion.h1>
+                    <motion.p 
+                      className="text-xl text-gray-100 mb-8"
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.8, delay: 0.4 }}
+                    >
                       사용자 경험을 중요시하는 프론트엔드 개발자입니다.<br />
                       새로운 기술을 배우고 적용하는 것을 좋아합니다.
-                    </p>
+                    </motion.p>
                   </motion.div>
                 </div>
               </section>
@@ -122,13 +143,8 @@ export default function Home() {
                         icon: "🎨"
                       },
                       {
-                        category: "Backend",
-                        skills: ["Node.js", "Express", "MongoDB", "PostgreSQL"],
-                        icon: "⚙️"
-                      },
-                      {
                         category: "Tools & Others",
-                        skills: ["Git", "Docker", "AWS", "Figma"],
+                        skills: ["Git", "Figma"],
                         icon: "🛠️"
                       }
                     ].map((category, i) => (
