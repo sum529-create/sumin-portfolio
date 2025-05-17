@@ -1,4 +1,4 @@
-// Easing functions
+// 이징 함수들
 export function easeOutCubic(x: number): number {
   return 1 - Math.pow(1 - x, 3);
 }
@@ -12,7 +12,7 @@ export function easeOutElastic(x: number): number {
     : Math.pow(2, -10 * x) * Math.sin((x * 10 - 0.75) * c4) + 1;
 }
 
-// Animation helpers
+// 애니메이션 헬퍼 함수들
 export function interpolatePosition(
   start: [number, number, number],
   end: [number, number, number],
