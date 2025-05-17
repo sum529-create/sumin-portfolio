@@ -51,6 +51,7 @@ export const metadata: Metadata = {
   openGraph:{
     type: 'website',
     locale: "ko_KR",
+    url: 'https://sumin-portfolio-sigma.vercel.app/',
     siteName: "노수민의 포트폴리오",
     title: "프론트엔드 개발자 | 노수민",
     description: "사용자 중심의 UI와 인터렉티브 웹 개발에 관심이 많은 프론트엔드 개발자 노수민의 포트폴리오 입니다.",
