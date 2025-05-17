@@ -37,7 +37,7 @@ const Header = () => {
     },
     open: {
       opacity: 1,
-      x: 0,
+      x: "0%",
       transition: {
         duration: 0.3,
         ease: "easeInOut"
@@ -84,21 +84,11 @@ const Header = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: i * 0.1 }}
             >
-              <Link
-                href={item.href}
-                className={`relative text-foreground hover:text-primary transition-colors ${
-                  pathname === item.href ? 'text-primary' : ''
-                }`}
+              <span
+                className={`relative text-foreground hover:text-primary transition-colors cursor-pointer`}
               >
                 {item.label}
-                {pathname === item.href && (
-                  <motion.div
-                    className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary"
-                    layoutId="underline"
-                    transition={{ type: "spring", duration: 0.5 }}
-                  />
-                )}
-              </Link>
+              </span>
             </motion.div>
           ))}
         </nav>
@@ -127,38 +117,55 @@ const Header = () => {
 
       <AnimatePresence>
         {isMobileMenuOpen && (
-          <motion.div
-            className="fixed inset-0 bg-background/95 backdrop-blur-md md:hidden"
-            initial="closed"
-            animate="open"
-            exit="closed"
-            variants={menuVariants}
-          >
-            <div className="container mx-auto px-4 py-8">
-              <nav className="flex flex-col space-y-4 mt-16">
-                {navItems.map((item, i) => (
-                  <motion.div
-                    key={item.href}
-                    custom={i}
-                    variants={itemVariants}
-                    initial="closed"
-                    animate="open"
-                    exit="closed"
-                  >
-                    <Link
-                      href={item.href}
-                      className={`block text-2xl font-semibold ${
-                        pathname === item.href ? 'text-primary' : 'text-foreground'
-                      }`}
-                      onClick={() => setIsMobileMenuOpen(false)}
+          <>
+            {/* dim */}
+            <motion.div
+              className="fixed inset-0 bg-black/50 z-30 w-screen h-screen"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setIsMobileMenuOpen(false)}
+            />
+            <motion.div
+              className="fixed top-0 right-0 bg-background/95 backdrop-blur-md md:hidden w-[200px] h-screen z-40"
+              initial="closed"
+              animate="open"
+              exit="closed"
+              variants={menuVariants}
+            >
+              <div className="container mx-auto px-4 py-5 relative">
+                <motion.button
+                  className="text-foreground w-6 h-6 absolute right-4"
+                  onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <line x1="4" y1="4" x2="20" y2="20" stroke="#333333" stroke-width="2" stroke-linecap="round" />
+                    <line x1="20" y1="4" x2="4" y2="20" stroke="#333333" stroke-width="2" stroke-linecap="round" />
+                  </svg>
+                </motion.button>
+                <nav className="flex flex-col space-y-4 mt-16">
+                  {navItems.map((item, i) => (
+                    <motion.div
+                      key={item.href}
+                      custom={i}
+                      variants={itemVariants}
+                      initial="closed"
+                      animate="open"
+                      exit="closed"
                     >
-                      {item.label}
-                    </Link>
-                  </motion.div>
-                ))}
-              </nav>
-            </div>
-          </motion.div>
+                      <span
+                        className={`block text-2xl font-semibold text-foreground hover:text-primary cursor-pointer`}
+                        onClick={() => setIsMobileMenuOpen(false)}
+                      >
+                        {item.label}
+                      </span>
+                    </motion.div>
+                  ))}
+                </nav>
+              </div>
+            </motion.div>
+          </>
         )}
       </AnimatePresence>
     </motion.header>
