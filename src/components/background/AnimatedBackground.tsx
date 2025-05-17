@@ -443,6 +443,7 @@ interface GradientMaterial extends THREE.ShaderMaterial {
 // Subtle background gradient plane
 function GradientBackground({ introAnimationProgress }: { introAnimationProgress: number }): JSX.Element {
   const materialRef = useRef<GradientMaterial | null>(null);
+  const { viewport } = useThree();
   
   // Dynamic background shader
   const shaderMaterial = useMemo<GradientMaterial>(() => {
@@ -502,8 +503,8 @@ function GradientBackground({ introAnimationProgress }: { introAnimationProgress
   });
   
   return (
-    <mesh position={[0, 0, -50]}>
-      <planeGeometry args={[100, 100]} />
+    <mesh position={[0, 0, -100]}>
+      <planeGeometry args={[500, 500]} />
       <primitive object={shaderMaterial} ref={materialRef} />
     </mesh>
   );
@@ -1038,7 +1039,7 @@ function MainScene({ introAnimationProgress }: MainSceneProps): JSX.Element {
       // Camera flies in from above and zooms in
       camera.position.x = initialCameraPosition.current.x * (1 - easing);
       camera.position.y = initialCameraPosition.current.y * (1 - easing) + cameraRef.current.targetY * easing;
-      camera.position.z = initialCameraPosition.current.z * (1 - easing) + 30 * easing;
+      camera.position.z = initialCameraPosition.current.z * (1 - easing) + 40 * easing;
       
       // Camera rotation animation
       camera.rotation.x = 0.2 * (1 - easing);
@@ -1055,7 +1056,7 @@ function MainScene({ introAnimationProgress }: MainSceneProps): JSX.Element {
       camera.rotation.y += (-cameraRef.current.targetX * 0.1 - camera.rotation.y) * 0.05;
       
       // Extremely subtle scroll-based camera movement
-      camera.position.z = 30 + Math.sin(scrollData.scrollProgress * Math.PI) * 1.5;
+      camera.position.z = 40 + Math.sin(scrollData.scrollProgress * Math.PI) * 1.5;
     }
   });
   
@@ -1147,17 +1148,32 @@ export default function ModernPortfolioBackground(): JSX.Element {
       {/* 3D Canvas */}
       {isLoaded && (
         <div 
-          className="fixed inset-0 w-screen h-screen -z-5 pointer-events-none transition-opacity duration-1500"
-          style={{ opacity }}
+          className="fixed inset-0 -z-5 pointer-events-none transition-opacity duration-1500"
+          style={{ 
+            opacity,
+            width: '100vw',
+            height: '100vh',
+            left: 0,
+            top: 0,
+            right: 0,
+            bottom: 0,
+            overflow: 'hidden'
+          }}
         >
           <Canvas
-            camera={{
-              position: [0, 10, 60], // 시작 위치
-              fov: 45,
-              near: 0.1,
-              far: 1000
+            style={{ 
+              position: 'absolute',
+              width: '100%', 
+              height: '100%',
+              display: 'block'
             }}
-            dpr={[1, 2]} // 성능 최적화
+            camera={{
+              position: [0, 10, 60],
+              fov: 60, // FOV를 더 넓게 조정 (45에서 60으로)
+              near: 0.1,
+              far: 2000 // far plane을 더 멀리 설정 (1000에서 2000으로)
+            }}
+            dpr={[1, 2]}
             gl={{
               alpha: true,
               antialias: true,
