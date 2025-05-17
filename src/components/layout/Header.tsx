@@ -20,38 +20,61 @@ const Header = () => {
     { href: '#contact', label: '연락하기' },
   ];
 
+  // 스크롤 위치에 따른 헤더 스타일 변경
   useEffect(() => {
     const handleScroll = () => {
-      // 스크롤 위치에 따른 헤더 스타일 변경
       setIsScrolled(window.scrollY > 0);
-
-      // 현재 활성화된 섹션 찾기
-      const sections = navItems.map(item => item.href.substring(1));
-      const currentSection = sections.find(section => {
-        const element = document.getElementById(section);
-        if (element) {
-          const rect = element.getBoundingClientRect();
-          return rect.top <= 100 && rect.bottom >= 100;
-        }
-        return false;
-      });
-
-      if (currentSection) {
-        setActiveSection(currentSection);
-      }
     };
-
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const handleNavClick = (e: React.MouseEvent<HTMLSpanElement>, href: string) => {
-    e.preventDefault();
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-      setIsMobileMenuOpen(false);
+  // 현재 섹션 감지
+  useEffect(() => {
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.5
+    };
+
+    const observerCallback = (entries: IntersectionObserverEntry[]) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          setActiveSection(entry.target.id);
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+    // 모든 섹션 관찰 시작
+    navItems.forEach(item => {
+      const section = document.getElementById(item.href.substring(1));
+      if (section) observer.observe(section);
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
+  const scrollToSection = (sectionId: string) => {
+    const section = document.getElementById(sectionId);
+    if (section) {
+      const headerOffset = 80; // 헤더 높이만큼 오프셋
+      const elementPosition = section.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
     }
+  };
+
+  const handleNavClick = (e: React.MouseEvent, href: string) => {
+    e.preventDefault();
+    const sectionId = href.substring(1);
+    scrollToSection(sectionId);
+    setIsMobileMenuOpen(false);
   };
 
   const menuVariants = {
@@ -99,9 +122,12 @@ const Header = () => {
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
-          <Link href="/" className="text-xl font-bold text-primary">
+          <button
+            onClick={() => scrollToSection('home')}
+            className="text-xl font-bold text-primary"
+          >
             Sumin
-          </Link>
+          </button>
         </motion.div>
         
         <nav className="hidden md:flex items-center space-x-8">
@@ -112,7 +138,7 @@ const Header = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: i * 0.1 }}
             >
-              <span
+              <button
                 onClick={(e) => handleNavClick(e, item.href)}
                 className={`relative hover:text-primary transition-colors cursor-pointer ${
                   activeSection === item.href.substring(1)
@@ -123,7 +149,7 @@ const Header = () => {
                 }`}
               >
                 {item.label}
-              </span>
+              </button>
             </motion.div>
           ))}
         </nav>
@@ -153,7 +179,6 @@ const Header = () => {
       <AnimatePresence>
         {isMobileMenuOpen && (
           <>
-            {/* dim */}
             <motion.div
               className="fixed inset-0 bg-black/50 z-30 w-screen h-screen"
               initial={{ opacity: 0 }}
@@ -171,7 +196,7 @@ const Header = () => {
               <div className="container mx-auto px-4 py-5 relative">
                 <motion.button
                   className="text-foreground w-6 h-6 absolute right-4"
-                  onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                  onClick={() => setIsMobileMenuOpen(false)}
                   whileTap={{ scale: 0.95 }}
                 >
                   <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -189,7 +214,7 @@ const Header = () => {
                       animate="open"
                       exit="closed"
                     >
-                      <span
+                      <button
                         onClick={(e) => handleNavClick(e, item.href)}
                         className={`block text-xl font-semibold cursor-pointer transition-colors ${
                           activeSection === item.href.substring(1)
@@ -198,7 +223,7 @@ const Header = () => {
                         }`}
                       >
                         {item.label}
-                      </span>
+                      </button>
                     </motion.div>
                   ))}
                 </nav>
