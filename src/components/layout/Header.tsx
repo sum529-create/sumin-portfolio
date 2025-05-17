@@ -1,39 +1,60 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback, useMemo } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { usePathname } from 'next/navigation';
+
+// 상수 정의
+const HEADER_HEIGHT = 80;
+const SCROLL_THRESHOLD = 0.5;
+const MOBILE_MENU_WIDTH = 200;
+
+// 네비게이션 아이템 타입 정의
+type NavItem = {
+  href: string;
+  label: string;
+};
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('');
 
-  const navItems = [
+  // 네비게이션 아이템 메모이제이션
+  const navItems = useMemo<NavItem[]>(() => [
     { href: '#home', label: '홈' },
     { href: '#about', label: '나에 대해' },
     { href: '#skills', label: '내 기술' },
     { href: '#experience', label: '내 경력' },
     { href: '#projects', label: '내 작업' },
     { href: '#contact', label: '연락하기' },
-  ];
+  ], []);
+
+  // 스크롤 이벤트 핸들러 메모이제이션
+  const handleScroll = useCallback(() => {
+    setIsScrolled(window.scrollY > 0);
+  }, []);
 
   // 스크롤 위치에 따른 헤더 스타일 변경
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 0);
+    // 초기 스크롤 상태 설정
+    handleScroll();
+
+    // 스크롤 이벤트 리스너 등록
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
     };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [handleScroll]);
 
   // 현재 섹션 감지
   useEffect(() => {
     const observerOptions = {
       root: null,
       rootMargin: '0px',
-      threshold: 0.5
+      threshold: SCROLL_THRESHOLD
     };
 
     const observerCallback = (entries: IntersectionObserverEntry[]) => {
@@ -47,36 +68,53 @@ const Header = () => {
     const observer = new IntersectionObserver(observerCallback, observerOptions);
 
     // 모든 섹션 관찰 시작
-    navItems.forEach(item => {
-      const section = document.getElementById(item.href.substring(1));
+    const sections = navItems.map(item => document.getElementById(item.href.substring(1))).filter(Boolean);
+    sections.forEach(section => {
       if (section) observer.observe(section);
     });
 
-    return () => observer.disconnect();
+    return () => {
+      observer.disconnect();
+      sections.forEach(section => {
+        if (section) observer.unobserve(section);
+      });
+    };
+  }, [navItems]);
+
+  // 스크롤 이동 함수 메모이제이션
+  const scrollToSection = useCallback((sectionId: string) => {
+    const section = document.getElementById(sectionId);
+    if (!section) return;
+
+    const elementPosition = section.getBoundingClientRect().top;
+    const offsetPosition = elementPosition + window.pageYOffset - HEADER_HEIGHT;
+
+    window.scrollTo({
+      top: offsetPosition,
+      behavior: 'smooth'
+    });
   }, []);
 
-  const scrollToSection = (sectionId: string) => {
-    const section = document.getElementById(sectionId);
-    if (section) {
-      const headerOffset = 80; // 헤더 높이만큼 오프셋
-      const elementPosition = section.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      });
-    }
-  };
-
-  const handleNavClick = (e: React.MouseEvent, href: string) => {
+  // 네비게이션 클릭 핸들러 메모이제이션
+  const handleNavClick = useCallback((e: React.MouseEvent, href: string) => {
     e.preventDefault();
     const sectionId = href.substring(1);
     scrollToSection(sectionId);
     setIsMobileMenuOpen(false);
-  };
+  }, [scrollToSection]);
 
-  const menuVariants = {
+  // 모바일 메뉴 토글 핸들러 메모이제이션
+  const toggleMobileMenu = useCallback(() => {
+    setIsMobileMenuOpen(prev => !prev);
+  }, []);
+
+  // 모바일 메뉴 닫기 핸들러 메모이제이션
+  const closeMobileMenu = useCallback(() => {
+    setIsMobileMenuOpen(false);
+  }, []);
+
+  // 애니메이션 variants 메모이제이션
+  const menuVariants = useMemo(() => ({
     closed: {
       opacity: 0,
       x: "100%",
@@ -93,9 +131,9 @@ const Header = () => {
         ease: "easeInOut"
       }
     }
-  };
+  }), []);
 
-  const itemVariants = {
+  const itemVariants = useMemo(() => ({
     closed: { opacity: 0, x: 20 },
     open: (i: number) => ({
       opacity: 1,
@@ -105,13 +143,19 @@ const Header = () => {
         duration: 0.3
       }
     })
-  };
+  }), []);
+
+  // 헤더 스타일 클래스 메모이제이션
+  const headerClassName = useMemo(() => 
+    `fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      isScrolled ? 'bg-background/80 backdrop-blur-md shadow-sm' : 'bg-transparent'
+    }`,
+    [isScrolled]
+  );
 
   return (
     <motion.header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-background/80 backdrop-blur-md shadow-sm' : 'bg-transparent'
-      }`}
+      className={headerClassName}
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
@@ -124,12 +168,13 @@ const Header = () => {
           <button
             onClick={() => scrollToSection('home')}
             className="text-xl font-bold text-primary"
+            aria-label="홈으로 이동"
           >
             Sumin
           </button>
         </motion.div>
         
-        <nav className="hidden md:flex items-center space-x-8">
+        <nav className="hidden md:flex items-center space-x-8" role="navigation" aria-label="메인 네비게이션">
           {navItems.map((item, i) => (
             <motion.div
               key={item.href}
@@ -146,6 +191,7 @@ const Header = () => {
                     ? 'text-foreground'
                     : 'text-gray-100'
                 }`}
+                aria-current={activeSection === item.href.substring(1) ? 'page' : undefined}
               >
                 {item.label}
               </button>
@@ -155,9 +201,9 @@ const Header = () => {
 
         <motion.button
           className="md:hidden text-foreground"
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          onClick={toggleMobileMenu}
           whileTap={{ scale: 0.95 }}
-          aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
+          aria-label={isMobileMenuOpen ? "메뉴 닫기" : "메뉴 열기"}
           aria-expanded={isMobileMenuOpen}
         >
           <svg
@@ -186,27 +232,32 @@ const Header = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              onClick={() => setIsMobileMenuOpen(false)}
+              onClick={closeMobileMenu}
+              aria-hidden="true"
             />
             <motion.div
-              className="fixed top-0 right-0 bg-background/95 backdrop-blur-md md:hidden w-[200px] h-screen z-40"
+              className={`fixed top-0 right-0 bg-background/95 backdrop-blur-md md:hidden w-[${MOBILE_MENU_WIDTH}px] h-screen z-40`}
               initial="closed"
               animate="open"
               exit="closed"
               variants={menuVariants}
+              role="dialog"
+              aria-modal="true"
+              aria-label="모바일 메뉴"
             >
               <div className="container mx-auto px-4 py-5 relative">
                 <motion.button
                   className="text-foreground w-6 h-6 absolute right-4"
-                  onClick={() => setIsMobileMenuOpen(false)}
+                  onClick={closeMobileMenu}
                   whileTap={{ scale: 0.95 }}
+                  aria-label="메뉴 닫기"
                 >
-                  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                     <line x1="4" y1="4" x2="20" y2="20" stroke="#333333" strokeWidth="2" strokeLinecap="round" />
                     <line x1="20" y1="4" x2="4" y2="20" stroke="#333333" strokeWidth="2" strokeLinecap="round" />
                   </svg>
                 </motion.button>
-                <nav className="flex flex-col space-y-4 mt-16">
+                <nav className="flex flex-col space-y-4 mt-16" role="navigation" aria-label="모바일 메뉴">
                   {navItems.map((item, i) => (
                     <motion.div
                       key={item.href}
@@ -223,6 +274,7 @@ const Header = () => {
                             ? 'text-primary'
                             : 'text-foreground hover:text-primary'
                         }`}
+                        aria-current={activeSection === item.href.substring(1) ? 'page' : undefined}
                       >
                         {item.label}
                       </button>
