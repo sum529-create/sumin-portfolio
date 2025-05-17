@@ -64,7 +64,7 @@ export default function Home() {
           }}
         >
           <ScrollAnimations>
-           <main className="relative">
+           <div className="relative">
               {/* Hero Section */}
               <section className="min-h-screen flex items-center justify-center relative">
                 <div className="container mx-auto px-4 relative z-20">
@@ -241,7 +241,7 @@ export default function Home() {
                   </div>
                 </div>
               </section>
-            </main>
+            </div>
           </ScrollAnimations>
         </div>
       </MainLayout>
