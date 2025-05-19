@@ -57,20 +57,20 @@ const config: Config = {
   				dark: '#4F46E5',
   			},
   			secondary: {
-  				DEFAULT: '#10B981',
+  				DEFAULT: '#3B82F6',
   				foreground: '#FFFFFF',
-  				light: '#34D399',
-  				dark: '#059669',
+  				light: '#60A5FA',
+  				dark: '#2563EB',
   			},
   			muted: {
   				DEFAULT: '#94A3B8',
   				foreground: '#475569',
   			},
   			accent: {
-  				DEFAULT: '#F59E0B',
+  				DEFAULT: '#EC4899',
   				foreground: '#FFFFFF',
-  				light: '#FBBF24',
-  				dark: '#D97706',
+  				light: '#F472B6',
+  				dark: '#DB2777',
   			},
   			destructive: {
   				DEFAULT: '#EF4444',
@@ -86,11 +86,26 @@ const config: Config = {
   			'ring-dark': '#818CF8',
   			chart: {
   				'1': '#6366F1',
-  				'2': '#10B981',
-  				'3': '#F59E0B',
-  				'4': '#EF4444',
+  				'2': '#3B82F6',
+  				'3': '#EC4899',
+  				'4': '#10B981',
   				'5': '#8B5CF6'
-  			}
+  			},
+				purple: {
+					DEFAULT: '#8B5CF6',
+					light: '#A78BFA',
+					dark: '#7C3AED'
+				},
+				teal: {
+					DEFAULT: '#10B981',
+					light: '#34D399',
+					dark: '#059669'
+				},
+				amber: {
+					DEFAULT: '#F59E0B',
+					light: '#FBBF24',
+					dark: '#D97706'
+				}
   		},
   		borderRadius: {
   			'none': '0',
