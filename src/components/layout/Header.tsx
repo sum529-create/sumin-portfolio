@@ -221,7 +221,7 @@ const Header = () => {
         </nav>
 
         <motion.button
-          className='text-foreground md:hidden'
+          className={`${isScrolled ? 'text-foreground' : 'text-gray-100'} md:hidden`}
           onClick={toggleMobileMenu}
           whileTap={{ scale: 0.95 }}
           aria-label={isMobileMenuOpen ? '메뉴 닫기' : '메뉴 열기'}
