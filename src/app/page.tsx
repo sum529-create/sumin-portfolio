@@ -69,7 +69,6 @@ export default function Home() {
           }}
         >
           <ScrollAnimations>
-            <div className='relative'>
               {/* Hero Section */}
               <section
                 id='home'
@@ -291,7 +290,6 @@ export default function Home() {
                   </div>
                 </div>
               </section>
-            </div>
           </ScrollAnimations>
         </div>
       </MainLayout>

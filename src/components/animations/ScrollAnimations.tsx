@@ -171,7 +171,7 @@ export default function ScrollAnimations({
   }, []);
 
   return (
-    <div ref={containerRef} className={`${className}`}>
+    <div ref={containerRef} className={`relative ${className}`}>
       {children}
     </div>
   );
