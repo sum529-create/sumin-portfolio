@@ -41,9 +41,10 @@ export default function ScrollAnimations({
     });
 
     // GSAP와 Lenis 연결
-    gsap.ticker.add((time) => {
+    const handleRef = (time:number) => {
       lenisRef.current?.raf(time * 1000);
-    });
+    } 
+    gsap.ticker.add(handleRef);
 
     // ScrollTrigger와 Lenis 연결
     ScrollTrigger.refresh();
@@ -165,7 +166,7 @@ export default function ScrollAnimations({
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
       if (lenisRef.current) {
         lenisRef.current.destroy();
-        gsap.ticker.remove(lenisRef.current.raf.bind(lenisRef.current));
+        gsap.ticker.remove(handleRef);
       }
     };
   }, []);
