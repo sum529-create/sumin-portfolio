@@ -27,6 +27,7 @@ export default function ScrollAnimations({
 }: ScrollAnimationsProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const lenisRef = useRef<Lenis | null>(null);
+  const splitInstance: SplitText[] = [];
 
   useEffect(() => {
     const container = containerRef.current;
@@ -126,6 +127,7 @@ export default function ScrollAnimations({
         const split = new SplitText(element as HTMLElement, {
           type: 'chars,words',
         });
+        splitInstance.push(split);
 
         gsap.from(split.chars, {
           opacity: 0,
@@ -164,6 +166,7 @@ export default function ScrollAnimations({
     return () => {
       // 클린업
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+      splitInstance.forEach((split) => split.revert())
       if (lenisRef.current) {
         lenisRef.current.destroy();
         gsap.ticker.remove(handleRef);
