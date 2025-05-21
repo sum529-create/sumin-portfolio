@@ -86,7 +86,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko" className={pretendard.variable}>
-      <body className="antialiased">
+      <body className="antialiased overflow-x-hidden">
         {children}
       </body>
     </html>

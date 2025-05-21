@@ -11,10 +11,10 @@ interface MainLayoutProps {
 
 const MainLayout = ({ children }: MainLayoutProps) => {
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className='flex min-h-screen flex-col overflow-x-hidden'>
       <Header />
       <motion.main
-        className="flex-grow pt-16"
+        className='flex-grow w-full max-w-[100vw]'
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
@@ -26,4 +26,4 @@ const MainLayout = ({ children }: MainLayoutProps) => {
   );
 };
 
-export default MainLayout; 
+export default MainLayout;
