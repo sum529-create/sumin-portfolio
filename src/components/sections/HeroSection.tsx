@@ -36,7 +36,7 @@ const HeroSection = ({ contentVisible }: HeroSectionProps) => {
     <section className="min-h-screen flex items-center justify-center relative">
       <div className="container mx-auto px-4 relative z-20 max-w-full">
         <motion.div
-          className="max-w-4xl mx-auto text-center break-words"
+          className="max-w-4xl mx-auto text-left break-words"
           initial={{ opacity: 0, y: 20 }}
           animate={{
             opacity: contentVisible ? 1 : 0,
@@ -49,32 +49,37 @@ const HeroSection = ({ contentVisible }: HeroSectionProps) => {
           style={{ opacity }}
         >
           <motion.h1 
-            className="text-4xl md:text-6xl font-bold text-white mb-6 break-words"
+            className="text-4xl md:text-6xl lg:text-5xl font-bold text-white mb-6 break-words md:w-[580px] w-[350px]"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             안녕하세요,
             <br />
-            저는 <span ref={typingRef} className='text-secondary' />
-            <motion.span
-              className='text-4xl font-bold text-secondary md:text-6xl'
-              animate={{ opacity: [0, 1, 0] }}
-              initial={{ opacity: 0 }}
-              transition={{
-                duration: 0.5,
-                repeat: Infinity,
-                ease: 'easeInOut',
-                times: [0, 0.5, 1],
-              }}
-            >
-              |
-            </motion.span>
+            저는 <span ref={typingRef} className='text-secondary'>프론트엔드 개발자</span>
+            {
+              typingRef.current?.textContent !== '프론트엔드 개발자' && (
+                <motion.span
+                  className='text-4xl font-bold text-secondary md:text-6xl'
+                  animate={{ opacity: [0, 1, 0] }}
+                  initial={{ opacity: 0 }}
+                  transition={{
+                    duration: 0.5,
+                    repeat: 0,
+                    ease: 'easeInOut',
+                    times: [0, 0.5, 1],
+                  }}
+                >
+                  |
+                </motion.span>
+
+              )
+            }
             <br />
             <span className='text-accent'>노수민</span>입니다
           </motion.h1>
           <motion.p 
-            className="text-xl text-gray-100 mb-8 break-words"
+            className="text-xl text-gray-300 mb-8 break-words"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
