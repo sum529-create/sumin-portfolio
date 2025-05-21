@@ -5,13 +5,10 @@ import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import { PerspectiveCamera } from '@react-three/drei';
 import { CameraRef, ScrollData } from './types';
 import { easeOutCubic } from './utils/animations';
-import { TechElements } from './components/TechElements';
 import { ParticleSystem } from './components/ParticleSystem';
 import { GradientBackground } from './components/GradientBackground';
 import { Grid } from './components/Grid';
 import { GlowEffect } from './components/GlowEffect';
-import { CodeEffect } from './components/CodeEffect';
-import { StarburstEffect } from './components/StarburstEffect';
 
 // 스크롤 위치를 추적하는 커스텀 훅
 function useScrollPosition(): ScrollData {
