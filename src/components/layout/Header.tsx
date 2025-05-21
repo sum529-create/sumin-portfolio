@@ -178,7 +178,7 @@ const Header = () => {
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
     >
-      <div className='container mx-auto flex h-16 items-center justify-between px-4'>
+      <div className='container mx-auto flex h-16 items-center justify-between px-4 max-w-5xl'>
         <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
           <button
             onClick={() => scrollToSection('home')}

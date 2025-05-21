@@ -69,7 +69,7 @@ export default function Home() {
           }}
         >
           <ScrollAnimations>
-            <div className="w-full max-w-[100vw]">
+            <div className="w-full max-w-5xl mx-auto">
               {/* Hero Section */}
               <section
                 id='home'
