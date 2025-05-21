@@ -34,7 +34,7 @@ export default function Home() {
   }, []);
 
   return (
-    <>
+    <div className="overflow-x-hidden">
       {/* 페이지 프리로더 */}
       <div
         className='fixed inset-0 z-50 flex items-center justify-center bg-[#050510] transition-opacity duration-1000'
@@ -56,7 +56,7 @@ export default function Home() {
       </div>
 
       <MainLayout>
-        {/* AnimatedBackground를 절대 위치로 전체 화면  에 배치 */}
+        {/* AnimatedBackground를 절대 위치로 전체 화면에 배치 */}
         <div className='fixed inset-0 h-screen overflow-hidden'>
           <AnimatedBackground />
         </div>
@@ -293,6 +293,6 @@ export default function Home() {
           </ScrollAnimations>
         </div>
       </MainLayout>
-    </>
+    </div>
   );
 }
