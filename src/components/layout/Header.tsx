@@ -261,7 +261,8 @@ const Header = () => {
               aria-hidden='true'
             />
             <motion.div
-              className={`fixed right-0 top-0 bg-background/95 backdrop-blur-md md:hidden w-[${MOBILE_MENU_WIDTH}px] z-40 h-screen`}
+              className={`fixed right-0 top-0 bg-background/95 backdrop-blur-md md:hidden z-40 h-screen`}
+              style={{width: `${MOBILE_MENU_WIDTH}px`}}
               initial='closed'
               animate='open'
               exit='closed'
