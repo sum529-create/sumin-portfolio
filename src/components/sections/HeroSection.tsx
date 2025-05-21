@@ -33,13 +33,10 @@ const HeroSection = ({ contentVisible }: HeroSectionProps) => {
     }
   }, []);
   return (
-    <section
-      id='home'
-      className='relative flex min-h-screen items-center justify-center'
-    >
-      <div className='container relative z-20 mx-auto px-4'>
+    <section className="min-h-screen flex items-center justify-center relative">
+      <div className="container mx-auto px-4 relative z-20 max-w-full">
         <motion.div
-          className='mx-auto max-w-4xl text-left'
+          className="max-w-4xl mx-auto text-center break-words"
           initial={{ opacity: 0, y: 20 }}
           animate={{
             opacity: contentVisible ? 1 : 0,
@@ -51,8 +48,8 @@ const HeroSection = ({ contentVisible }: HeroSectionProps) => {
           }}
           style={{ opacity }}
         >
-          <motion.h1
-            className='mb-6 text-4xl font-bold leading-10 text-white md:text-6xl md:leading-[60px]'
+          <motion.h1 
+            className="text-4xl md:text-6xl font-bold text-white mb-6 break-words"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
@@ -76,8 +73,8 @@ const HeroSection = ({ contentVisible }: HeroSectionProps) => {
             <br />
             <span className='text-accent'>노수민</span>입니다
           </motion.h1>
-          <motion.p
-            className='mb-8 text-xl text-gray-300'
+          <motion.p 
+            className="text-xl text-gray-100 mb-8 break-words"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
