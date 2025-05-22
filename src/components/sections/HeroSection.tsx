@@ -25,14 +25,11 @@ const HeroSection = ({ contentVisible }: HeroSectionProps) => {
   }, [contentVisible]);
 
   const containerVariants = {
-    hidden: { 
-      scale: 0.8,
-      filter: "blur(10px)",
-      y: 50
+    hidden: {
+      opacity:0,
     },
     visible: {
-      scale: 1,
-      filter: "blur(0px)",
+      opacity:1,
       y: 0,
       transition: {
         staggerChildren: 0.1,
