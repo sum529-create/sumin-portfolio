@@ -7,6 +7,7 @@ import { AnimatedBackground } from '@/components/background/AnimatedBackground';
 import HeroSection from '@/components/sections/HeroSection';
 import { experienceData } from '@/constants/experience';
 import { projectData } from '@/constants/projects';
+import { Button } from '@/components/ui/button';
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
@@ -203,6 +204,53 @@ export default function Home() {
                         </span>
                       ))}
                     </div>
+                  </div>
+                </div>
+              </section>
+
+              {/* blog Section */}
+              <section id='blog' className='relative min-h-screen py-20'>
+                <div className='container mx-auto px-4 max-w-full'>
+                  <h2 className='split-text mb-12 text-center text-3xl font-bold md:text-4xl'>
+                    blog
+                  </h2>
+                  <div className='grid grid-cols-1 gap-8 md:grid-cols-3'>
+                    {[
+                      {
+                        category: '제목01',
+                        content: '이것은 프론트엔드 기술 블로그입니다.',
+                        icon: '🎨',
+                      },
+                      {
+                        category: '제목02',
+                        content: '테스트입니다.',
+                        icon: '🛠️',
+                      },
+                      {
+                        category: '제목03',
+                        content: '테스트입니다.',
+                        icon: '💻',
+                      }
+                    ].map((category, i) => (
+                      <div
+                        key={category.category}
+                        className='scroll-animate rounded-lg bg-card/50 p-6 shadow-sm backdrop-blur-sm'
+                        data-direction={i % 2 === 0 ? 'left' : 'right'}
+                      >
+                        <div className='mb-4 text-4xl'>{category.icon}</div>
+                        <h3 className='mb-4 text-xl font-semibold break-words'>
+                          {category.category}
+                        </h3>
+                        <ul className='space-y-2'>
+                          {category.content}
+                        </ul>
+                      </div>
+                    ))}
+                  </div>
+                  <div className='mt-8 flex justify-center'>
+                    <Button>
+                      더 보러가기
+                    </Button>
                   </div>
                 </div>
               </section>
