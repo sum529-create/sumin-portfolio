@@ -23,10 +23,11 @@ const Header = () => {
   const navItems = useMemo<NavItem[]>(
     () => [
       { href: '#home', label: '홈' },
-      { href: '#about', label: '나에 대해' },
-      { href: '#skills', label: '내 기술' },
-      { href: '#experience', label: '내 경력' },
-      { href: '#projects', label: '내 작업' },
+      { href: '#about', label: '소개' },
+      { href: '#skills', label: '기술 스택' },
+      { href: '#experience', label: '경력' },
+      { href: '#blog', label: '블로그' },
+      { href: '#projects', label: '프로젝트' },
       { href: '#contact', label: '연락하기' },
     ],
     []
