@@ -12,7 +12,7 @@ const HeroSection = ({ contentVisible }: HeroSectionProps) => {
   
   // 스크롤에 따른 스케일과 블러 효과
   const scale = useTransform(scrollY, [0, 100], [1, 0.8]);
-  const blur = useTransform(scrollY, [0, 100], [0, 10]);
+  const blurFilter = useTransform(scrollY, [0, 100], ['blur(0px)', 'blur(10px)']);
   const y = useTransform(scrollY, [0, 100], [0, 50]);
 
   useEffect(() => {
@@ -68,7 +68,7 @@ const HeroSection = ({ contentVisible }: HeroSectionProps) => {
           animate={isVisible ? "visible" : "hidden"}
           style={{
             scale,
-            filter: `blur(${blur}px)`,
+            filter: blurFilter,
             y
           }}
         >
