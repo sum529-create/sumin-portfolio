@@ -15,6 +15,13 @@ const HeroSection = ({ contentVisible }: HeroSectionProps) => {
   const blurFilter = useTransform(scrollY, [0, 100], ['blur(0px)', 'blur(10px)']);
   const y = useTransform(scrollY, [0, 100], [0, 50]);
 
+  // 페이지 로드 시 맨 상단으로 스크롤
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      window.scrollTo(0, 0);
+    }
+  }, []);
+
   useEffect(() => {
     if (contentVisible) {
       const timer = setTimeout(() => {
