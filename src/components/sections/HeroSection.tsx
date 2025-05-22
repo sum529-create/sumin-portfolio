@@ -15,6 +15,13 @@ const HeroSection = ({ contentVisible }: HeroSectionProps) => {
   const blurFilter = useTransform(scrollY, [0, 100], ['blur(0px)', 'blur(10px)']);
   const y = useTransform(scrollY, [0, 100], [0, 50]);
 
+  // 페이지 로드 시 맨 상단으로 스크롤
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      window.scrollTo(0, 0);
+    }
+  }, []);
+
   useEffect(() => {
     if (contentVisible) {
       const timer = setTimeout(() => {
@@ -59,7 +66,7 @@ const HeroSection = ({ contentVisible }: HeroSectionProps) => {
   const lines = text.split("\n");
 
   return (
-    <section className="min-h-screen flex items-center justify-center relative">
+    <section id='home' className="min-h-screen flex items-center justify-center relative">
       <div className="container mx-auto px-4 relative z-20 max-w-full">
         <motion.div
           className="max-w-4xl mx-auto text-left"
