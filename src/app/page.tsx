@@ -72,12 +72,7 @@ export default function Home() {
           <ScrollAnimations>
             <div className="w-full max-w-5xl mx-auto">
               {/* Hero Section */}
-              <section
-                id='home'
-                className='relative flex min-h-screen items-center justify-center'
-              >
-                <HeroSection contentVisible={contentVisible} />
-              </section>
+              <HeroSection contentVisible={contentVisible} />
 
               {/* About Section */}
               <section id='about' className='relative min-h-screen py-20'>

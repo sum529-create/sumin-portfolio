@@ -59,7 +59,7 @@ const HeroSection = ({ contentVisible }: HeroSectionProps) => {
   const lines = text.split("\n");
 
   return (
-    <section className="min-h-screen flex items-center justify-center relative">
+    <section id='home' className="min-h-screen flex items-center justify-center relative">
       <div className="container mx-auto px-4 relative z-20 max-w-full">
         <motion.div
           className="max-w-4xl mx-auto text-left"
