@@ -9,8 +9,8 @@ type HighLightStyle = string;
 const BASE_HIGHLIGHT_STYLE: HighLightStyle = "px-2 py-1 rounded-lg border font-medium";
 
 // 색상별 강조 스타일 생성 함수
-const createHightLightStyle = (color:string): HighLightStyle => `text-${color}-light bg-${color}/8 ${BASE_HIGHLIGHT_STYLE} border-${color}/30`;
+const createHighlightStyle = (color:string): HighLightStyle => `text-${color}-light bg-${color}/8 ${BASE_HIGHLIGHT_STYLE} border-${color}/30`;
 
-export const TEAL_HIGHLIGHT:HighLightStyle = createHightLightStyle("teal");
-export const PURPLE_HIGHLIGHT:HighLightStyle = createHightLightStyle("purple");
-export const PINK_HIGHLIGHT:HighLightStyle = createHightLightStyle("accent");
+export const TEAL_HIGHLIGHT:HighLightStyle = createHighlightStyle("teal");
+export const PURPLE_HIGHLIGHT:HighLightStyle = createHighlightStyle("purple");
+export const PINK_HIGHLIGHT:HighLightStyle = createHighlightStyle("accent");
