@@ -13,7 +13,7 @@ const IntroSection = () => {
         <ul className='grid grid-cols-1 items-center gap-12'>
           {
             aboutText.map((item, i) => (
-              <li className="break-keep" key={i}>
+              <li className="break-keep" key={`question-${i}`}>
                 <div className='scroll-animate' data-direction='left'>
                   <p className='rounded-lg bg-gradient-to-r from-primary/30 to-transparent px-4 py-5 text-lg md:text-xl text-gray-100 mb-4 font-bold'>
                     <span className='text-secondary mr-4 text-xl md:text-2xl'>Q{i+1}.</span>{item.questionTxt} 
