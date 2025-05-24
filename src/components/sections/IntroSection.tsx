@@ -4,12 +4,12 @@ const IntroSection = () => {
   return (
     <section id='about' className='relative min-h-screen py-20'>
       <div className='container mx-auto px-4 max-w-full'>
-        <h2 className='split-text mb-4 text-center text-3xl font-bold md:text-5xl text-gray-300'>
+        <h2 className='split-text mb-4 text-center text-3xl font-bold md:text-5xl text-gray-300' aria-label="개발자 인터뷰 섹션">
           Developer Interview
         </h2>
-        <h4 className="text-gray-300 mb-12 text-center text-lg">
+        <h3 className="text-gray-300 mb-12 text-center text-lg">
           자주 받는 질문과 나의 생각
-        </h4>
+        </h3>
         <ul className='grid grid-cols-1 items-center gap-12'>
           {
             aboutText.map((item, i) => (
