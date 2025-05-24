@@ -1,6 +1,12 @@
 import { PINK_HIGHLIGHT, PURPLE_HIGHLIGHT, TEAL_HIGHLIGHT } from "@/constants/styles"
+import { ReactNode } from "react"
 
-export const aboutText = [
+interface AboutTextProp {
+  questionTxt: ReactNode,
+  answerTxt: ReactNode
+}
+
+export const aboutText: AboutTextProp[] = [
     {
       questionTxt: (
         <>
