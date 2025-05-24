@@ -8,6 +8,7 @@ import HeroSection from '@/components/sections/HeroSection';
 import { experienceData } from '@/constants/experience';
 import { projectData } from '@/constants/projects';
 import { Button } from '@/components/ui/button';
+import IntroSection from '@/components/sections/IntroSection';
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
@@ -74,45 +75,8 @@ export default function Home() {
               {/* Hero Section */}
               <HeroSection contentVisible={contentVisible} />
 
-              {/* About Section */}
-              <section id='about' className='relative min-h-screen py-20'>
-                <div className='container mx-auto px-4 max-w-full'>
-                  <h2 className='split-text mb-12 text-center text-3xl font-bold md:text-4xl'>
-                    About Me
-                  </h2>
-                  <div className='grid grid-cols-1 items-center gap-12 md:grid-cols-2'>
-                    <div className='scroll-animate' data-direction='left'>
-                      <ul className='space-y-2 text-lg text-gray-100'>
-                        <li className="break-words">
-                          사용자가 '편하다'고 느끼는 순간을 만드는 걸
-                          좋아합니다.
-                        </li>
-                        <li className="break-words">
-                          깔끔한 UI, 직관적인 UX를 고민하는 프론트엔드
-                          개발자입니다.
-                        </li>
-                        <li className="break-words">
-                          눈에 보이는 것부터 보이지 않는 흐름까지, 세심하게 신경
-                          씁니다.
-                        </li>
-                        <li className="break-words">
-                          요즘은 React, Next.js, TypeScript 기반으로 이것저것
-                          시도해보고 있어요.
-                        </li>
-                        <li className="break-words">
-                          새로운 기술을 배우는 걸 좋아하고, 기록하고 정리하는 걸
-                          즐깁니다.
-                        </li>
-                      </ul>
-                    </div>
-                    <div className='scroll-animate' data-direction='right'>
-                      <div className='flex aspect-square items-center justify-center rounded-lg bg-primary/10'>
-                        <span className='text-6xl'>👨‍💻</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </section>
+              {/* Intro Section */}
+              <IntroSection/>
 
               {/* Skills Section */}
               <section id='skills' className='relative min-h-screen py-20'>
