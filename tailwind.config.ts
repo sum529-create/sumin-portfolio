@@ -7,6 +7,11 @@ const config: Config = {
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
+	safelist: [
+		'text-teal-light', 'bg-teal/8', 'border-teal/30',
+		'text-purple-light', 'bg-purple/8', 'border-purple/30', 
+		'text-accent-light', 'bg-accent/8', 'border-accent/30'
+	],
   theme: {
   	extend: {
   		fontFamily: {
