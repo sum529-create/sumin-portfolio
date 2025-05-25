@@ -19,6 +19,8 @@ interface AnimationVars {
   y?: number;
   rotateX?: number;
   scale?: number;
+  scaleX?: number;
+  transformOrigin?: string;
 }
 
 export default function ScrollAnimations({
@@ -42,9 +44,9 @@ export default function ScrollAnimations({
     });
 
     // GSAP와 Lenis 연결
-    const handleRef = (time:number) => {
+    const handleRef = (time: number) => {
       lenisRef.current?.raf(time * 1000);
-    } 
+    };
     gsap.ticker.add(handleRef);
 
     // ScrollTrigger와 Lenis 연결
@@ -121,6 +123,62 @@ export default function ScrollAnimations({
         });
       });
 
+      // 섹션 내부 문 열림 애니메이션
+      const doors = section.querySelectorAll('.scroll-door-animate');
+      doors.forEach((element, i) => {
+        const direction = element.getAttribute('data-direction') || 'up';
+
+        let fromVars: AnimationVars = { opacity: 0 };
+        let toVars: AnimationVars = { opacity: 1 };
+        let delay = 0;
+
+        // 방향에 따른 초기 위치 설정
+        switch (direction) {
+          case 'doorLeft':
+            fromVars = {
+              ...{ opacity: 1 },
+              scaleX: 1,
+              transformOrigin: 'left center',
+            };
+            toVars = {
+              ...toVars,
+              scaleX: 0,
+              transformOrigin: 'left center',
+            };
+            break;
+          case 'doorRight':
+            fromVars = {
+              ...{ opacity: 1 },
+              scaleX: 1,
+              transformOrigin: 'right center',
+            };
+            toVars = {
+              ...toVars,
+              scaleX: 0,
+              transformOrigin: 'right center',
+            };
+            break;
+          case 'doorContent':
+            fromVars = { ...fromVars, scale: 0.8, opacity: 0 };
+            toVars = { ...toVars, scale: 1, opacity: 1 };
+            delay = 1;
+            break;
+        }
+
+        gsap.fromTo(element, fromVars, {
+          ...toVars,
+          duration: direction === 'doorContent' ? 0.5 : 0.8,
+          ease: direction === 'doorContent' ? 'back.out(1.7)' : 'power2.inOut',
+          scrollTrigger: {
+            trigger: section,
+            start: 'center center',
+            end: 'top top',
+            toggleActions: 'play none none reverse',
+          },
+          delay,
+        });
+      });
+
       // 텍스트 스플릿 애니메이션
       const textElements = section.querySelectorAll('.split-text');
       textElements.forEach((element) => {
@@ -166,7 +224,7 @@ export default function ScrollAnimations({
     return () => {
       // 클린업
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
-      splitInstance.forEach((split) => split.revert())
+      splitInstance.forEach((split) => split.revert());
       if (lenisRef.current) {
         lenisRef.current.destroy();
         gsap.ticker.remove(handleRef);
