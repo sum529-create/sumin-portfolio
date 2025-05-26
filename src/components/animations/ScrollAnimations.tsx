@@ -161,7 +161,7 @@ export default function ScrollAnimations({
           case 'doorContent':
             fromVars = { ...fromVars, scale: 0.8, opacity: 0 };
             toVars = { ...toVars, scale: 1, opacity: 1 };
-            delay = 1;
+            delay = 0.5;
             break;
         }
 
