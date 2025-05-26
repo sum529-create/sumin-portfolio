@@ -1,3 +1,5 @@
+import SkillTechBlock from './SkillTechBlock';
+
 const SkillsTechStack = () => {
   return (
     <div className='relative inset-0 p-4 md:p-6'>
@@ -6,14 +8,7 @@ const SkillsTechStack = () => {
         data-direction='doorContent'
       >
         {/* 현재 주력기술 */}
-        <div className='space-y-3'>
-          <div className='mb-4 text-center'>
-            <h3 className='text-base font-semibold text-cyan-400 md:text-lg'>
-              현재 주력기술
-            </h3>
-            <div className='mx-auto mt-2 h-0.5 w-12 rounded-full bg-cyan-400'></div>
-          </div>
-
+        <SkillTechBlock color='cyan' text='현재 주력기술'>
           {/* React */}
           <div className='rounded-lg border border-slate-600/40 bg-slate-800/90 p-4 transition-colors duration-300 hover:border-blue-400/70'>
             <div className='flex items-center space-x-4'>
@@ -107,17 +102,10 @@ const SkillsTechStack = () => {
               </div>
             </div>
           </div>
-        </div>
+        </SkillTechBlock>
 
         {/* 실무 경험 */}
-        <div className='space-y-3'>
-          <div className='mb-4 text-center'>
-            <h3 className='text-base font-semibold text-green-400 md:text-lg'>
-              실무 경험
-            </h3>
-            <div className='mx-auto mt-2 h-0.5 w-12 rounded-full bg-green-400'></div>
-          </div>
-
+        <SkillTechBlock color='green' text='실무 경험'>
           {/* Vue.js & Nuxt.js */}
           <div className='rounded-lg border border-slate-600/50 bg-slate-800/80 p-4 transition-colors duration-200 hover:border-green-400/50'>
             <div className='space-y-2 text-center'>
@@ -169,17 +157,10 @@ const SkillsTechStack = () => {
               <div>• Vuex와 asyncData를 활용한 상태 관리</div>
             </div>
           </div>
-        </div>
+        </SkillTechBlock>
 
         {/* 프로젝트 경험 */}
-        <div className='space-y-2'>
-          <div className='mb-3 text-center'>
-            <h3 className='text-base font-semibold text-purple-400 md:text-lg'>
-              프로젝트 경험
-            </h3>
-            <div className='mx-auto mt-2 h-0.5 w-12 rounded-full bg-purple-400'></div>
-          </div>
-
+        <SkillTechBlock color='purple' text='프로젝트 경험'>
           {/* TanStack Query */}
           <div className='rounded-lg border border-slate-600/50 bg-slate-800/80 p-2.5 transition-colors duration-200 hover:border-red-400/50'>
             <div className='flex items-center space-x-2'>
@@ -280,7 +261,7 @@ const SkillsTechStack = () => {
               </div>
             </div>
           </div>
-        </div>
+        </SkillTechBlock>
       </div>
     </div>
   );
