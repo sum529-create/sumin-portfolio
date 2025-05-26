@@ -171,7 +171,7 @@ export default function ScrollAnimations({
           ease: direction === 'doorContent' ? 'back.out(1.7)' : 'power2.inOut',
           scrollTrigger: {
             trigger: section,
-            start: 'center center',
+            start: 'center center+=20%',
             end: 'top top',
             toggleActions: 'play none none reverse',
           },
