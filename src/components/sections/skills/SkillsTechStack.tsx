@@ -20,7 +20,7 @@ const SkillsTechStack = () => {
     'Vuex와 asyncData를 활용한 상태 관리',
   ];
   return (
-    <div className='relative inset-0 p-4 md:p-6'>
+    <div className='skill-box relative inset-0 p-4 md:p-6'>
       <div
         className='scroll-door-animate grid h-full grid-cols-1 gap-4 overflow-y-auto md:grid-cols-3 md:gap-6 md:overflow-hidden'
         data-direction='doorContent'
