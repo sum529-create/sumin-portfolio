@@ -231,7 +231,7 @@ export default function ScrollAnimations({
                     if (lenisRef.current) {
                       lenisRef.current.start();
                     }
-                  }, 1000); // 애니메이션 시간과 동일하게
+                  }, 1500);
                 }
               },
             },
