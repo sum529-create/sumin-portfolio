@@ -195,7 +195,6 @@ export default function ScrollAnimations({
         const doorContent = section.querySelector(
           '[data-direction="doorContent"]'
         );
-        console.log(isMobile);
         if (!isMobile && doorContent) {
           doorTimeline.fromTo(
             doorContent,
