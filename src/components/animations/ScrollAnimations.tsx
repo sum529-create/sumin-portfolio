@@ -215,7 +215,7 @@ export default function ScrollAnimations({
       sections.forEach((section) => {
         const doors = section.querySelectorAll('.scroll-door-animate');
 
-        if (doors.length > 0) {
+        if (doors?.length > 0) {
           const doorTimeline = gsap.timeline({
             scrollTrigger: {
               trigger: section,
@@ -285,7 +285,7 @@ export default function ScrollAnimations({
           const doorContent = section.querySelector(
             '[data-direction="doorContent"]'
           );
-          if (doorContent && doorLeft && doorRight) {
+          if (doorContent) {
             doorTimeline.fromTo(
               doorContent,
               { scale: 0.9, opacity: 0, y: 10 },
