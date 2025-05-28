@@ -21,7 +21,7 @@ const exeItems = [
 ];
 const SkillsTechStack = () => {
   const isMobile = useIsMobile();
-  const [isMounted, setIsMounted] = useState<Boolean>(false);
+  const [isMounted, setIsMounted] = useState<boolean>(false);
   useEffect(() => {
     setIsMounted(true);
   }, []);
