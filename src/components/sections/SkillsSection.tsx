@@ -17,8 +17,10 @@ const SkillsSection = () => {
           {/* 뒤에 숨겨진 Tech Stack 내용 */}
           <SkillsTechStack />
 
-          {/* 문짝들 */}
-          <SkillsDoor />
+          {/* 데스크톱에서만 문짝 표시 */}
+          <div className='hidden md:block'>
+            <SkillsDoor />
+          </div>
         </div>
       </div>
     </section>

@@ -1,10 +1,11 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { SplitText } from 'gsap/SplitText';
 import Lenis from '@studio-freight/lenis';
+import { useMediaQuery } from '@/hooks/useMediaQuery';
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
@@ -30,6 +31,8 @@ export default function ScrollAnimations({
   const containerRef = useRef<HTMLDivElement>(null);
   const lenisRef = useRef<Lenis | null>(null);
   const splitInstance: SplitText[] = [];
+
+  const isMobile = () => useMediaQuery('(max-width: 768px)');
 
   useEffect(() => {
     const container = containerRef.current;
@@ -136,7 +139,7 @@ export default function ScrollAnimations({
 
       // 섹션 내부 문 열림 애니메이션
       const doors = section.querySelectorAll('.scroll-door-animate');
-      if (doors.length > 0) {
+      if (!isMobile && doors.length > 0) {
         const doorTimeline = gsap.timeline({
           scrollTrigger: {
             trigger: section,
@@ -192,7 +195,8 @@ export default function ScrollAnimations({
         const doorContent = section.querySelector(
           '[data-direction="doorContent"]'
         );
-        if (doorContent) {
+        console.log(isMobile);
+        if (!isMobile && doorContent) {
           doorTimeline.fromTo(
             doorContent,
             { scale: 0.9, opacity: 0, y: 10 },
