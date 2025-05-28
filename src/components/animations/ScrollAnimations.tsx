@@ -5,7 +5,7 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { SplitText } from 'gsap/SplitText';
 import Lenis from '@studio-freight/lenis';
-import { useMediaQuery } from '@/hooks/useMediaQuery';
+import { useIsMobile } from '@/hooks/useMediaQuery';
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
@@ -31,9 +31,11 @@ export default function ScrollAnimations({
   const containerRef = useRef<HTMLDivElement>(null);
   const lenisRef = useRef<Lenis | null>(null);
   const splitInstance: SplitText[] = [];
+  const doorTimelinesRef = useRef<gsap.core.Timeline[]>([]);
 
-  const isMobile = useMediaQuery('(max-width: 768px)');
+  const isMobile = useIsMobile();
 
+  // 기본 애니메이션 설정 (한 번만 실행)
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
@@ -137,92 +139,6 @@ export default function ScrollAnimations({
         });
       });
 
-      // 섹션 내부 문 열림 애니메이션
-      const doors = section.querySelectorAll('.scroll-door-animate');
-      if (!isMobile && doors.length > 0) {
-        const doorTimeline = gsap.timeline({
-          scrollTrigger: {
-            trigger: section,
-            start: 'center center+=20%',
-            end: 'top top',
-            toggleActions: 'play none none reverse',
-            onEnter: () => {
-              // 애니메이션 시작 시에만 스크롤 일시 중지
-              if (lenisRef.current) {
-                lenisRef.current.stop();
-                // 애니메이션 완료 후 스크롤 재개
-                setTimeout(() => {
-                  if (lenisRef.current) {
-                    lenisRef.current.start();
-                  }
-                }, 1000); // 애니메이션 시간과 동일하게
-              }
-            },
-          },
-        });
-
-        // 문짝 동시 사라지기
-        const doorLeft = section.querySelector('[data-direction="doorLeft"]');
-        const doorRight = section.querySelector('[data-direction="doorRight"]');
-
-        if (doorLeft) {
-          doorTimeline.fromTo(
-            doorLeft,
-            {
-              opacity: 1,
-              scaleX: 1,
-              transformOrigin: 'left center',
-            },
-            {
-              opacity: 1,
-              scaleX: 0,
-              transformOrigin: 'left center',
-              duration: 0.8,
-              ease: 'power2.inOut',
-            },
-            0
-          );
-        }
-
-        if (doorRight) {
-          doorTimeline.fromTo(
-            doorRight,
-            {
-              opacity: 1,
-              scaleX: 1,
-              transformOrigin: 'right center',
-            },
-            {
-              opacity: 1,
-              scaleX: 0,
-              transformOrigin: 'right center',
-              duration: 0.8,
-              ease: 'power2.inOut',
-            },
-            0
-          );
-        }
-
-        // 콘텐츠 조회
-        const doorContent = section.querySelector(
-          '[data-direction="doorContent"]'
-        );
-        if (doorContent) {
-          doorTimeline.fromTo(
-            doorContent,
-            { scale: 0.9, opacity: 0, y: 10 },
-            {
-              scale: 1,
-              opacity: 1,
-              y: 0,
-              duration: 0.7,
-              ease: 'back.out(1.2)',
-            },
-            '>'
-          );
-        }
-      }
-
       // 텍스트 스플릿 애니메이션
       const textElements = section.querySelectorAll('.split-text');
       textElements.forEach((element) => {
@@ -274,7 +190,134 @@ export default function ScrollAnimations({
         gsap.ticker.remove(handleRef);
       }
     };
-  }, []);
+  }, []); // 한 번만 실행
+
+  // 문 애니메이션 별도 관리 (isMobile 변화에 반응)
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+
+    // 기존 문 애니메이션 정리
+    doorTimelinesRef.current.forEach((timeline) => {
+      if (timeline && timeline.scrollTrigger) {
+        timeline.scrollTrigger.kill();
+      }
+      if (timeline) {
+        timeline.kill();
+      }
+    });
+    doorTimelinesRef.current = [];
+
+    // 모바일이 아닐 때만 문 애니메이션 생성
+    if (!isMobile) {
+      const sections = container.querySelectorAll('section');
+
+      sections.forEach((section) => {
+        const doors = section.querySelectorAll('.scroll-door-animate');
+
+        if (doors.length > 0) {
+          const doorTimeline = gsap.timeline({
+            scrollTrigger: {
+              trigger: section,
+              start: 'center center+=20%',
+              end: 'top top',
+              toggleActions: 'play none none reverse',
+              onEnter: () => {
+                // 애니메이션 시작 시에만 스크롤 일시 중지
+                if (lenisRef.current) {
+                  lenisRef.current.stop();
+                  // 애니메이션 완료 후 스크롤 재개
+                  setTimeout(() => {
+                    if (lenisRef.current) {
+                      lenisRef.current.start();
+                    }
+                  }, 1000); // 애니메이션 시간과 동일하게
+                }
+              },
+            },
+          });
+
+          // 문짝 동시 사라지기
+          const doorLeft = section.querySelector('[data-direction="doorLeft"]');
+          const doorRight = section.querySelector(
+            '[data-direction="doorRight"]'
+          );
+
+          if (doorLeft) {
+            doorTimeline.fromTo(
+              doorLeft,
+              {
+                opacity: 1,
+                scaleX: 1,
+                transformOrigin: 'left center',
+              },
+              {
+                opacity: 1,
+                scaleX: 0,
+                transformOrigin: 'left center',
+                duration: 0.8,
+                ease: 'power2.inOut',
+              },
+              0
+            );
+          }
+
+          if (doorRight) {
+            doorTimeline.fromTo(
+              doorRight,
+              {
+                opacity: 1,
+                scaleX: 1,
+                transformOrigin: 'right center',
+              },
+              {
+                opacity: 1,
+                scaleX: 0,
+                transformOrigin: 'right center',
+                duration: 0.8,
+                ease: 'power2.inOut',
+              },
+              0
+            );
+          }
+
+          // 콘텐츠 조회
+          const doorContent = section.querySelector(
+            '[data-direction="doorContent"]'
+          );
+          if (doorContent && doorLeft && doorRight) {
+            doorTimeline.fromTo(
+              doorContent,
+              { scale: 0.9, opacity: 0, y: 10 },
+              {
+                scale: 1,
+                opacity: 1,
+                y: 0,
+                duration: 0.7,
+                ease: 'back.out(1.2)',
+              },
+              '>'
+            );
+          }
+
+          // 타임라인을 배열에 저장
+          doorTimelinesRef.current.push(doorTimeline);
+        }
+      });
+    }
+
+    return () => {
+      // 문 애니메이션만 정리
+      doorTimelinesRef.current.forEach((timeline) => {
+        if (timeline && timeline.scrollTrigger) {
+          timeline.scrollTrigger.kill();
+        }
+        if (timeline) {
+          timeline.kill();
+        }
+      });
+    };
+  }, [isMobile]); // isMobile 변화 감지
 
   return (
     <div ref={containerRef} className={`relative ${className}`}>
