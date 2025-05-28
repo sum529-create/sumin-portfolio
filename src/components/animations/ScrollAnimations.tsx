@@ -136,59 +136,77 @@ export default function ScrollAnimations({
 
       // 섹션 내부 문 열림 애니메이션
       const doors = section.querySelectorAll('.scroll-door-animate');
-      doors.forEach((element, i) => {
-        const direction = element.getAttribute('data-direction') || 'up';
-
-        let fromVars: AnimationVars = { opacity: 0 };
-        let toVars: AnimationVars = { opacity: 1 };
-        let delay = 0;
-
-        // 방향에 따른 초기 위치 설정
-        switch (direction) {
-          case 'doorLeft':
-            fromVars = {
-              ...{ opacity: 1 },
-              scaleX: 1,
-              transformOrigin: 'left center',
-            };
-            toVars = {
-              ...toVars,
-              scaleX: 0,
-              transformOrigin: 'left center',
-            };
-            break;
-          case 'doorRight':
-            fromVars = {
-              ...{ opacity: 1 },
-              scaleX: 1,
-              transformOrigin: 'right center',
-            };
-            toVars = {
-              ...toVars,
-              scaleX: 0,
-              transformOrigin: 'right center',
-            };
-            break;
-          case 'doorContent':
-            fromVars = { ...fromVars, scale: 0.8, opacity: 0 };
-            toVars = { ...toVars, scale: 1, opacity: 1 };
-            delay = 0.7;
-            break;
-        }
-
-        gsap.fromTo(element, fromVars, {
-          ...toVars,
-          duration: direction === 'doorContent' ? 0.5 : 0.8,
-          ease: direction === 'doorContent' ? 'back.out(1.7)' : 'power2.inOut',
+      if (doors.length > 0) {
+        const doorTimeline = gsap.timeline({
           scrollTrigger: {
             trigger: section,
             start: 'center center+=20%',
             end: 'top top',
             toggleActions: 'play none none reverse',
           },
-          delay,
         });
-      });
+
+        // 문짝 동시 사라지기
+        const doorLeft = section.querySelector('[data-direction="doorLeft"]');
+        const doorRight = section.querySelector('[data-direction="doorRight"]');
+
+        if (doorLeft) {
+          doorTimeline.fromTo(
+            doorLeft,
+            {
+              opacity: 1,
+              scaleX: 1,
+              transformOrigin: 'left center',
+            },
+            {
+              opacity: 1,
+              scaleX: 0,
+              transformOrigin: 'left center',
+              duration: 0.8,
+              ease: 'power2.inOut',
+            },
+            0
+          );
+        }
+
+        if (doorRight) {
+          doorTimeline.fromTo(
+            doorRight,
+            {
+              opacity: 1,
+              scaleX: 1,
+              transformOrigin: 'right center',
+            },
+            {
+              opacity: 1,
+              scaleX: 0,
+              transformOrigin: 'right center',
+              duration: 0.8,
+              ease: 'power2.inOut',
+            },
+            0
+          );
+        }
+
+        // 콘텐츠 조회
+        const doorContent = section.querySelector(
+          '[data-direction="doorContent"]'
+        );
+        if (doorContent) {
+          doorTimeline.fromTo(
+            doorContent,
+            { scale: 0.9, opacity: 0, y: 10 },
+            {
+              scale: 1,
+              opacity: 1,
+              y: 0,
+              duration: 0.7,
+              ease: 'back.out(1.2)',
+            },
+            '>'
+          );
+        }
+      }
 
       // 텍스트 스플릿 애니메이션
       const textElements = section.querySelectorAll('.split-text');
