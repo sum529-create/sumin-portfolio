@@ -74,7 +74,7 @@ const SkillsDoor = () => {
             style={{ animationDelay: '0.8s' }}
           ></div>
           <div
-            className='right-18 absolute bottom-24 h-1 w-1 animate-pulse rounded-full bg-pink-300'
+            className='absolute bottom-24 right-16 h-1 w-1 animate-pulse rounded-full bg-pink-300'
             style={{ animationDelay: '1.3s' }}
           ></div>
           <div
