@@ -146,6 +146,18 @@ export default function ScrollAnimations({
             start: 'center center+=20%',
             end: 'top top',
             toggleActions: 'play none none reverse',
+            onEnter: () => {
+              // 애니메이션 시작 시에만 스크롤 일시 중지
+              if (lenisRef.current) {
+                lenisRef.current.stop();
+                // 애니메이션 완료 후 스크롤 재개
+                setTimeout(() => {
+                  if (lenisRef.current) {
+                    lenisRef.current.start();
+                  }
+                }, 1000); // 애니메이션 시간과 동일하게
+              }
+            },
           },
         });
 
@@ -195,7 +207,7 @@ export default function ScrollAnimations({
         const doorContent = section.querySelector(
           '[data-direction="doorContent"]'
         );
-        if (!isMobile && doorContent) {
+        if (doorContent) {
           doorTimeline.fromTo(
             doorContent,
             { scale: 0.9, opacity: 0, y: 10 },
