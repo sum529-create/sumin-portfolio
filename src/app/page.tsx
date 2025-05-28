@@ -9,6 +9,7 @@ import { experienceData } from '@/constants/experience';
 import { projectData } from '@/constants/projects';
 import { Button } from '@/components/ui/button';
 import IntroSection from '@/components/sections/IntroSection';
+import SkillsSection from '@/components/sections/SkillsSection';
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
@@ -79,50 +80,7 @@ export default function Home() {
               <IntroSection/>
 
               {/* Skills Section */}
-              <section id='skills' className='relative min-h-screen py-20'>
-                <div className='container mx-auto px-4 max-w-full'>
-                  <h2 className='split-text mb-12 text-center text-3xl font-bold md:text-4xl'>
-                    Skills
-                  </h2>
-                  <div className='grid grid-cols-1 gap-8 md:grid-cols-2'>
-                    {[
-                      {
-                        category: 'Frontend',
-                        skills: [
-                          'React',
-                          'Next.js',
-                          'TypeScript',
-                          'Tailwind CSS',
-                        ],
-                        icon: '🎨',
-                      },
-                      {
-                        category: 'Tools & Others',
-                        skills: ['Git', 'Figma'],
-                        icon: '🛠️',
-                      },
-                    ].map((category, i) => (
-                      <div
-                        key={category.category}
-                        className='scroll-animate rounded-lg bg-card/50 p-6 shadow-sm backdrop-blur-sm'
-                        data-direction={i % 2 === 0 ? 'left' : 'right'}
-                      >
-                        <div className='mb-4 text-4xl'>{category.icon}</div>
-                        <h3 className='mb-4 text-xl font-semibold break-words'>
-                          {category.category}
-                        </h3>
-                        <ul className='space-y-2'>
-                          {category.skills.map((skill) => (
-                            <li key={skill} className='text-muted-foreground break-words'>
-                              {skill}
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </section>
+              <SkillsSection/>
 
               {/* Experience Section */}
               <section id='experience' className='relative min-h-screen py-20'>
