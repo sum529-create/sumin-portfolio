@@ -4,7 +4,6 @@ import {
   SiTypescript,
   SiJavascript,
   SiVuedotjs,
-  SiNuxtdotjs,
   SiReactquery,
   SiTailwindcss,
   SiChartdotjs,
@@ -15,12 +14,12 @@ import SkillTechItem from './SkillTechItem';
 import { useIsMobile } from '@/hooks/useMediaQuery';
 import { useEffect, useState } from 'react';
 
+const exeItems = [
+  'Nuxt 기반 SSR 페이지 구성',
+  '파일 기반 라우팅 + 동적 페이지 자동 생성',
+  'Vuex와 asyncData를 활용한 상태 관리',
+];
 const SkillsTechStack = () => {
-  const exeItems = [
-    'Nuxt 기반 SSR 페이지 구성',
-    '파일 기반 라우팅 + 동적 페이지 자동 생성',
-    'Vuex와 asyncData를 활용한 상태 관리',
-  ];
   const isMobile = useIsMobile();
   const [isMounted, setIsMounted] = useState<Boolean>(false);
   useEffect(() => {
@@ -124,18 +123,14 @@ const SkillsTechStack = () => {
             iconSize='sm'
           />
 
-          {/* Zustand */}
-          <div className='rounded-lg border border-slate-600/50 bg-slate-800/80 p-2.5 transition-colors duration-200 hover:border-violet-400/50'>
-            <div className='flex items-center space-x-2'>
-              <div className='flex h-7 w-7 items-center justify-center rounded-md bg-violet-500 text-xs font-bold text-white'>
-                Z
-              </div>
-              <div className='min-w-0 flex-1'>
-                <div className='text-sm font-medium text-white'>Zustand</div>
-                <div className='text-xs text-slate-400'>상태 관리</div>
-              </div>
-            </div>
-          </div>
+          <SkillTechItem
+            name='Zustand'
+            description='상태 관리'
+            textIcon='Z'
+            textIconClassName='bg-violet-500 text-xs font-bold text-white'
+            containerClassName='hover:border-violet-400/50'
+            iconSize='sm'
+          />
 
           <SkillTechItem
             icon={SiSupabase}
