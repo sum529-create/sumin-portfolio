@@ -32,7 +32,7 @@ export default function ScrollAnimations({
   const lenisRef = useRef<Lenis | null>(null);
   const splitInstance: SplitText[] = [];
 
-  const isMobile = () => useMediaQuery('(max-width: 768px)');
+  const isMobile = useMediaQuery('(max-width: 768px)');
 
   useEffect(() => {
     const container = containerRef.current;
