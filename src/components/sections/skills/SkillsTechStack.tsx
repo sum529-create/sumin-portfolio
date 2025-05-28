@@ -80,8 +80,8 @@ const SkillsTechStack = () => {
           {/* 경험 하이라이트 */}
           <div className='rounded-lg border border-slate-600/30 bg-slate-900/50 p-3'>
             <div className='space-y-1 text-xs text-slate-300'>
-              {exeItems.map((item, i) => (
-                <div key={'exeItem' + i}>• {item}</div>
+              {exeItems.map((item) => (
+                <div key={item}>• {item}</div>
               ))}
             </div>
           </div>
