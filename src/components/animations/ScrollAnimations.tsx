@@ -192,7 +192,7 @@ export default function ScrollAnimations({
     };
   }, []); // 한 번만 실행
 
-  // 문 애니메이션 별도 관리 (isMobile 변화에 반응)
+  // 문 애니메이션 별도 관리
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
@@ -317,7 +317,7 @@ export default function ScrollAnimations({
         }
       });
     };
-  }, [isMobile]); // isMobile 변화 감지
+  }, [isMobile]);
 
   return (
     <div ref={containerRef} className={`relative ${className}`}>

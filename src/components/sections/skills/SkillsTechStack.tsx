@@ -12,6 +12,8 @@ import {
 } from 'react-icons/si';
 import SkillTechBlock from './SkillTechBlock';
 import SkillTechItem from './SkillTechItem';
+import { useIsMobile } from '@/hooks/useMediaQuery';
+import { useEffect, useState } from 'react';
 
 const SkillsTechStack = () => {
   const exeItems = [
@@ -19,11 +21,17 @@ const SkillsTechStack = () => {
     '파일 기반 라우팅 + 동적 페이지 자동 생성',
     'Vuex와 asyncData를 활용한 상태 관리',
   ];
+  const isMobile = useIsMobile();
+  const [isMounted, setIsMounted] = useState<Boolean>(false);
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+  const showContent = isMounted ? !isMobile : true;
   return (
     <div className='md:skill-box relative inset-0 p-4 md:p-6'>
       <div
         className='md:scroll-door-animate grid h-full grid-cols-1 gap-4 overflow-y-auto md:grid-cols-3 md:gap-6 md:overflow-hidden'
-        data-direction='doorContent'
+        {...(showContent && { 'data-direction': 'doorContent' })}
       >
         {/* 현재 주력기술 */}
         <SkillTechBlock color='cyan' text='현재 주력기술'>
