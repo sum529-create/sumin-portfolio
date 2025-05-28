@@ -13,7 +13,7 @@ const SkillsSection = () => {
         />
 
         {/* 문 컨테이너 */}
-        <div className='relative h-[600px] overflow-hidden rounded-2xl border border-slate-600/30 bg-gradient-to-br from-slate-800 to-slate-900 shadow-xl'>
+        <div className='relative h-auto overflow-y-auto rounded-2xl border border-slate-600/30 bg-gradient-to-br from-slate-800 to-slate-900 shadow-xl md:h-[600px]'>
           {/* 뒤에 숨겨진 Tech Stack 내용 */}
           <SkillsTechStack />
 
