@@ -7,7 +7,7 @@ const SkillsSection = () => {
     <section id='skills' className='relative min-h-screen py-20'>
       <div className='container mx-auto max-w-full px-4'>
         <SectionTitle
-          title='Tech Stack'
+          title='Skills Stack'
           subTitle='실무와 프로젝트로 쌓은 역량'
           ariaLabel='주 기술 스택 섹션'
         />
