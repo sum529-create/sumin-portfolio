@@ -84,10 +84,15 @@ function Card({ data, i }: CardProps) {
         }}
         whileHover={{
           scale: 1.03,
-          y: -45,
+          y: -40,
           boxShadow: `0 0 50px ${hoverGradientColor}, 0 15px 50px rgba(0,0,0,0.4)`,
-          transition: { duration: 0.3, ease: 'easeOut' },
-          rotate: [-15, 0],
+          transition: {
+            duration: 0.2,
+            ease: 'easeOut',
+            type: 'spring',
+            stiffness: 200,
+          },
+          rotate: 0,
         }}
       >
         {/* 메인 이미지 */}
