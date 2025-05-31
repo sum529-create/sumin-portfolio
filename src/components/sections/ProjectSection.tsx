@@ -55,17 +55,20 @@ function Card({ data, i }: CardProps) {
   const leftGradientColor = gradientColor
     .replace('rgb(', 'rgba(')
     .replace(')', ', 0.4)');
+  const hoverGradientColor = gradientColor
+    .replace('rgb(', 'rgba(')
+    .replace(')', ', 0.8)');
 
   return (
     <motion.div
-      className={`card-container-${i} relative mb-[-120px] flex justify-center overflow-hidden pt-10`}
+      className={`card-container-${i} relative mb-[-120px] flex justify-center overflow-hidden pt-28`}
       initial='offscreen'
       whileInView='onscreen'
       viewport={{ amount: 0.8 }}
     >
       {/* 배경 그라데이션 */}
-      <div
-        className='absolute inset-0 mt-12 w-full'
+      <motion.div
+        className='absolute inset-0 mt-28 w-full'
         style={{
           clipPath: `path("M 0 303.5 C 0 292.454 18.4 285.101 41 283.5 L 942 219.5 C 961.5 218.033 983 228.454 983 239.5 L 1024 430 C 1024 441.046 1004 450 983 450 L 41 450 C 18.4 450 0 441.046 0 430 Z")`,
           background: `linear-gradient(306deg, ${bottomGradientColor}, transparent)`,
@@ -75,9 +78,16 @@ function Card({ data, i }: CardProps) {
       {/* 프로젝트 카드 */}
       <motion.div
         variants={cardVariants}
-        className='relative flex h-[360px] w-[600px] overflow-hidden rounded-[20px] bg-[#f5f5f5]'
+        className='relative z-10 flex h-[360px] w-[600px] overflow-hidden rounded-[20px] bg-[#f5f5f5]'
         style={{
           boxShadow: `0 0 0 1px ${leftGradientColor}, 0 8px 32px rgba(0,0,0,0.3)`,
+        }}
+        whileHover={{
+          scale: 1.03,
+          y: -45,
+          boxShadow: `0 0 50px ${hoverGradientColor}, 0 15px 50px rgba(0,0,0,0.4)`,
+          transition: { duration: 0.3, ease: 'easeOut' },
+          rotate: [-15, 0],
         }}
       >
         {/* 메인 이미지 */}
