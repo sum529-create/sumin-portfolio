@@ -67,22 +67,3 @@ export const projectsData: ProjectData[] = [
     image: '/images/portfolio.png',
   },
 ];
-
-export const getTextColor = (projectId: string) => {
-  switch (projectId) {
-    case 'uuno':
-      return 'text-[#6366f1]';
-    case 'medi-click':
-      return 'text-[#3b82f6]';
-    case 'green-deal':
-      return 'text-[#34d399]';
-    case 'buzz-chatly':
-      return 'text-[#48bb78]';
-    case 'echo-wave':
-      return 'text-[#ec4899]';
-    case 'portfolio':
-      return 'text-[#8b5cf6]';
-    default:
-      return 'text-white';
-  }
-};

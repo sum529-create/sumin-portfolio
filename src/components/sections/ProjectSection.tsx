@@ -2,7 +2,7 @@
 import { motion } from 'framer-motion';
 import type { Variants } from 'framer-motion';
 import SectionTitle from './SectionTitle';
-import { getTextColor, ProjectData, projectsData } from '@/constants/projects';
+import { ProjectData, projectsData } from '@/constants/projects';
 
 export default function ProjectSection() {
   return (
@@ -25,6 +25,25 @@ interface CardProps {
   data: ProjectData;
   i: number;
 }
+
+const getTextColor = (projectId: string) => {
+  switch (projectId) {
+    case 'uuno':
+      return 'text-[#6366f1]';
+    case 'medi-click':
+      return 'text-[#3b82f6]';
+    case 'green-deal':
+      return 'text-[#34d399]';
+    case 'buzz-chatly':
+      return 'text-[#48bb78]';
+    case 'echo-wave':
+      return 'text-[#ec4899]';
+    case 'portfolio':
+      return 'text-[#8b5cf6]';
+    default:
+      return 'text-white';
+  }
+};
 
 function Card({ data, i }: CardProps) {
   const { id, title, subtitle, techStack, description, gradientColor, image } =
@@ -68,7 +87,7 @@ function Card({ data, i }: CardProps) {
         <div
           className='absolute inset-0 w-full'
           style={{
-            background: `linear-gradient(to right, rgba(0,0,0, 0.85) 30%, transparent)`,
+            background: `linear-gradient(to right, rgba(0,0,0, 0.85) 40%, transparent)`,
           }}
         />
 
