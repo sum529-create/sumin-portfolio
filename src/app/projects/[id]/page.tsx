@@ -1,4 +1,4 @@
-import { title } from 'process';
+import SectionTitle from '@/components/sections/SectionTitle';
 
 export async function generateStaticParams() {
   return [
@@ -52,8 +52,17 @@ export const generateMetadata = async ({ params }: PageParams) => {
   };
 };
 
-const page = () => {
-  return <div>page</div>;
+const page = ({ params }: PageParams) => {
+  const projectTitle = params.id.replace('-', ' ').toUpperCase();
+  return (
+    <div className='container relative mx-auto min-h-screen max-w-full px-4 py-20 pb-[100px]'>
+      <SectionTitle
+        title={projectTitle}
+        subTitle={`${projectTitle} 프로젝트에 대한 상세 정보입니다.`}
+        ariaLabel={`${projectTitle} 프로젝트 섹션`}
+      />
+    </div>
+  );
 };
 
 export default page;
