@@ -1,72 +1,27 @@
 'use client';
 
-import { useRef, useEffect, useState } from 'react';
+import { useRef, useEffect } from 'react';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import { PerspectiveCamera } from '@react-three/drei';
-import { CameraRef, ScrollData } from './types';
+import { CameraRef } from './types';
 import { easeOutCubic } from './utils/animations';
 import { ParticleSystem } from './components/ParticleSystem';
 import { GradientBackground } from './components/GradientBackground';
 import { Grid } from './components/Grid';
 import { GlowEffect } from './components/GlowEffect';
-
-// 스크롤 위치를 추적하는 커스텀 훅
-function useScrollPosition(): ScrollData {
-  const [scrollData, setScrollData] = useState<ScrollData>({
-    scrollY: 0,
-    scrollVelocity: 0,
-    scrollProgress: 0,
-  });
-
-  useEffect(() => {
-    let lastScrollY = window.scrollY;
-    let ticking = false;
-
-    const updateScrollData = () => {
-      const currentScrollY = window.scrollY;
-      const scrollVelocity = currentScrollY - lastScrollY;
-      const scrollProgress =
-        currentScrollY /
-        (document.documentElement.scrollHeight - window.innerHeight);
-
-      setScrollData({
-        scrollY: currentScrollY,
-        scrollVelocity,
-        scrollProgress,
-      });
-
-      lastScrollY = currentScrollY;
-      ticking = false;
-    };
-
-    const onScroll = () => {
-      if (!ticking) {
-        window.requestAnimationFrame(updateScrollData);
-        ticking = true;
-      }
-    };
-
-    window.addEventListener('scroll', onScroll, { passive: true });
-
-    return () => {
-      window.removeEventListener('scroll', onScroll);
-    };
-  }, []);
-
-  return scrollData;
-}
+import { useIntroProgressStore } from '@/store/introProgressStore';
+import { useScrollPosition } from '@/hooks/useScrollPosition';
 
 // 메인 씬 컴포지션
-function MainScene({
-  introAnimationProgress,
-}: {
-  introAnimationProgress: number;
-}): JSX.Element {
+const MainScene = () => {
   const scrollData = useScrollPosition();
   const { camera } = useThree();
   const cameraRef = useRef<CameraRef>({ targetX: 0, targetY: 0 });
   const initialCameraPosition = useRef({ x: 0, y: 10, z: 60 });
   const initialized = useRef<boolean>(false);
+  const introAnimationProgress = useIntroProgressStore(
+    (state) => state.introAnimationProgress
+  );
 
   // 초기 카메라 위치 설정
   useEffect(() => {
@@ -162,11 +117,13 @@ function MainScene({
       />
     </>
   );
-}
+};
 
 // 메인 컴포넌트
 export function AnimatedBackground(): JSX.Element {
-  const [introAnimationProgress, setIntroAnimationProgress] = useState(0);
+  const setIntroAnimationProgress = useIntroProgressStore(
+    (state) => state.setIntroAnimationProgress
+  );
 
   // 인트로 애니메이션 설정
   useEffect(() => {
@@ -190,7 +147,7 @@ export function AnimatedBackground(): JSX.Element {
   return (
     <div className='fixed inset-0 -z-10'>
       <Canvas>
-        <MainScene introAnimationProgress={introAnimationProgress} />
+        <MainScene />
       </Canvas>
     </div>
   );
