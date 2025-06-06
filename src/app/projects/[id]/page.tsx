@@ -1,3 +1,4 @@
+import ProjectDetail from '@/components/sections/projects/ProjectDetail';
 import SectionTitle from '@/components/sections/SectionTitle';
 
 export async function generateStaticParams() {
@@ -53,7 +54,8 @@ export const generateMetadata = async ({ params }: PageParams) => {
 };
 
 const page = ({ params }: PageParams) => {
-  const projectTitle = params.id.replace('-', ' ').toUpperCase();
+  const projectId = params.id;
+  const projectTitle = projectId.replace('-', ' ').toUpperCase();
   return (
     <div className='container relative mx-auto min-h-screen max-w-full px-4 py-20 pb-[100px]'>
       <SectionTitle
@@ -61,6 +63,7 @@ const page = ({ params }: PageParams) => {
         subTitle={`${projectTitle} 프로젝트에 대한 상세 정보입니다.`}
         ariaLabel={`${projectTitle} 프로젝트 섹션`}
       />
+      <ProjectDetail projectId={params.id} />
     </div>
   );
 };
