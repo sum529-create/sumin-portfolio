@@ -1,4 +1,10 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, {
+  KeyboardEvent,
+  MouseEvent,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 import Image from 'next/image';
 import { gsap } from 'gsap';
 import { experienceData } from '@/constants/experience';
@@ -13,6 +19,7 @@ const ExperienceSection = () => {
   }, []);
   const transformToCard = () => {
     const card = cardRef.current;
+    if (!card) return;
 
     gsap.to(card, {
       opacity: 1,
@@ -22,8 +29,15 @@ const ExperienceSection = () => {
     });
   };
 
-  const handleCardClick = () => {
+  const handleCardClick = (event: MouseEvent | KeyboardEvent) => {
+    if (event.type === 'keydown') {
+      const keyboardEvent = event as KeyboardEvent;
+      if (keyboardEvent.key !== 'Enter' && keyboardEvent.key !== ' ') {
+        return;
+      }
+    }
     const card = cardRef.current;
+    if (!card) return;
 
     gsap.to(card, {
       rotationY: isFlipped ? 0 : 180,
@@ -54,6 +68,12 @@ const ExperienceSection = () => {
             <div
               ref={cardRef}
               onClick={handleCardClick}
+              onKeyDown={handleCardClick}
+              tabIndex={0}
+              role='button'
+              aria-label={
+                isFlipped ? '경력 카드 앞면 보기' : '경력 상세 정보 보기'
+              }
               className='relative h-[500px] w-full transform-gpu cursor-pointer transition-transform duration-500'
               style={{
                 transformStyle: 'preserve-3d',
