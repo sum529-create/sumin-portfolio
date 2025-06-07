@@ -11,7 +11,6 @@ if (typeof window !== 'undefined') {
 }
 
 const ExperienceSection = () => {
-  const sectionRef = useRef(null);
   const cardRef = useRef(null);
   const [isFlipped, setIsFlipped] = useState(false);
 
@@ -43,7 +42,6 @@ const ExperienceSection = () => {
 
   return (
     <section
-      ref={sectionRef}
       id='experience'
       className='relative min-h-screen overflow-hidden py-20'
     >
@@ -56,11 +54,11 @@ const ExperienceSection = () => {
         <div className='flex min-h-[500px] items-center justify-center'>
           {/* 3D 카드 */}
           <div
-            ref={cardRef}
             className={`relative w-full max-w-4xl`}
             style={{ perspective: '1000px' }}
           >
             <div
+              ref={cardRef}
               onClick={handleCardClick}
               className='relative h-[500px] w-full transform-gpu cursor-pointer transition-transform duration-500'
               style={{
@@ -69,9 +67,8 @@ const ExperienceSection = () => {
             >
               {/* 카드 앞면 */}
               <div
-                className={`absolute inset-0 h-full w-full rounded-2xl border border-white/20 bg-gradient-to-br from-cyan-500/20 to-purple-500/20 shadow-2xl backdrop-blur-lg ${
-                  isFlipped ? 'opacity-0' : 'opacity-100'
-                }`}
+                className='absolute inset-0 h-full w-full rounded-2xl border border-white/20 bg-gradient-to-br from-cyan-500/20 to-purple-500/20 shadow-2xl backdrop-blur-lg'
+                style={{ backfaceVisibility: 'hidden' }}
               >
                 <div className='flex h-full flex-col justify-center p-8'>
                   <div className='space-y-6 text-center'>
@@ -126,9 +123,8 @@ const ExperienceSection = () => {
 
               {/* 카드 뒷면 */}
               <div
-                className={`absolute inset-0 h-full w-full rounded-2xl border border-white/20 bg-gradient-to-br from-purple-500/20 to-pink-500/20 shadow-2xl backdrop-blur-lg [transform:rotateY(180deg)] ${
-                  isFlipped ? 'opacity-100' : 'opacity-0'
-                }`}
+                className='absolute inset-0 h-full w-full rounded-2xl border border-white/20 bg-gradient-to-br from-purple-500/20 to-pink-500/20 shadow-2xl backdrop-blur-lg [transform:rotateY(180deg)]'
+                style={{ backfaceVisibility: 'hidden' }}
               >
                 <div className='h-full overflow-y-auto p-6'>
                   <div className='space-y-4'>
