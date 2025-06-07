@@ -70,8 +70,15 @@ const ExperienceSection = () => {
                 className='absolute inset-0 h-full w-full rounded-2xl border border-white/20 bg-gradient-to-br from-cyan-500/20 to-purple-500/20 shadow-2xl backdrop-blur-lg'
                 style={{ backfaceVisibility: 'hidden' }}
               >
-                <div className='flex h-full flex-col justify-center p-8'>
-                  <div className='space-y-6 text-center'>
+                <div className='relative flex h-full flex-col justify-center overflow-hidden p-8'>
+                  <div
+                    className='animate-shine pointer-events-none absolute -left-1/2 -top-1/2 h-[200%] w-[200%] bg-gradient-to-r from-transparent via-white/40 to-transparent'
+                    style={{
+                      filter: 'blur(8px)',
+                      transformOrigin: '0 0',
+                    }}
+                  />
+                  <div className='relative space-y-6 text-center'>
                     <div className='mx-auto flex h-20 w-20 items-center justify-center rounded-full'>
                       <Image
                         src='/uilab.ico'
