@@ -151,7 +151,7 @@ const ExperienceSection = () => {
                 className='absolute inset-0 h-full w-full rounded-2xl border border-[#3a3a5f] bg-[#0a0a1a] shadow-2xl [transform:rotateY(180deg)]'
                 style={{ backfaceVisibility: 'hidden' }}
               >
-                <div className='h-full overflow-y-auto p-6 md:overflow-y-visible'>
+                <div className='h-full overflow-y-auto p-6 lg:overflow-y-visible'>
                   <div className='space-y-4'>
                     <h3 className='border-b border-[#3a3a5f] pb-2 text-2xl font-bold text-white'>
                       주요 업무 & 성과
