@@ -123,12 +123,12 @@ const ExperienceSection = () => {
 
               {/* 카드 뒷면 */}
               <div
-                className='absolute inset-0 h-full w-full rounded-2xl border border-white/20 bg-gradient-to-br from-purple-500/20 to-pink-500/20 shadow-2xl backdrop-blur-lg [transform:rotateY(180deg)]'
+                className='absolute inset-0 h-full w-full rounded-2xl border border-[#3a3a5f] bg-[#0a0a1a] shadow-2xl [transform:rotateY(180deg)]'
                 style={{ backfaceVisibility: 'hidden' }}
               >
                 <div className='h-full overflow-y-auto p-6 md:overflow-y-visible'>
                   <div className='space-y-4'>
-                    <h3 className='border-b border-white/20 pb-2 text-2xl font-bold text-white'>
+                    <h3 className='border-b border-[#3a3a5f] pb-2 text-2xl font-bold text-white'>
                       주요 업무 & 성과
                     </h3>
 
@@ -136,7 +136,7 @@ const ExperienceSection = () => {
                       {experienceData.responsibilities.map(
                         (responsibility, index) => (
                           <div key={index} className='flex gap-3'>
-                            <div className='mt-0.5 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-gradient-to-r from-cyan-400 to-purple-400 text-xs font-bold text-white'>
+                            <div className='mt-0.5 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-[#4b4ba0] text-xs font-bold text-white'>
                               {index + 1}
                             </div>
                             <p className='text-sm leading-relaxed text-white'>
@@ -148,14 +148,14 @@ const ExperienceSection = () => {
                     </div>
 
                     <div className='mt-6'>
-                      <h4 className='mb-3 text-lg font-semibold text-purple-400'>
+                      <h4 className='mb-3 text-lg font-semibold text-[#a78bfa]'>
                         기술 스택
                       </h4>
                       <div className='flex flex-wrap gap-2'>
                         {experienceData.techStack.map((tech) => (
                           <span
                             key={tech}
-                            className='rounded-full border border-white/20 bg-gradient-to-r from-cyan-500/20 to-purple-500/20 px-3 py-1 text-sm text-white'
+                            className='rounded-full border border-[#555] bg-[#1a1a2e] px-3 py-1 text-sm text-white'
                           >
                             {tech}
                           </span>
@@ -163,8 +163,8 @@ const ExperienceSection = () => {
                       </div>
                     </div>
 
-                    <div className='mt-6 rounded-lg border border-white/10 bg-white/5 p-4'>
-                      <h4 className='mb-2 font-semibold text-cyan-400'>
+                    <div className='mt-6 rounded-lg border border-[#3a3a5f] bg-[#1a1a2e] p-4'>
+                      <h4 className='mb-2 font-semibold text-[#a78bfa]'>
                         역할 요약
                       </h4>
                       <p className='text-sm text-white'>
@@ -172,7 +172,7 @@ const ExperienceSection = () => {
                       </p>
                     </div>
 
-                    <p className='mt-4 animate-pulse text-center text-sm text-cyan-300'>
+                    <p className='mt-4 animate-pulse text-center text-sm text-[#7dd3fc]'>
                       ← 다시 클릭해서 돌아가기
                     </p>
                   </div>
