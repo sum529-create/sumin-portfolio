@@ -86,9 +86,9 @@ const ExperienceSection = () => {
               >
                 <div className='relative flex h-full flex-col justify-center overflow-hidden p-8'>
                   <div
-                    className='animate-shine pointer-events-none absolute -left-1/2 -top-1/2 h-[200%] w-[200%] bg-gradient-to-r from-transparent via-white/40 to-transparent'
+                    className='animate-shine pointer-events-none absolute -left-1/2 -top-1/2 h-[200%] w-[200%] bg-gradient-to-r from-transparent via-white/40 to-transparent will-change-transform'
                     style={{
-                      filter: 'blur(8px)',
+                      filter: 'blur(4px)',
                       transformOrigin: '0 0',
                     }}
                   />
@@ -104,15 +104,19 @@ const ExperienceSection = () => {
 
                     <div>
                       <h3 className='mb-2 text-3xl font-bold text-white'>
-                        {experienceData.company.split(' (')[0]}
+                        {experienceData.company.includes(' (')
+                          ? experienceData.company.split(' (')[0]
+                          : experienceData.company}
                       </h3>
-                      <p className='text-lg text-cyan-400'>
-                        (
-                        {experienceData.company
-                          .split(' (')[1]
-                          ?.replace(')', '') || ''}
-                        )
-                      </p>
+                      {experienceData.company.includes(' (') && (
+                        <p className='text-lg text-cyan-400'>
+                          (
+                          {experienceData.company
+                            .split(' (')[1]
+                            ?.replace(')', '') || ''}
+                          )
+                        </p>
+                      )}
                     </div>
 
                     <div className='space-y-2'>
