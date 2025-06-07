@@ -1,14 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { experienceData } from '@/constants/experience';
 import SectionTitle from './SectionTitle';
-
-// GSAP 플러그인 등록
-if (typeof window !== 'undefined') {
-  gsap.registerPlugin(ScrollTrigger);
-}
 
 const ExperienceSection = () => {
   const cardRef = useRef(null);
@@ -130,7 +124,7 @@ const ExperienceSection = () => {
 
               {/* 카드 뒷면 */}
               <div
-                className='absolute inset-0 h-full w-full rounded-2xl border border-[#3a3a5f] bg-[#0a0a1a] shadow-2xl [transform:rotateY(180deg)]'
+                className='absolute inset-0 h-full w-full rounded-2xl border border-[#3a3a5f] bg-[#0a0a1a] shadow-2xl'
                 style={{ backfaceVisibility: 'hidden' }}
               >
                 <div className='h-full overflow-y-auto p-6 md:overflow-y-visible'>
