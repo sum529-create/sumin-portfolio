@@ -124,7 +124,7 @@ const ExperienceSection = () => {
 
               {/* 카드 뒷면 */}
               <div
-                className='absolute inset-0 h-full w-full rounded-2xl border border-[#3a3a5f] bg-[#0a0a1a] shadow-2xl'
+                className='absolute inset-0 h-full w-full rounded-2xl border border-[#3a3a5f] bg-[#0a0a1a] shadow-2xl [transform:rotateY(180deg)]'
                 style={{ backfaceVisibility: 'hidden' }}
               >
                 <div className='h-full overflow-y-auto p-6 md:overflow-y-visible'>
