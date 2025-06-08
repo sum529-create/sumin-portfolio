@@ -26,3 +26,8 @@ export const contacts: ContactItem[] = [
     rel: 'noopener noreferrer',
   },
 ];
+export const iconMap = {
+  Email: 'MdEmail',
+  GitHub: 'FaGithub',
+  LinkedIn: 'FaLinkedin',
+} as const;

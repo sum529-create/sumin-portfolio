@@ -32,7 +32,11 @@ const ContactSection = () => {
             {/* 연락처들 */}
             <div className='flex flex-col justify-center gap-8 md:flex-row md:gap-12'>
               {contacts.map((contact, index) => (
-                <ContactBlock contact={contact} index={index} />
+                <ContactBlock
+                  key={contact.label}
+                  contact={contact}
+                  index={index}
+                />
               ))}
             </div>
 

@@ -1,8 +1,7 @@
-import { ContactItem } from '@/constants/contact';
+import { ContactItem, iconMap } from '@/constants/contact';
 import Link from 'next/link';
-import { createElement } from 'react';
+import { ElementType } from 'react';
 import { MdEmail } from 'react-icons/md';
-import { FaGithub, FaLinkedin } from 'react-icons/fa';
 
 interface ContactBlockProps {
   contact: ContactItem;
@@ -10,9 +9,10 @@ interface ContactBlockProps {
 }
 
 const ContactBlock = ({ contact, index }: ContactBlockProps) => {
+  const IconComponent =
+    (iconMap[contact.label as keyof typeof iconMap] as ElementType) || MdEmail;
   return (
     <Link
-      key={contact.label}
       href={contact.href}
       target={contact.target}
       rel={contact.rel}
@@ -21,16 +21,7 @@ const ContactBlock = ({ contact, index }: ContactBlockProps) => {
       style={{ animationDelay: `${index}s` }}
     >
       <div className='mb-3 text-3xl transition-transform duration-300 group-hover:scale-110'>
-        {createElement(
-          contact.label === 'Email'
-            ? MdEmail
-            : contact.label === 'GitHub'
-              ? FaGithub
-              : FaLinkedin,
-          {
-            className: 'text-purple-500 group-hover:text-purple-400',
-          }
-        )}
+        <IconComponent className='text-purple-500 group-hover:text-purple-400' />
       </div>
       <span className='text-center text-sm font-medium text-slate-50'>
         {contact.label}
