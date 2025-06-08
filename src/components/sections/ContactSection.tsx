@@ -1,10 +1,14 @@
+import SectionTitle from './SectionTitle';
+
 const ContactSection = () => {
   return (
     <section id='contact' className='relative min-h-screen py-20'>
       <div className='container mx-auto px-4'>
-        <h2 className='split-text mb-12 text-center text-3xl font-bold md:text-4xl'>
-          Contact
-        </h2>
+        <SectionTitle
+          title='Contact Me'
+          subTitle='저와 함께할 기회를 기다립니다.'
+          ariaLabel='연락 섹션'
+        />
         <div className='mx-auto max-w-2xl'>
           <div className='scroll-animate rounded-lg bg-card/50 p-8 backdrop-blur-sm'>
             <p className='mb-8 text-center text-lg text-muted-foreground'>
