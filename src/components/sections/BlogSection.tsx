@@ -25,7 +25,7 @@ const BlogSection = () => {
               href='https://velog.io/@sum529'
               target='_blank'
               aria-label='블로그 더 보기'
-              className='px-4 text-lg'
+              className='w-full px-4 text-lg md:w-auto'
             >
               더 보러가기
               <FaExternalLinkAlt />

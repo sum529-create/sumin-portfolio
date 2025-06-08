@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { FaFire, FaBookOpen } from 'react-icons/fa6';
 import { GrPersonalComputer } from 'react-icons/gr';
 import { useEffect, useRef } from 'react';
+import { useIsMobile } from '@/hooks/useMediaQuery';
 
 interface BlogCardProps {
   i: number;
@@ -13,8 +14,10 @@ interface BlogCardProps {
 
 const BlogCard = ({ blog, i }: BlogCardProps) => {
   const cardRef = useRef<HTMLDivElement>(null);
+  const isMobile = useIsMobile();
   useEffect(() => {
-    if (!cardRef.current) return;
+    console.log(isMobile);
+    if (!cardRef.current || isMobile) return;
     gsap.set(cardRef.current, {
       rotateX: 5,
       rotateY: 15,
@@ -23,7 +26,7 @@ const BlogCard = ({ blog, i }: BlogCardProps) => {
     });
   }, []);
   const handleMouseEnter = () => {
-    if (!cardRef.current) return;
+    if (!cardRef.current || isMobile) return;
     gsap.to(cardRef.current, {
       rotateX: 0,
       rotateY: 0,
@@ -32,7 +35,7 @@ const BlogCard = ({ blog, i }: BlogCardProps) => {
     });
   };
   const handleMouseLeave = () => {
-    if (!cardRef.current) return;
+    if (!cardRef.current || isMobile) return;
     gsap.to(cardRef.current, {
       rotateX: 5,
       rotateY: 15,
@@ -56,7 +59,7 @@ const BlogCard = ({ blog, i }: BlogCardProps) => {
     <Link key={blog.title} href={blog.homepageUrl} target='_blank'>
       <div
         key={blog.title}
-        className='scroll-animate group relative overflow-hidden rounded-lg bg-[#2e3c50] shadow-sm backdrop-blur-sm md:hover:shadow-[0px_0px_70px_#6366F1]'
+        className='scroll-animate group relative overflow-hidden rounded-lg bg-[#2e3c50] shadow-sm backdrop-blur-sm md:hover:shadow-[0px_0px_50px_#6366F1]'
         data-direction={i === 0 ? 'left' : i === 1 ? 'up' : 'right'}
         ref={cardRef}
         onMouseLeave={handleMouseLeave}
