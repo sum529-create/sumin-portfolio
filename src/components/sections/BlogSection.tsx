@@ -15,8 +15,8 @@ const BlogSection = () => {
           ariaLabel='블로그 섹션'
         />
         <div className='relative mb-20 grid grid-cols-1 gap-8 md:grid-cols-3'>
-          {blogData.map((blog, i) => (
-            <BlogCard key={blog.title} blog={blog} i={i} />
+          {blogData.map((blog, index) => (
+            <BlogCard key={blog.title} blog={blog} index={index} />
           ))}
         </div>
         <div className='mt-8 flex justify-center'>

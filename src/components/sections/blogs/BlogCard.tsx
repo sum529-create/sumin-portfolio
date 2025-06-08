@@ -8,11 +8,11 @@ import { useEffect, useRef } from 'react';
 import { useIsMobile } from '@/hooks/useMediaQuery';
 
 interface BlogCardProps {
-  i: number;
+  index: number;
   blog: BlogDataProps;
 }
 
-const BlogCard = ({ blog, i }: BlogCardProps) => {
+const BlogCard = ({ blog, index }: BlogCardProps) => {
   const cardRef = useRef<HTMLDivElement>(null);
   const isMobile = useIsMobile();
   useEffect(() => {
@@ -63,7 +63,7 @@ const BlogCard = ({ blog, i }: BlogCardProps) => {
     <Link key={blog.title} href={blog.homepageUrl} target='_blank'>
       <div
         className='scroll-animate group relative overflow-hidden rounded-lg bg-[#2e3c50] shadow-sm backdrop-blur-sm md:hover:shadow-[0px_0px_50px_#6366F1]'
-        data-direction={i === 0 ? 'left' : i === 1 ? 'up' : 'right'}
+        data-direction={index === 0 ? 'left' : index === 1 ? 'up' : 'right'}
         ref={cardRef}
         onMouseLeave={handleMouseLeave}
         onMouseEnter={handleMouseEnter}
