@@ -155,9 +155,29 @@ const config: Config = {
           '20%': { opacity: '0.4' },
           '100%': { transform: 'translateX(100%) rotate(45deg)', opacity: '0' },
         },
+        spacetimeWarp: {
+          '0%, 100%': {
+            transform: 'scale(1) rotate(0deg)',
+            opacity: '0.2',
+          },
+          '50%': {
+            transform: 'scale(1.05) rotate(1deg)',
+            opacity: '0.3',
+          },
+        },
+        portalFloat: {
+          '0%, 100%': {
+            transform: 'translateY(0px)',
+          },
+          '50%': {
+            transform: 'translateY(-8px)',
+          },
+        },
       },
       animation: {
         shine: 'shine 3s ease-in-out infinite',
+        'spacetime-warp': 'spacetimeWarp 8s ease-in-out infinite',
+        'portal-float': 'portalFloat 4s ease-in-out infinite',
       },
     },
   },
