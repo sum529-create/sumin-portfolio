@@ -11,12 +11,12 @@ const BlogSection = () => {
       <div className='container mx-auto max-w-full px-4'>
         <SectionTitle
           title='Blog'
-          subTitle='개발관련 나의 경험치 기록'
+          subTitle='개발 관련 나의 경험치 기록'
           ariaLabel='블로그 섹션'
         />
         <div className='relative mb-20 grid grid-cols-1 gap-8 md:grid-cols-3'>
           {blogData.map((blog, i) => (
-            <BlogCard key={i} blog={blog} i={i} />
+            <BlogCard key={blog.title} blog={blog} i={i} />
           ))}
         </div>
         <div className='mt-8 flex justify-center'>

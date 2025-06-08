@@ -62,7 +62,6 @@ const BlogCard = ({ blog, i }: BlogCardProps) => {
   return (
     <Link key={blog.title} href={blog.homepageUrl} target='_blank'>
       <div
-        key={blog.title}
         className='scroll-animate group relative overflow-hidden rounded-lg bg-[#2e3c50] shadow-sm backdrop-blur-sm md:hover:shadow-[0px_0px_50px_#6366F1]'
         data-direction={i === 0 ? 'left' : i === 1 ? 'up' : 'right'}
         ref={cardRef}
