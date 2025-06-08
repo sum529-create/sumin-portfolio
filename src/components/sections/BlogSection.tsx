@@ -16,7 +16,7 @@ const BlogSection = () => {
         />
         <div className='relative mb-20 grid grid-cols-1 gap-8 md:grid-cols-3'>
           {blogData.map((blog, i) => (
-            <BlogCard blog={blog} i={i} />
+            <BlogCard key={i} blog={blog} i={i} />
           ))}
         </div>
         <div className='mt-8 flex justify-center'>

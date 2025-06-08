@@ -2,6 +2,8 @@ import { BlogDataProps } from '@/constants/blogs';
 import gsap from 'gsap';
 import Image from 'next/image';
 import Link from 'next/link';
+import { FaFire, FaBookOpen } from 'react-icons/fa6';
+import { GrPersonalComputer } from 'react-icons/gr';
 import { useEffect, useRef } from 'react';
 
 interface BlogCardProps {
@@ -11,10 +13,9 @@ interface BlogCardProps {
 
 const BlogCard = ({ blog, i }: BlogCardProps) => {
   const cardRef = useRef<HTMLDivElement>(null);
-  const cardCurrent = cardRef.current;
   useEffect(() => {
-    if (!cardCurrent) return;
-    gsap.set(cardCurrent, {
+    if (!cardRef.current) return;
+    gsap.set(cardRef.current, {
       rotateX: 5,
       rotateY: 15,
       transformPerspective: 800,
@@ -22,8 +23,8 @@ const BlogCard = ({ blog, i }: BlogCardProps) => {
     });
   }, []);
   const handleMouseEnter = () => {
-    if (!cardCurrent) return;
-    gsap.to(cardCurrent, {
+    if (!cardRef.current) return;
+    gsap.to(cardRef.current, {
       rotateX: 0,
       rotateY: 0,
       duration: 0.5,
@@ -31,8 +32,8 @@ const BlogCard = ({ blog, i }: BlogCardProps) => {
     });
   };
   const handleMouseLeave = () => {
-    if (!cardCurrent) return;
-    gsap.to(cardCurrent, {
+    if (!cardRef.current) return;
+    gsap.to(cardRef.current, {
       rotateX: 5,
       rotateY: 15,
       duration: 0.5,
@@ -74,6 +75,7 @@ const BlogCard = ({ blog, i }: BlogCardProps) => {
             alt={blog.title}
             aria-label={blog.title}
             fill={true}
+            sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
             className='object-cover'
           />
         </div>
@@ -81,12 +83,21 @@ const BlogCard = ({ blog, i }: BlogCardProps) => {
           <span
             className={`mb-2 inline-block rounded-full px-3 py-1 text-sm font-medium ${labelStyles(blog.label)}`}
           >
+            {blog.label === 'Trouble Shooting' ? (
+              <FaFire className='mr-1 inline text-red-500' />
+            ) : blog.label === 'TIL' ? (
+              <FaBookOpen className='mr-1 inline text-yellow-800' />
+            ) : blog.label === 'Project' ? (
+              <GrPersonalComputer className='mr-1 inline text-blue-800' />
+            ) : null}
             {blog.label}
           </span>
-          <h3 className='mb-4 break-words text-lg font-semibold text-white'>
+          {/* <h3 className='mb-4 break-words text-lg font-semibold text-white'>
             {blog.title}
-          </h3>
-          <p className='line-clamp-4 break-words text-muted'>{blog.content}</p>
+          </h3> */}
+          <p className='line-clamp-4 break-words text-slate-300'>
+            {blog.content}
+          </p>
         </div>
       </div>
     </Link>
