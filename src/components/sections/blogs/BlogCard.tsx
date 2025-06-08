@@ -103,9 +103,6 @@ const BlogCard = ({ blog, index }: BlogCardProps) => {
             ) : null}
             {blog.label}
           </span>
-          {/* <h3 className='mb-4 break-words text-lg font-semibold text-white'>
-            {blog.title}
-          </h3> */}
           <p className='line-clamp-4 break-words text-slate-300'>
             {blog.content}
           </p>
