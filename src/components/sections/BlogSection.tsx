@@ -24,6 +24,7 @@ const BlogSection = () => {
             <Link
               href='https://velog.io/@sum529'
               target='_blank'
+              rel='noopener noreferrer'
               aria-label='블로그 더 보기'
               className='w-full px-4 text-lg md:w-auto'
             >
