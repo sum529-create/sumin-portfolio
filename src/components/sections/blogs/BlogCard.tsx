@@ -1,4 +1,4 @@
-import { BlogDataProps } from '@/constants/blogs';
+import { BLOG_LABELS, BlogDataProps } from '@/constants/blogs';
 import gsap from 'gsap';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -49,11 +49,11 @@ const BlogCard = ({ blog, i }: BlogCardProps) => {
   };
   const labelStyles = (text: string) => {
     switch (text) {
-      case 'Trouble Shooting':
+      case BLOG_LABELS.TROUBLE_SHOOTING:
         return 'bg-red-100/50 text-red-800';
-      case 'TIL':
+      case BLOG_LABELS.TIL:
         return 'bg-yellow-100/50 text-yellow-800';
-      case 'Project':
+      case BLOG_LABELS.PROJECT:
         return 'bg-blue-100/50 text-blue-800';
       default:
         return 'bg-primary/10 text-primary';
@@ -89,11 +89,11 @@ const BlogCard = ({ blog, i }: BlogCardProps) => {
           <span
             className={`mb-2 inline-block rounded-full px-3 py-1 text-sm font-medium ${labelStyles(blog.label)}`}
           >
-            {blog.label === 'Trouble Shooting' ? (
+            {blog.label === BLOG_LABELS.TROUBLE_SHOOTING ? (
               <FaFire className='mr-1 inline text-red-500' />
-            ) : blog.label === 'TIL' ? (
+            ) : blog.label === BLOG_LABELS.TIL ? (
               <FaBookOpen className='mr-1 inline text-yellow-800' />
-            ) : blog.label === 'Project' ? (
+            ) : blog.label === BLOG_LABELS.PROJECT ? (
               <GrPersonalComputer className='mr-1 inline text-blue-800' />
             ) : null}
             {blog.label}
