@@ -16,7 +16,6 @@ const BlogCard = ({ blog, i }: BlogCardProps) => {
   const cardRef = useRef<HTMLDivElement>(null);
   const isMobile = useIsMobile();
   useEffect(() => {
-    console.log(isMobile);
     if (!cardRef.current || isMobile) return;
     gsap.set(cardRef.current, {
       rotateX: 5,
@@ -24,7 +23,7 @@ const BlogCard = ({ blog, i }: BlogCardProps) => {
       transformPerspective: 800,
       transformStyle: 'preserve-3d',
     });
-  }, []);
+  }, [isMobile]);
   const handleMouseEnter = () => {
     if (!cardRef.current || isMobile) return;
     gsap.to(cardRef.current, {
