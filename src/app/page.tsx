@@ -11,6 +11,7 @@ import { Button } from '@/components/ui/button';
 import IntroSection from '@/components/sections/IntroSection';
 import SkillsSection from '@/components/sections/SkillsSection';
 import ExperienceSection from '@/components/sections/ExperienceSection';
+import BlogSection from '@/components/sections/BlogSection';
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
@@ -87,51 +88,7 @@ export default function Home() {
               <ExperienceSection />
 
               {/* blog Section */}
-              <section id='blog' className='relative min-h-screen py-20'>
-                <div className='container mx-auto max-w-full px-4'>
-                  <h2 className='split-text mb-12 text-center text-3xl font-bold md:text-4xl'>
-                    Blog
-                  </h2>
-                  <div className='grid grid-cols-1 gap-8 md:grid-cols-3'>
-                    {[
-                      {
-                        category: '제목01',
-                        content: '이것은 프론트엔드 기술 블로그입니다.',
-                        icon: '🎨',
-                      },
-                      {
-                        category: '제목02',
-                        content: '테스트입니다.',
-                        icon: '🛠️',
-                      },
-                      {
-                        category: '제목03',
-                        content: '테스트입니다.',
-                        icon: '💻',
-                      },
-                    ].map((category, i) => (
-                      <div
-                        key={category.category}
-                        className='scroll-animate rounded-lg bg-card/50 p-6 shadow-sm backdrop-blur-sm'
-                        data-direction={
-                          i === 0 ? 'left' : i === 1 ? 'up' : 'right'
-                        }
-                      >
-                        <div className='mb-4 text-4xl'>{category.icon}</div>
-                        <h3 className='mb-4 break-words text-xl font-semibold'>
-                          {category.category}
-                        </h3>
-                        <p className='break-words text-muted-foreground'>
-                          {category.content}
-                        </p>
-                      </div>
-                    ))}
-                  </div>
-                  <div className='mt-8 flex justify-center'>
-                    <Button>더 보러가기</Button>
-                  </div>
-                </div>
-              </section>
+              <BlogSection />
 
               {/* Projects Section */}
               <section id='projects' className='relative min-h-screen py-20'>
