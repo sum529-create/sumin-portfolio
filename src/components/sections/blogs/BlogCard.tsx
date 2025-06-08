@@ -23,6 +23,11 @@ const BlogCard = ({ blog, i }: BlogCardProps) => {
       transformPerspective: 800,
       transformStyle: 'preserve-3d',
     });
+    return () => {
+      if (cardRef.current) {
+        gsap.killTweensOf(cardRef.current);
+      }
+    };
   }, [isMobile]);
   const handleMouseEnter = () => {
     if (!cardRef.current || isMobile) return;
