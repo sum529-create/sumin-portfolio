@@ -113,37 +113,38 @@ export const projectsData: ProjectData[] = [
     gradientColor: 'rgb(59, 130, 246)',
     image: '/images/medi-click.png',
     projectImages: [
-      'unno-card-detail.png',
-      'unno-card-list.png',
-      'unno-editor.png',
-      'uuno-main.png',
-      'uuno-shared.png',
-      'uuno-template-list.png',
+      'medi-click-login.png',
+      'medi-click-main.png',
+      'medi-click-detail.png',
+      'medi-click-reservation.png',
+      'medi-click-hospital-menu.png',
+      'medi-click-user-menu.png',
+      'medi-click-user-menu-detail.png',
     ],
-    favicon: '/images/uuno/uuno-favicon.png',
-    githubUrl: 'https://github.com/lyra-j/uuno',
-    demoUrl: 'https://www.uuno.kr/',
+    favicon: '/images/medi-click/medi-click-favicon.png',
+    githubUrl: 'https://github.com/SuimKim/medi-click',
+    demoUrl: 'https://medi-click-liart.vercel.app/',
     overview: {
-      period: '2025.04.09 - 2025.04.30',
+      period: '2025.03.20 - 2025.03.27',
       role: '프론트엔드 개발자',
-      teamComposition: '6명(FE 4명, DE 2명)',
-      performance: '통계 분석 및 사용자 경험 개선',
+      teamComposition: '5명(FE 5명)',
+      performance: '병원 상세 정보, 병원 측 마이 페이지',
     },
     outline: {
       intro: {
         introText:
-          'UUNO는 스마트 명함 서비스로, 사용자가 드래그 앤 드롭 방식으로 쉽게 명함을 제작하고, 실시간으로 사용자 반응을 차트로 시각화하여 제공하는 인터랙티브 디지털 명함 플랫폼입니다.',
+          'MEDICLICK는 병원 예약 시스템으로, 사용자가 지도 기반으로 병원을 찾고 간편하게 예약할 수 있는 서비스입니다. 병원 상세 정보와 사용자 맞춤형 기능을 제공합니다.',
         features: [
-          '드래그 앤 드롭 방식의 명함 제작',
-          '실시간 사용자 반응 차트',
-          '다양한 템플릿 제공',
-          '모바일 및 데스크톱 최적화',
+          '지도 기반 병원 검색',
+          '병원 상세 정보 제공',
+          '간편한 예약 시스템',
+          '사용자 맞춤형 기능',
         ],
       },
       achievements: {
         projects: [
-          'UUNO 프로젝트를 통해 팀워크와 협업 능력을 향상시켰습니다.',
-          '사용자 경험을 개선하기 위해 통계 분석 도구를 활용하여 데이터 기반 의사 결정을 내렸습니다.',
+          'MEDICLICK 프로젝트를 통해 프론트엔드 개발 능력을 향상시켰습니다.',
+          '병원 예약 시스템의 사용자 경험을 개선하기 위해 다양한 UI/UX 디자인 원칙을 적용했습니다.',
         ],
         lectures: [
           '프론트엔드 개발에 대한 심화 강의를 수강하며 최신 기술 트렌드를 학습했습니다.',
@@ -152,19 +153,19 @@ export const projectsData: ProjectData[] = [
       },
       rolesAndResponsibilities: [
         {
-          roleTitle: '서브리더',
+          roleTitle: '병원 상세 정보',
           roleContent:
-            '프로젝트 진행 상황을 관리하고, 팀원 간의 원활한 소통을 도모했습니다. 또한, 개발 일정 조율과 코드 리뷰를 통해 프로젝트 품질을 높였습니다.',
+            '병원 상세 정보를 제공하는 페이지를 개발했습니다. 사용자가 병원의 위치, 진료 과목, 의사 정보 등을 쉽게 확인할 수 있도록 UI를 설계했습니다.',
         },
         {
-          roleTitle: '공유 시스템',
+          roleTitle: '병원 측 마이 페이지',
           roleContent:
-            '사용자가 만든 명함을 다른 사용자와 쉽게 공유할 수 있는 시스템을 구현했습니다. 이를 통해 사용자 간의 네트워킹을 촉진하고, 서비스의 활용도를 높였습니다.',
+            '병원 측에서 예약 현황을 관리할 수 있는 마이 페이지를 구현했습니다. 병원 관리자가 예약 정보를 쉽게 확인하고 관리할 수 있도록 기능을 개발했습니다.',
         },
         {
-          roleTitle: '통계 분석',
+          roleTitle: '피그마를 통한 디자인',
           roleContent:
-            '사용자 반응 데이터를 수집하고 분석하여, 명함 디자인과 기능 개선에 활용했습니다. 이를 통해 사용자 경험을 지속적으로 향상시켰습니다.',
+            '프로젝트 초기 단계에서 피그마를 사용하여 UI/UX 디자인을 설계했습니다. 사용자 경험을 고려한 직관적인 인터페이스를 구현하기 위해 디자인 시스템을 구축했습니다.',
         },
       ],
     },
