@@ -16,6 +16,7 @@ import { projectsData } from '@/constants/projects';
 import ProjectOutline from './tabs/ProjectOutline';
 import ProjectTabList from './tabs/ProjectTabList';
 import ProjectTopSection from './ProjectTopSection';
+import ProjectSkillStack from './tabs/ProjectSkillStack';
 
 interface ProjectDetailProps {
   projectId: string;
@@ -53,98 +54,10 @@ export default function ProjectDetail({ projectId }: ProjectDetailProps) {
       <Tabs value={activeTab} onValueChange={setActiveTab} className='w-full'>
         {/* 탭 리스트 */}
         <ProjectTabList />
-
         {/* 개요 탭 */}
         <ProjectOutline outline={project.outline} />
-
         {/* 기술스택 탭 */}
-        <TabsContent value='tech' className='space-y-8'>
-          <Card className='border border-white/10 bg-black/20 shadow-xl backdrop-blur-md transition-all duration-300 hover:shadow-2xl'>
-            <CardHeader>
-              <CardTitle className='text-2xl text-white'>
-                사용 기술 스택
-              </CardTitle>
-              <CardDescription className='text-lg text-white/70'>
-                프로젝트에서 사용된 주요 기술들과 선택 이유를 소개합니다.
-              </CardDescription>
-            </CardHeader>
-            <CardContent className='space-y-8'>
-              {/* 프론트엔드 */}
-              <div className='rounded-xl bg-white/5 p-6'>
-                <h3 className='mb-4 text-xl font-semibold text-white'>
-                  Frontend
-                </h3>
-                <div className='mb-4 flex flex-wrap gap-2'>
-                  <Badge
-                    variant='secondary'
-                    className='bg-white/10 px-3 py-1 text-sm text-white transition-colors duration-200 hover:bg-white/20'
-                  >
-                    React 18
-                  </Badge>
-                  <Badge
-                    variant='secondary'
-                    className='bg-white/10 px-3 py-1 text-sm text-white transition-colors duration-200 hover:bg-white/20'
-                  >
-                    TypeScript
-                  </Badge>
-                  <Badge
-                    variant='secondary'
-                    className='bg-white/10 px-3 py-1 text-sm text-white transition-colors duration-200 hover:bg-white/20'
-                  >
-                    Tailwind CSS
-                  </Badge>
-                  <Badge
-                    variant='secondary'
-                    className='bg-white/10 px-3 py-1 text-sm text-white transition-colors duration-200 hover:bg-white/20'
-                  >
-                    React Query
-                  </Badge>
-                  <Badge
-                    variant='secondary'
-                    className='bg-white/10 px-3 py-1 text-sm text-white transition-colors duration-200 hover:bg-white/20'
-                  >
-                    React Hook Form
-                  </Badge>
-                </div>
-                <p className='text-sm leading-relaxed text-white/80'>
-                  React 18의 최신 기능들을 활용하여 사용자 인터페이스를
-                  구현했습니다. TypeScript로 타입 안정성을 확보하고, Tailwind
-                  CSS로 일관된 디자인 시스템을 구축했습니다.
-                </p>
-              </div>
-
-              {/* 도구 및 배포 */}
-              <div className='rounded-xl bg-white/5 p-6'>
-                <h3 className='mb-4 text-xl font-semibold text-white'>
-                  Tools & Deployment
-                </h3>
-                <div className='mb-4 flex flex-wrap gap-2'>
-                  <Badge className='bg-white/10 px-3 py-1 text-sm text-white transition-colors duration-200 hover:bg-white/20'>
-                    Git & GitHub
-                  </Badge>
-                  <Badge className='bg-white/10 px-3 py-1 text-sm text-white transition-colors duration-200 hover:bg-white/20'>
-                    Figma
-                  </Badge>
-                  <Badge className='bg-white/10 px-3 py-1 text-sm text-white transition-colors duration-200 hover:bg-white/20'>
-                    Vercel
-                  </Badge>
-                  <Badge className='bg-white/10 px-3 py-1 text-sm text-white transition-colors duration-200 hover:bg-white/20'>
-                    ESLint
-                  </Badge>
-                  <Badge className='bg-white/10 px-3 py-1 text-sm text-white transition-colors duration-200 hover:bg-white/20'>
-                    Prettier
-                  </Badge>
-                </div>
-                <p className='text-sm leading-relaxed text-white/80'>
-                  Git을 활용한 협업 워크플로우를 구축하고, Figma로 디자인
-                  시스템을 설계했습니다. Vercel을 통해 지속적 배포(CD) 환경을
-                  구축했습니다.
-                </p>
-              </div>
-            </CardContent>
-          </Card>
-        </TabsContent>
-
+        <ProjectSkillStack skillStack={project.skillStack} />
         {/* 회고 탭 */}
         <TabsContent value='retrospective' className='space-y-8'>
           <div className='grid gap-8 lg:grid-cols-2'>
@@ -272,8 +185,7 @@ export default function ProjectDetail({ projectId }: ProjectDetailProps) {
             </CardContent>
           </Card>
         </TabsContent>
-
-        {/* 블로그 탭 */}
+        {/* 트러블슈팅 탭 */}
         <TabsContent value='blog' className='space-y-8'>
           <Card className='border border-white/10 bg-black/20 shadow-xl backdrop-blur-md transition-all duration-300 hover:shadow-2xl'>
             <CardHeader>

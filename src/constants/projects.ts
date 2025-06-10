@@ -19,6 +19,11 @@ export interface ProjectOutline {
   };
   rolesAndResponsibilities: ProjectRole[];
 }
+export interface ProjectSkillStack {
+  title: string;
+  tags: string[];
+  description: string;
+}
 export interface ProjectData {
   id: string;
   title: string;
@@ -33,6 +38,7 @@ export interface ProjectData {
   demoUrl: string;
   overview: ProjectOverview;
   outline: ProjectOutline;
+  skillStack: ProjectSkillStack[];
 }
 export const projectsData: ProjectData[] = [
   {
@@ -103,6 +109,26 @@ export const projectsData: ProjectData[] = [
         },
       ],
     },
+    skillStack: [
+      {
+        title: 'Frontend',
+        tags: ['React', 'Next.js', 'TypeScript', 'Konva', 'Chart.js'],
+        description:
+          'React와 Next.js를 사용하여 인터랙티브한 사용자 경험을 제공하며, Konva와 Chart.js를 활용하여 실시간 차트 시각화를 구현했습니다.',
+      },
+      {
+        title: 'Tools & Deployment',
+        tags: ['Vercel', 'GitHub', 'Prettier', 'ESLint'],
+        description:
+          'Vercel을 통해 배포하고, GitHub를 사용하여 버전 관리를 수행했습니다.',
+      },
+      {
+        title: 'Backend',
+        tags: ['Supabase'],
+        description:
+          'Supabase를 사용하여 실시간 데이터베이스와 인증 기능을 구현했습니다.',
+      },
+    ],
   },
   {
     id: 'medi-click',
@@ -113,8 +139,8 @@ export const projectsData: ProjectData[] = [
     gradientColor: 'rgb(59, 130, 246)',
     image: '/images/medi-click.png',
     projectImages: [
-      'medi-click-login.png',
       'medi-click-main.png',
+      'medi-click-login.png',
       'medi-click-detail.png',
       'medi-click-reservation.png',
       'medi-click-hospital-menu.png',
@@ -126,7 +152,7 @@ export const projectsData: ProjectData[] = [
     demoUrl: 'https://medi-click-liart.vercel.app/',
     overview: {
       period: '2025.03.20 - 2025.03.27',
-      role: '프론트엔드 개발자',
+      role: '프론트엔드 개발',
       teamComposition: '5명(FE 5명)',
       performance: '병원 상세 정보, 병원 측 마이 페이지',
     },
@@ -169,6 +195,26 @@ export const projectsData: ProjectData[] = [
         },
       ],
     },
+    skillStack: [
+      {
+        title: 'Frontend',
+        tags: ['React', 'Next.js', 'TypeScript', 'Konva', 'Chart.js'],
+        description:
+          'React와 Next.js를 사용하여 인터랙티브한 사용자 경험을 제공하며, Konva와 Chart.js를 활용하여 실시간 차트 시각화를 구현했습니다.',
+      },
+      {
+        title: 'Tools & Deployment',
+        tags: ['Vercel', 'GitHub', 'Prettier', 'ESLint'],
+        description:
+          'Vercel을 통해 배포하고, GitHub를 사용하여 버전 관리를 수행했습니다.',
+      },
+      {
+        title: 'Backend',
+        tags: ['Supabase'],
+        description:
+          'Supabase를 사용하여 실시간 데이터베이스와 인증 기능을 구현했습니다.',
+      },
+    ],
   },
   {
     id: 'green-deal',
@@ -234,6 +280,26 @@ export const projectsData: ProjectData[] = [
         },
       ],
     },
+    skillStack: [
+      {
+        title: 'Frontend',
+        tags: ['React', 'Next.js', 'TypeScript', 'Konva', 'Chart.js'],
+        description:
+          'React와 Next.js를 사용하여 인터랙티브한 사용자 경험을 제공하며, Konva와 Chart.js를 활용하여 실시간 차트 시각화를 구현했습니다.',
+      },
+      {
+        title: 'Tools & Deployment',
+        tags: ['Vercel', 'GitHub', 'Prettier', 'ESLint'],
+        description:
+          'Vercel을 통해 배포하고, GitHub를 사용하여 버전 관리를 수행했습니다.',
+      },
+      {
+        title: 'Backend',
+        tags: ['Supabase'],
+        description:
+          'Supabase를 사용하여 실시간 데이터베이스와 인증 기능을 구현했습니다.',
+      },
+    ],
   },
   {
     id: 'buzz-chatly',
@@ -299,6 +365,26 @@ export const projectsData: ProjectData[] = [
         },
       ],
     },
+    skillStack: [
+      {
+        title: 'Frontend',
+        tags: ['React', 'Next.js', 'TypeScript', 'Konva', 'Chart.js'],
+        description:
+          'React와 Next.js를 사용하여 인터랙티브한 사용자 경험을 제공하며, Konva와 Chart.js를 활용하여 실시간 차트 시각화를 구현했습니다.',
+      },
+      {
+        title: 'Tools & Deployment',
+        tags: ['Vercel', 'GitHub', 'Prettier', 'ESLint'],
+        description:
+          'Vercel을 통해 배포하고, GitHub를 사용하여 버전 관리를 수행했습니다.',
+      },
+      {
+        title: 'Backend',
+        tags: ['Supabase'],
+        description:
+          'Supabase를 사용하여 실시간 데이터베이스와 인증 기능을 구현했습니다.',
+      },
+    ],
   },
   {
     id: 'echo-wave',
@@ -364,6 +450,26 @@ export const projectsData: ProjectData[] = [
         },
       ],
     },
+    skillStack: [
+      {
+        title: 'Frontend',
+        tags: ['React', 'Next.js', 'TypeScript', 'Konva', 'Chart.js'],
+        description:
+          'React와 Next.js를 사용하여 인터랙티브한 사용자 경험을 제공하며, Konva와 Chart.js를 활용하여 실시간 차트 시각화를 구현했습니다.',
+      },
+      {
+        title: 'Tools & Deployment',
+        tags: ['Vercel', 'GitHub', 'Prettier', 'ESLint'],
+        description:
+          'Vercel을 통해 배포하고, GitHub를 사용하여 버전 관리를 수행했습니다.',
+      },
+      {
+        title: 'Backend',
+        tags: ['Supabase'],
+        description:
+          'Supabase를 사용하여 실시간 데이터베이스와 인증 기능을 구현했습니다.',
+      },
+    ],
   },
   {
     id: 'portfolio',
@@ -429,5 +535,25 @@ export const projectsData: ProjectData[] = [
         },
       ],
     },
+    skillStack: [
+      {
+        title: 'Frontend',
+        tags: ['React', 'Next.js', 'TypeScript', 'Konva', 'Chart.js'],
+        description:
+          'React와 Next.js를 사용하여 인터랙티브한 사용자 경험을 제공하며, Konva와 Chart.js를 활용하여 실시간 차트 시각화를 구현했습니다.',
+      },
+      {
+        title: 'Tools & Deployment',
+        tags: ['Vercel', 'GitHub', 'Prettier', 'ESLint'],
+        description:
+          'Vercel을 통해 배포하고, GitHub를 사용하여 버전 관리를 수행했습니다.',
+      },
+      {
+        title: 'Backend',
+        tags: ['Supabase'],
+        description:
+          'Supabase를 사용하여 실시간 데이터베이스와 인증 기능을 구현했습니다.',
+      },
+    ],
   },
 ];
