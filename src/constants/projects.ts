@@ -4,9 +4,9 @@ export interface ProjectOverview {
   teamComposition: string;
   performance: string;
 }
-export interface ProjectRole {
-  roleTitle: string;
-  roleContent: string;
+export interface ProjectTextCard {
+  cardTitle: string;
+  cardContent: string;
 }
 export interface ProjectOutline {
   intro: {
@@ -17,12 +17,15 @@ export interface ProjectOutline {
     projects: string[];
     lectures: string[];
   };
-  rolesAndResponsibilities: ProjectRole[];
+  rolesAndResponsibilities: ProjectTextCard[];
 }
 export interface ProjectSkillStack {
   title: string;
   tags: string[];
   description: string;
+}
+export interface ProjectRetrospection {
+  content: ProjectTextCard[];
 }
 export interface ProjectData {
   id: string;
@@ -39,6 +42,7 @@ export interface ProjectData {
   overview: ProjectOverview;
   outline: ProjectOutline;
   skillStack: ProjectSkillStack[];
+  retrospection: ProjectRetrospection[];
 }
 export const projectsData: ProjectData[] = [
   {
@@ -93,18 +97,18 @@ export const projectsData: ProjectData[] = [
       },
       rolesAndResponsibilities: [
         {
-          roleTitle: '서브리더',
-          roleContent:
+          cardTitle: '서브리더',
+          cardContent:
             '프로젝트 진행 상황을 관리하고, 팀원 간의 원활한 소통을 도모했습니다. 또한, 개발 일정 조율과 코드 리뷰를 통해 프로젝트 품질을 높였습니다.',
         },
         {
-          roleTitle: '공유 시스템',
-          roleContent:
+          cardTitle: '공유 시스템',
+          cardContent:
             '사용자가 만든 명함을 다른 사용자와 쉽게 공유할 수 있는 시스템을 구현했습니다. 이를 통해 사용자 간의 네트워킹을 촉진하고, 서비스의 활용도를 높였습니다.',
         },
         {
-          roleTitle: '통계 분석',
-          roleContent:
+          cardTitle: '통계 분석',
+          cardContent:
             '사용자 반응 데이터를 수집하고 분석하여, 명함 디자인과 기능 개선에 활용했습니다. 이를 통해 사용자 경험을 지속적으로 향상시켰습니다.',
         },
       ],
@@ -127,6 +131,65 @@ export const projectsData: ProjectData[] = [
         tags: ['Supabase'],
         description:
           'Supabase를 사용하여 실시간 데이터베이스와 인증 기능을 구현했습니다.',
+      },
+    ],
+    retrospection: [
+      {
+        content: [
+          {
+            cardTitle: '체계적인 프로젝트 관리',
+            cardContent:
+              '프로젝트 초기 단계에서 명확한 목표 설정과 역할 분담을 통해 체계적으로 프로젝트를 관리할 수 있었습니다.',
+          },
+          {
+            cardTitle: '적극적인 의사소통',
+            cardContent:
+              '팀원 간의 원활한 소통으로 문제 상황을 빠르게 공유하고 해결책을 함께 모색할 수 있었습니다.',
+          },
+          {
+            cardTitle: '사용자 중심 개발',
+            cardContent:
+              '사용자 피드백을 적극 수집하고 반영하여 실제로 사용하기 편한 서비스를 만들 수 있었습니다.',
+          },
+        ],
+      },
+      {
+        content: [
+          {
+            cardTitle: '테스트 코드 부족',
+            cardContent:
+              '개발 일정에 쫓겨 테스트 코드 작성을 충분히 하지 못했습니다. 이로 인해 버그 발견이 늦어지는 경우가 있었습니다.',
+          },
+          {
+            cardTitle: '성능 최적화 미흡',
+            cardContent:
+              '초기 번들 사이즈가 커서 로딩 속도가 느린 문제가 있었습니다. 코드 스플리팅 적용이 늦어졌습니다.',
+          },
+          {
+            cardTitle: '문서화 부족',
+            cardContent:
+              '프로젝트 문서화가 부족하여 신규 팀원이 프로젝트에 적응하는 데 어려움을 겪었습니다. 문서화를 체계적으로 진행할 필요가 있습니다.',
+          },
+        ],
+      },
+      {
+        content: [
+          {
+            cardTitle: '테스트 코드 작성',
+            cardContent:
+              '향후 프로젝트에서는 테스트 코드를 우선적으로 작성하여 코드 품질을 높이고, 버그 발생을 최소화할 계획입니다.',
+          },
+          {
+            cardTitle: '성능 최적화',
+            cardContent:
+              '코드 스플리팅과 이미지 최적화를 통해 초기 로딩 속도를 개선하고, 사용자 경험을 향상시킬 예정입니다.',
+          },
+          {
+            cardTitle: '문서화 강화',
+            cardContent:
+              '프로젝트 문서를 체계적으로 작성하여 신규 팀원이 쉽게 이해하고 참여할 수 있도록 할 것입니다.',
+          },
+        ],
       },
     ],
   },
@@ -179,18 +242,18 @@ export const projectsData: ProjectData[] = [
       },
       rolesAndResponsibilities: [
         {
-          roleTitle: '병원 상세 정보',
-          roleContent:
+          cardTitle: '병원 상세 정보',
+          cardContent:
             '병원 상세 정보를 제공하는 페이지를 개발했습니다. 사용자가 병원의 위치, 진료 과목, 의사 정보 등을 쉽게 확인할 수 있도록 UI를 설계했습니다.',
         },
         {
-          roleTitle: '병원 측 마이 페이지',
-          roleContent:
+          cardTitle: '병원 측 마이 페이지',
+          cardContent:
             '병원 측에서 예약 현황을 관리할 수 있는 마이 페이지를 구현했습니다. 병원 관리자가 예약 정보를 쉽게 확인하고 관리할 수 있도록 기능을 개발했습니다.',
         },
         {
-          roleTitle: '피그마를 통한 디자인',
-          roleContent:
+          cardTitle: '피그마를 통한 디자인',
+          cardContent:
             '프로젝트 초기 단계에서 피그마를 사용하여 UI/UX 디자인을 설계했습니다. 사용자 경험을 고려한 직관적인 인터페이스를 구현하기 위해 디자인 시스템을 구축했습니다.',
         },
       ],
@@ -213,6 +276,65 @@ export const projectsData: ProjectData[] = [
         tags: ['Supabase'],
         description:
           'Supabase를 사용하여 실시간 데이터베이스와 인증 기능을 구현했습니다.',
+      },
+    ],
+    retrospection: [
+      {
+        content: [
+          {
+            cardTitle: '체계적인 프로젝트 관리',
+            cardContent:
+              '프로젝트 초기 단계에서 명확한 목표 설정과 역할 분담을 통해 체계적으로 프로젝트를 관리할 수 있었습니다.',
+          },
+          {
+            cardTitle: '적극적인 의사소통',
+            cardContent:
+              '팀원 간의 원활한 소통으로 문제 상황을 빠르게 공유하고 해결책을 함께 모색할 수 있었습니다.',
+          },
+          {
+            cardTitle: '사용자 중심 개발',
+            cardContent:
+              '사용자 피드백을 적극 수집하고 반영하여 실제로 사용하기 편한 서비스를 만들 수 있었습니다.',
+          },
+        ],
+      },
+      {
+        content: [
+          {
+            cardTitle: '테스트 코드 부족',
+            cardContent:
+              '개발 일정에 쫓겨 테스트 코드 작성을 충분히 하지 못했습니다. 이로 인해 버그 발견이 늦어지는 경우가 있었습니다.',
+          },
+          {
+            cardTitle: '성능 최적화 미흡',
+            cardContent:
+              '초기 번들 사이즈가 커서 로딩 속도가 느린 문제가 있었습니다. 코드 스플리팅 적용이 늦어졌습니다.',
+          },
+          {
+            cardTitle: '문서화 부족',
+            cardContent:
+              '프로젝트 문서화가 부족하여 신규 팀원이 프로젝트에 적응하는 데 어려움을 겪었습니다. 문서화를 체계적으로 진행할 필요가 있습니다.',
+          },
+        ],
+      },
+      {
+        content: [
+          {
+            cardTitle: '테스트 코드 작성',
+            cardContent:
+              '향후 프로젝트에서는 테스트 코드를 우선적으로 작성하여 코드 품질을 높이고, 버그 발생을 최소화할 계획입니다.',
+          },
+          {
+            cardTitle: '성능 최적화',
+            cardContent:
+              '코드 스플리팅과 이미지 최적화를 통해 초기 로딩 속도를 개선하고, 사용자 경험을 향상시킬 예정입니다.',
+          },
+          {
+            cardTitle: '문서화 강화',
+            cardContent:
+              '프로젝트 문서를 체계적으로 작성하여 신규 팀원이 쉽게 이해하고 참여할 수 있도록 할 것입니다.',
+          },
+        ],
       },
     ],
   },
@@ -264,18 +386,18 @@ export const projectsData: ProjectData[] = [
       },
       rolesAndResponsibilities: [
         {
-          roleTitle: '서브리더',
-          roleContent:
+          cardTitle: '서브리더',
+          cardContent:
             '프로젝트 진행 상황을 관리하고, 팀원 간의 원활한 소통을 도모했습니다. 또한, 개발 일정 조율과 코드 리뷰를 통해 프로젝트 품질을 높였습니다.',
         },
         {
-          roleTitle: '공유 시스템',
-          roleContent:
+          cardTitle: '공유 시스템',
+          cardContent:
             '사용자가 만든 명함을 다른 사용자와 쉽게 공유할 수 있는 시스템을 구현했습니다. 이를 통해 사용자 간의 네트워킹을 촉진하고, 서비스의 활용도를 높였습니다.',
         },
         {
-          roleTitle: '통계 분석',
-          roleContent:
+          cardTitle: '통계 분석',
+          cardContent:
             '사용자 반응 데이터를 수집하고 분석하여, 명함 디자인과 기능 개선에 활용했습니다. 이를 통해 사용자 경험을 지속적으로 향상시켰습니다.',
         },
       ],
@@ -298,6 +420,65 @@ export const projectsData: ProjectData[] = [
         tags: ['Supabase'],
         description:
           'Supabase를 사용하여 실시간 데이터베이스와 인증 기능을 구현했습니다.',
+      },
+    ],
+    retrospection: [
+      {
+        content: [
+          {
+            cardTitle: '체계적인 프로젝트 관리',
+            cardContent:
+              '프로젝트 초기 단계에서 명확한 목표 설정과 역할 분담을 통해 체계적으로 프로젝트를 관리할 수 있었습니다.',
+          },
+          {
+            cardTitle: '적극적인 의사소통',
+            cardContent:
+              '팀원 간의 원활한 소통으로 문제 상황을 빠르게 공유하고 해결책을 함께 모색할 수 있었습니다.',
+          },
+          {
+            cardTitle: '사용자 중심 개발',
+            cardContent:
+              '사용자 피드백을 적극 수집하고 반영하여 실제로 사용하기 편한 서비스를 만들 수 있었습니다.',
+          },
+        ],
+      },
+      {
+        content: [
+          {
+            cardTitle: '테스트 코드 부족',
+            cardContent:
+              '개발 일정에 쫓겨 테스트 코드 작성을 충분히 하지 못했습니다. 이로 인해 버그 발견이 늦어지는 경우가 있었습니다.',
+          },
+          {
+            cardTitle: '성능 최적화 미흡',
+            cardContent:
+              '초기 번들 사이즈가 커서 로딩 속도가 느린 문제가 있었습니다. 코드 스플리팅 적용이 늦어졌습니다.',
+          },
+          {
+            cardTitle: '문서화 부족',
+            cardContent:
+              '프로젝트 문서화가 부족하여 신규 팀원이 프로젝트에 적응하는 데 어려움을 겪었습니다. 문서화를 체계적으로 진행할 필요가 있습니다.',
+          },
+        ],
+      },
+      {
+        content: [
+          {
+            cardTitle: '테스트 코드 작성',
+            cardContent:
+              '향후 프로젝트에서는 테스트 코드를 우선적으로 작성하여 코드 품질을 높이고, 버그 발생을 최소화할 계획입니다.',
+          },
+          {
+            cardTitle: '성능 최적화',
+            cardContent:
+              '코드 스플리팅과 이미지 최적화를 통해 초기 로딩 속도를 개선하고, 사용자 경험을 향상시킬 예정입니다.',
+          },
+          {
+            cardTitle: '문서화 강화',
+            cardContent:
+              '프로젝트 문서를 체계적으로 작성하여 신규 팀원이 쉽게 이해하고 참여할 수 있도록 할 것입니다.',
+          },
+        ],
       },
     ],
   },
@@ -349,18 +530,18 @@ export const projectsData: ProjectData[] = [
       },
       rolesAndResponsibilities: [
         {
-          roleTitle: '서브리더',
-          roleContent:
+          cardTitle: '서브리더',
+          cardContent:
             '프로젝트 진행 상황을 관리하고, 팀원 간의 원활한 소통을 도모했습니다. 또한, 개발 일정 조율과 코드 리뷰를 통해 프로젝트 품질을 높였습니다.',
         },
         {
-          roleTitle: '공유 시스템',
-          roleContent:
+          cardTitle: '공유 시스템',
+          cardContent:
             '사용자가 만든 명함을 다른 사용자와 쉽게 공유할 수 있는 시스템을 구현했습니다. 이를 통해 사용자 간의 네트워킹을 촉진하고, 서비스의 활용도를 높였습니다.',
         },
         {
-          roleTitle: '통계 분석',
-          roleContent:
+          cardTitle: '통계 분석',
+          cardContent:
             '사용자 반응 데이터를 수집하고 분석하여, 명함 디자인과 기능 개선에 활용했습니다. 이를 통해 사용자 경험을 지속적으로 향상시켰습니다.',
         },
       ],
@@ -383,6 +564,65 @@ export const projectsData: ProjectData[] = [
         tags: ['Supabase'],
         description:
           'Supabase를 사용하여 실시간 데이터베이스와 인증 기능을 구현했습니다.',
+      },
+    ],
+    retrospection: [
+      {
+        content: [
+          {
+            cardTitle: '체계적인 프로젝트 관리',
+            cardContent:
+              '프로젝트 초기 단계에서 명확한 목표 설정과 역할 분담을 통해 체계적으로 프로젝트를 관리할 수 있었습니다.',
+          },
+          {
+            cardTitle: '적극적인 의사소통',
+            cardContent:
+              '팀원 간의 원활한 소통으로 문제 상황을 빠르게 공유하고 해결책을 함께 모색할 수 있었습니다.',
+          },
+          {
+            cardTitle: '사용자 중심 개발',
+            cardContent:
+              '사용자 피드백을 적극 수집하고 반영하여 실제로 사용하기 편한 서비스를 만들 수 있었습니다.',
+          },
+        ],
+      },
+      {
+        content: [
+          {
+            cardTitle: '테스트 코드 부족',
+            cardContent:
+              '개발 일정에 쫓겨 테스트 코드 작성을 충분히 하지 못했습니다. 이로 인해 버그 발견이 늦어지는 경우가 있었습니다.',
+          },
+          {
+            cardTitle: '성능 최적화 미흡',
+            cardContent:
+              '초기 번들 사이즈가 커서 로딩 속도가 느린 문제가 있었습니다. 코드 스플리팅 적용이 늦어졌습니다.',
+          },
+          {
+            cardTitle: '문서화 부족',
+            cardContent:
+              '프로젝트 문서화가 부족하여 신규 팀원이 프로젝트에 적응하는 데 어려움을 겪었습니다. 문서화를 체계적으로 진행할 필요가 있습니다.',
+          },
+        ],
+      },
+      {
+        content: [
+          {
+            cardTitle: '테스트 코드 작성',
+            cardContent:
+              '향후 프로젝트에서는 테스트 코드를 우선적으로 작성하여 코드 품질을 높이고, 버그 발생을 최소화할 계획입니다.',
+          },
+          {
+            cardTitle: '성능 최적화',
+            cardContent:
+              '코드 스플리팅과 이미지 최적화를 통해 초기 로딩 속도를 개선하고, 사용자 경험을 향상시킬 예정입니다.',
+          },
+          {
+            cardTitle: '문서화 강화',
+            cardContent:
+              '프로젝트 문서를 체계적으로 작성하여 신규 팀원이 쉽게 이해하고 참여할 수 있도록 할 것입니다.',
+          },
+        ],
       },
     ],
   },
@@ -434,18 +674,18 @@ export const projectsData: ProjectData[] = [
       },
       rolesAndResponsibilities: [
         {
-          roleTitle: '서브리더',
-          roleContent:
+          cardTitle: '서브리더',
+          cardContent:
             '프로젝트 진행 상황을 관리하고, 팀원 간의 원활한 소통을 도모했습니다. 또한, 개발 일정 조율과 코드 리뷰를 통해 프로젝트 품질을 높였습니다.',
         },
         {
-          roleTitle: '공유 시스템',
-          roleContent:
+          cardTitle: '공유 시스템',
+          cardContent:
             '사용자가 만든 명함을 다른 사용자와 쉽게 공유할 수 있는 시스템을 구현했습니다. 이를 통해 사용자 간의 네트워킹을 촉진하고, 서비스의 활용도를 높였습니다.',
         },
         {
-          roleTitle: '통계 분석',
-          roleContent:
+          cardTitle: '통계 분석',
+          cardContent:
             '사용자 반응 데이터를 수집하고 분석하여, 명함 디자인과 기능 개선에 활용했습니다. 이를 통해 사용자 경험을 지속적으로 향상시켰습니다.',
         },
       ],
@@ -468,6 +708,65 @@ export const projectsData: ProjectData[] = [
         tags: ['Supabase'],
         description:
           'Supabase를 사용하여 실시간 데이터베이스와 인증 기능을 구현했습니다.',
+      },
+    ],
+    retrospection: [
+      {
+        content: [
+          {
+            cardTitle: '체계적인 프로젝트 관리',
+            cardContent:
+              '프로젝트 초기 단계에서 명확한 목표 설정과 역할 분담을 통해 체계적으로 프로젝트를 관리할 수 있었습니다.',
+          },
+          {
+            cardTitle: '적극적인 의사소통',
+            cardContent:
+              '팀원 간의 원활한 소통으로 문제 상황을 빠르게 공유하고 해결책을 함께 모색할 수 있었습니다.',
+          },
+          {
+            cardTitle: '사용자 중심 개발',
+            cardContent:
+              '사용자 피드백을 적극 수집하고 반영하여 실제로 사용하기 편한 서비스를 만들 수 있었습니다.',
+          },
+        ],
+      },
+      {
+        content: [
+          {
+            cardTitle: '테스트 코드 부족',
+            cardContent:
+              '개발 일정에 쫓겨 테스트 코드 작성을 충분히 하지 못했습니다. 이로 인해 버그 발견이 늦어지는 경우가 있었습니다.',
+          },
+          {
+            cardTitle: '성능 최적화 미흡',
+            cardContent:
+              '초기 번들 사이즈가 커서 로딩 속도가 느린 문제가 있었습니다. 코드 스플리팅 적용이 늦어졌습니다.',
+          },
+          {
+            cardTitle: '문서화 부족',
+            cardContent:
+              '프로젝트 문서화가 부족하여 신규 팀원이 프로젝트에 적응하는 데 어려움을 겪었습니다. 문서화를 체계적으로 진행할 필요가 있습니다.',
+          },
+        ],
+      },
+      {
+        content: [
+          {
+            cardTitle: '테스트 코드 작성',
+            cardContent:
+              '향후 프로젝트에서는 테스트 코드를 우선적으로 작성하여 코드 품질을 높이고, 버그 발생을 최소화할 계획입니다.',
+          },
+          {
+            cardTitle: '성능 최적화',
+            cardContent:
+              '코드 스플리팅과 이미지 최적화를 통해 초기 로딩 속도를 개선하고, 사용자 경험을 향상시킬 예정입니다.',
+          },
+          {
+            cardTitle: '문서화 강화',
+            cardContent:
+              '프로젝트 문서를 체계적으로 작성하여 신규 팀원이 쉽게 이해하고 참여할 수 있도록 할 것입니다.',
+          },
+        ],
       },
     ],
   },
@@ -519,18 +818,18 @@ export const projectsData: ProjectData[] = [
       },
       rolesAndResponsibilities: [
         {
-          roleTitle: '서브리더',
-          roleContent:
+          cardTitle: '서브리더',
+          cardContent:
             '프로젝트 진행 상황을 관리하고, 팀원 간의 원활한 소통을 도모했습니다. 또한, 개발 일정 조율과 코드 리뷰를 통해 프로젝트 품질을 높였습니다.',
         },
         {
-          roleTitle: '공유 시스템',
-          roleContent:
+          cardTitle: '공유 시스템',
+          cardContent:
             '사용자가 만든 명함을 다른 사용자와 쉽게 공유할 수 있는 시스템을 구현했습니다. 이를 통해 사용자 간의 네트워킹을 촉진하고, 서비스의 활용도를 높였습니다.',
         },
         {
-          roleTitle: '통계 분석',
-          roleContent:
+          cardTitle: '통계 분석',
+          cardContent:
             '사용자 반응 데이터를 수집하고 분석하여, 명함 디자인과 기능 개선에 활용했습니다. 이를 통해 사용자 경험을 지속적으로 향상시켰습니다.',
         },
       ],
@@ -553,6 +852,65 @@ export const projectsData: ProjectData[] = [
         tags: ['Supabase'],
         description:
           'Supabase를 사용하여 실시간 데이터베이스와 인증 기능을 구현했습니다.',
+      },
+    ],
+    retrospection: [
+      {
+        content: [
+          {
+            cardTitle: '체계적인 프로젝트 관리',
+            cardContent:
+              '프로젝트 초기 단계에서 명확한 목표 설정과 역할 분담을 통해 체계적으로 프로젝트를 관리할 수 있었습니다.',
+          },
+          {
+            cardTitle: '적극적인 의사소통',
+            cardContent:
+              '팀원 간의 원활한 소통으로 문제 상황을 빠르게 공유하고 해결책을 함께 모색할 수 있었습니다.',
+          },
+          {
+            cardTitle: '사용자 중심 개발',
+            cardContent:
+              '사용자 피드백을 적극 수집하고 반영하여 실제로 사용하기 편한 서비스를 만들 수 있었습니다.',
+          },
+        ],
+      },
+      {
+        content: [
+          {
+            cardTitle: '테스트 코드 부족',
+            cardContent:
+              '개발 일정에 쫓겨 테스트 코드 작성을 충분히 하지 못했습니다. 이로 인해 버그 발견이 늦어지는 경우가 있었습니다.',
+          },
+          {
+            cardTitle: '성능 최적화 미흡',
+            cardContent:
+              '초기 번들 사이즈가 커서 로딩 속도가 느린 문제가 있었습니다. 코드 스플리팅 적용이 늦어졌습니다.',
+          },
+          {
+            cardTitle: '문서화 부족',
+            cardContent:
+              '프로젝트 문서화가 부족하여 신규 팀원이 프로젝트에 적응하는 데 어려움을 겪었습니다. 문서화를 체계적으로 진행할 필요가 있습니다.',
+          },
+        ],
+      },
+      {
+        content: [
+          {
+            cardTitle: '테스트 코드 작성',
+            cardContent:
+              '향후 프로젝트에서는 테스트 코드를 우선적으로 작성하여 코드 품질을 높이고, 버그 발생을 최소화할 계획입니다.',
+          },
+          {
+            cardTitle: '성능 최적화',
+            cardContent:
+              '코드 스플리팅과 이미지 최적화를 통해 초기 로딩 속도를 개선하고, 사용자 경험을 향상시킬 예정입니다.',
+          },
+          {
+            cardTitle: '문서화 강화',
+            cardContent:
+              '프로젝트 문서를 체계적으로 작성하여 신규 팀원이 쉽게 이해하고 참여할 수 있도록 할 것입니다.',
+          },
+        ],
       },
     ],
   },

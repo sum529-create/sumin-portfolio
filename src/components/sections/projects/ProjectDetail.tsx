@@ -17,6 +17,7 @@ import ProjectOutline from './tabs/ProjectOutline';
 import ProjectTabList from './tabs/ProjectTabList';
 import ProjectTopSection from './ProjectTopSection';
 import ProjectSkillStack from './tabs/ProjectSkillStack';
+import ProjectRetrospection from './tabs/ProjectRetrospection';
 
 interface ProjectDetailProps {
   projectId: string;
@@ -59,132 +60,7 @@ export default function ProjectDetail({ projectId }: ProjectDetailProps) {
         {/* 기술스택 탭 */}
         <ProjectSkillStack skillStack={project.skillStack} />
         {/* 회고 탭 */}
-        <TabsContent value='retrospective' className='space-y-8'>
-          <div className='grid gap-8 lg:grid-cols-2'>
-            <Card className='border border-white/10 bg-black/20 shadow-xl backdrop-blur-md transition-all duration-300 hover:shadow-2xl'>
-              <CardHeader>
-                <CardTitle className='flex items-center gap-2 text-2xl text-green-600'>
-                  <span className='text-3xl'>✨</span>
-                  잘한 점 (Keep)
-                </CardTitle>
-              </CardHeader>
-              <CardContent className='space-y-6'>
-                <div className='space-y-3 rounded-lg bg-white/5 p-4'>
-                  <h4 className='text-lg font-medium text-white'>
-                    체계적인 프로젝트 관리
-                  </h4>
-                  <p className='text-sm leading-relaxed text-white/80'>
-                    칸반 보드를 활용한 일정 관리와 정기적인 스프린트 회고를 통해
-                    프로젝트를 체계적으로 진행할 수 있었습니다.
-                  </p>
-                </div>
-                <div className='space-y-3 rounded-lg bg-white/5 p-4'>
-                  <h4 className='text-lg font-medium text-white'>
-                    적극적인 의사소통
-                  </h4>
-                  <p className='text-sm leading-relaxed text-white/80'>
-                    팀원들과의 원활한 소통으로 문제 상황을 빠르게 공유하고
-                    해결책을 함께 모색할 수 있었습니다.
-                  </p>
-                </div>
-                <div className='space-y-3 rounded-lg bg-white/5 p-4'>
-                  <h4 className='text-lg font-medium text-white'>
-                    사용자 중심 개발
-                  </h4>
-                  <p className='text-sm leading-relaxed text-white/80'>
-                    사용자 피드백을 적극 수집하고 반영하여 실제로 사용하기 편한
-                    서비스를 만들 수 있었습니다.
-                  </p>
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card className='border border-white/10 bg-black/20 shadow-xl backdrop-blur-md transition-all duration-300 hover:shadow-2xl'>
-              <CardHeader>
-                <CardTitle className='flex items-center gap-2 text-2xl text-red-600'>
-                  <span className='text-3xl'>⚠️</span>
-                  아쉬운 점 (Problem)
-                </CardTitle>
-              </CardHeader>
-              <CardContent className='space-y-6'>
-                <div className='space-y-3 rounded-lg bg-white/5 p-4'>
-                  <h4 className='text-lg font-medium text-white'>
-                    테스트 코드 부족
-                  </h4>
-                  <p className='text-sm leading-relaxed text-white/80'>
-                    개발 일정에 쫓겨 테스트 코드 작성을 충분히 하지 못했습니다.
-                    이로 인해 버그 발견이 늦어지는 경우가 있었습니다.
-                  </p>
-                </div>
-                <div className='space-y-3 rounded-lg bg-white/5 p-4'>
-                  <h4 className='text-lg font-medium text-white'>
-                    성능 최적화 미흡
-                  </h4>
-                  <p className='text-sm leading-relaxed text-white/80'>
-                    초기 번들 사이즈가 커서 로딩 속도가 느린 문제가 있었습니다.
-                    코드 스플리팅 적용이 늦어졌습니다.
-                  </p>
-                </div>
-                <div className='space-y-3 rounded-lg bg-white/5 p-4'>
-                  <h4 className='text-lg font-medium text-white'>
-                    문서화 부족
-                  </h4>
-                  <p className='text-sm leading-relaxed text-white/80'>
-                    개발 과정에서 결정사항들을 충분히 문서화하지 못해 나중에
-                    유지보수 시 어려움을 겪었습니다.
-                  </p>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
-
-          <Card className='border border-white/10 bg-black/20 shadow-xl backdrop-blur-md transition-all duration-300 hover:shadow-2xl'>
-            <CardHeader>
-              <CardTitle className='flex items-center gap-2 text-2xl text-blue-600'>
-                <span className='text-3xl'>🎯</span>
-                개선 방안 (Try)
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className='grid gap-6 md:grid-cols-2'>
-                <div className='space-y-3 rounded-lg bg-white/5 p-4'>
-                  <h4 className='text-lg font-medium text-white'>TDD 도입</h4>
-                  <p className='text-sm leading-relaxed text-white/80'>
-                    다음 프로젝트에서는 Jest, Testing Library를 활용한 테스트
-                    주도 개발을 적용해보겠습니다.
-                  </p>
-                </div>
-                <div className='space-y-3 rounded-lg bg-white/5 p-4'>
-                  <h4 className='text-lg font-medium text-white'>
-                    성능 모니터링
-                  </h4>
-                  <p className='text-sm leading-relaxed text-white/80'>
-                    웹 성능 측정 도구를 활용하여 지속적으로 성능을 모니터링하고
-                    개선하겠습니다.
-                  </p>
-                </div>
-                <div className='space-y-3 rounded-lg bg-white/5 p-4'>
-                  <h4 className='text-lg font-medium text-white'>
-                    문서화 자동화
-                  </h4>
-                  <p className='text-sm leading-relaxed text-white/80'>
-                    Storybook, JSDoc을 활용하여 자동화된 문서화 시스템을
-                    구축하겠습니다.
-                  </p>
-                </div>
-                <div className='space-y-3 rounded-lg bg-white/5 p-4'>
-                  <h4 className='text-lg font-medium text-white'>
-                    CI/CD 파이프라인
-                  </h4>
-                  <p className='text-sm leading-relaxed text-white/80'>
-                    GitHub Actions를 활용한 자동화된 빌드 및 배포 시스템을
-                    구축하겠습니다.
-                  </p>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-        </TabsContent>
+        <ProjectRetrospection retrospection={project.retrospection} />
         {/* 트러블슈팅 탭 */}
         <TabsContent value='blog' className='space-y-8'>
           <Card className='border border-white/10 bg-black/20 shadow-xl backdrop-blur-md transition-all duration-300 hover:shadow-2xl'>
