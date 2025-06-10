@@ -66,9 +66,9 @@ const ProjectOutline = ({ outline }: ProjectOutlineProps) => {
             </div>
 
             <div className='space-y-4'>
-              <h4 className='text-lg font-medium text-white'>학습 성과</h4>
+              <h4 className='text-lg font-medium text-white'>협업 성과</h4>
               <ul className='space-y-3 text-sm'>
-                {outline.achievements.lectures.map((item, index) => (
+                {outline.achievements.collaboration.map((item, index) => (
                   <li
                     key={index}
                     className='flex items-start gap-3 rounded-lg bg-white/5 p-3 text-white/80'
