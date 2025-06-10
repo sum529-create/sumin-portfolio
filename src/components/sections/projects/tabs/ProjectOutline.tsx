@@ -95,13 +95,13 @@ const ProjectOutline = ({ outline }: ProjectOutlineProps) => {
           <div className='grid gap-6 md:grid-cols-3'>
             {outline.rolesAndResponsibilities.map((e) => (
               <div
-                key={e.roleTitle}
+                key={e.cardTitle}
                 className='space-y-3 rounded-lg bg-white/5 p-4'
               >
                 <h4 className='text-lg font-medium text-white'>
-                  {e.roleTitle}
+                  {e.cardTitle}
                 </h4>
-                <p className='text-sm text-white/80'>{e.roleContent}</p>
+                <p className='text-sm text-white/80'>{e.cardContent}</p>
               </div>
             ))}
           </div>
