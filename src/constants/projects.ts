@@ -19,7 +19,7 @@ export interface ProjectOutline {
   };
   rolesAndResponsibilities: ProjectTextCard[];
 }
-export interface ProjectSkillStack {
+export interface ProjectTagCard {
   title: string;
   tags: string[];
   description: string;
@@ -41,8 +41,9 @@ export interface ProjectData {
   demoUrl: string;
   overview: ProjectOverview;
   outline: ProjectOutline;
-  skillStack: ProjectSkillStack[];
+  skillStack: ProjectTagCard[];
   retrospection: ProjectRetrospection[];
+  blogPosts: (ProjectTagCard & { url: string })[];
 }
 export const projectsData: ProjectData[] = [
   {
@@ -192,6 +193,22 @@ export const projectsData: ProjectData[] = [
         ],
       },
     ],
+    blogPosts: [
+      {
+        title: 'UUNO 프로젝트 소개',
+        tags: ['프로젝트', '디지털 명함', 'React'],
+        description:
+          'UUNO 프로젝트의 개요와 주요 기능, 개발 과정에 대한 블로그 글입니다.',
+        url: 'https://example.com/uuno-project-introduction',
+      },
+      {
+        title: 'React와 Next.js를 활용한 인터랙티브 UI 개발',
+        tags: ['React', 'Next.js', 'UI/UX'],
+        description:
+          'React와 Next.js를 사용하여 인터랙티브한 사용자 경험을 제공하는 방법에 대한 글입니다.',
+        url: 'https://example.com/react-nextjs-interactive-ui',
+      },
+    ],
   },
   {
     id: 'medi-click',
@@ -335,6 +352,22 @@ export const projectsData: ProjectData[] = [
               '프로젝트 문서를 체계적으로 작성하여 신규 팀원이 쉽게 이해하고 참여할 수 있도록 할 것입니다.',
           },
         ],
+      },
+    ],
+    blogPosts: [
+      {
+        title: 'UUNO 프로젝트 소개',
+        tags: ['프로젝트', '디지털 명함', 'React'],
+        description:
+          'UUNO 프로젝트의 개요와 주요 기능, 개발 과정에 대한 블로그 글입니다.',
+        url: 'https://example.com/uuno-project-introduction',
+      },
+      {
+        title: 'React와 Next.js를 활용한 인터랙티브 UI 개발',
+        tags: ['React', 'Next.js', 'UI/UX'],
+        description:
+          'React와 Next.js를 사용하여 인터랙티브한 사용자 경험을 제공하는 방법에 대한 글입니다.',
+        url: 'https://example.com/react-nextjs-interactive-ui',
       },
     ],
   },
@@ -481,6 +514,22 @@ export const projectsData: ProjectData[] = [
         ],
       },
     ],
+    blogPosts: [
+      {
+        title: 'UUNO 프로젝트 소개',
+        tags: ['프로젝트', '디지털 명함', 'React'],
+        description:
+          'UUNO 프로젝트의 개요와 주요 기능, 개발 과정에 대한 블로그 글입니다.',
+        url: 'https://example.com/uuno-project-introduction',
+      },
+      {
+        title: 'React와 Next.js를 활용한 인터랙티브 UI 개발',
+        tags: ['React', 'Next.js', 'UI/UX'],
+        description:
+          'React와 Next.js를 사용하여 인터랙티브한 사용자 경험을 제공하는 방법에 대한 글입니다.',
+        url: 'https://example.com/react-nextjs-interactive-ui',
+      },
+    ],
   },
   {
     id: 'buzz-chatly',
@@ -623,6 +672,22 @@ export const projectsData: ProjectData[] = [
               '프로젝트 문서를 체계적으로 작성하여 신규 팀원이 쉽게 이해하고 참여할 수 있도록 할 것입니다.',
           },
         ],
+      },
+    ],
+    blogPosts: [
+      {
+        title: 'UUNO 프로젝트 소개',
+        tags: ['프로젝트', '디지털 명함', 'React'],
+        description:
+          'UUNO 프로젝트의 개요와 주요 기능, 개발 과정에 대한 블로그 글입니다.',
+        url: 'https://example.com/uuno-project-introduction',
+      },
+      {
+        title: 'React와 Next.js를 활용한 인터랙티브 UI 개발',
+        tags: ['React', 'Next.js', 'UI/UX'],
+        description:
+          'React와 Next.js를 사용하여 인터랙티브한 사용자 경험을 제공하는 방법에 대한 글입니다.',
+        url: 'https://example.com/react-nextjs-interactive-ui',
       },
     ],
   },
@@ -769,6 +834,22 @@ export const projectsData: ProjectData[] = [
         ],
       },
     ],
+    blogPosts: [
+      {
+        title: 'UUNO 프로젝트 소개',
+        tags: ['프로젝트', '디지털 명함', 'React'],
+        description:
+          'UUNO 프로젝트의 개요와 주요 기능, 개발 과정에 대한 블로그 글입니다.',
+        url: 'https://example.com/uuno-project-introduction',
+      },
+      {
+        title: 'React와 Next.js를 활용한 인터랙티브 UI 개발',
+        tags: ['React', 'Next.js', 'UI/UX'],
+        description:
+          'React와 Next.js를 사용하여 인터랙티브한 사용자 경험을 제공하는 방법에 대한 글입니다.',
+        url: 'https://example.com/react-nextjs-interactive-ui',
+      },
+    ],
   },
   {
     id: 'portfolio',
@@ -911,6 +992,22 @@ export const projectsData: ProjectData[] = [
               '프로젝트 문서를 체계적으로 작성하여 신규 팀원이 쉽게 이해하고 참여할 수 있도록 할 것입니다.',
           },
         ],
+      },
+    ],
+    blogPosts: [
+      {
+        title: 'UUNO 프로젝트 소개',
+        tags: ['프로젝트', '디지털 명함', 'React'],
+        description:
+          'UUNO 프로젝트의 개요와 주요 기능, 개발 과정에 대한 블로그 글입니다.',
+        url: 'https://example.com/uuno-project-introduction',
+      },
+      {
+        title: 'React와 Next.js를 활용한 인터랙티브 UI 개발',
+        tags: ['React', 'Next.js', 'UI/UX'],
+        description:
+          'React와 Next.js를 사용하여 인터랙티브한 사용자 경험을 제공하는 방법에 대한 글입니다.',
+        url: 'https://example.com/react-nextjs-interactive-ui',
       },
     ],
   },
