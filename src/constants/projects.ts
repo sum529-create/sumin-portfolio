@@ -402,6 +402,19 @@ export const projectsData: ProjectData[] = [
           '클라이언트 사이드에서 계정별 페이지 분기 처리 시 초기 렌더링 깜빡임 문제를 해결한 과정. 비동기 상태 판단으로 인한 잘못된 UI 노출을 로딩 상태 관리로 해결하고, 서버 사이드 리다이렉트의 필요성을 깨달은 트러블슈팅입니다.',
         url: 'https://velog.io/@sum529/Trouble-Shooting-클라이언트-사이드에서-계정별-페이지-분기-처리-중-발생한-초기-렌더링-문제-해결',
       },
+      {
+        title: '개발 마감 2일 전, 사용자 권한 구분이 없다는 걸 깨달았을 때',
+        tags: [
+          'DB 설계',
+          '사용자 권한',
+          '개발 일지',
+          '기술적 타협',
+          '프로젝트 관리',
+        ],
+        description:
+          '병원 예약 시스템 개발 막판에 발견한 치명적 문제: 병원과 일반 사용자를 구분할 방법이 전혀 없었다. 남은 개발 기간 2일, DB 구조 대대적 수정은 불가능한 상황에서 이메일 패턴을 활용한 응급처치로 위기를 넘긴 이야기. 완벽하지 않은 해결책이지만 주어진 조건에서 최선의 선택을 했던 기술적 타협의 기록.',
+        url: 'https://velog.io/@sum529/프로젝트-의사결정-마이페이지-만들다가-멘붕-온-순간-Medi-Click',
+      },
     ],
   },
   {
@@ -916,21 +929,22 @@ export const projectsData: ProjectData[] = [
     gradientColor: 'rgb(139, 92, 246)',
     image: '/images/portfolio.png',
     projectImages: [
-      'unno-card-detail.png',
-      'unno-card-list.png',
-      'unno-editor.png',
-      'uuno-main.png',
-      'uuno-shared.png',
-      'uuno-template-list.png',
+      'portfolio-home.png',
+      'portfolio-intro.png',
+      'portfolio-skills.png',
+      'portfolio-experience.png',
+      'portfolio-blog.png',
+      'portfolio-project.png',
+      'portfolio-contact.png',
     ],
-    favicon: '/images/uuno/uuno-favicon.png',
-    githubUrl: 'https://github.com/lyra-j/uuno',
-    demoUrl: 'https://www.uuno.kr/',
+    favicon: '/images/portfolio/portfolio-favicon.png',
+    githubUrl: 'https://github.com/sum529-create/sumin-portfolio',
+    demoUrl: 'https://sumin-portfolio-sigma.vercel.app/',
     overview: {
-      period: '2025.04.09 - 2025.04.30',
-      role: '프론트엔드 개발자',
-      teamComposition: '6명(FE 4명, DE 2명)',
-      performance: '통계 분석 및 사용자 경험 개선',
+      period: '2025.05.15 - 2025.06.11',
+      role: '프론트엔드 개발',
+      teamComposition: '1명(FE 1명)',
+      performance: '개인 프로젝트 및 기술 스택 학습',
     },
     outline: {
       intro: {
@@ -1052,18 +1066,25 @@ export const projectsData: ProjectData[] = [
     ],
     blogPosts: [
       {
-        title: 'UUNO 프로젝트 소개',
-        tags: ['프로젝트', '디지털 명함', 'React'],
+        title: '포트폴리오를 만들다 만난 JIT',
+        tags: ['TailwindCSS', 'React', 'TypeScript', 'JIT', '동적 스타일링'],
         description:
-          'UUNO 프로젝트의 개요와 주요 기능, 개발 과정에 대한 블로그 글입니다.',
-        url: 'https://example.com/uuno-project-introduction',
+          'Tailwind CSS에서 props로 받은 값을 템플릿 리터럴로 동적 클래스명에 적용했는데 스타일이 안 되는 문제를 해결한 이야기. JIT 컴파일 방식의 이해와 공식문서가 권장하는 정적 매핑 방식으로 타입 안전성까지 확보한 과정.',
+        url: 'https://velog.io/@sum529/Trouble-Shooting-포트폴리오를-만들다-만난-JIT',
       },
       {
-        title: 'React와 Next.js를 활용한 인터랙티브 UI 개발',
-        tags: ['React', 'Next.js', 'UI/UX'],
+        title: '모바일 대응.. 훅으로? 아니면 전역상태 관리로?',
+        tags: ['반응형 디자인', 'UX설계', '커스텀 훅', '모바일 최적화'],
         description:
-          'React와 Next.js를 사용하여 인터랙티브한 사용자 경험을 제공하는 방법에 대한 글입니다.',
-        url: 'https://example.com/react-nextjs-interactive-ui',
+          '포트폴리오의 문 열림 효과를 모바일에서도 보여줄지 고민하다가 사용자 경험을 우선시하여 모바일에서는 효과를 제거하기로 결정. useMediaQuery 커스텀 훅을 구현하여 반응형 대응하고, 기술적 욕심보다 UX를 우선하는 개발 철학을 정립한 과정.',
+        url: 'https://velog.io/@sum529/프로젝트-의사결정-모바일-대응..-훅으로-아니면-전역상태-관리로',
+      },
+      {
+        title: '모바일에서 애니메이션이 안 꺼지는 이유',
+        tags: ['useState', 'LazyInitialization', '미디어 쿼리', 'GSAP'],
+        description:
+          '모바일에서 애니메이션을 제거하려 했는데 계속 적용되는 문제를 useState lazy initialization으로 해결한 이야기. useMediaQuery 훅의 초기값 문제와 React 렌더링 타이밍 이슈를 분석하고, window 객체를 안전하게 사용하는 방법까지 정리한 깊이 있는 트러블슈팅.',
+        url: 'https://velog.io/@sum529/Trouble-Shooting-모바일에서-애니메이션이-안-꺼지는-이유',
       },
     ],
   },
