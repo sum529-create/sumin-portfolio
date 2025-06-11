@@ -413,154 +413,177 @@ export const projectsData: ProjectData[] = [
     gradientColor: 'rgb(34, 197, 94)',
     image: '/images/green-deal.png',
     projectImages: [
-      'unno-card-detail.png',
-      'unno-card-list.png',
-      'unno-editor.png',
-      'uuno-main.png',
-      'uuno-shared.png',
-      'uuno-template-list.png',
+      'green-deal-main.png',
+      'green-deal-signup.png',
+      'green-deal-signin.png',
+      'green-deal-product-list.png',
+      'green-deal-product-detail.png',
+      'green-deal-product-registration.png',
+      'green-deal-mypage.png',
     ],
-    favicon: '/images/uuno/uuno-favicon.png',
-    githubUrl: 'https://github.com/lyra-j/uuno',
-    demoUrl: 'https://www.uuno.kr/',
+    favicon: '/images/green-deal/green-deal-favicon.png',
+    githubUrl: 'https://github.com/ImJaeOne/green-deal',
+    demoUrl: 'https://green-deal.vercel.app/',
     overview: {
-      period: '2025.04.09 - 2025.04.30',
-      role: '프론트엔드 개발자',
-      teamComposition: '6명(FE 4명, DE 2명)',
-      performance: '통계 분석 및 사용자 경험 개선',
+      period: '2025.02.26 - 2025.03.04',
+      role: '프론트엔드 개발',
+      teamComposition: '6명(FE 6명)',
+      performance: '물품 등록 및 수정 구현',
     },
     outline: {
       intro: {
         introText:
-          'UUNO는 스마트 명함 서비스로, 사용자가 드래그 앤 드롭 방식으로 쉽게 명함을 제작하고, 실시간으로 사용자 반응을 차트로 시각화하여 제공하는 인터랙티브 디지털 명함 플랫폼입니다.',
+          'Green Deal은 지도 기반 중고 마켓 플랫폼으로, 사용자가 원하는 지역에서 직접 상품을 검색하고 거래할 수 있는 스마트한 중고 거래 서비스입니다. 카카오맵 API를 활용하여 위치 기반 상품 검색과 직관적인 거래 환경을 제공합니다.',
         features: [
-          '드래그 앤 드롭 방식의 명함 제작',
-          '실시간 사용자 반응 차트',
-          '다양한 템플릿 제공',
-          '모바일 및 데스크톱 최적화',
+          '지도 기반 상품 검색 및 거래',
+          '카카오맵 API 연동을 통한 위치 서비스',
+          '직관적인 상품 등록 및 수정 시스템',
+          'PC와 모바일 최적화된 반응형 디자인',
         ],
       },
       achievements: {
         projects: [
-          'UUNO 프로젝트를 통해 팀워크와 협업 능력을 향상시켰습니다.',
-          '사용자 경험을 개선하기 위해 통계 분석 도구를 활용하여 데이터 기반 의사 결정을 내렸습니다.',
+          'Green Deal 프로젝트를 통해 팀 단위 협업과 Git 브랜치 전략을 체득했습니다.',
+          'TanStack Query와 Zustand를 활용한 상태 관리 최적화를 경험했습니다.',
+          '카카오맵 API 연동을 통해 외부 API 활용 능력을 향상시켰습니다.',
         ],
         collaboration: [
-          '프론트엔드 개발에 대한 심화 강의를 수강하며 최신 기술 트렌드를 학습했습니다.',
-          'UI/UX 디자인 원칙에 대한 강의를 통해 사용자 중심의 디자인 접근 방식을 익혔습니다.',
+          'React 기반 프론트엔드 개발 심화 과정을 수강하며 최신 개발 트렌드를 학습했습니다.',
+          'UI/UX 디자인과 사용자 경험 개선에 대한 실무적 접근 방식을 익혔습니다.',
+          'Pull Request 템플릿을 활용한 체계적인 코드 리뷰 프로세스를 경험했습니다.',
         ],
       },
       rolesAndResponsibilities: [
         {
-          cardTitle: '서브리더',
+          cardTitle: '상품 등록/수정 시스템',
           cardContent:
-            '프로젝트 진행 상황을 관리하고, 팀원 간의 원활한 소통을 도모했습니다. 또한, 개발 일정 조율과 코드 리뷰를 통해 프로젝트 품질을 높였습니다.',
+            '사용자가 쉽게 상품을 등록하고 수정할 수 있는 직관적인 인터페이스를 구현했습니다. 이미지 업로드, 카테고리 선택, 상품 상태 관리 등 전체적인 상품 관리 플로우를 설계하고 개발했습니다.',
         },
         {
-          cardTitle: '공유 시스템',
+          cardTitle: '카카오맵 위치 연동',
           cardContent:
-            '사용자가 만든 명함을 다른 사용자와 쉽게 공유할 수 있는 시스템을 구현했습니다. 이를 통해 사용자 간의 네트워킹을 촉진하고, 서비스의 활용도를 높였습니다.',
+            '카카오맵 API를 활용하여 지도에서 위치를 클릭하면 자동으로 주소가 변환되는 기능을 구현했습니다. 또한 도로명 주소 검색을 통해 정확한 위치 정보를 입력할 수 있도록 지원하여 사용자 편의성을 크게 향상시켰습니다.',
         },
         {
-          cardTitle: '통계 분석',
+          cardTitle: '데이터 최적화',
           cardContent:
-            '사용자 반응 데이터를 수집하고 분석하여, 명함 디자인과 기능 개선에 활용했습니다. 이를 통해 사용자 경험을 지속적으로 향상시켰습니다.',
+            'TanStack Query를 활용하여 상품 데이터의 효율적인 캐싱과 동기화를 구현했습니다. 이를 통해 사용자 경험을 개선하고, 서버 부하를 줄이며 앱의 성능을 최적화했습니다.',
         },
       ],
     },
     skillStack: [
       {
         title: 'Frontend',
-        tags: ['React', 'Next.js', 'TypeScript', 'Konva', 'Chart.js'],
+        tags: [
+          'React',
+          'JavaScript',
+          'TanStack Query',
+          'Zustand',
+          'Tailwind CSS',
+        ],
         description:
-          'React와 Next.js를 사용하여 인터랙티브한 사용자 경험을 제공하며, Konva와 Chart.js를 활용하여 실시간 차트 시각화를 구현했습니다.',
+          'React와 JavaScript를 기반으로 사용자 친화적인 인터페이스를 구현했습니다. TanStack Query로 서버 상태 관리를 최적화하고, Zustand를 활용하여 전역 상태를 효율적으로 관리했습니다.',
       },
       {
         title: 'Tools & Deployment',
-        tags: ['Vercel', 'GitHub', 'Prettier', 'ESLint'],
+        tags: ['Vercel', 'GitHub', 'Git', 'Visual Studio Code'],
         description:
-          'Vercel을 통해 배포하고, GitHub를 사용하여 버전 관리를 수행했습니다.',
+          'Vercel을 통해 안정적인 배포 환경을 구축하고, GitHub와 Git을 사용하여 체계적인 버전 관리와 협업을 진행했습니다.',
       },
       {
-        title: 'Backend',
-        tags: ['Supabase'],
+        title: 'Backend & API',
+        tags: ['Supabase', '카카오맵 API', 'react-router-dom'],
         description:
-          'Supabase를 사용하여 실시간 데이터베이스와 인증 기능을 구현했습니다.',
+          'Supabase를 활용하여 실시간 데이터베이스와 인증 시스템을 구현했습니다. 카카오맵 API를 연동하여 위치 기반 서비스를 제공하고, react-router-dom으로 SPA 라우팅을 관리했습니다.',
       },
     ],
     retrospection: [
       {
         content: [
           {
-            cardTitle: '체계적인 프로젝트 관리',
+            cardTitle: '정확한 디자인 구현과 컨벤션 준수',
             cardContent:
-              '프로젝트 초기 단계에서 명확한 목표 설정과 역할 분담을 통해 체계적으로 프로젝트를 관리할 수 있었습니다.',
+              '피그마 디자인 시안을 px 단위까지 정확히 구현하고, 팀 내에서 정한 Git 컨벤션을 철저히 준수했습니다. 이를 통해 일관성 있는 코드베이스를 유지할 수 있었습니다.',
           },
           {
-            cardTitle: '적극적인 의사소통',
+            cardTitle: '재사용 가능한 코드 작성',
             cardContent:
-              '팀원 간의 원활한 소통으로 문제 상황을 빠르게 공유하고 해결책을 함께 모색할 수 있었습니다.',
+              '커스텀 훅을 활용하여 재사용성을 확보하고 코드 가독성을 향상시켰습니다. 공통 컴포넌트화와 로직 분리를 통해 유지보수하기 쉬운 구조를 만들었습니다.',
           },
           {
-            cardTitle: '사용자 중심 개발',
+            cardTitle: '심화 기술 스택 활용',
             cardContent:
-              '사용자 피드백을 적극 수집하고 반영하여 실제로 사용하기 편한 서비스를 만들 수 있었습니다.',
-          },
-        ],
-      },
-      {
-        content: [
-          {
-            cardTitle: '테스트 코드 부족',
-            cardContent:
-              '개발 일정에 쫓겨 테스트 코드 작성을 충분히 하지 못했습니다. 이로 인해 버그 발견이 늦어지는 경우가 있었습니다.',
-          },
-          {
-            cardTitle: '성능 최적화 미흡',
-            cardContent:
-              '초기 번들 사이즈가 커서 로딩 속도가 느린 문제가 있었습니다. 코드 스플리팅 적용이 늦어졌습니다.',
-          },
-          {
-            cardTitle: '문서화 부족',
-            cardContent:
-              '프로젝트 문서화가 부족하여 신규 팀원이 프로젝트에 적응하는 데 어려움을 겪었습니다. 문서화를 체계적으로 진행할 필요가 있습니다.',
+              'Zustand, Supabase, TanStack Query 등 React 심화 기술을 적절히 활용하여 프로젝트를 완성했습니다. API 문서를 기반으로 한 체계적인 기능 구현이 특히 성과가 있었습니다.',
           },
         ],
       },
       {
         content: [
           {
-            cardTitle: '테스트 코드 작성',
+            cardTitle: '코드 설계와 협업 방식 개선 필요',
             cardContent:
-              '향후 프로젝트에서는 테스트 코드를 우선적으로 작성하여 코드 품질을 높이고, 버그 발생을 최소화할 계획입니다.',
+              '함수명과 기능 흐름의 불일치, 팀 폴더 구조 파악 없이 진행한 개인적 리팩토링 등으로 인해 협업에 어려움이 있었습니다. 비즈니스 로직과 서버 로직 분리에 대한 이해가 부족했습니다.',
           },
           {
-            cardTitle: '성능 최적화',
+            cardTitle: '사용자 경험 최적화 부족',
             cardContent:
-              '코드 스플리팅과 이미지 최적화를 통해 초기 로딩 속도를 개선하고, 사용자 경험을 향상시킬 예정입니다.',
+              '반응형 웹 구현이 미흡하고, 브라우저 기본 알럿 사용, 데이터 정렬 처리 부족 등 사용자 경험을 고려한 세부적인 처리가 아쉬웠습니다.',
           },
           {
-            cardTitle: '문서화 강화',
+            cardTitle: '코드 품질 관리 미흡',
             cardContent:
-              '프로젝트 문서를 체계적으로 작성하여 신규 팀원이 쉽게 이해하고 참여할 수 있도록 할 것입니다.',
+              'RLS 정책 설정, 코드 분리, 중복 훅 발생 등 코드 품질 관리 측면에서 개선이 필요했습니다. 피그마와 실제 UI 간의 불일치도 발생했습니다.',
+          },
+        ],
+      },
+      {
+        content: [
+          {
+            cardTitle: '체계적인 협업 방식 구축',
+            cardContent:
+              '향후 프로젝트에서는 코드를 꼼꼼히 읽고 팀의 협업 스타일에 맞추는 것을 우선하겠습니다. 사전에 공통 API 서비스 로직과 훅을 구축하여 중복을 방지할 계획입니다.',
+          },
+          {
+            cardTitle: '사용자 중심 개발 강화',
+            cardContent:
+              'UX를 고려한 데이터 정렬 처리와 반응형 웹 구현을 개선하고, 지도 위치 자동완성 기능 등 새로운 기능을 추가하여 사용자 경험을 향상시킬 예정입니다.',
+          },
+          {
+            cardTitle: '문제 해결 능력 향상',
+            cardContent:
+              '문제 발생 시 단순히 로그만 찍는 것이 아니라 시스템 전체 흐름을 고민하는 습관을 기를 것입니다. 다양한 외부 API 활용을 통해 기술적 도전을 이어가겠습니다.',
           },
         ],
       },
     ],
     blogPosts: [
       {
-        title: 'UUNO 프로젝트 소개',
-        tags: ['프로젝트', '디지털 명함', 'React'],
+        title: '나를 괴롭히는 SupaBase의 RLS 및 blob url 설정',
+        tags: ['Baas', 'RLS', 'Blob URL', 'Supabase'],
         description:
-          'UUNO 프로젝트의 개요와 주요 기능, 개발 과정에 대한 블로그 글입니다.',
-        url: 'https://example.com/uuno-project-introduction',
+          'Supabase에서 이미지 미리보기를 구현할 때 storage에 먼저 이미지를 올려야 하는 점이 마음에 들지 않았다. 서버에 올리지 않고 이미지 미리보기를 해줄수 있는 방법이 없을까?',
+        url: 'https://velog.io/@sum529/TIL-코드-닌자의-무기창고-리액트-개발-현장의-숨겨진-해결책들',
       },
       {
-        title: 'React와 Next.js를 활용한 인터랙티브 UI 개발',
-        tags: ['React', 'Next.js', 'UI/UX'],
+        title: 'React에서 카카오맵 API로 지오코딩 구현하기',
+        tags: ['React', '카카오맵API', '지오코딩', 'useRef', 'API연동'],
         description:
-          'React와 Next.js를 사용하여 인터랙티브한 사용자 경험을 제공하는 방법에 대한 글입니다.',
-        url: 'https://example.com/react-nextjs-interactive-ui',
+          '오늘 React 프로젝트에서 카카오맵 API를 사용해 지도 기능을 구현해야 했다. 특히 좌표와 주소를 서로 변환하는 지오코딩 기능이 필요했는데, 처음 써보는 거라 이것저것 삽질을 많이 했다.',
+        url: 'https://velog.io/@sum529/TIL-React에서-카카오맵-API로-지오코딩-구현하기',
+      },
+      {
+        title: 'Tanstack Query와 useEffect의 무한 루프 함정',
+        tags: ['React', 'useCallback', 'useEffect'],
+        description:
+          '상품 등록/수정 페이지에서 기존 상품 정보를 불러올 때, 아무런 로직을 하지않아도  alert 경고 문구가 계속 뜨고 무한 루프가 발생했다...',
+        url: 'https://velog.io/@sum529/Trouble-Shooting-Tanstack-Query와-useEffect의-무한-루프-함정',
+      },
+      {
+        title: 'Tanstack Query에서 data.data 중첩 문제',
+        tags: ['React', 'DoubleWrapping', 'Tanstack Query'],
+        description:
+          'Tanstack Query의 useQuery를 사용하는데 반환된 데이터가 data.data와 같이 중첩되어 있었다. return { data, error }; 코드가 문제가 되는 이유는 이중 래핑(double wrapping) 때문이다',
+        url: 'https://velog.io/@sum529/Trouble-Shooting-Tanstack-Query에서-data.data-중첩-문제',
       },
     ],
   },
