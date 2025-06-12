@@ -54,7 +54,7 @@ export const generateMetadata = async ({ params }: PageParams) => {
 
 const page = ({ params }: PageParams) => {
   const projectId = params.id;
-  const projectTitle = projectId.replace('-', ' ').toUpperCase();
+  const projectTitle = projectId.replace(/-/g, ' ').toUpperCase();
   return (
     <div className='container relative mx-auto min-h-screen max-w-full px-4 py-20 pb-[100px]'>
       <SectionTitle
