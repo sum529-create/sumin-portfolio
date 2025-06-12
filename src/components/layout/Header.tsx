@@ -1,7 +1,8 @@
 'use client';
 
-import { useState, useEffect, useCallback, useMemo } from 'react';
+import { useState, useEffect, useCallback, useMemo, MouseEvent } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useParams, useRouter } from 'next/navigation';
 
 // 상수 정의
 const HEADER_HEIGHT = 80;
@@ -15,9 +16,17 @@ type NavItem = {
 };
 
 const Header = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState('');
+  const [isScrolled, setIsScrolled] = useState<boolean>(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false);
+  const [activeSection, setActiveSection] = useState<string>('');
+  const [isNotHome, setIsNotHome] = useState<boolean>(false);
+
+  const params = useParams();
+  const router = useRouter();
+
+  useEffect(() => {
+    setIsNotHome(Boolean(params?.id));
+  }, [params]);
 
   // 네비게이션 아이템 메모이제이션
   const navItems = useMemo<NavItem[]>(
@@ -172,6 +181,17 @@ const Header = () => {
     [isScrolled]
   );
 
+  // 로고 클릭 핸들러
+  const handleNavClickWrapper = (
+    e: MouseEvent<HTMLButtonElement | HTMLAnchorElement>
+  ) => {
+    if (isNotHome) {
+      router.push('/');
+    } else {
+      scrollToSection('home');
+    }
+  };
+
   return (
     <motion.header
       className={headerClassName}
@@ -179,10 +199,10 @@ const Header = () => {
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
     >
-      <div className='container mx-auto flex h-16 items-center justify-between px-4 max-w-5xl'>
+      <div className='container mx-auto flex h-16 max-w-5xl items-center justify-between px-4'>
         <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
           <button
-            onClick={() => scrollToSection('home')}
+            onClick={(e) => handleNavClickWrapper(e)}
             className='text-xl font-bold text-primary'
             aria-label='홈으로 이동'
           >
@@ -262,8 +282,8 @@ const Header = () => {
               aria-hidden='true'
             />
             <motion.div
-              className={`fixed right-0 top-0 bg-background/95 backdrop-blur-md md:hidden z-40 h-screen`}
-              style={{width: `${MOBILE_MENU_WIDTH}px`}}
+              className={`fixed right-0 top-0 z-40 h-screen bg-background/95 backdrop-blur-md md:hidden`}
+              style={{ width: `${MOBILE_MENU_WIDTH}px` }}
               initial='closed'
               animate='open'
               exit='closed'
