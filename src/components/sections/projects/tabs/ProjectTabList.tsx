@@ -1,5 +1,5 @@
 import { TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { BrickWallFire, Lightbulb, NotebookPen, Wrench } from 'lucide-react';
+import { Flame, Lightbulb, NotebookPen, Wrench } from 'lucide-react';
 
 const ProjectTabList = () => {
   return (
@@ -37,7 +37,7 @@ const ProjectTabList = () => {
       >
         <span className='hidden sm:inline'>트러블슈팅</span>
         <span className='sm:hidden'>
-          <BrickWallFire />
+          <Flame />
         </span>
       </TabsTrigger>
     </TabsList>
