@@ -1,5 +1,5 @@
 'use client';
-import { projectsData } from '@/constants/projects';
+import { projectsSummary } from '@/constants/projects-summary';
 import SectionTitle from './SectionTitle';
 import ProjectCard from './projects/ProjectCard';
 
@@ -12,7 +12,7 @@ export default function ProjectSection() {
           subTitle='나의 프로젝트들'
           ariaLabel='프로젝트 섹션'
         />
-        {projectsData.map((data, i) => (
+        {projectsSummary.map((data, i) => (
           <ProjectCard i={i} data={data} key={data.id} />
         ))}
       </div>

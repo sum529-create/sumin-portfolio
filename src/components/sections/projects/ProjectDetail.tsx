@@ -1,16 +1,17 @@
 'use client';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Tabs } from '@/components/ui/tabs';
 import { ArrowLeft } from 'lucide-react';
 import { notFound, useRouter } from 'next/navigation';
-import { projectsData } from '@/constants/projects';
 import ProjectOutline from './tabs/ProjectOutline';
 import ProjectTabList from './tabs/ProjectTabList';
 import ProjectTopSection from './ProjectTopSection';
 import ProjectSkillStack from './tabs/ProjectSkillStack';
 import ProjectRetrospection from './tabs/ProjectRetrospection';
 import ProjectBlog from './tabs/ProjectBlog';
+import { useProjectDetail } from '@/hooks/useProjectData';
+import { projectsSummary } from '@/constants/projects-summary';
 
 interface ProjectDetailProps {
   projectId: string;
@@ -19,13 +20,17 @@ interface ProjectDetailProps {
 export default function ProjectDetail({ projectId }: ProjectDetailProps) {
   const router = useRouter();
   const [activeTab, setActiveTab] = useState('overview');
+  const { projectDetail, loading, error } = useProjectDetail(projectId);
+  if (loading) return <div>로딩 중...</div>;
+  if (error) return <div>에러: {error}</div>;
 
-  // 실제 프로젝트 데이터 가져오기
-  const project = projectsData.find((p) => p.id === projectId);
-
-  if (!project) {
+  const summary = projectsSummary.find((p) => p.id === projectId);
+  if (!summary) {
     return notFound();
   }
+  if (!projectDetail) return null;
+
+  const { outline, skillStack, retrospection, blogPosts } = projectDetail;
 
   return (
     <div className='min-h-screen py-12 md:px-6 lg:px-8'>
@@ -42,20 +47,20 @@ export default function ProjectDetail({ projectId }: ProjectDetailProps) {
       </div>
 
       {/* 상위 섹션 */}
-      <ProjectTopSection project={project} />
+      <ProjectTopSection summary={summary} projectDetail={projectDetail} />
 
       {/* 탭 섹션 */}
       <Tabs value={activeTab} onValueChange={setActiveTab} className='w-full'>
         {/* 탭 리스트 */}
         <ProjectTabList />
         {/* 개요 탭 */}
-        <ProjectOutline outline={project.outline} />
+        <ProjectOutline outline={outline} />
         {/* 기술스택 탭 */}
-        <ProjectSkillStack skillStack={project.skillStack} />
+        <ProjectSkillStack skillStack={skillStack} />
         {/* 회고 탭 */}
-        <ProjectRetrospection retrospection={project.retrospection} />
+        <ProjectRetrospection retrospection={retrospection} />
         {/* 트러블슈팅 탭 */}
-        <ProjectBlog blogPosts={project.blogPosts} />
+        <ProjectBlog blogPosts={blogPosts} />
       </Tabs>
     </div>
   );

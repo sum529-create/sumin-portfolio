@@ -30,7 +30,7 @@ export interface ProjectRetrospectionType {
 export interface BlogPost extends ProjectTagCard {
   url: string;
 }
-export interface ProjectData {
+export interface ProjectSummary {
   id: string;
   title: string;
   subtitle: string;
@@ -38,13 +38,15 @@ export interface ProjectData {
   description: string[];
   gradientColor: string;
   image: string;
-  projectImages: string[];
   favicon: string;
   githubUrl: string;
   demoUrl: string;
+}
+export interface ProjectDetail {
   overview: ProjectOverview;
   outline: ProjectOutlineType;
   skillStack: ProjectTagCard[];
   retrospection: ProjectRetrospectionType[];
   blogPosts: BlogPost[];
+  projectImages: string[];
 }

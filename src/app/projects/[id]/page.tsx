@@ -1,9 +1,9 @@
 import ProjectDetail from '@/components/sections/projects/ProjectDetail';
 import SectionTitle from '@/components/sections/SectionTitle';
-import { projectsData } from '@/constants/projects';
+import { projectsSummary } from '@/constants/projects-summary';
 
 export async function generateStaticParams() {
-  return projectsData.map(({ id }) => ({ id }));
+  return projectsSummary.map(({ id }) => ({ id }));
 }
 
 interface PageParams {
@@ -42,7 +42,6 @@ export const generateMetadata = async ({ params }: PageParams) => {
         },
       ],
     },
-    themeColor: '#6366F1',
     robots: 'index, follow',
   };
 };
@@ -50,6 +49,18 @@ export const generateMetadata = async ({ params }: PageParams) => {
 const page = ({ params }: PageParams) => {
   const projectId = params.id;
   const projectTitle = projectId.replace(/-/g, ' ').toUpperCase();
+
+  const projectExists = projectsSummary.some(
+    (project) => project.id === projectId
+  );
+  if (!projectExists) {
+    return (
+      <div className='text-center text-red-500'>
+        프로젝트를 찾을 수 없습니다.
+      </div>
+    );
+  }
+
   return (
     <div className='container relative mx-auto min-h-screen max-w-full px-4 py-20 pb-[100px]'>
       <SectionTitle
@@ -57,7 +68,7 @@ const page = ({ params }: PageParams) => {
         subTitle={`${projectTitle} 프로젝트에 대한 상세 정보입니다.`}
         ariaLabel={`${projectTitle} 프로젝트 섹션`}
       />
-      <ProjectDetail projectId={params.id} />
+      <ProjectDetail projectId={projectId} />
     </div>
   );
 };

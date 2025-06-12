@@ -1,11 +1,11 @@
 'use client';
-import { ProjectData } from '@/types/project';
+import { ProjectSummary } from '@/types/project';
 import { motion } from 'framer-motion';
 import type { Variants } from 'framer-motion';
 import Link from 'next/link';
 
 interface CardProps {
-  data: ProjectData;
+  data: ProjectSummary;
   i: number;
 }
 

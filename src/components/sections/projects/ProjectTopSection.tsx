@@ -7,7 +7,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from '@/components/ui/carousel';
-import { ProjectData } from '@/types/project';
+import { ProjectDetail, ProjectSummary } from '@/types/project';
 import {
   Award,
   BookOpen,
@@ -21,22 +21,26 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 interface ProjectTopSectionProps {
-  project: ProjectData;
+  summary: ProjectSummary;
+  projectDetail: ProjectDetail;
 }
 
-const ProjectTopSection = ({ project }: ProjectTopSectionProps) => {
+const ProjectTopSection = ({
+  summary,
+  projectDetail,
+}: ProjectTopSectionProps) => {
   return (
     <div className='mb-16 grid gap-10 lg:grid-cols-2'>
       {/* 프로젝트 이미지 캐로셀 */}
       <div className='relative aspect-[16/10] overflow-hidden rounded-2xl shadow-2xl'>
         <Carousel className='w-full'>
           <CarouselContent>
-            {project.projectImages.map((image, index) => (
+            {projectDetail.projectImages.map((image, index) => (
               <CarouselItem key={index}>
                 <div className='relative aspect-[16/10] bg-black/20 backdrop-blur-sm'>
                   <Image
-                    src={`/images/${project.id}/${image}`}
-                    alt={`${project.title} 스크린샷 ${index + 1}`}
+                    src={`/images/${summary.id}/${image}`}
+                    alt={`${summary.title} 스크린샷 ${index + 1}`}
                     fill
                     className='object-cover transition-transform duration-300 hover:scale-105'
                     onError={(e) => {
@@ -58,19 +62,19 @@ const ProjectTopSection = ({ project }: ProjectTopSectionProps) => {
         <div className='flex items-start gap-6'>
           <div className='flex h-10 w-10 items-center justify-center rounded-2xl border border-white/20 bg-black/20 shadow-lg backdrop-blur-md'>
             <Image
-              src={project.favicon || '/images/default-favicon.png'}
+              src={summary.favicon || '/images/default-favicon.png'}
               fill
               alt='Project Favicon'
             />
           </div>
           <div className='flex-1'>
             <h1 className='mb-3 bg-gradient-to-r from-white to-white/90 bg-clip-text text-4xl font-bold text-transparent'>
-              {project.title}
+              {summary.title}
             </h1>
             <p className='mb-4 text-xl font-medium text-white/90'>
-              {project.subtitle}
+              {summary.subtitle}
             </p>
-            <p className='text-sm text-white/70'>{project.techStack}</p>
+            <p className='text-sm text-white/70'>{summary.techStack}</p>
           </div>
         </div>
 
@@ -81,7 +85,7 @@ const ProjectTopSection = ({ project }: ProjectTopSectionProps) => {
             asChild
           >
             <Link
-              href={project.githubUrl}
+              href={summary.githubUrl}
               target='_blank'
               rel='noopener noreferrer'
             >
@@ -95,7 +99,7 @@ const ProjectTopSection = ({ project }: ProjectTopSectionProps) => {
             asChild
           >
             <Link
-              href={project.demoUrl}
+              href={summary.demoUrl}
               target='_blank'
               rel='noopener noreferrer'
             >
@@ -103,7 +107,7 @@ const ProjectTopSection = ({ project }: ProjectTopSectionProps) => {
               Live Demo
             </Link>
           </Button>
-          {project.id === 'uuno' && (
+          {summary.id === 'uuno' && (
             <Button
               variant='outline'
               className='flex items-center gap-2 border border-white/20 bg-black/20 text-white backdrop-blur-md transition-colors duration-200 hover:bg-white/10'
@@ -130,7 +134,7 @@ const ProjectTopSection = ({ project }: ProjectTopSectionProps) => {
                 <div>
                   <span className='text-white/60'>개발기간</span>
                   <p className='font-medium text-white'>
-                    {project.overview.period}
+                    {projectDetail.overview.period}
                   </p>
                 </div>
               </div>
@@ -139,7 +143,7 @@ const ProjectTopSection = ({ project }: ProjectTopSectionProps) => {
                 <div>
                   <span className='text-white/60'>팀구성</span>
                   <p className='font-medium text-white'>
-                    {project.overview.teamComposition}
+                    {projectDetail.overview.teamComposition}
                   </p>
                 </div>
               </div>
@@ -148,7 +152,7 @@ const ProjectTopSection = ({ project }: ProjectTopSectionProps) => {
                 <div>
                   <span className='text-white/60'>담당</span>
                   <p className='font-medium text-white'>
-                    {project.overview.role}
+                    {projectDetail.overview.role}
                   </p>
                 </div>
               </div>
@@ -157,7 +161,7 @@ const ProjectTopSection = ({ project }: ProjectTopSectionProps) => {
                 <div>
                   <span className='text-white/60'>성과</span>
                   <p className='break-keep font-medium text-white'>
-                    {project.overview.performance}
+                    {projectDetail.overview.performance}
                   </p>
                 </div>
               </div>
