@@ -10,6 +10,7 @@ const Loader = () => {
 
   useEffect(() => {
     // 초기 로딩 상태 설정
+    setIsLoading(true);
     document.body.style.overflow = 'hidden'; // 스크롤 방지
 
     // 배경 준비를 위한 약간의 지연
@@ -17,10 +18,11 @@ const Loader = () => {
       setIsLoading(false);
 
       // 로딩이 끝난 후 콘텐츠를 표시하기 위한 약간의 추가 지연
-      setTimeout(() => {
+      const revealTimer = setTimeout(() => {
         setContentVisible(true);
         document.body.style.overflow = ''; // 스크롤 다시 활성화
       }, 100);
+      return () => clearTimeout(revealTimer);
     }, 800); // 배경 애니메이션이 준비될 충분한 시간
 
     return () => {
