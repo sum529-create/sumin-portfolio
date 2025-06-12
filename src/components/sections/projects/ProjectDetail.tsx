@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Tabs } from '@/components/ui/tabs';
 import { ArrowLeft } from 'lucide-react';
-import { useRouter } from 'next/navigation';
+import { notFound, useRouter } from 'next/navigation';
 import { projectsData } from '@/constants/projects';
 import ProjectOutline from './tabs/ProjectOutline';
 import ProjectTabList from './tabs/ProjectTabList';
@@ -24,7 +24,7 @@ export default function ProjectDetail({ projectId }: ProjectDetailProps) {
   const project = projectsData.find((p) => p.id === projectId);
 
   if (!project) {
-    return <div>프로젝트를 찾을 수 없습니다.</div>;
+    return notFound();
   }
 
   return (
