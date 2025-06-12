@@ -25,9 +25,7 @@ const Header = () => {
   const router = useRouter();
 
   useEffect(() => {
-    if (params && params.id) {
-      setIsNotHome(true);
-    }
+    setIsNotHome(Boolean(params?.id));
   }, [params]);
 
   // 네비게이션 아이템 메모이제이션
