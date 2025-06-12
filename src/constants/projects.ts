@@ -575,7 +575,7 @@ export const projectsData: ProjectData[] = [
     blogPosts: [
       {
         title: '나를 괴롭히는 SupaBase의 RLS 및 blob url 설정',
-        tags: ['Baas', 'RLS', 'Blob URL', 'Supabase'],
+        tags: ['BaaS', 'RLS', 'Blob URL', 'Supabase'],
         description:
           'Supabase에서 이미지 미리보기를 구현할 때 storage에 먼저 이미지를 올려야 하는 점이 마음에 들지 않았다. 서버에 올리지 않고 이미지 미리보기를 해줄수 있는 방법이 없을까?',
         url: 'https://velog.io/@sum529/TIL-코드-닌자의-무기창고-리액트-개발-현장의-숨겨진-해결책들',
