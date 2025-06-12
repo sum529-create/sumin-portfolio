@@ -24,7 +24,7 @@ export interface ProjectTagCard {
   tags: string[];
   description: string;
 }
-export interface ProjectRetrospection {
+export interface ProjectRetrospectionData {
   content: ProjectTextCard[];
 }
 export interface ProjectData {
@@ -42,7 +42,7 @@ export interface ProjectData {
   overview: ProjectOverview;
   outline: ProjectOutline;
   skillStack: ProjectTagCard[];
-  retrospection: ProjectRetrospection[];
+  retrospection: ProjectRetrospectionData[];
   blogPosts: (ProjectTagCard & { url: string })[];
 }
 export const projectsData: ProjectData[] = [

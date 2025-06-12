@@ -1,10 +1,11 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { TabsContent } from '@/components/ui/tabs';
-import type { ProjectRetrospection } from '@/constants/projects';
+import type { ProjectRetrospectionData } from '@/constants/projects';
 import { Lightbulb, ThumbsDown, ThumbsUp } from 'lucide-react';
+import { cn } from '@/lib/utils';
 
 interface ProjectRetrospectionProps {
-  retrospection: ProjectRetrospection[];
+  retrospection: ProjectRetrospectionData[];
 }
 
 const ProjectRetrospection = ({ retrospection }: ProjectRetrospectionProps) => {
@@ -28,7 +29,10 @@ const ProjectRetrospection = ({ retrospection }: ProjectRetrospectionProps) => {
         {retrospection.map((item, index) => (
           <Card
             key={titleData[index].cardTitle}
-            className={`${index === 2 && 'col-span-1 md:col-span-2'} border border-white/10 bg-black/20 shadow-xl backdrop-blur-md transition-all duration-300 hover:shadow-2xl`}
+            className={cn(
+              index === 2 && 'col-span-1 md:col-span-2',
+              'border border-white/10 bg-black/20 shadow-xl backdrop-blur-md transition-all duration-300 hover:shadow-2xl'
+            )}
           >
             <CardHeader>
               <CardTitle
