@@ -42,7 +42,7 @@ const ContactSection = () => {
 
             {/* 연락처 정보 */}
             <div className='mt-8 border-t border-purple-500/20 pt-6 text-center'>
-              <div className='flex flex-col items-center justify-center gap-4 text-sm text-muted-foreground sm:flex-row'>
+              <div className='flex flex-col items-center justify-center gap-4 text-sm text-muted sm:flex-row'>
                 <span className='flex items-center gap-2'>
                   <IoMailOpenOutline />
                   <span>nosumin29@gmail.com</span>
