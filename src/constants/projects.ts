@@ -601,322 +601,187 @@ export const projectsData: ProjectData[] = [
     ],
   },
   {
-    id: 'buzz-chatly',
-    title: 'BUZZ CHATLY',
-    subtitle: '실시간 SNS 플랫폼',
-    techStack: 'React • JavaScript • Firebase',
-    description: ['실시간 소셜 미디어', '네트워킹 서비스'],
-    gradientColor: 'rgb(72, 187, 120)',
-    image: '/images/buzz-chatly.png',
+    id: 'lol-stats-tracker',
+    title: 'LOL Stats Tracker',
+    subtitle: '리그 오브 레전드 정보 앱',
+    techStack: 'React • Next.js • API',
+    description: ['리그 오브 레전드 챔피언 정보', '챔피언 스킬 정보'],
+    gradientColor: 'rgb(179, 58, 58)',
+    image: '/images/lol-stats-tracker.png',
     projectImages: [
-      'unno-card-detail.png',
-      'unno-card-list.png',
-      'unno-editor.png',
-      'uuno-main.png',
-      'uuno-shared.png',
-      'uuno-template-list.png',
+      'lol-stats-tracker-main.png',
+      'lol-stats-tracker-main-dark.png',
+      'lol-stats-tracker-champion-list.png',
+      'lol-stats-tracker-detail.png',
+      'lol-stats-tracker-item-list.png',
+      'lol-stats-tracker-champion-rotation.png',
     ],
-    favicon: '/images/uuno/uuno-favicon.png',
-    githubUrl: 'https://github.com/lyra-j/uuno',
-    demoUrl: 'https://www.uuno.kr/',
+    favicon: '/images/lol-stats-tracker/lol-stats-tracker-favicon.png',
+    githubUrl: 'https://github.com/sum529-create/lol-stats-tracker',
+    demoUrl: 'https://lol-stats-tracker.vercel.app/',
     overview: {
-      period: '2025.04.09 - 2025.04.30',
-      role: '프론트엔드 개발자',
-      teamComposition: '6명(FE 4명, DE 2명)',
-      performance: '통계 분석 및 사용자 경험 개선',
+      period: '2025.03.10 - 2025.03.18',
+      role: '프론트엔드 개발',
+      teamComposition: '1명(FE 1명)',
+      performance: '리그 오브 레전드 챔피언 정보 제공',
     },
     outline: {
       intro: {
         introText:
-          'UUNO는 스마트 명함 서비스로, 사용자가 드래그 앤 드롭 방식으로 쉽게 명함을 제작하고, 실시간으로 사용자 반응을 차트로 시각화하여 제공하는 인터랙티브 디지털 명함 플랫폼입니다.',
+          'LOL Stats Tracker는 리그 오브 레전드(LoL) 게임의 챔피언 정보를 제공하는 웹 애플리케이션입니다. Riot Games의 공식 API를 활용하여 실시간으로 챔피언 정보, 스킬, 로테이션 데이터 등을 조회할 수 있습니다. 다양한 Next.js 렌더링 전략을 활용하여 최적의 성능과 사용자 경험을 제공하는 반응형 웹 애플리케이션입니다.',
         features: [
-          '드래그 앤 드롭 방식의 명함 제작',
-          '실시간 사용자 반응 차트',
-          '다양한 템플릿 제공',
-          '모바일 및 데스크톱 최적화',
+          '리그 오브 레전드 챔피언 정보 및 실시간 로테이션 데이터 제공',
+          '챔피언 검색 및 상세 정보 조회 기능',
+          '다크 모드 지원 및 반응형 디자인 적용',
+          'Next.js 다양한 렌더링 전략(SSG, SSR, ISR, CSR) 활용',
+          'Riot Games API를 활용한 실시간 데이터 제공',
         ],
       },
       achievements: {
         projects: [
-          'UUNO 프로젝트를 통해 팀워크와 협업 능력을 향상시켰습니다.',
-          '사용자 경험을 개선하기 위해 통계 분석 도구를 활용하여 데이터 기반 의사 결정을 내렸습니다.',
+          'Next.js의 다양한 렌더링 전략(SSG, SSR, ISR, CSR)을 적재적소에 활용하여 성능 최적화',
+          'TanStack Query를 활용한 효율적인 서버 상태 관리 및 캐싱 구현',
+          'Tailwind CSS를 활용한 반응형 디자인으로 모든 디바이스에서 최적화된 사용자 경험 제공',
+          'TypeScript 적용으로 타입 안전성 확보 및 개발 생산성 향상',
         ],
         collaboration: [
-          '프론트엔드 개발에 대한 심화 강의를 수강하며 최신 기술 트렌드를 학습했습니다.',
-          'UI/UX 디자인 원칙에 대한 강의를 통해 사용자 중심의 디자인 접근 방식을 익혔습니다.',
+          'GitHub를 통한 체계적인 버전 관리 및 프로젝트 문서화',
+          'Riot Games API 연동 및 에러 처리 로직 구현',
+          'Next.js 배포 최적화 및 성능 모니터링',
         ],
       },
       rolesAndResponsibilities: [
         {
-          cardTitle: '서브리더',
+          cardTitle: '프론트엔드 개발',
           cardContent:
-            '프로젝트 진행 상황을 관리하고, 팀원 간의 원활한 소통을 도모했습니다. 또한, 개발 일정 조율과 코드 리뷰를 통해 프로젝트 품질을 높였습니다.',
+            'Next.js와 TypeScript를 사용하여 타입 안전성이 보장된 컴포넌트를 구현했습니다. TanStack Query를 활용한 서버 상태 관리와 Tailwind CSS를 통한 반응형 디자인을 구현하여 사용자 경험을 최적화했습니다.',
         },
         {
-          cardTitle: '공유 시스템',
+          cardTitle: '성능 최적화',
           cardContent:
-            '사용자가 만든 명함을 다른 사용자와 쉽게 공유할 수 있는 시스템을 구현했습니다. 이를 통해 사용자 간의 네트워킹을 촉진하고, 서비스의 활용도를 높였습니다.',
+            'Next.js의 다양한 렌더링 전략을 활용하여 페이지별로 최적의 성능을 구현했습니다. ISR로 챔피언 목록, SSR로 상세 페이지, SSG로 아이템 정보, CSR로 실시간 로테이션을 구현하여 전반적인 성능을 향상시켰습니다.',
         },
         {
-          cardTitle: '통계 분석',
+          cardTitle: 'API 연동 및 상태 관리',
           cardContent:
-            '사용자 반응 데이터를 수집하고 분석하여, 명함 디자인과 기능 개선에 활용했습니다. 이를 통해 사용자 경험을 지속적으로 향상시켰습니다.',
+            'Riot Games API와의 안정적인 연동을 구현하고, TanStack Query를 활용하여 효율적인 데이터 캐싱과 에러 처리를 구현했습니다. 사용자가 끊임없이 최신 데이터를 조회할 수 있도록 실시간 데이터 업데이트 시스템을 구축했습니다.',
         },
       ],
     },
     skillStack: [
       {
         title: 'Frontend',
-        tags: ['React', 'Next.js', 'TypeScript', 'Konva', 'Chart.js'],
+        tags: [
+          'Next.js',
+          'React',
+          'TypeScript',
+          'Tailwind CSS',
+          'TanStack Query',
+        ],
         description:
-          'React와 Next.js를 사용하여 인터랙티브한 사용자 경험을 제공하며, Konva와 Chart.js를 활용하여 실시간 차트 시각화를 구현했습니다.',
+          'Next.js와 TypeScript를 기반으로 타입 안전성이 보장된 컴포넌트를 구현했습니다. TanStack Query를 활용한 효율적인 서버 상태 관리와 Tailwind CSS를 통한 반응형 디자인을 구현했습니다.',
       },
       {
-        title: 'Tools & Deployment',
-        tags: ['Vercel', 'GitHub', 'Prettier', 'ESLint'],
+        title: 'API & Data Management',
+        tags: ['Riot Games API', 'REST API', 'Data Fetching', 'Error Handling'],
         description:
-          'Vercel을 통해 배포하고, GitHub를 사용하여 버전 관리를 수행했습니다.',
+          'Riot Games의 공식 API를 활용하여 챔피언 데이터와 로테이션 정보를 실시간으로 제공합니다. 안정적인 API 연동과 에러 처리 로직을 구현했습니다.',
       },
       {
-        title: 'Backend',
-        tags: ['Supabase'],
+        title: 'Performance & Deployment',
+        tags: ['SSG', 'SSR', 'ISR', 'CSR', 'Vercel', 'GitHub'],
         description:
-          'Supabase를 사용하여 실시간 데이터베이스와 인증 기능을 구현했습니다.',
+          'Next.js의 다양한 렌더링 전략을 활용하여 페이지별 최적화를 구현했습니다. Vercel을 통해 자동 배포 파이프라인을 구축하고 GitHub로 버전 관리를 수행했습니다.',
       },
     ],
     retrospection: [
       {
         content: [
           {
-            cardTitle: '체계적인 프로젝트 관리',
+            cardTitle: '렌더링 전략 최적화 성공',
             cardContent:
-              '프로젝트 초기 단계에서 명확한 목표 설정과 역할 분담을 통해 체계적으로 프로젝트를 관리할 수 있었습니다.',
+              'Next.js의 다양한 렌더링 전략을 페이지 특성에 맞게 적용하여 최적의 성능을 달성했습니다. 정적인 데이터는 SSG, 동적인 데이터는 SSR/ISR, 실시간 데이터는 CSR로 구분하여 구현했습니다.',
           },
           {
-            cardTitle: '적극적인 의사소통',
+            cardTitle: 'TanStack Query 도입 성과',
             cardContent:
-              '팀원 간의 원활한 소통으로 문제 상황을 빠르게 공유하고 해결책을 함께 모색할 수 있었습니다.',
+              'TanStack Query를 활용하여 서버 상태 관리를 효율적으로 처리했습니다. 자동 캐싱, 백그라운드 업데이트, 에러 처리 등을 통해 사용자 경험을 크게 향상시켰습니다.',
           },
           {
-            cardTitle: '사용자 중심 개발',
+            cardTitle: '반응형 디자인 구현',
             cardContent:
-              '사용자 피드백을 적극 수집하고 반영하여 실제로 사용하기 편한 서비스를 만들 수 있었습니다.',
-          },
-        ],
-      },
-      {
-        content: [
-          {
-            cardTitle: '테스트 코드 부족',
-            cardContent:
-              '개발 일정에 쫓겨 테스트 코드 작성을 충분히 하지 못했습니다. 이로 인해 버그 발견이 늦어지는 경우가 있었습니다.',
-          },
-          {
-            cardTitle: '성능 최적화 미흡',
-            cardContent:
-              '초기 번들 사이즈가 커서 로딩 속도가 느린 문제가 있었습니다. 코드 스플리팅 적용이 늦어졌습니다.',
-          },
-          {
-            cardTitle: '문서화 부족',
-            cardContent:
-              '프로젝트 문서화가 부족하여 신규 팀원이 프로젝트에 적응하는 데 어려움을 겪었습니다. 문서화를 체계적으로 진행할 필요가 있습니다.',
+              'Tailwind CSS를 활용하여 모바일부터 데스크톱까지 모든 디바이스에서 최적화된 사용자 경험을 제공했습니다. 다크 모드 지원으로 사용자 선호도에 맞는 인터페이스를 제공했습니다.',
           },
         ],
       },
       {
         content: [
           {
-            cardTitle: '테스트 코드 작성',
+            cardTitle: 'API 호출 최적화 부족',
             cardContent:
-              '향후 프로젝트에서는 테스트 코드를 우선적으로 작성하여 코드 품질을 높이고, 버그 발생을 최소화할 계획입니다.',
+              '초기에는 API 호출 횟수와 타이밍을 충분히 고려하지 않아 불필요한 네트워크 요청이 발생했습니다. 이후 TanStack Query의 캐싱 전략을 개선하여 API 호출을 최적화했습니다.',
           },
           {
-            cardTitle: '성능 최적화',
+            cardTitle: '초기 로딩 성능 이슈',
             cardContent:
-              '코드 스플리팅과 이미지 최적화를 통해 초기 로딩 속도를 개선하고, 사용자 경험을 향상시킬 예정입니다.',
+              '많은 챔피언 데이터를 한 번에 로드하다 보니 초기 로딩 시간이 길었습니다. 이후 페이지네이션과 무한 스크롤을 적용하여 점진적 로딩으로 개선했습니다.',
           },
           {
-            cardTitle: '문서화 강화',
+            cardTitle: '에러 처리 미흡',
             cardContent:
-              '프로젝트 문서를 체계적으로 작성하여 신규 팀원이 쉽게 이해하고 참여할 수 있도록 할 것입니다.',
+              'API 에러나 네트워크 오류에 대한 사용자 피드백이 부족했습니다. 이후 에러 바운더리와 로딩 상태, 에러 메시지를 개선하여 사용자 경험을 향상시켰습니다.',
+          },
+        ],
+      },
+      {
+        content: [
+          {
+            cardTitle: '성능 모니터링 강화',
+            cardContent:
+              '향후 프로젝트에서는 Web Vitals와 성능 모니터링 도구를 활용하여 실시간 성능 지표를 추적하고, 지속적인 성능 개선을 진행할 계획입니다.',
+          },
+          {
+            cardTitle: '접근성 개선',
+            cardContent:
+              '웹 접근성 가이드라인을 준수하여 키보드 네비게이션, 스크린 리더 지원 등을 개선하고, 모든 사용자가 편리하게 이용할 수 있는 웹사이트를 구축할 예정입니다.',
+          },
+          {
+            cardTitle: '추가 기능 확장',
+            cardContent:
+              '챔피언 비교 기능, 개인 즐겨찾기, 빌드 추천 시스템 등의 고급 기능을 추가하여 더욱 유용한 서비스로 발전시킬 계획입니다. 또한 실시간 게임 데이터 연동도 고려하고 있습니다.',
           },
         ],
       },
     ],
     blogPosts: [
       {
-        title: 'UUNO 프로젝트 소개',
-        tags: ['프로젝트', '디지털 명함', 'React'],
+        title: 'Next.js 환경변수와 이미지 설정 트러블슈팅',
+        tags: ['Next.js', 'next/image', '환경변수', '외부 이미지'],
         description:
-          'UUNO 프로젝트의 개요와 주요 기능, 개발 과정에 대한 블로그 글입니다.',
-        url: 'https://example.com/uuno-project-introduction',
+          'Next.js에서 환경변수 사용법과 next/image 컴포넌트로 외부 이미지 불러올 때 발생하는 "구성되지 않은 호스트" 오류 해결 방법을 정리했습니다. LOL API 연동 과정에서 겪은 실제 문제와 해결 과정을 공유합니다.',
+        url: 'https://velog.io/@sum529/Trouble-Shooting-Next.js-환경변수와-이미지-설정-트러블슈팅',
       },
       {
-        title: 'React와 Next.js를 활용한 인터랙티브 UI 개발',
-        tags: ['React', 'Next.js', 'UI/UX'],
+        title: 'async/await 말고 use()를 사용해보자',
+        tags: ['Next.js', 'generateMetadata', '서버 컴포넌트', 'metadata'],
         description:
-          'React와 Next.js를 사용하여 인터랙티브한 사용자 경험을 제공하는 방법에 대한 글입니다.',
-        url: 'https://example.com/react-nextjs-interactive-ui',
+          'Next.js에서 use() 쓰다가 generateMetadata()에서 터진 경험담. 왜 안 되는지, 언제 use() 쓰고 언제 await 써야 하는지 여러차레 시도해보면서 알아낸 것들 정리해봤어요',
+        url: 'https://velog.io/@sum529/프로젝트-의사결정-모바일-대응..-훅으로-아니면-전역상태-관리로',
       },
-    ],
-  },
-  {
-    id: 'echo-wave',
-    title: 'ECHO WAVE',
-    subtitle: '실시간 단체 채팅 앱',
-    techStack: 'Vue.js • TypeScript • Firebase',
-    description: ['실시간 채팅과', '단체 커뮤니케이션 서비스'],
-    gradientColor: 'rgb(236, 72, 153)',
-    image: '/images/echo-wave.png',
-    projectImages: [
-      'unno-card-detail.png',
-      'unno-card-list.png',
-      'unno-editor.png',
-      'uuno-main.png',
-      'uuno-shared.png',
-      'uuno-template-list.png',
-    ],
-    favicon: '/images/uuno/uuno-favicon.png',
-    githubUrl: 'https://github.com/lyra-j/uuno',
-    demoUrl: 'https://www.uuno.kr/',
-    overview: {
-      period: '2025.04.09 - 2025.04.30',
-      role: '프론트엔드 개발자',
-      teamComposition: '6명(FE 4명, DE 2명)',
-      performance: '통계 분석 및 사용자 경험 개선',
-    },
-    outline: {
-      intro: {
-        introText:
-          'UUNO는 스마트 명함 서비스로, 사용자가 드래그 앤 드롭 방식으로 쉽게 명함을 제작하고, 실시간으로 사용자 반응을 차트로 시각화하여 제공하는 인터랙티브 디지털 명함 플랫폼입니다.',
-        features: [
-          '드래그 앤 드롭 방식의 명함 제작',
-          '실시간 사용자 반응 차트',
-          '다양한 템플릿 제공',
-          '모바일 및 데스크톱 최적화',
+      {
+        title: 'Next.js 다크모드 구현 중 발생한 하이드레이션 오류..',
+        tags: [
+          'Next.js',
+          'next-themes',
+          '하이드레이션 오류',
+          'suppressHydrationWarning',
+          '다크모드',
+          'SSR',
+          'CSR',
         ],
-      },
-      achievements: {
-        projects: [
-          'UUNO 프로젝트를 통해 팀워크와 협업 능력을 향상시켰습니다.',
-          '사용자 경험을 개선하기 위해 통계 분석 도구를 활용하여 데이터 기반 의사 결정을 내렸습니다.',
-        ],
-        collaboration: [
-          '프론트엔드 개발에 대한 심화 강의를 수강하며 최신 기술 트렌드를 학습했습니다.',
-          'UI/UX 디자인 원칙에 대한 강의를 통해 사용자 중심의 디자인 접근 방식을 익혔습니다.',
-        ],
-      },
-      rolesAndResponsibilities: [
-        {
-          cardTitle: '서브리더',
-          cardContent:
-            '프로젝트 진행 상황을 관리하고, 팀원 간의 원활한 소통을 도모했습니다. 또한, 개발 일정 조율과 코드 리뷰를 통해 프로젝트 품질을 높였습니다.',
-        },
-        {
-          cardTitle: '공유 시스템',
-          cardContent:
-            '사용자가 만든 명함을 다른 사용자와 쉽게 공유할 수 있는 시스템을 구현했습니다. 이를 통해 사용자 간의 네트워킹을 촉진하고, 서비스의 활용도를 높였습니다.',
-        },
-        {
-          cardTitle: '통계 분석',
-          cardContent:
-            '사용자 반응 데이터를 수집하고 분석하여, 명함 디자인과 기능 개선에 활용했습니다. 이를 통해 사용자 경험을 지속적으로 향상시켰습니다.',
-        },
-      ],
-    },
-    skillStack: [
-      {
-        title: 'Frontend',
-        tags: ['React', 'Next.js', 'TypeScript', 'Konva', 'Chart.js'],
         description:
-          'React와 Next.js를 사용하여 인터랙티브한 사용자 경험을 제공하며, Konva와 Chart.js를 활용하여 실시간 차트 시각화를 구현했습니다.',
-      },
-      {
-        title: 'Tools & Deployment',
-        tags: ['Vercel', 'GitHub', 'Prettier', 'ESLint'],
-        description:
-          'Vercel을 통해 배포하고, GitHub를 사용하여 버전 관리를 수행했습니다.',
-      },
-      {
-        title: 'Backend',
-        tags: ['Supabase'],
-        description:
-          'Supabase를 사용하여 실시간 데이터베이스와 인증 기능을 구현했습니다.',
-      },
-    ],
-    retrospection: [
-      {
-        content: [
-          {
-            cardTitle: '체계적인 프로젝트 관리',
-            cardContent:
-              '프로젝트 초기 단계에서 명확한 목표 설정과 역할 분담을 통해 체계적으로 프로젝트를 관리할 수 있었습니다.',
-          },
-          {
-            cardTitle: '적극적인 의사소통',
-            cardContent:
-              '팀원 간의 원활한 소통으로 문제 상황을 빠르게 공유하고 해결책을 함께 모색할 수 있었습니다.',
-          },
-          {
-            cardTitle: '사용자 중심 개발',
-            cardContent:
-              '사용자 피드백을 적극 수집하고 반영하여 실제로 사용하기 편한 서비스를 만들 수 있었습니다.',
-          },
-        ],
-      },
-      {
-        content: [
-          {
-            cardTitle: '테스트 코드 부족',
-            cardContent:
-              '개발 일정에 쫓겨 테스트 코드 작성을 충분히 하지 못했습니다. 이로 인해 버그 발견이 늦어지는 경우가 있었습니다.',
-          },
-          {
-            cardTitle: '성능 최적화 미흡',
-            cardContent:
-              '초기 번들 사이즈가 커서 로딩 속도가 느린 문제가 있었습니다. 코드 스플리팅 적용이 늦어졌습니다.',
-          },
-          {
-            cardTitle: '문서화 부족',
-            cardContent:
-              '프로젝트 문서화가 부족하여 신규 팀원이 프로젝트에 적응하는 데 어려움을 겪었습니다. 문서화를 체계적으로 진행할 필요가 있습니다.',
-          },
-        ],
-      },
-      {
-        content: [
-          {
-            cardTitle: '테스트 코드 작성',
-            cardContent:
-              '향후 프로젝트에서는 테스트 코드를 우선적으로 작성하여 코드 품질을 높이고, 버그 발생을 최소화할 계획입니다.',
-          },
-          {
-            cardTitle: '성능 최적화',
-            cardContent:
-              '코드 스플리팅과 이미지 최적화를 통해 초기 로딩 속도를 개선하고, 사용자 경험을 향상시킬 예정입니다.',
-          },
-          {
-            cardTitle: '문서화 강화',
-            cardContent:
-              '프로젝트 문서를 체계적으로 작성하여 신규 팀원이 쉽게 이해하고 참여할 수 있도록 할 것입니다.',
-          },
-        ],
-      },
-    ],
-    blogPosts: [
-      {
-        title: 'UUNO 프로젝트 소개',
-        tags: ['프로젝트', '디지털 명함', 'React'],
-        description:
-          'UUNO 프로젝트의 개요와 주요 기능, 개발 과정에 대한 블로그 글입니다.',
-        url: 'https://example.com/uuno-project-introduction',
-      },
-      {
-        title: 'React와 Next.js를 활용한 인터랙티브 UI 개발',
-        tags: ['React', 'Next.js', 'UI/UX'],
-        description:
-          'React와 Next.js를 사용하여 인터랙티브한 사용자 경험을 제공하는 방법에 대한 글입니다.',
-        url: 'https://example.com/react-nextjs-interactive-ui',
+          'Next.js에서 next-themes로 다크모드 구현 중 발생한 하이드레이션 불일치 오류 해결기. SSR과 CSR 차이로 인한 문제 원인을 분석하고 suppressHydrationWarning을 활용한 해결 과정을 정리했습니다.',
+        url: 'https://velog.io/@sum529/Trouble-Shooting-모바일에서-애니메이션이-안-꺼지는-이유',
       },
     ],
   },

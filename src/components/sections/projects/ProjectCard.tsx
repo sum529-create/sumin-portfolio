@@ -17,10 +17,8 @@ const getTextColor = (projectId: string) => {
       return 'text-[#3b82f6]';
     case 'green-deal':
       return 'text-[#34d399]';
-    case 'buzz-chatly':
-      return 'text-[#48bb78]';
-    case 'echo-wave':
-      return 'text-[#ec4899]';
+    case 'lol-stats-tracker':
+      return 'text-[#b33a3a]';
     case 'portfolio':
       return 'text-[#8b5cf6]';
     default:

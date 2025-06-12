@@ -30,7 +30,7 @@ const ProjectOutline = ({ outline }: ProjectOutlineProps) => {
                 {outline.intro.features.map((feature, index) => (
                   <li
                     key={index}
-                    className='flex items-start gap-3 rounded-lg bg-white/5 p-3 text-white/80'
+                    className='flex items-center gap-3 rounded-lg bg-white/5 p-3 text-white/80'
                   >
                     <span className='text-lg text-primary'>•</span>
                     {feature}
@@ -56,7 +56,7 @@ const ProjectOutline = ({ outline }: ProjectOutlineProps) => {
                 {outline.achievements.projects.map((item, index) => (
                   <li
                     key={index}
-                    className='flex items-start gap-3 rounded-lg bg-white/5 p-3 text-white/80'
+                    className='flex items-center gap-3 rounded-lg bg-white/5 p-3 text-white/80'
                   >
                     <span className='text-lg text-green-500'>✓</span>
                     {item}
@@ -71,7 +71,7 @@ const ProjectOutline = ({ outline }: ProjectOutlineProps) => {
                 {outline.achievements.collaboration.map((item, index) => (
                   <li
                     key={index}
-                    className='flex items-start gap-3 rounded-lg bg-white/5 p-3 text-white/80'
+                    className='flex items-center gap-3 rounded-lg bg-white/5 p-3 text-white/80'
                   >
                     <Lightbulb className='mt-1 h-4 w-4 flex-shrink-0 text-yellow-500' />
                     {item}

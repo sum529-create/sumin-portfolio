@@ -4,10 +4,9 @@ import SectionTitle from '@/components/sections/SectionTitle';
 export async function generateStaticParams() {
   return [
     { id: 'medi-click' },
-    { id: 'echo-wave' },
     { id: 'green-deal' },
-    { id: 'buzz-chatly' },
     { id: 'uuno' },
+    { id: 'lol-stats-tracker' },
     { id: 'portfolio' },
   ];
 }
