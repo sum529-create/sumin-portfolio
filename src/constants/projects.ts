@@ -8,7 +8,7 @@ export interface ProjectTextCard {
   cardTitle: string;
   cardContent: string;
 }
-export interface ProjectOutline {
+export interface ProjectOutlineType {
   intro: {
     introText: string;
     features: string[];
@@ -24,7 +24,7 @@ export interface ProjectTagCard {
   tags: string[];
   description: string;
 }
-export interface ProjectRetrospectionData {
+export interface ProjectRetrospectionType {
   content: ProjectTextCard[];
 }
 export interface ProjectData {
@@ -40,9 +40,9 @@ export interface ProjectData {
   githubUrl: string;
   demoUrl: string;
   overview: ProjectOverview;
-  outline: ProjectOutline;
+  outline: ProjectOutlineType;
   skillStack: ProjectTagCard[];
-  retrospection: ProjectRetrospectionData[];
+  retrospection: ProjectRetrospectionType[];
   blogPosts: (ProjectTagCard & { url: string })[];
 }
 export const projectsData: ProjectData[] = [

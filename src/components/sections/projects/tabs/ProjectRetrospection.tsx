@@ -1,11 +1,11 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { TabsContent } from '@/components/ui/tabs';
-import type { ProjectRetrospectionData } from '@/constants/projects';
+import type { ProjectRetrospectionType } from '@/constants/projects';
 import { Lightbulb, ThumbsDown, ThumbsUp } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 interface ProjectRetrospectionProps {
-  retrospection: ProjectRetrospectionData[];
+  retrospection: ProjectRetrospectionType[];
 }
 
 const ProjectRetrospection = ({ retrospection }: ProjectRetrospectionProps) => {

@@ -59,7 +59,7 @@ const CardBlock = React.forwardRef<
 >(({ title, children, className, ...props }, ref) => (
   <div ref={ref} className={cn('space-y-4', className)} {...props}>
     <h4 className='text-lg font-medium text-white'>{title}</h4>
-    <ul className='space-y-3 text-sm'>{children}</ul>
+    {children}
   </div>
 ));
 CardBlock.displayName = 'CardBlock';
