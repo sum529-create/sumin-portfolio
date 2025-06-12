@@ -15,10 +15,10 @@ export const useScrollPosition = () => {
     const updateScrollData = () => {
       const currentScrollY = window.scrollY;
       const scrollVelocity = currentScrollY - lastScrollY;
+      const totalScrollable =
+        document.documentElement.scrollHeight - window.innerHeight;
       const scrollProgress =
-        currentScrollY /
-        (document.documentElement.scrollHeight - window.innerHeight);
-
+        totalScrollable > 0 ? currentScrollY / totalScrollable : 0;
       setScrollData({
         scrollY: currentScrollY,
         scrollVelocity,
