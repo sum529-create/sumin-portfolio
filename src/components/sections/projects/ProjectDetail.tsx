@@ -28,7 +28,7 @@ export default function ProjectDetail({ projectId }: ProjectDetailProps) {
   }
 
   return (
-    <div className='min-h-screen px-4 py-12 md:px-6 lg:px-8'>
+    <div className='min-h-screen py-12 md:px-6 lg:px-8'>
       {/* 뒤로가기 버튼 */}
       <div className='mb-10'>
         <Button
