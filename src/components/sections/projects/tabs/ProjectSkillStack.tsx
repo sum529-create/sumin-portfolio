@@ -6,8 +6,8 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
+import { TabsContent } from '@/components/ui/tabs';
 import type { ProjectTagCard } from '@/constants/projects';
-import { TabsContent } from '@radix-ui/react-tabs';
 
 interface ProjectSkillStackProps {
   skillStack: ProjectTagCard[];
