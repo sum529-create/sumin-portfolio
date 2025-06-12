@@ -1,3 +1,4 @@
+import { IconType } from 'react-icons';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import { MdEmail } from 'react-icons/md';
 
@@ -29,8 +30,8 @@ export const contacts: ContactItem[] = [
     rel: 'noopener noreferrer',
   },
 ];
-export const iconMap = {
+export const iconMap: Record<ContactItem['label'], IconType> = {
   Email: MdEmail,
   GitHub: FaGithub,
   LinkedIn: FaLinkedin,
-} as const;
+};
