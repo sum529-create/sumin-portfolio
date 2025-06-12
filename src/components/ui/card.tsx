@@ -62,7 +62,7 @@ const CardBlock = React.forwardRef<
     <ul className='space-y-3 text-sm'>{children}</ul>
   </div>
 ));
-CardDescription.displayName = 'CardBlock';
+CardBlock.displayName = 'CardBlock';
 
 const CardContent = React.forwardRef<
   HTMLDivElement,
