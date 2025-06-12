@@ -1,4 +1,10 @@
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import {
+  Card,
+  CardBlock,
+  CardContent,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card';
 import { TabsContent } from '@/components/ui/tabs';
 import type { ProjectOutline } from '@/constants/projects';
 import { Award, Lightbulb, Target, Users } from 'lucide-react';
@@ -24,20 +30,17 @@ const ProjectOutline = ({ outline }: ProjectOutlineProps) => {
               {outline.intro.introText}
             </p>
 
-            <div className='space-y-4'>
-              <h4 className='text-lg font-medium text-white'>주요 기능</h4>
-              <ul className='space-y-3 text-sm'>
-                {outline.intro.features.map((feature, index) => (
-                  <li
-                    key={index}
-                    className='flex items-center gap-3 rounded-lg bg-white/5 p-3 text-white/80'
-                  >
-                    <span className='text-lg text-primary'>•</span>
-                    {feature}
-                  </li>
-                ))}
-              </ul>
-            </div>
+            <CardBlock title='주요 기능'>
+              {outline.intro.features.map((feature, index) => (
+                <li
+                  key={index}
+                  className='flex items-center gap-3 rounded-lg bg-white/5 p-3 text-white/80'
+                >
+                  <span className='text-lg text-primary'>•</span>
+                  {feature}
+                </li>
+              ))}
+            </CardBlock>
           </CardContent>
         </Card>
 
@@ -50,35 +53,29 @@ const ProjectOutline = ({ outline }: ProjectOutlineProps) => {
             </CardTitle>
           </CardHeader>
           <CardContent className='space-y-6'>
-            <div className='space-y-4'>
-              <h4 className='text-lg font-medium text-white'>프로젝트 성과</h4>
-              <ul className='space-y-3 text-sm'>
-                {outline.achievements.projects.map((item, index) => (
-                  <li
-                    key={index}
-                    className='flex items-center gap-3 rounded-lg bg-white/5 p-3 text-white/80'
-                  >
-                    <span className='text-lg text-green-500'>✓</span>
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
+            <CardBlock title='프로젝트 성과'>
+              {outline.achievements.projects.map((item, index) => (
+                <li
+                  key={index}
+                  className='flex items-center gap-3 rounded-lg bg-white/5 p-3 text-white/80'
+                >
+                  <span className='text-lg text-green-500'>✓</span>
+                  {item}
+                </li>
+              ))}
+            </CardBlock>
 
-            <div className='space-y-4'>
-              <h4 className='text-lg font-medium text-white'>협업 성과</h4>
-              <ul className='space-y-3 text-sm'>
-                {outline.achievements.collaboration.map((item, index) => (
-                  <li
-                    key={index}
-                    className='flex items-center gap-3 rounded-lg bg-white/5 p-3 text-white/80'
-                  >
-                    <Lightbulb className='mt-1 h-4 w-4 flex-shrink-0 text-yellow-500' />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
+            <CardBlock title='협업 성과'>
+              {outline.achievements.collaboration.map((item, index) => (
+                <li
+                  key={index}
+                  className='flex items-center gap-3 rounded-lg bg-white/5 p-3 text-white/80'
+                >
+                  <Lightbulb className='mt-1 h-4 w-4 flex-shrink-0 text-yellow-500' />
+                  {item}
+                </li>
+              ))}
+            </CardBlock>
           </CardContent>
         </Card>
       </div>
