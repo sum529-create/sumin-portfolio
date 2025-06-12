@@ -28,7 +28,7 @@ const ProjectRetrospection = ({ retrospection }: ProjectRetrospectionProps) => {
         {retrospection.map((item, index) => (
           <Card
             key={titleData[index].cardTitle}
-            className={`${index === 2 && 'col-span-2'} border border-white/10 bg-black/20 shadow-xl backdrop-blur-md transition-all duration-300 hover:shadow-2xl`}
+            className={`${index === 2 && 'col-span-1 md:col-span-2'} border border-white/10 bg-black/20 shadow-xl backdrop-blur-md transition-all duration-300 hover:shadow-2xl`}
           >
             <CardHeader>
               <CardTitle
