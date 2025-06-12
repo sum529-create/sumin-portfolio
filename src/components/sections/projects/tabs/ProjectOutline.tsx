@@ -6,7 +6,7 @@ import {
   CardTitle,
 } from '@/components/ui/card';
 import { TabsContent } from '@/components/ui/tabs';
-import type { ProjectOutlineType } from '@/constants/projects';
+import { ProjectOutlineType } from '@/types/project';
 import { Award, Lightbulb, Target, Users } from 'lucide-react';
 
 interface ProjectOutlineProps {

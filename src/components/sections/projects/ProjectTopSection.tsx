@@ -7,7 +7,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from '@/components/ui/carousel';
-import { ProjectData } from '@/constants/projects';
+import { ProjectData } from '@/types/project';
 import {
   Award,
   BookOpen,

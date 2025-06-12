@@ -7,7 +7,7 @@ import {
   CardTitle,
 } from '@/components/ui/card';
 import { TabsContent } from '@/components/ui/tabs';
-import type { ProjectTagCard } from '@/constants/projects';
+import { ProjectTagCard } from '@/types/project';
 
 interface ProjectSkillStackProps {
   skillStack: ProjectTagCard[];

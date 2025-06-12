@@ -7,11 +7,11 @@ import {
   CardTitle,
 } from '@/components/ui/card';
 import { TabsContent } from '@/components/ui/tabs';
-import { ProjectTagCard } from '@/constants/projects';
+import { BlogPost } from '@/types/project';
 import Link from 'next/link';
 
 interface ProjectBlogProps {
-  blogPosts: Array<ProjectTagCard & { url: string }>;
+  blogPosts: BlogPost[];
 }
 
 const ProjectBlog = ({ blogPosts }: ProjectBlogProps) => {

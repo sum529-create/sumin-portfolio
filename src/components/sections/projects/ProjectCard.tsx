@@ -1,5 +1,5 @@
 'use client';
-import { ProjectData } from '@/constants/projects';
+import { ProjectData } from '@/types/project';
 import { motion } from 'framer-motion';
 import type { Variants } from 'framer-motion';
 import Link from 'next/link';
