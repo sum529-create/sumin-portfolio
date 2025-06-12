@@ -89,8 +89,7 @@ const config: Config = {
           light: '#F87171',
           dark: '#DC2626',
         },
-        border: '#E2E8F0',
-        'border-dark': '#334155',
+        border: '#334155',
         input: '#E2E8F0',
         'input-dark': '#334155',
         ring: '#6366F1',
@@ -181,6 +180,6 @@ const config: Config = {
       },
     },
   },
-  plugins: [require('tailwindcss-animate'), require('@tailwindcss/line-clamp')],
+  plugins: [require('tailwindcss-animate')],
 };
 export default config;
