@@ -45,6 +45,7 @@ function ProjectCard({ data, i }: CardProps) {
       href={`/projects/${id}`}
       aria-label={`${id} 프로젝트 상세 페이지로 이동`}
       className='group relative z-10 block'
+      prefetch
     >
       <motion.div
         className={`card-container-${i} relative mb-[-120px] flex justify-center overflow-hidden pt-28`}
