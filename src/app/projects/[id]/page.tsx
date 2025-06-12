@@ -1,14 +1,9 @@
 import ProjectDetail from '@/components/sections/projects/ProjectDetail';
 import SectionTitle from '@/components/sections/SectionTitle';
+import { projectsData } from '@/constants/projects';
 
 export async function generateStaticParams() {
-  return [
-    { id: 'medi-click' },
-    { id: 'green-deal' },
-    { id: 'uuno' },
-    { id: 'lol-stats-tracker' },
-    { id: 'portfolio' },
-  ];
+  return projectsData.map(({ id }) => ({ id }));
 }
 
 interface PageParams {
