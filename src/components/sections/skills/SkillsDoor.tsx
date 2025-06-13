@@ -9,6 +9,7 @@ const SkillsDoor = () => {
       <div
         className='scroll-door-animate relative w-1/2 overflow-hidden border-r border-cyan-400/30 bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900 shadow-2xl'
         data-direction='doorLeft'
+        aria-hidden='true'
         style={{
           boxShadow:
             '0 0 20px rgba(6, 182, 212, 0.3), inset 0 0 20px rgba(6, 182, 212, 0.1)',
@@ -56,6 +57,7 @@ const SkillsDoor = () => {
       <div
         className='scroll-door-animate relative w-1/2 overflow-hidden border-l border-purple-400/30 bg-gradient-to-bl from-slate-900 via-purple-900 to-indigo-900 shadow-2xl'
         data-direction='doorRight'
+        aria-hidden='true'
         style={{
           boxShadow:
             '0 0 20px rgba(168, 85, 247, 0.3), inset 0 0 20px rgba(168, 85, 247, 0.1)',
