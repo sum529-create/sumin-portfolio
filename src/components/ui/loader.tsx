@@ -21,18 +21,19 @@ const Loader = () => {
       const revealTimer = setTimeout(() => {
         setContentVisible(true);
         document.body.style.overflow = ''; // 스크롤 다시 활성화
-      }, 100);
+      }, 50);
       return () => clearTimeout(revealTimer);
-    }, 800); // 배경 애니메이션이 준비될 충분한 시간
+    }, 500);
 
     return () => {
       clearTimeout(loadingTimer);
       document.body.style.overflow = '';
     };
-  }, []);
+  }, [setIsLoading, setContentVisible]);
+
   return (
     <div
-      className='fixed inset-0 z-50 flex items-center justify-center bg-[#050510] transition-opacity duration-1000'
+      className='fixed inset-0 z-50 flex items-center justify-center bg-background transition-all duration-700 ease-in-out'
       role='progressbar'
       aria-busy={isLoading}
       aria-label='페이지 로딩 중'
@@ -40,8 +41,9 @@ const Loader = () => {
         opacity: isLoading ? 1 : 0,
         visibility: isLoading ? 'visible' : 'hidden',
         transitionProperty: 'opacity, visibility',
-        transitionDuration: '1s, 0s',
-        transitionDelay: '0s, 1s',
+        transitionDuration: '0.7s, 0s',
+        transitionDelay: '0s, 0.7s',
+        transitionTimingFunction: 'cubic-bezier(0.4, 0, 0.2, 1)',
       }}
     >
       <div className='flex flex-col items-center'>
