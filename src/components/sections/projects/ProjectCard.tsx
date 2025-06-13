@@ -3,6 +3,7 @@ import { ProjectSummary } from '@/types/project';
 import { motion } from 'framer-motion';
 import type { Variants } from 'framer-motion';
 import Link from 'next/link';
+import Image from 'next/image';
 
 interface CardProps {
   data: ProjectSummary;
@@ -83,7 +84,16 @@ function ProjectCard({ data, i }: CardProps) {
           }}
         >
           {/* 메인 이미지 */}
-          <img className='h-full w-full object-cover' src={image} alt={title} />
+          <Image
+            className='h-full w-full object-cover'
+            src={image}
+            alt={title}
+            fill
+            loading='lazy'
+            quality={75}
+            placeholder='blur'
+            blurDataURL='data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAb/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWEREiMxUf/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=='
+          />
 
           {/* 좌측 그라데이션 오버레이 */}
           <div

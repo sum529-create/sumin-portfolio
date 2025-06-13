@@ -29,10 +29,15 @@ const pretendard = localFont({
   variable: '--font-pretendard',
   display: 'swap',
   preload: true,
+  fallback: ['system-ui', 'arial'],
 });
 
 export const metadata: Metadata = {
-  title: '프론트엔드 개발자 | 노수민',
+  metadataBase: new URL('https://sumin-portfolio-sigma.vercel.app'),
+  title: {
+    default: '프론트엔드 개발자 | 노수민',
+    template: '%s | 노수민의 포트폴리오',
+  },
   description:
     '사용자 중심의 UI와 인터렉티브 웹 개발에 관심이 많은 프론트엔드 개발자 노수민의 포트폴리오 입니다.',
   keywords: [
@@ -69,6 +74,13 @@ export const metadata: Metadata = {
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
   },
 };
 
@@ -88,6 +100,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='ko' className={pretendard.variable}>
+      <head>
+        <link rel='preconnect' href='https://fonts.googleapis.com' />
+        <link
+          rel='preconnect'
+          href='https://fonts.gstatic.com'
+          crossOrigin='anonymous'
+        />
+      </head>
       <body className='min-h-screen overflow-x-hidden bg-background antialiased'>
         <ClientLayoutWrapper>{children}</ClientLayoutWrapper>
       </body>
