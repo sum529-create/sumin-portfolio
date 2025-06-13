@@ -57,16 +57,19 @@ export default function ScrollAnimations({
     // ScrollTrigger와 Lenis 연결
     ScrollTrigger.refresh();
 
-    ScrollTrigger.create({
-      trigger: '.skill-box',
-      start: 'top center',
-      onEnter: () => {
-        gsap.set('.skill-box', { zIndex: 10, delay: 1 });
-      },
-      onLeaveBack: () => {
-        gsap.set('.skill-box', { zIndex: 0 });
-      },
-    });
+    const skillBox = document.querySelector('.skill-box');
+    if (skillBox) {
+      ScrollTrigger.create({
+        trigger: '.skill-box',
+        start: 'top center',
+        onEnter: () => {
+          gsap.set('.skill-box', { zIndex: 10, delay: 1 });
+        },
+        onLeaveBack: () => {
+          gsap.set('.skill-box', { zIndex: 0 });
+        },
+      });
+    }
 
     // 섹션별 애니메이션 설정
     const sections = container.querySelectorAll('section');
