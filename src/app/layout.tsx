@@ -27,6 +27,8 @@ const pretendard = localFont({
     },
   ],
   variable: '--font-pretendard',
+  display: 'swap',
+  preload: true,
 });
 
 export const metadata: Metadata = {
@@ -86,7 +88,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='ko' className={pretendard.variable}>
-      <body className='overflow-x-hidden antialiased'>
+      <body className='min-h-screen overflow-x-hidden bg-background antialiased'>
         <ClientLayoutWrapper>{children}</ClientLayoutWrapper>
       </body>
     </html>
