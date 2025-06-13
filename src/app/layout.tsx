@@ -47,9 +47,6 @@ export const metadata: Metadata = {
     '프로그래밍',
     '웹 디자인',
   ],
-  icons: {
-    icon: '/favicon.ico',
-  },
   openGraph: {
     type: 'website',
     locale: 'ko_KR',
