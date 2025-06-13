@@ -88,8 +88,8 @@ export const viewport = {
   initialScale: 1,
   width: 'device-width',
   height: 'device-height',
-  maximumScale: 2,
-  userScalable: false,
+  maximumScale: 5,
+  userScalable: true,
   themeColor: '#6366f1',
 };
 

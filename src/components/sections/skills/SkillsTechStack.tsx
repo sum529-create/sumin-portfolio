@@ -30,6 +30,7 @@ const SkillsTechStack = () => {
     <div className='md:skill-box relative inset-0 p-4 md:p-6'>
       <div
         className='md:scroll-door-animate grid h-full grid-cols-1 gap-4 overflow-y-auto md:grid-cols-3 md:gap-6 md:overflow-hidden'
+        role='list'
         {...(showContent && { 'data-direction': 'doorContent' })}
       >
         {/* 현재 주력기술 */}

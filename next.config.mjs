@@ -16,7 +16,6 @@ const nextConfig = {
   experimental: {
     optimizeCss: true,
     optimizePackageImports: [
-      '@/components',
       'framer-motion',
       '@react-three/fiber',
       'three',
@@ -52,18 +51,52 @@ const nextConfig = {
         maxAsyncRequests: 30,
         maxInitialRequests: 30,
         cacheGroups: {
-          defaultVendors: {
-            test: /[\\/]node_modules[\\/]/,
-            priority: -10,
-            reuseExistingChunk: true,
+          // 프레임워크 코드 분리
+          framework: {
+            name: 'framework',
+            test: /[\\/]node_modules[\\/](react|react-dom|scheduler|prop-types|use-subscription)[\\/]/,
+            priority: 40,
+            enforce: true,
           },
-          default: {
-            minChunks: 2,
-            priority: -20,
-            reuseExistingChunk: true,
+          // 애니메이션 관련 코드 분리
+          animations: {
+            name: 'animations',
+            test: /[\\/]node_modules[\\/](framer-motion)[\\/]/,
+            priority: 30,
+            enforce: true,
+          },
+          // 3D 관련 코드 분리
+          three: {
+            name: 'three',
+            test: /[\\/]node_modules[\\/](three|@react-three)[\\/]/,
+            priority: 20,
+            enforce: true,
+          },
+          // 공통 컴포넌트
+          components: {
+            name: 'components',
+            test: /[\\/]components[\\/]/,
+            priority: 10,
+            enforce: true,
+          },
+          // 나머지 node_modules
+          lib: {
+            test: /[\\/]node_modules[\\/]/,
+            name(module) {
+              const packageName = module.context.match(
+                /[\\/]node_modules[\\/](.*?)([\\/]|$)/
+              )[1];
+              return `npm.${packageName.replace('@', '')}`;
+            },
+            priority: 5,
           },
         },
       };
+
+      // 프로덕션 빌드 최적화
+      config.optimization.minimize = true;
+      config.optimization.moduleIds = 'deterministic';
+      config.optimization.runtimeChunk = 'single';
     }
     return config;
   },
