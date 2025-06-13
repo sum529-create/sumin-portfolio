@@ -93,7 +93,7 @@ const HeroSection = ({ contentVisible = false }: HeroSectionProps) => {
       id='home'
       className='relative flex min-h-screen items-center justify-center'
       style={{ contentVisibility: 'auto' }}
-      aria-labelledby='hero-title'
+      aria-labelledby='hero-heading'
     >
       <div
         className='container relative z-20 mx-auto max-w-full px-4'
@@ -124,28 +124,27 @@ const HeroSection = ({ contentVisible = false }: HeroSectionProps) => {
             initial='hidden'
             animate={isVisible ? 'visible' : 'hidden'}
           >
-            {LINES.map((line, index) => (
-              <motion.div
-                key={index}
-                variants={prefersReducedMotion ? {} : itemVariants}
-                className={`text-4xl font-bold md:text-6xl ${
-                  line.includes('프론트엔드')
-                    ? 'text-secondary'
-                    : line.includes("'노수민'")
-                      ? 'text-accent'
-                      : 'text-white'
-                }`}
-                id={index === 0 ? 'hero-title' : undefined}
-                aria-level={index + 1}
-              >
-                {line}
-              </motion.div>
-            ))}
+            <div role='heading' aria-level={1} id='hero-heading'>
+              {LINES.map((line, index) => (
+                <motion.div
+                  key={index}
+                  variants={prefersReducedMotion ? {} : itemVariants}
+                  className={`text-4xl font-bold md:text-6xl ${
+                    line.includes('프론트엔드')
+                      ? 'text-secondary'
+                      : line.includes("'노수민'")
+                        ? 'text-accent'
+                        : 'text-white'
+                  }`}
+                >
+                  {line}
+                </motion.div>
+              ))}
+            </div>
 
             <motion.p
               variants={prefersReducedMotion ? {} : itemVariants}
               className='text-xl text-gray-300'
-              aria-label='소개 문구'
             >
               창의적인 웹 경험을 디자인하고 개발합니다
             </motion.p>

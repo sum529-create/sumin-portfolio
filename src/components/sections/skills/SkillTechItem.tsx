@@ -45,13 +45,19 @@ const SkillTechItem = ({
     return (
       <div
         className={`rounded-lg border border-slate-600/50 bg-slate-800/80 p-4 transition-colors duration-200 ${containerClassName}`}
+        role='listitem'
+        aria-label={`${name} 기술 스택`}
       >
         <div className='space-y-2 text-center'>
           <div className='flex items-center justify-center gap-4'>
             <div
               className={`flex ${containerSizes.lg} items-center justify-center rounded-lg ${iconBgClassName}`}
+              aria-hidden='true'
             >
-              <Icon className={`${iconSizes.lg} ${iconClassName}`} />
+              <Icon
+                className={`${iconSizes.lg} ${iconClassName}`}
+                aria-hidden='true'
+              />
             </div>
           </div>
           <div>
@@ -76,12 +82,18 @@ const SkillTechItem = ({
     return (
       <div
         className={`rounded-lg border border-slate-600/50 bg-slate-800/80 p-2.5 transition-colors duration-200 ${containerClassName}`}
+        role='listitem'
+        aria-label={`${name} 기술 스택`}
       >
         <div className='flex items-center space-x-2'>
           <div
             className={`flex ${containerSizes[iconSize]} items-center justify-center rounded-md ${iconBgClassName}`}
+            aria-hidden='true'
           >
-            <Icon className={`${iconSizes[iconSize]} ${iconClassName}`} />
+            <Icon
+              className={`${iconSizes[iconSize]} ${iconClassName}`}
+              aria-hidden='true'
+            />
           </div>
           <div className='min-w-0 flex-1'>
             <div className='text-sm font-medium text-white'>{name}</div>
@@ -101,6 +113,7 @@ const SkillTechItem = ({
       <div className='flex items-center space-x-2'>
         <div
           className={`flex ${containerSizes[iconSize]} items-center justify-center rounded-md ${textIconClassName}`}
+          aria-hidden='true'
         >
           {textIcon || name.charAt(0).toUpperCase()}
         </div>
