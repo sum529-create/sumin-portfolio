@@ -22,7 +22,7 @@ const IntroSection = () => {
                 </p>
               </div>
               <div className='scroll-animate' data-direction='right'>
-                <p className='ml-10 rounded-lg bg-gradient-to-r from-primary/10 to-transparent px-4 py-5 text-base text-gray-300 md:text-lg'>
+                <p className='rounded-lg bg-gradient-to-r from-primary/10 to-transparent px-4 py-5 text-base text-gray-300 md:ml-10 md:text-lg'>
                   <span className='mr-4 text-lg text-muted md:text-xl'>A.</span>
                   {item.answerTxt}
                 </p>

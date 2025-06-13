@@ -1,0 +1,71 @@
+import { ProjectSummary } from '@/types/project';
+
+export const projectsSummary: ProjectSummary[] = [
+  {
+    id: 'uuno',
+    title: 'UUNO',
+    subtitle: '스마트 명함 서비스',
+    techStack: 'Next.js • Konva • Chart.js',
+    description: [
+      '사용자 반응을 실시간 차트로 시각화',
+      '드래그 앤 드롭으로 쉽게 명함 제작',
+      '인터랙티브 디지털 명함 서비스',
+    ],
+    gradientColor: 'rgb(99, 102, 241)',
+    image: '/images/uuno.png',
+    favicon: '/images/uuno/uuno-favicon.png',
+    githubUrl: 'https://github.com/lyra-j/uuno',
+    demoUrl: 'https://www.uuno.kr/',
+  },
+  {
+    id: 'medi-click',
+    title: 'MEDICLICK',
+    subtitle: '병원 예약 시스템',
+    techStack: 'React • Next.js • TypeScript',
+    description: ['카카오맵으로 병원을 찾고', '클릭 한 번으로 예약 완료'],
+    gradientColor: 'rgb(59, 130, 246)',
+    image: '/images/medi-click.png',
+    favicon: '/images/medi-click/medi-click-favicon.png',
+    githubUrl: 'https://github.com/SuimKim/medi-click',
+    demoUrl: 'https://medi-click-liart.vercel.app/',
+  },
+  {
+    id: 'green-deal',
+    title: 'GREEN DEAL',
+    subtitle: '친환경 중고거래',
+    techStack: 'React • Zustand • Tailwind CSS',
+    description: ['위치 기반 중고 물품', '거래 플랫폼'],
+    gradientColor: 'rgb(34, 197, 94)',
+    image: '/images/green-deal.png',
+
+    favicon: '/images/green-deal/green-deal-favicon.png',
+    githubUrl: 'https://github.com/ImJaeOne/green-deal',
+    demoUrl: 'https://green-deal.vercel.app/',
+  },
+  {
+    id: 'lol-stats-tracker',
+    title: 'LOL Stats Tracker',
+    subtitle: '리그 오브 레전드 정보 앱',
+    techStack: 'React • Next.js • API',
+    description: ['리그 오브 레전드 챔피언 정보', '챔피언 스킬 정보'],
+    gradientColor: 'rgb(179, 58, 58)',
+    image: '/images/lol-stats-tracker.png',
+
+    favicon: '/images/lol-stats-tracker/lol-stats-tracker-favicon.png',
+    githubUrl: 'https://github.com/sum529-create/lol-stats-tracker',
+    demoUrl: 'https://lol-stats-tracker.vercel.app/',
+  },
+  {
+    id: 'portfolio',
+    title: 'PORTFOLIO',
+    subtitle: '개인 포트폴리오',
+    techStack: 'Next.js • GSAP • Tailwind',
+    description: ['우주 테마의 인터랙티브', '포트폴리오 웹사이트'],
+    gradientColor: 'rgb(139, 92, 246)',
+    image: '/images/portfolio.png',
+
+    favicon: '/images/portfolio/portfolio-favicon.png',
+    githubUrl: 'https://github.com/sum529-create/sumin-portfolio',
+    demoUrl: 'https://sumin-portfolio-sigma.vercel.app/',
+  },
+];
