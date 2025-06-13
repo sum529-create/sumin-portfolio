@@ -1,130 +1,53 @@
 'use client';
 
-import dynamic from 'next/dynamic';
-import { Suspense } from 'react';
-import { useLoadingStore } from '@/store/loadingStore';
 import ScrollAnimations from '@/components/animations/ScrollAnimations';
 import HeroSection from '@/components/sections/HeroSection';
-
-// 동적 임포트로 변경
-const IntroSection = dynamic(
-  () => import('@/components/sections/IntroSection'),
-  {
-    loading: () => (
-      <div className='h-96 animate-pulse rounded-lg bg-gray-200' />
-    ),
-    ssr: false,
-  }
-);
-
-const SkillsSection = dynamic(
-  () => import('@/components/sections/SkillsSection'),
-  {
-    loading: () => (
-      <div className='h-96 animate-pulse rounded-lg bg-gray-200' />
-    ),
-    ssr: false,
-  }
-);
-
-const ExperienceSection = dynamic(
-  () => import('@/components/sections/ExperienceSection'),
-  {
-    loading: () => (
-      <div className='h-96 animate-pulse rounded-lg bg-gray-200' />
-    ),
-    ssr: false,
-  }
-);
-
-const BlogSection = dynamic(() => import('@/components/sections/BlogSection'), {
-  loading: () => <div className='h-96 animate-pulse rounded-lg bg-gray-200' />,
-  ssr: false,
-});
-
-const ProjectSection = dynamic(
-  () => import('@/components/sections/ProjectSection'),
-  {
-    loading: () => (
-      <div className='h-96 animate-pulse rounded-lg bg-gray-200' />
-    ),
-    ssr: false,
-  }
-);
-
-const ContactSection = dynamic(
-  () => import('@/components/sections/ContactSection'),
-  {
-    loading: () => (
-      <div className='h-96 animate-pulse rounded-lg bg-gray-200' />
-    ),
-    ssr: false,
-  }
-);
+import IntroSection from '@/components/sections/IntroSection';
+import SkillsSection from '@/components/sections/SkillsSection';
+import ProjectSection from '@/components/sections/ProjectSection';
+import { useLoadingStore } from '@/store/loadingStore';
+import BlogSection from '@/components/sections/BlogSection';
+import ExperienceSection from '@/components/sections/ExperienceSection';
+import ContactSection from '@/components/sections/ContactSection';
 
 export default function HomePage() {
-  const contentVisible = useLoadingStore((state) => state.contentVisible);
-
+  const contentVisible: boolean = useLoadingStore(
+    (state: { contentVisible: boolean }) => state.contentVisible
+  );
   return (
-    <div
-      className='relative z-10 overflow-x-hidden overflow-y-hidden transition-opacity duration-1000'
-      style={{
-        opacity: contentVisible ? 1 : 0,
-      }}
-    >
-      <ScrollAnimations>
-        <div className='mx-auto w-full max-w-5xl'>
-          <HeroSection contentVisible={contentVisible} />
+    <>
+      {/* 콘텐츠는 상대적 위치로 배경 위에 표시되며, 내용물은 container 클래스로 제한됨 */}
+      <div
+        className='relative z-10 overflow-x-hidden overflow-y-hidden transition-opacity duration-1000'
+        style={{
+          opacity: contentVisible ? 1 : 0,
+        }}
+      >
+        <ScrollAnimations>
+          <div className='mx-auto w-full max-w-5xl'>
+            {/* Hero Section */}
+            <HeroSection contentVisible={contentVisible} />
 
-          <Suspense
-            fallback={
-              <div className='h-96 animate-pulse rounded-lg bg-gray-200' />
-            }
-          >
+            {/* Intro Section */}
             <IntroSection />
-          </Suspense>
 
-          <Suspense
-            fallback={
-              <div className='h-96 animate-pulse rounded-lg bg-gray-200' />
-            }
-          >
+            {/* Skills Section */}
             <SkillsSection />
-          </Suspense>
 
-          <Suspense
-            fallback={
-              <div className='h-96 animate-pulse rounded-lg bg-gray-200' />
-            }
-          >
+            {/* Experience Section */}
             <ExperienceSection />
-          </Suspense>
 
-          <Suspense
-            fallback={
-              <div className='h-96 animate-pulse rounded-lg bg-gray-200' />
-            }
-          >
+            {/* blog Section */}
             <BlogSection />
-          </Suspense>
 
-          <Suspense
-            fallback={
-              <div className='h-96 animate-pulse rounded-lg bg-gray-200' />
-            }
-          >
+            {/* Projects Section */}
             <ProjectSection />
-          </Suspense>
 
-          <Suspense
-            fallback={
-              <div className='h-96 animate-pulse rounded-lg bg-gray-200' />
-            }
-          >
+            {/* Contact Section */}
             <ContactSection />
-          </Suspense>
-        </div>
-      </ScrollAnimations>
-    </div>
+          </div>
+        </ScrollAnimations>
+      </div>
+    </>
   );
 }
