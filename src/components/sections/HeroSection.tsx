@@ -21,8 +21,6 @@ const containerVariants = {
     transition: {
       staggerChildren: 0.1,
       delayChildren: 0.2,
-      duration: 0.4, // 애니메이션 시간 단축
-      ease: [0.22, 1, 0.36, 1],
     },
   },
 };
@@ -32,10 +30,6 @@ const itemVariants = {
   visible: {
     scale: 1,
     y: 0,
-    transition: {
-      duration: 0.3, // 애니메이션 시간 단축
-      ease: [0.22, 1, 0.36, 1],
-    },
   },
 };
 
