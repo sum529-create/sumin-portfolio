@@ -20,6 +20,7 @@
     "@react-three/fiber": "8.15.19",
     "@studio-freight/lenis": "^1.0.42",
     "@types/three": "0.176.0",
+    "@emotion/is-prop-valid": "^1.3.1",
     "autoprefixer": "^10.4.21",
     "chart.js": "^4.4.9",
     "class-variance-authority": "^0.7.1",
@@ -57,7 +58,6 @@
     "prettier": "^3.5.3",
     "prettier-plugin-tailwindcss": "^0.6.11",
     "tailwindcss": "^3.4.17",
-    "typescript": "^5",
-    "webpack-bundle-analyzer": "^4.10.2"
+    "typescript": "^5"
   }
 }
