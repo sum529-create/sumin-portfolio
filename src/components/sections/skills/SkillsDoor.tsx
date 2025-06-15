@@ -2,6 +2,7 @@ const SkillsDoor = () => {
   return (
     <div
       className='absolute inset-0 flex'
+      role='region'
       aria-label='기술 스택 스크롤 효과 문 열림 섹션'
     >
       {/* 왼쪽 문짝 */}
