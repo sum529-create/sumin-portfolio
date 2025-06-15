@@ -18,7 +18,7 @@ const ProjectOutline = ({ outline }: ProjectOutlineProps) => {
     <TabsContent value='overview' className='space-y-8'>
       <div className='grid gap-8 lg:grid-cols-2'>
         {/* 프로젝트 소개 */}
-        <Card className='border border-white/10 bg-black/20 shadow-xl backdrop-blur-md transition-all duration-300 hover:shadow-2xl'>
+        <Card className='border border-white/20 bg-black/30 shadow-xl backdrop-blur-md transition-all duration-300 hover:shadow-2xl'>
           <CardHeader>
             <CardTitle className='flex items-center gap-2 text-xl text-white'>
               <Target className='h-6 w-6 text-primary' />
@@ -26,7 +26,7 @@ const ProjectOutline = ({ outline }: ProjectOutlineProps) => {
             </CardTitle>
           </CardHeader>
           <CardContent className='space-y-6'>
-            <p className='leading-relaxed text-white/80'>
+            <p className='leading-relaxed text-white/90'>
               {outline.intro.introText}
             </p>
 
@@ -35,7 +35,7 @@ const ProjectOutline = ({ outline }: ProjectOutlineProps) => {
                 {outline.intro.features.map((feature, index) => (
                   <li
                     key={index}
-                    className='flex items-center gap-3 rounded-lg bg-white/5 p-3 text-white/80'
+                    className='flex items-center gap-3 rounded-lg bg-white/10 p-3 text-white/90'
                   >
                     <span className='text-lg text-primary'>•</span>
                     {feature}
@@ -47,7 +47,7 @@ const ProjectOutline = ({ outline }: ProjectOutlineProps) => {
         </Card>
 
         {/* 성과 및 학습 */}
-        <Card className='border border-white/10 bg-black/20 shadow-xl backdrop-blur-md transition-all duration-300 hover:shadow-2xl'>
+        <Card className='border border-white/20 bg-black/30 shadow-xl backdrop-blur-md transition-all duration-300 hover:shadow-2xl'>
           <CardHeader>
             <CardTitle className='flex items-center gap-2 text-xl text-white'>
               <Award className='h-6 w-6 text-primary' />
@@ -60,9 +60,9 @@ const ProjectOutline = ({ outline }: ProjectOutlineProps) => {
                 {outline.achievements.projects.map((item, index) => (
                   <li
                     key={index}
-                    className='flex items-center gap-3 rounded-lg bg-white/5 p-3 text-white/80'
+                    className='flex items-center gap-3 rounded-lg bg-white/10 p-3 text-white/90'
                   >
-                    <span className='text-lg text-green-500'>✓</span>
+                    <span className='text-lg text-green-400'>✓</span>
                     {item}
                   </li>
                 ))}
@@ -74,9 +74,9 @@ const ProjectOutline = ({ outline }: ProjectOutlineProps) => {
                 {outline.achievements.collaboration.map((item, index) => (
                   <li
                     key={index}
-                    className='flex items-center gap-3 rounded-lg bg-white/5 p-3 text-white/80'
+                    className='flex items-center gap-3 rounded-lg bg-white/10 p-3 text-white/90'
                   >
-                    <Lightbulb className='mt-1 h-4 w-4 flex-shrink-0 text-yellow-500' />
+                    <Lightbulb className='mt-1 h-4 w-4 flex-shrink-0 text-yellow-400' />
                     {item}
                   </li>
                 ))}
@@ -87,7 +87,7 @@ const ProjectOutline = ({ outline }: ProjectOutlineProps) => {
       </div>
 
       {/* 담당 역할 */}
-      <Card className='border border-white/10 bg-black/20 shadow-xl backdrop-blur-md transition-all duration-300 hover:shadow-2xl'>
+      <Card className='border border-white/20 bg-black/30 shadow-xl backdrop-blur-md transition-all duration-300 hover:shadow-2xl'>
         <CardHeader>
           <CardTitle className='flex items-center gap-2 text-xl text-white'>
             <Users className='h-6 w-6 text-primary' />
@@ -99,12 +99,12 @@ const ProjectOutline = ({ outline }: ProjectOutlineProps) => {
             {outline.rolesAndResponsibilities.map((e) => (
               <div
                 key={e.cardTitle}
-                className='space-y-3 rounded-lg bg-white/5 p-4'
+                className='space-y-3 rounded-lg bg-white/10 p-4'
               >
                 <h4 className='text-lg font-medium text-white'>
                   {e.cardTitle}
                 </h4>
-                <p className='text-sm text-white/80'>{e.cardContent}</p>
+                <p className='text-sm text-white/90'>{e.cardContent}</p>
               </div>
             ))}
           </div>
