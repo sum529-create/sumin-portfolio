@@ -7,8 +7,10 @@ import {
   HEADER_HEIGHT,
   MOBILE_MENU_WIDTH,
   SCROLL_THRESHOLD,
+  SECTION_OFFSET,
 } from '@/constants/header';
 import { useScrollToSection } from '@/hooks/useScrollToSection';
+import { useScrollStore } from '@/store/scrollStore';
 
 // 네비게이션 아이템 타입 정의
 type NavItem = {
@@ -22,6 +24,7 @@ const Header = () => {
   const [isNotHome, setIsNotHome] = useState<boolean>(false);
   const { activeSection, setActiveSection, scrollToSection } =
     useScrollToSection();
+  const setTargetSection = useScrollStore((state) => state.setTargetSection);
 
   const params = useParams();
   const router = useRouter();
@@ -66,7 +69,7 @@ const Header = () => {
   useEffect(() => {
     const observerOptions = {
       root: null,
-      rootMargin: `-${HEADER_HEIGHT + 50}px 0px -${window.innerHeight - HEADER_HEIGHT - 50}px 0px`,
+      rootMargin: `-${HEADER_HEIGHT + SECTION_OFFSET}px 0px -${window.innerHeight - HEADER_HEIGHT - 50}px 0px`,
       threshold: SCROLL_THRESHOLD,
     };
 
@@ -175,6 +178,8 @@ const Header = () => {
       await router.push('/');
     }
     scrollToSection(sectionId);
+    setActiveSection(sectionId);
+    setTargetSection(sectionId);
     setIsMobileMenuOpen(false);
   };
 

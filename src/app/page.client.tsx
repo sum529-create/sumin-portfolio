@@ -9,9 +9,21 @@ import ProjectSection from '@/components/sections/ProjectSection';
 import BlogSection from '@/components/sections/BlogSection';
 import ExperienceSection from '@/components/sections/ExperienceSection';
 import ContactSection from '@/components/sections/ContactSection';
+import { useScrollStore } from '@/store/scrollStore';
+import { useEffect } from 'react';
+import { useScrollToSection } from '@/hooks/useScrollToSection';
 
 export default function HomePage() {
   const contentVisible = useLoadingStore((state) => state.contentVisible);
+  const targetSection = useScrollStore((state) => state.targetSection);
+  const { setActiveSection, scrollToSection } = useScrollToSection();
+
+  useEffect(() => {
+    if (targetSection) {
+      setActiveSection(targetSection);
+      scrollToSection(targetSection);
+    }
+  }, []);
 
   return (
     <div
