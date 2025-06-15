@@ -12,7 +12,7 @@ const SectionTitle = ({ title, subTitle, ariaLabel }: SectionTitleProps) => {
       >
         {title}
       </h2>
-      <h3 className='text-lg text-white'>{subTitle}</h3>
+      {subTitle && <h3 className='text-lg text-white'>{subTitle}</h3>}
     </div>
   );
 };
