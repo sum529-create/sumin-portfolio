@@ -41,11 +41,23 @@ const nextConfig = {
   webpack: (config, { dev, isServer }) => {
     // 프로덕션 빌드에서만 적용
     if (!dev && !isServer) {
-      // 프로덕션 빌드 최적화
-      Object.assign(config.optimization, {
-        minimize: true,
-        moduleIds: 'deterministic',
-      });
+      // 코드 스플리팅 최적화
+      config.optimization.splitChunks = {
+        chunks: 'all',
+        minSize: 20000,
+        maxSize: 244000,
+        cacheGroups: {
+          vendor: {
+            test: /[\\/]node_modules[\\/]/,
+            name(module) {
+              const packageName = module.context.match(
+                /[\\/]node_modules[\\/](.*?)([\\/]|$)/
+              )[1];
+              return `vendor.${packageName.replace('@', '')}`;
+            },
+          },
+        },
+      };
     }
     return config;
   },
