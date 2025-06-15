@@ -54,10 +54,7 @@ const SkillTechItem = ({
               className={`flex ${containerSizes.lg} items-center justify-center rounded-lg ${iconBgClassName}`}
               aria-hidden='true'
             >
-              <Icon
-                className={`${iconSizes.lg} ${iconClassName}`}
-                aria-hidden='true'
-              />
+              <Icon className={`${iconSizes.lg} ${iconClassName}`} />
             </div>
           </div>
           <div>
@@ -90,10 +87,7 @@ const SkillTechItem = ({
             className={`flex ${containerSizes[iconSize]} items-center justify-center rounded-md ${iconBgClassName}`}
             aria-hidden='true'
           >
-            <Icon
-              className={`${iconSizes[iconSize]} ${iconClassName}`}
-              aria-hidden='true'
-            />
+            <Icon className={`${iconSizes[iconSize]} ${iconClassName}`} />
           </div>
           <div className='min-w-0 flex-1'>
             <div className='text-sm font-medium text-white'>{name}</div>
