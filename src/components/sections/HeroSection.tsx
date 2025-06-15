@@ -133,12 +133,12 @@ const HeroSection = ({ contentVisible = false }: HeroSectionProps) => {
                 const baseClasses = `text-4xl font-bold md:text-6xl ${textColorClass}`;
 
                 return isLCPLine ? (
-                  <div key={index} className={baseClasses}>
+                  <div key={line} className={baseClasses}>
                     {line}
                   </div>
                 ) : (
                   <motion.div
-                    key={index}
+                    key={line}
                     variants={prefersReducedMotion ? {} : itemVariants}
                     className={baseClasses}
                   >
