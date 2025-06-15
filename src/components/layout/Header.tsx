@@ -3,14 +3,10 @@
 import { useState, useEffect, useCallback, useMemo, MouseEvent } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useParams, useRouter, usePathname } from 'next/navigation';
-import {
-  HEADER_HEIGHT,
-  MOBILE_MENU_WIDTH,
-  SCROLL_THRESHOLD,
-  SECTION_OFFSET,
-} from '@/constants/header';
+
 import { useScrollToSection } from '@/hooks/useScrollToSection';
 import { useScrollStore } from '@/store/scrollStore';
+import { HEADER } from '@/constants/header';
 
 // 네비게이션 아이템 타입 정의
 type NavItem = {
@@ -55,7 +51,8 @@ const Header = () => {
   const handleScroll = useCallback(() => {
     setIsScrolled(window.scrollY > 0);
     // 해당 섹션안에 들어올경우 header nav의 active 상태를 업데이트
-    const currentScrollY = window.scrollY + HEADER_HEIGHT + SECTION_OFFSET;
+    const currentScrollY =
+      window.scrollY + HEADER.HEIGHT + HEADER.SECTION_OFFSET;
     const sections = navItems
       .map((item) => document.getElementById(item.href.substring(1)))
       .filter((el): el is HTMLElement => Boolean(el));
@@ -104,8 +101,8 @@ const Header = () => {
 
     const observerOptions = {
       root: null,
-      rootMargin: `-${HEADER_HEIGHT + 50}px 0px -${window.innerHeight - HEADER_HEIGHT - 50}px 0px`,
-      threshold: SCROLL_THRESHOLD,
+      rootMargin: `-${HEADER.HEIGHT + 50}px 0px -${window.innerHeight - HEADER.HEIGHT - 50}px 0px`,
+      threshold: HEADER.SCROLL_THRESHOLD,
     };
 
     let currentSection = '';
@@ -166,7 +163,7 @@ const Header = () => {
 
       if (!ticking) {
         window.requestAnimationFrame(() => {
-          const scrollPosition = window.scrollY + HEADER_HEIGHT + 50;
+          const scrollPosition = window.scrollY + HEADER.HEIGHT + 50;
           let closestSection = sections[0];
           let minDistance = Infinity;
 
@@ -378,7 +375,7 @@ const Header = () => {
             />
             <motion.div
               className={`fixed right-0 top-0 z-40 h-screen bg-background/95 backdrop-blur-md md:hidden`}
-              style={{ width: `${MOBILE_MENU_WIDTH}px` }}
+              style={{ width: `${HEADER.MOBILE_MENU_WIDTH}px` }}
               initial='closed'
               animate='open'
               exit='closed'

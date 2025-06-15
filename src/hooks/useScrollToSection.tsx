@@ -1,4 +1,4 @@
-import { HEADER_HEIGHT, SECTION_OFFSET } from '@/constants/header';
+import { HEADER } from '@/constants/header';
 import { useCallback, useState } from 'react';
 
 export const useScrollToSection = () => {
@@ -13,7 +13,10 @@ export const useScrollToSection = () => {
 
       const elementPosition = section.getBoundingClientRect().top;
       const offsetPosition =
-        elementPosition + window.pageYOffset - HEADER_HEIGHT - SECTION_OFFSET;
+        elementPosition +
+        window.pageYOffset -
+        HEADER.HEIGHT -
+        HEADER.SECTION_OFFSET;
 
       setActiveSection(sectionId);
 
