@@ -6,7 +6,7 @@ import { useParams, useRouter } from 'next/navigation';
 
 // 상수 정의
 const HEADER_HEIGHT = 80;
-const SCROLL_THRESHOLD = 0.5;
+const SCROLL_THRESHOLD = 0.3;
 const MOBILE_MENU_WIDTH = 200;
 
 // 네비게이션 아이템 타입 정의
@@ -60,20 +60,51 @@ const Header = () => {
     };
   }, [handleScroll]);
 
-  // 현재 섹션 감지
+  // 현재 섹션 감지 로직 개선
   useEffect(() => {
     const observerOptions = {
       root: null,
-      rootMargin: '0px',
+      rootMargin: `-${HEADER_HEIGHT + 50}px 0px -${window.innerHeight - HEADER_HEIGHT - 50}px 0px`,
       threshold: SCROLL_THRESHOLD,
     };
 
+    let currentSection = '';
+    let scrollTimeout: NodeJS.Timeout;
+    let lastScrollY = window.scrollY;
+    let ticking = false;
+
     const observerCallback = (entries: IntersectionObserverEntry[]) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          setActiveSection(entry.target.id);
+      const visibleEntries = entries.filter((entry) => entry.isIntersecting);
+      if (visibleEntries.length === 0) return;
+
+      const visibleEntry = visibleEntries.reduce((max, entry) => {
+        const maxRatio = max.intersectionRatio;
+        const currentRatio = entry.intersectionRatio;
+
+        if (Math.abs(maxRatio - currentRatio) < 0.2) {
+          const maxRect = max.boundingClientRect;
+          const currentRect = entry.boundingClientRect;
+          const scrollingDown = window.scrollY > lastScrollY;
+
+          return scrollingDown
+            ? currentRect.top < maxRect.top
+              ? entry
+              : max
+            : currentRect.top > maxRect.top
+              ? entry
+              : max;
         }
-      });
+
+        return currentRatio > maxRatio ? entry : max;
+      }, visibleEntries[0]);
+
+      if (visibleEntry && visibleEntry.isIntersecting) {
+        const sectionId = visibleEntry.target.id;
+        if (currentSection !== sectionId) {
+          currentSection = sectionId;
+          setActiveSection(sectionId);
+        }
+      }
     };
 
     const observer = new IntersectionObserver(
@@ -81,29 +112,69 @@ const Header = () => {
       observerOptions
     );
 
-    // 모든 섹션 관찰 시작
     const sections = navItems
       .map((item) => document.getElementById(item.href.substring(1)))
       .filter(Boolean);
+
     sections.forEach((section) => {
       if (section) observer.observe(section);
     });
 
+    const handleScroll = () => {
+      lastScrollY = window.scrollY;
+
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const scrollPosition = window.scrollY + HEADER_HEIGHT + 50;
+          let closestSection = sections[0];
+          let minDistance = Infinity;
+
+          sections.forEach((section) => {
+            if (!section) return;
+
+            const sectionTop = section.offsetTop;
+            const distance = Math.abs(sectionTop - scrollPosition);
+
+            if (distance < minDistance) {
+              minDistance = distance;
+              closestSection = section;
+            }
+          });
+
+          if (closestSection && closestSection.id !== currentSection) {
+            currentSection = closestSection.id;
+            setActiveSection(closestSection.id);
+          }
+
+          ticking = false;
+        });
+
+        ticking = true;
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+
     return () => {
       observer.disconnect();
+      window.removeEventListener('scroll', handleScroll);
+      clearTimeout(scrollTimeout);
       sections.forEach((section) => {
         if (section) observer.unobserve(section);
       });
     };
   }, [navItems]);
 
-  // 스크롤 이동 함수 메모이제이션
+  // 스크롤 이동 함수 개선
   const scrollToSection = useCallback((sectionId: string) => {
     const section = document.getElementById(sectionId);
     if (!section) return;
 
     const elementPosition = section.getBoundingClientRect().top;
-    const offsetPosition = elementPosition + window.pageYOffset - HEADER_HEIGHT;
+    const offsetPosition =
+      elementPosition + window.pageYOffset - HEADER_HEIGHT - 50;
+
+    setActiveSection(sectionId);
 
     window.scrollTo({
       top: offsetPosition,
@@ -216,9 +287,9 @@ const Header = () => {
             >
               <button
                 onClick={(e) => handleNavClick(e, item.href)}
-                className={`relative cursor-pointer transition-colors hover:text-primary ${
+                className={`relative cursor-pointer transition-colors duration-150 hover:text-primary ${
                   activeSection === item.href.substring(1)
-                    ? 'text-primary'
+                    ? 'font-medium text-primary'
                     : isScrolled
                       ? 'text-foreground'
                       : 'text-gray-100'
@@ -228,6 +299,21 @@ const Header = () => {
                 }
               >
                 {item.label}
+                {activeSection === item.href.substring(1) && (
+                  <motion.div
+                    className='absolute -bottom-1 left-0 right-0 h-0.5 bg-primary'
+                    layoutId='activeSection'
+                    initial={{ opacity: 0, scaleX: 0 }}
+                    animate={{ opacity: 1, scaleX: 1 }}
+                    exit={{ opacity: 0, scaleX: 0 }}
+                    transition={{
+                      type: 'spring',
+                      stiffness: 400,
+                      damping: 30,
+                      duration: 0.2,
+                    }}
+                  />
+                )}
               </button>
             </motion.div>
           ))}
