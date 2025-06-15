@@ -2,21 +2,20 @@ const SkillsDoor = () => {
   return (
     <div
       className='absolute inset-0 flex'
-      role='banner'
       aria-label='기술 스택 스크롤 효과 문 열림 섹션'
     >
       {/* 왼쪽 문짝 */}
       <div
         className='scroll-door-animate relative w-1/2 overflow-hidden border-r border-cyan-400/30 bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900 shadow-2xl'
         data-direction='doorLeft'
+        aria-hidden='true'
         style={{
           boxShadow:
             '0 0 20px rgba(6, 182, 212, 0.3), inset 0 0 20px rgba(6, 182, 212, 0.1)',
         }}
-        aria-label='왼쪽 문짝'
       >
         {/* 별들 효과 */}
-        <div className='absolute inset-0' aria-label='별들 효과'>
+        <div className='absolute inset-0'>
           <div className='absolute left-10 top-10 h-1 w-1 animate-pulse rounded-full bg-white'></div>
           <div
             className='absolute right-16 top-20 h-0.5 w-0.5 animate-pulse rounded-full bg-cyan-300'
@@ -40,7 +39,7 @@ const SkillsDoor = () => {
             [SYSTEM]
           </div>
           {/* 문손잡이 */}
-          <div className='relative mt-8' aria-label='문 손잡이'>
+          <div className='relative mt-8'>
             <div
               className='h-4 w-4 animate-pulse rounded-full bg-gradient-to-r from-cyan-400 to-blue-500 shadow-lg'
               style={{
@@ -57,14 +56,14 @@ const SkillsDoor = () => {
       <div
         className='scroll-door-animate relative w-1/2 overflow-hidden border-l border-purple-400/30 bg-gradient-to-bl from-slate-900 via-purple-900 to-indigo-900 shadow-2xl'
         data-direction='doorRight'
+        aria-hidden='true'
         style={{
           boxShadow:
             '0 0 20px rgba(168, 85, 247, 0.3), inset 0 0 20px rgba(168, 85, 247, 0.1)',
         }}
-        aria-label='오른쪽 문짝'
       >
         {/* 별들 효과 */}
-        <div className='absolute inset-0' aria-label='별들 효과'>
+        <div className='absolute inset-0'>
           <div
             className='absolute right-12 top-16 h-1 w-1 animate-pulse rounded-full bg-white'
             style={{ animationDelay: '0.3s' }}
@@ -91,7 +90,7 @@ const SkillsDoor = () => {
             [ACCESS]
           </div>
           {/* 우주 스타일 문손잡이 */}
-          <div className='relative mt-8' aria-label='문 손잡이'>
+          <div className='relative mt-8'>
             <div
               className='h-4 w-4 animate-pulse rounded-full bg-gradient-to-r from-purple-400 to-pink-500 shadow-lg'
               style={{

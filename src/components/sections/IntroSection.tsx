@@ -14,7 +14,7 @@ const IntroSection = () => {
           {aboutText.map((item, i) => (
             <li className='break-keep' key={`question-${i}`}>
               <div className='scroll-animate' data-direction='left'>
-                <p className='mb-4 rounded-lg bg-gradient-to-r from-primary/30 to-transparent px-4 py-5 text-lg font-bold text-gray-100 md:text-xl'>
+                <p className='mb-4 rounded-lg bg-gradient-to-r from-primary/30 to-transparent px-4 py-5 text-lg font-bold text-white md:text-xl'>
                   <span className='mr-4 text-xl text-secondary md:text-2xl'>
                     Q{i + 1}.
                   </span>
@@ -22,8 +22,8 @@ const IntroSection = () => {
                 </p>
               </div>
               <div className='scroll-animate' data-direction='right'>
-                <p className='rounded-lg bg-gradient-to-r from-primary/10 to-transparent px-4 py-5 text-base text-gray-300 md:ml-10 md:text-lg'>
-                  <span className='mr-4 text-lg text-muted md:text-xl'>A.</span>
+                <p className='rounded-lg bg-gradient-to-r from-primary/10 to-transparent px-4 py-5 text-base text-gray-100 md:ml-10 md:text-lg'>
+                  <span className='mr-4 text-lg text-white md:text-xl'>A.</span>
                   {item.answerTxt}
                 </p>
               </div>
