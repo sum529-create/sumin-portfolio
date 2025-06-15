@@ -33,7 +33,7 @@ const Loader = () => {
 
   return (
     <div
-      className='fixed inset-0 z-50 flex items-center justify-center bg-background transition-all duration-700 ease-in-out'
+      className='fixed inset-0 z-50 flex items-center justify-center bg-background ease-in-out'
       role='progressbar'
       aria-busy={isLoading}
       aria-label='페이지 로딩 중'
