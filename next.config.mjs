@@ -42,8 +42,10 @@ const nextConfig = {
     // 프로덕션 빌드에서만 적용
     if (!dev && !isServer) {
       // 프로덕션 빌드 최적화
-      config.optimization.minimize = true;
-      config.optimization.moduleIds = 'deterministic';
+      Object.assign(config.optimization, {
+        minimize: true,
+        moduleIds: 'deterministic',
+      });
     }
     return config;
   },
