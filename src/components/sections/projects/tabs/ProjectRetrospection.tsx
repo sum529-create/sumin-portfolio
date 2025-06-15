@@ -12,15 +12,15 @@ const ProjectRetrospection = ({ retrospection }: ProjectRetrospectionProps) => {
   const titleData = [
     {
       cardTitle: '잘한 점 (Keep)',
-      titleColor: 'text-green-600',
+      titleColor: 'text-green-400',
     },
     {
       cardTitle: '아쉬운 점 (Problem)',
-      titleColor: 'text-red-600',
+      titleColor: 'text-red-400',
     },
     {
       cardTitle: '개선 방안 (Try)',
-      titleColor: 'text-blue-600',
+      titleColor: 'text-blue-400',
     },
   ];
   return (
@@ -31,7 +31,7 @@ const ProjectRetrospection = ({ retrospection }: ProjectRetrospectionProps) => {
             key={titleData[index].cardTitle}
             className={cn(
               index === 2 && 'col-span-1 md:col-span-2',
-              'border border-white/10 bg-black/20 shadow-xl backdrop-blur-md transition-all duration-300 hover:shadow-2xl'
+              'border border-white/20 bg-black/30 shadow-xl backdrop-blur-md transition-all duration-300 hover:shadow-2xl'
             )}
           >
             <CardHeader>
@@ -54,12 +54,12 @@ const ProjectRetrospection = ({ retrospection }: ProjectRetrospectionProps) => {
               {item.content.map((content) => (
                 <div
                   key={content.cardTitle}
-                  className='space-y-3 rounded-lg bg-white/5 p-4'
+                  className='space-y-3 rounded-lg bg-white/10 p-4'
                 >
                   <h4 className='text-lg font-medium text-white'>
                     {content.cardTitle}
                   </h4>
-                  <p className='text-sm leading-relaxed text-white/80'>
+                  <p className='text-sm leading-relaxed text-white/90'>
                     {content.cardContent}
                   </p>
                 </div>
