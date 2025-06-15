@@ -79,7 +79,7 @@ const HeroSection = ({ contentVisible = false }: HeroSectionProps) => {
   }, [contentVisible]);
 
   // 접근성을 위한 키보드 이벤트 핸들러
-  const handleKeyPress = useCallback((event: React.KeyboardEvent) => {
+  const handleKeyDown = useCallback((event: React.KeyboardEvent) => {
     if (event.key === 'Enter' || event.key === ' ') {
       setIsVisible(true);
     }
@@ -112,7 +112,7 @@ const HeroSection = ({ contentVisible = false }: HeroSectionProps) => {
             filter: prefersReducedMotion ? 'none' : blurFilter,
             y: prefersReducedMotion ? 0 : y,
           }}
-          onKeyPress={handleKeyPress}
+          onKeyDown={handleKeyDown}
           tabIndex={0}
         >
           <motion.div

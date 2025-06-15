@@ -22,8 +22,6 @@ const nextConfig = {
       '@react-three/drei',
       'three',
       'gsap',
-      'chart.js',
-      'embla-carousel-react',
     ],
     webpackBuildWorker: true,
     turbotrace: {
@@ -45,7 +43,8 @@ const nextConfig = {
         config.plugins.push(
           new BundleAnalyzerPlugin({
             analyzerMode: 'static',
-            reportFilename: './bundle-analysis.html',
+            reportFilename:
+              process.env.ANALYZE_REPORT_PATH || 'bundle-report.html',
           })
         );
       }
