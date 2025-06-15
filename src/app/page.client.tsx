@@ -20,10 +20,9 @@ export default function HomePage() {
 
   useEffect(() => {
     if (targetSection) {
-      setActiveSection(targetSection);
       scrollToSection(targetSection);
     }
-  }, []);
+  }, [targetSection, scrollToSection]);
 
   return (
     <div
