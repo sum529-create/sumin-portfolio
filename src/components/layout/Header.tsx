@@ -109,7 +109,6 @@ const Header = () => {
     };
 
     let currentSection = '';
-    let scrollTimeout: NodeJS.Timeout;
     let lastScrollY = window.scrollY;
     let ticking = false;
 
@@ -200,7 +199,6 @@ const Header = () => {
     return () => {
       observer.disconnect();
       window.removeEventListener('scroll', handleScroll);
-      clearTimeout(scrollTimeout);
       sections.forEach((section) => {
         if (section) observer.unobserve(section);
       });
