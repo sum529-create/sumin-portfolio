@@ -1,6 +1,5 @@
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
-import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -38,17 +37,6 @@ const nextConfig = {
   webpack: (config, { dev, isServer }) => {
     // 프로덕션 빌드에서만 적용
     if (!dev && !isServer) {
-      // 번들 분석기 추가
-      if (process.env.ANALYZE === 'true') {
-        config.plugins.push(
-          new BundleAnalyzerPlugin({
-            analyzerMode: 'static',
-            reportFilename:
-              process.env.ANALYZE_REPORT_PATH || 'bundle-report.html',
-          })
-        );
-      }
-
       // 프로덕션 빌드 최적화
       config.optimization.minimize = true;
       config.optimization.moduleIds = 'deterministic';
