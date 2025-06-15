@@ -269,16 +269,6 @@ const Header = () => {
     [isScrolled]
   );
 
-  // 로고 클릭 핸들러
-  const handleNavClickWrapper = (e: React.MouseEvent) => {
-    e.preventDefault();
-    if (isNotHome) {
-      router.push('/');
-    } else {
-      scrollToSection('home');
-    }
-  };
-
   return (
     <motion.header
       className={headerClassName}
@@ -289,7 +279,7 @@ const Header = () => {
       <div className='container mx-auto flex h-16 max-w-5xl items-center justify-between px-4'>
         <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
           <button
-            onClick={(e) => handleNavClickWrapper(e)}
+            onClick={(e) => handleNavClick(e, '/')}
             className='text-xl font-bold text-primary'
             aria-label='홈으로 이동'
           >
