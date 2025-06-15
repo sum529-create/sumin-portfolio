@@ -1,12 +1,13 @@
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
+import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: false,
+  reactStrictMode: true,
   images: {
     formats: ['image/avif', 'image/webp'],
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
@@ -18,8 +19,11 @@ const nextConfig = {
     optimizePackageImports: [
       'framer-motion',
       '@react-three/fiber',
+      '@react-three/drei',
       'three',
-      'react-icons',
+      'gsap',
+      'chart.js',
+      'embla-carousel-react',
     ],
     webpackBuildWorker: true,
     turbotrace: {
@@ -36,11 +40,15 @@ const nextConfig = {
   webpack: (config, { dev, isServer }) => {
     // 프로덕션 빌드에서만 적용
     if (!dev && !isServer) {
-      // 번들 분석기 활성화
-      const BundleAnalyzerPlugin = require('@next/bundle-analyzer')({
-        enabled: process.env.ANALYZE === 'true',
-      });
-      config.plugins.push(BundleAnalyzerPlugin);
+      // 번들 분석기 추가
+      if (process.env.ANALYZE === 'true') {
+        config.plugins.push(
+          new BundleAnalyzerPlugin({
+            analyzerMode: 'static',
+            reportFilename: './bundle-analysis.html',
+          })
+        );
+      }
 
       // 코드 스플리팅 최적화
       config.optimization.splitChunks = {
@@ -51,44 +59,25 @@ const nextConfig = {
         maxAsyncRequests: 30,
         maxInitialRequests: 30,
         cacheGroups: {
-          // 프레임워크 코드 분리
-          framework: {
-            name: 'framework',
-            test: /[\\/]node_modules[\\/](react|react-dom|scheduler|prop-types|use-subscription)[\\/]/,
-            priority: 40,
-            enforce: true,
-          },
-          // 애니메이션 관련 코드 분리
-          animations: {
-            name: 'animations',
-            test: /[\\/]node_modules[\\/](framer-motion)[\\/]/,
-            priority: 30,
-            enforce: true,
-          },
-          // 3D 관련 코드 분리
-          three: {
-            name: 'three',
-            test: /[\\/]node_modules[\\/](three|@react-three)[\\/]/,
-            priority: 20,
-            enforce: true,
-          },
-          // 공통 컴포넌트
-          components: {
-            name: 'components',
-            test: /[\\/]components[\\/]/,
-            priority: 10,
-            enforce: true,
-          },
-          // 나머지 node_modules
-          lib: {
+          defaultVendors: {
             test: /[\\/]node_modules[\\/]/,
-            name(module) {
-              const packageName = module.context.match(
-                /[\\/]node_modules[\\/](.*?)([\\/]|$)/
-              )[1];
-              return `npm.${packageName.replace('@', '')}`;
-            },
-            priority: 5,
+            priority: -10,
+            reuseExistingChunk: true,
+          },
+          common: {
+            minChunks: 2,
+            priority: -20,
+            reuseExistingChunk: true,
+          },
+          framerMotion: {
+            test: /[\\/]node_modules[\\/]framer-motion[\\/]/,
+            name: 'framer-motion',
+            priority: 10,
+          },
+          three: {
+            test: /[\\/]node_modules[\\/](three|@react-three)[\\/]/,
+            name: 'three',
+            priority: 10,
           },
         },
       };
