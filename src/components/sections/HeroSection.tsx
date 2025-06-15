@@ -48,17 +48,13 @@ const HeroSection = ({ contentVisible = false }: HeroSectionProps) => {
   const { scrollY } = useScroll();
   const prefersReducedMotion = useReducedMotion();
 
-  // 스크롤 변환 함수들을 useCallback으로 메모이제이션
-  const { scale, blurFilter, y } = useMemo(() => {
-    if (prefersReducedMotion) {
-      return { scale: 1, blurFilter: 'blur(0px)', y: 0 };
-    }
-    return {
-      scale: useTransform(scrollY, [0, 100], [1, 0.8]),
-      blurFilter: useTransform(scrollY, [0, 100], ['blur(0px)', 'blur(10px)']),
-      y: useTransform(scrollY, [0, 100], [0, 50]),
-    };
-  }, [scrollY, prefersReducedMotion]);
+  const scale = useTransform(scrollY, [0, 100], [1, 0.8]);
+  const blurFilter = useTransform(
+    scrollY,
+    [0, 100],
+    ['blur(0px)', 'blur(10px)']
+  );
+  const y = useTransform(scrollY, [0, 100], [0, 50]);
 
   // 페이지 로드 시 맨 상단으로 스크롤
   useEffect(() => {
