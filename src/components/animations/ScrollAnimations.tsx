@@ -38,10 +38,10 @@ export default function ScrollAnimations({
     const container = containerRef.current;
     if (!container) return;
 
-    // Lenis 초기화 - 올바른 옵션 사용
+    // Lenis 초기화
     lenisRef.current = new Lenis({
-      duration: 0.7,
-      easing: (t) => t,
+      duration: 1.2,
+      easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       orientation: 'vertical',
       smoothWheel: true,
     });
