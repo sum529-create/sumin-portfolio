@@ -3,11 +3,12 @@
 import { useState, useEffect, useCallback, useMemo, MouseEvent } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useParams, useRouter } from 'next/navigation';
-
-// 상수 정의
-const HEADER_HEIGHT = 80;
-const SCROLL_THRESHOLD = 0.3;
-const MOBILE_MENU_WIDTH = 200;
+import {
+  HEADER_HEIGHT,
+  MOBILE_MENU_WIDTH,
+  SCROLL_THRESHOLD,
+} from '@/constants/header';
+import { useScrollToSection } from '@/hooks/useScrollToSection';
 
 // 네비게이션 아이템 타입 정의
 type NavItem = {
@@ -18,8 +19,9 @@ type NavItem = {
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState<boolean>(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false);
-  const [activeSection, setActiveSection] = useState<string>('');
   const [isNotHome, setIsNotHome] = useState<boolean>(false);
+  const { activeSection, setActiveSection, scrollToSection } =
+    useScrollToSection();
 
   const params = useParams();
   const router = useRouter();
@@ -165,33 +167,16 @@ const Header = () => {
     };
   }, [navItems]);
 
-  // 스크롤 이동 함수 개선
-  const scrollToSection = useCallback((sectionId: string) => {
-    const section = document.getElementById(sectionId);
-    if (!section) return;
-
-    const elementPosition = section.getBoundingClientRect().top;
-    const offsetPosition =
-      elementPosition + window.pageYOffset - HEADER_HEIGHT - 50;
-
-    setActiveSection(sectionId);
-
-    window.scrollTo({
-      top: offsetPosition,
-      behavior: 'smooth',
-    });
-  }, []);
-
   // 네비게이션 클릭 핸들러 메모이제이션
-  const handleNavClick = useCallback(
-    (e: React.MouseEvent, href: string) => {
-      e.preventDefault();
-      const sectionId = href.substring(1);
-      scrollToSection(sectionId);
-      setIsMobileMenuOpen(false);
-    },
-    [scrollToSection]
-  );
+  const handleNavClick = async (e: React.MouseEvent, href: string) => {
+    e.preventDefault();
+    const sectionId = href.substring(1);
+    if (isNotHome) {
+      await router.push('/');
+    }
+    scrollToSection(sectionId);
+    setIsMobileMenuOpen(false);
+  };
 
   // 모바일 메뉴 토글 핸들러 메모이제이션
   const toggleMobileMenu = useCallback(() => {
@@ -245,13 +230,11 @@ const Header = () => {
   );
 
   // 로고 클릭 핸들러
-  const handleNavClickWrapper = (
-    e: MouseEvent<HTMLButtonElement | HTMLAnchorElement>
-  ) => {
+  const handleNavClickWrapper = (sectionName: string) => {
     if (isNotHome) {
       router.push('/');
     } else {
-      scrollToSection('home');
+      scrollToSection(sectionName);
     }
   };
 
@@ -265,7 +248,7 @@ const Header = () => {
       <div className='container mx-auto flex h-16 max-w-5xl items-center justify-between px-4'>
         <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
           <button
-            onClick={(e) => handleNavClickWrapper(e)}
+            onClick={() => handleNavClickWrapper('home')}
             className='text-xl font-bold text-primary'
             aria-label='홈으로 이동'
           >
