@@ -6,7 +6,7 @@ import {
   useTransform,
   useReducedMotion,
 } from 'framer-motion';
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useEffect, useState, useCallback, useMemo } from 'react';
 
 interface HeroSectionProps {
   contentVisible?: boolean;
@@ -49,7 +49,7 @@ const HeroSection = ({ contentVisible = false }: HeroSectionProps) => {
   const prefersReducedMotion = useReducedMotion();
 
   // 스크롤 변환 함수들을 useCallback으로 메모이제이션
-  const getScrollTransform = useCallback(() => {
+  const { scale, blurFilter, y } = useMemo(() => {
     if (prefersReducedMotion) {
       return { scale: 1, blurFilter: 'blur(0px)', y: 0 };
     }
@@ -59,8 +59,6 @@ const HeroSection = ({ contentVisible = false }: HeroSectionProps) => {
       y: useTransform(scrollY, [0, 100], [0, 50]),
     };
   }, [scrollY, prefersReducedMotion]);
-
-  const { scale, blurFilter, y } = getScrollTransform();
 
   // 페이지 로드 시 맨 상단으로 스크롤
   useEffect(() => {
