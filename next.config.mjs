@@ -50,42 +50,9 @@ const nextConfig = {
         );
       }
 
-      // 코드 스플리팅 최적화
-      config.optimization.splitChunks = {
-        chunks: 'all',
-        minSize: 20000,
-        maxSize: 244000,
-        minChunks: 1,
-        maxAsyncRequests: 30,
-        maxInitialRequests: 30,
-        cacheGroups: {
-          defaultVendors: {
-            test: /[\\/]node_modules[\\/]/,
-            priority: -10,
-            reuseExistingChunk: true,
-          },
-          common: {
-            minChunks: 2,
-            priority: -20,
-            reuseExistingChunk: true,
-          },
-          framerMotion: {
-            test: /[\\/]node_modules[\\/]framer-motion[\\/]/,
-            name: 'framer-motion',
-            priority: 10,
-          },
-          three: {
-            test: /[\\/]node_modules[\\/](three|@react-three)[\\/]/,
-            name: 'three',
-            priority: 10,
-          },
-        },
-      };
-
       // 프로덕션 빌드 최적화
       config.optimization.minimize = true;
       config.optimization.moduleIds = 'deterministic';
-      config.optimization.runtimeChunk = 'single';
     }
     return config;
   },
