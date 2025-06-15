@@ -7,7 +7,6 @@ import {
   useReducedMotion,
 } from 'framer-motion';
 import React, { useEffect, useState, useCallback } from 'react';
-import Image from 'next/image';
 
 interface HeroSectionProps {
   contentVisible?: boolean;
@@ -125,21 +124,30 @@ const HeroSection = ({ contentVisible = false }: HeroSectionProps) => {
             animate={isVisible ? 'visible' : 'hidden'}
           >
             <div role='heading' aria-level={1} id='hero-heading'>
-              {LINES.map((line, index) => (
-                <motion.div
-                  key={index}
-                  variants={prefersReducedMotion ? {} : itemVariants}
-                  className={`text-4xl font-bold md:text-6xl ${
-                    line.includes('프론트엔드')
-                      ? 'text-secondary'
-                      : line.includes("'노수민'")
-                        ? 'text-accent'
-                        : 'text-white'
-                  }`}
-                >
-                  {line}
-                </motion.div>
-              ))}
+              {LINES.map((line, index) => {
+                const isLCPLine = index === 0;
+                const textColorClass = line.includes('프론트엔드')
+                  ? 'text-secondary'
+                  : line.includes("'노수민'")
+                    ? 'text-accent'
+                    : 'text-white';
+
+                const baseClasses = `text-4xl font-bold md:text-6xl ${textColorClass}`;
+
+                return isLCPLine ? (
+                  <div key={index} className={baseClasses}>
+                    {line}
+                  </div>
+                ) : (
+                  <motion.div
+                    key={index}
+                    variants={prefersReducedMotion ? {} : itemVariants}
+                    className={baseClasses}
+                  >
+                    {line}
+                  </motion.div>
+                );
+              })}
             </div>
 
             <motion.p
