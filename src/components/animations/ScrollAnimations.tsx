@@ -3,11 +3,10 @@
 import { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { SplitText } from 'gsap/SplitText';
 import Lenis from '@studio-freight/lenis';
 import { useIsMobile } from '@/hooks/useMediaQuery';
 
-gsap.registerPlugin(ScrollTrigger, SplitText);
+gsap.registerPlugin(ScrollTrigger);
 
 interface ScrollAnimationsProps {
   children: React.ReactNode;
@@ -30,7 +29,6 @@ export default function ScrollAnimations({
 }: ScrollAnimationsProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const lenisRef = useRef<Lenis | null>(null);
-  const splitInstance: SplitText[] = [];
   const doorTimelinesRef = useRef<gsap.core.Timeline[]>([]);
 
   const isMobile = useIsMobile();
@@ -40,7 +38,7 @@ export default function ScrollAnimations({
     const container = containerRef.current;
     if (!container) return;
 
-    // Lenis 초기화 - 올바른 옵션 사용
+    // Lenis 초기화
     lenisRef.current = new Lenis({
       duration: 1.2,
       easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
@@ -57,16 +55,19 @@ export default function ScrollAnimations({
     // ScrollTrigger와 Lenis 연결
     ScrollTrigger.refresh();
 
-    ScrollTrigger.create({
-      trigger: '.skill-box',
-      start: 'top center',
-      onEnter: () => {
-        gsap.set('.skill-box', { zIndex: 10, delay: 1 });
-      },
-      onLeaveBack: () => {
-        gsap.set('.skill-box', { zIndex: 0 });
-      },
-    });
+    const skillBox = document.querySelector('.skill-box');
+    if (skillBox) {
+      ScrollTrigger.create({
+        trigger: '.skill-box',
+        start: 'top center',
+        onEnter: () => {
+          gsap.to('.skill-box', { zIndex: 10, delay: 1, duration: 0 });
+        },
+        onLeaveBack: () => {
+          gsap.set('.skill-box', { zIndex: 0 });
+        },
+      });
+    }
 
     // 섹션별 애니메이션 설정
     const sections = container.querySelectorAll('section');
@@ -138,30 +139,6 @@ export default function ScrollAnimations({
           delay,
         });
       });
-
-      // 텍스트 스플릿 애니메이션
-      const textElements = section.querySelectorAll('.split-text');
-      textElements.forEach((element) => {
-        const split = new SplitText(element as HTMLElement, {
-          type: 'chars,words',
-        });
-        splitInstance.push(split);
-
-        gsap.from(split.chars, {
-          opacity: 0,
-          y: 50,
-          rotateX: -90,
-          stagger: 0.02,
-          duration: 0.8,
-          ease: 'back.out(1.7)',
-          scrollTrigger: {
-            trigger: element,
-            start: 'top bottom-=10%',
-            end: 'top center',
-            toggleActions: 'play none none reverse',
-          },
-        });
-      });
     });
 
     // 패럴랙스 효과
@@ -184,7 +161,6 @@ export default function ScrollAnimations({
     return () => {
       // 클린업
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
-      splitInstance.forEach((split) => split.revert());
       if (lenisRef.current) {
         lenisRef.current.destroy();
         gsap.ticker.remove(handleRef);
