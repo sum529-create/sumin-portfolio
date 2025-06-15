@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useCallback, useMemo, MouseEvent } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useParams, useRouter } from 'next/navigation';
+import { useParams, useRouter, usePathname } from 'next/navigation';
 import {
   HEADER_HEIGHT,
   MOBILE_MENU_WIDTH,
@@ -21,17 +21,21 @@ type NavItem = {
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState<boolean>(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false);
+  const [activeSection, setActiveSection] = useState<string>('');
   const [isNotHome, setIsNotHome] = useState<boolean>(false);
-  const { activeSection, setActiveSection, scrollToSection } =
+
+  const { scrollToSection, isProjectsPage, setIsProjectsPage } =
     useScrollToSection();
   const setTargetSection = useScrollStore((state) => state.setTargetSection);
 
   const params = useParams();
   const router = useRouter();
+  const pathname = usePathname();
 
   useEffect(() => {
     setIsNotHome(Boolean(params?.id));
-  }, [params]);
+    setIsProjectsPage(pathname === '/projects');
+  }, [params, pathname]);
 
   // 네비게이션 아이템 메모이제이션
   const navItems = useMemo<NavItem[]>(
@@ -50,7 +54,32 @@ const Header = () => {
   // 스크롤 이벤트 핸들러 메모이제이션
   const handleScroll = useCallback(() => {
     setIsScrolled(window.scrollY > 0);
-  }, []);
+    // 해당 섹션안에 들어올경우 header nav의 active 상태를 업데이트
+    const currentScrollY = window.scrollY + HEADER_HEIGHT + SECTION_OFFSET;
+    const sections = navItems
+      .map((item) => document.getElementById(item.href.substring(1)))
+      .filter((el): el is HTMLElement => Boolean(el));
+
+    if (sections.length === 0) return;
+
+    let closestSection = sections[0];
+    let minDistance = Infinity;
+
+    sections.forEach((section) => {
+      if (!section) return;
+
+      const sectionTop = section.getBoundingClientRect().top + window.scrollY;
+      const distance = Math.abs(sectionTop - currentScrollY);
+
+      if (distance < minDistance) {
+        minDistance = distance;
+        closestSection = section;
+      }
+    });
+    if (closestSection && closestSection.id !== activeSection) {
+      setActiveSection(closestSection.id);
+    }
+  }, [activeSection, navItems]);
 
   // 스크롤 위치에 따른 헤더 스타일 변경
   useEffect(() => {
@@ -67,14 +96,20 @@ const Header = () => {
 
   // 현재 섹션 감지 로직 개선
   useEffect(() => {
+    // /projects 페이지에서는 섹션 감지 비활성화
+    if (isProjectsPage) {
+      setActiveSection('');
+      return;
+    }
+
     const observerOptions = {
       root: null,
-      rootMargin: `-${HEADER_HEIGHT + SECTION_OFFSET}px 0px -${window.innerHeight - HEADER_HEIGHT - 50}px 0px`,
+      rootMargin: `-${HEADER_HEIGHT + 50}px 0px -${window.innerHeight - HEADER_HEIGHT - 50}px 0px`,
       threshold: SCROLL_THRESHOLD,
     };
 
     let currentSection = '';
-    let scrollTimeout: NodeJS.Timeout | undefined = undefined;
+    let scrollTimeout: NodeJS.Timeout;
     let lastScrollY = window.scrollY;
     let ticking = false;
 
@@ -117,6 +152,7 @@ const Header = () => {
       observerOptions
     );
 
+    // 모든 섹션 관찰 시작
     const sections = navItems
       .map((item) => document.getElementById(item.href.substring(1)))
       .filter(Boolean);
@@ -125,6 +161,7 @@ const Header = () => {
       if (section) observer.observe(section);
     });
 
+    // 스크롤 이벤트 처리
     const handleScroll = () => {
       lastScrollY = window.scrollY;
 
@@ -163,12 +200,12 @@ const Header = () => {
     return () => {
       observer.disconnect();
       window.removeEventListener('scroll', handleScroll);
-      if (scrollTimeout) clearTimeout(scrollTimeout);
+      clearTimeout(scrollTimeout);
       sections.forEach((section) => {
         if (section) observer.unobserve(section);
       });
     };
-  }, [navItems]);
+  }, [navItems, isProjectsPage]);
 
   // 네비게이션 클릭 핸들러 메모이제이션
   const handleNavClick = async (e: React.MouseEvent, href: string) => {
@@ -235,11 +272,12 @@ const Header = () => {
   );
 
   // 로고 클릭 핸들러
-  const handleNavClickWrapper = (sectionName: string) => {
+  const handleNavClickWrapper = (e: React.MouseEvent) => {
+    e.preventDefault();
     if (isNotHome) {
       router.push('/');
     } else {
-      scrollToSection(sectionName);
+      scrollToSection('home');
     }
   };
 
@@ -253,7 +291,7 @@ const Header = () => {
       <div className='container mx-auto flex h-16 max-w-5xl items-center justify-between px-4'>
         <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
           <button
-            onClick={() => handleNavClickWrapper('home')}
+            onClick={(e) => handleNavClickWrapper(e)}
             className='text-xl font-bold text-primary'
             aria-label='홈으로 이동'
           >
@@ -276,32 +314,35 @@ const Header = () => {
               <button
                 onClick={(e) => handleNavClick(e, item.href)}
                 className={`relative cursor-pointer transition-colors duration-150 hover:text-primary ${
-                  activeSection === item.href.substring(1)
+                  !isProjectsPage && activeSection === item.href.substring(1)
                     ? 'font-medium text-primary'
                     : isScrolled
                       ? 'text-foreground'
                       : 'text-gray-100'
                 }`}
                 aria-current={
-                  activeSection === item.href.substring(1) ? 'page' : undefined
+                  !isProjectsPage && activeSection === item.href.substring(1)
+                    ? 'page'
+                    : undefined
                 }
               >
                 {item.label}
-                {activeSection === item.href.substring(1) && (
-                  <motion.div
-                    className='absolute -bottom-1 left-0 right-0 h-0.5 bg-primary'
-                    layoutId='activeSection'
-                    initial={{ opacity: 0, scaleX: 0 }}
-                    animate={{ opacity: 1, scaleX: 1 }}
-                    exit={{ opacity: 0, scaleX: 0 }}
-                    transition={{
-                      type: 'spring',
-                      stiffness: 400,
-                      damping: 30,
-                      duration: 0.2,
-                    }}
-                  />
-                )}
+                {!isProjectsPage &&
+                  activeSection === item.href.substring(1) && (
+                    <motion.div
+                      className='absolute -bottom-1 left-0 right-0 h-0.5 bg-primary'
+                      layoutId='activeSection'
+                      initial={{ opacity: 0, scaleX: 0 }}
+                      animate={{ opacity: 1, scaleX: 1 }}
+                      exit={{ opacity: 0, scaleX: 0 }}
+                      transition={{
+                        type: 'spring',
+                        stiffness: 400,
+                        damping: 30,
+                        duration: 0.2,
+                      }}
+                    />
+                  )}
               </button>
             </motion.div>
           ))}
