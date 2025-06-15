@@ -99,7 +99,7 @@ function ProjectCard({ data, i }: CardProps) {
             <Image
               className='h-full w-full object-cover'
               src={image}
-              alt={title}
+              alt={`${title} 프로젝트 스크린샷`}
               fill
               sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
               priority={i < 2}
