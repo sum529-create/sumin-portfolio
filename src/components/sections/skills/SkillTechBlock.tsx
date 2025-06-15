@@ -21,11 +21,11 @@ const SkillTechBlock = ({ children, color, text }: SkillTechBlockProps) => {
     <div
       className='space-y-3'
       role='group'
-      aria-labelledby={`tech-block-${text}`}
+      aria-labelledby={`tech-block-${text.replace(/[^a-zA-Z0-9_-]/g, '')}`}
     >
       <div className='mb-4 text-center'>
         <h3
-          id={`tech-block-${text}`}
+          id={`tech-block-${text.replace(/[^a-zA-Z0-9_-]/g, '')}`}
           className={`text-base font-semibold ${colorTextVariants[color]} md:text-lg`}
           role='heading'
           aria-level={3}
