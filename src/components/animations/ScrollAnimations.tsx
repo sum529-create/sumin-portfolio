@@ -61,7 +61,7 @@ export default function ScrollAnimations({
         trigger: '.skill-box',
         start: 'top center',
         onEnter: () => {
-          gsap.set('.skill-box', { zIndex: 10, delay: 1 });
+          gsap.to('.skill-box', { zIndex: 10, delay: 1, duration: 0 });
         },
         onLeaveBack: () => {
           gsap.set('.skill-box', { zIndex: 0 });
