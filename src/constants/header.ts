@@ -1,0 +1,6 @@
+export const HEADER = Object.freeze({
+  HEIGHT: 80,
+  SCROLL_THRESHOLD: 0.3,
+  MOBILE_MENU_WIDTH: 200,
+  SECTION_OFFSET: 50,
+});

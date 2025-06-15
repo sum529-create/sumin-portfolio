@@ -38,6 +38,17 @@ export default function ScrollAnimations({
     const container = containerRef.current;
     if (!container) return;
 
+    // 애니메이션 최적화 설정
+    gsap.config({
+      nullTargetWarn: false,
+    });
+
+    // 스크롤 트리거 최적화
+    ScrollTrigger.config({
+      ignoreMobileResize: true,
+      autoRefreshEvents: 'visibilitychange,DOMContentLoaded,load',
+    });
+
     // Lenis 초기화
     lenisRef.current = new Lenis({
       duration: 1.2,
@@ -171,7 +182,7 @@ export default function ScrollAnimations({
   // 문 애니메이션 별도 관리
   useEffect(() => {
     const container = containerRef.current;
-    if (!container) return;
+    if (!container || !containerRef.current || isMobile) return;
 
     // 기존 문 애니메이션 정리
     doorTimelinesRef.current.forEach((timeline) => {

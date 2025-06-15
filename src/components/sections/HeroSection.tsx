@@ -111,7 +111,12 @@ const HeroSection = ({ contentVisible = false }: HeroSectionProps) => {
             initial='hidden'
             animate={isVisible ? 'visible' : 'hidden'}
           >
-            <div role='heading' aria-level={1} id='hero-heading'>
+            <div
+              role='heading'
+              aria-level={1}
+              id='hero-heading'
+              className='space-y-4'
+            >
               {LINES.map((line, index) => {
                 const isLCPLine = index === 0;
                 const textColorClass = line.includes('프론트엔드')
