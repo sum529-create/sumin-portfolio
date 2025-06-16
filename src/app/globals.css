@@ -65,41 +65,64 @@
     --chart-5: 340 75% 55%;
   }
 
-  /* 모바일 브라우저 주소창 관련 스타일 */
+  /* 기본 레이아웃 설정 */
   html {
     height: 100%;
     height: -webkit-fill-available;
+    overflow: hidden;
+    background-color: var(--background);
   }
 
   body {
-    min-height: 100vh;
-    min-height: -webkit-fill-available;
-    min-height: calc(var(--vh, 1vh) * 100);
-    display: flex;
-    flex-direction: column;
+    height: 100%;
+    height: -webkit-fill-available;
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--background);
+    /* 하드웨어 가속 활성화 */
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    perspective: 1000;
+    -webkit-perspective: 1000;
+  }
+
+  /* 스크롤 컨테이너 */
+  #__next {
+    height: 100%;
+    height: -webkit-fill-available;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--background);
+    /* 하드웨어 가속 활성화 */
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    perspective: 1000;
+    -webkit-perspective: 1000;
+    /* 그리드 깜빡임 방지 */
+    will-change: transform;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   /* iOS Safari와 안드로이드 Chrome 공통 스타일 */
   html,
   body {
-    overscroll-behavior-y: none;
+    overscroll-behavior: none;
     -webkit-overflow-scrolling: touch;
-  }
-
-  /* 메인 컨테이너 스타일 */
-  main {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    min-height: 0; /* flexbox 내부 스크롤을 위해 필요 */
-  }
-
-  /* 스크롤이 필요한 섹션에 적용할 클래스 */
-  .scroll-section {
-    flex: 1;
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
-    position: relative;
   }
 }
 
