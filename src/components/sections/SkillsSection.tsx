@@ -1,5 +1,5 @@
 import SectionContainer from './common/SectionContainer';
-import SectionTitle from './SectionTitle';
+import SectionTitle from './common/SectionTitle';
 import SkillsDoor from './skills/SkillsDoor';
 import SkillsTechStack from './skills/SkillsTechStack';
 

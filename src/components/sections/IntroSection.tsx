@@ -1,5 +1,5 @@
 import { aboutText } from '@/constants/intro';
-import SectionTitle from './SectionTitle';
+import SectionTitle from './common/SectionTitle';
 import SectionContainer from './common/SectionContainer';
 
 const IntroSection = () => {

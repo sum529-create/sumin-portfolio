@@ -1,6 +1,6 @@
 'use client';
 import { projectsSummary } from '@/constants/projects-summary';
-import SectionTitle from './SectionTitle';
+import SectionTitle from './common/SectionTitle';
 import ProjectCard from './projects/ProjectCard';
 import SectionContainer from './common/SectionContainer';
 

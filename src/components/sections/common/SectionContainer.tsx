@@ -1,7 +1,7 @@
 import { cn } from '@/lib/utils';
 import { ReactNode } from 'react';
 
-interface SectionContainer {
+interface SectionContainerProps {
   sectionCln?: string;
   divCln?: string;
   sectionId: string;
@@ -14,7 +14,7 @@ const SectionContainer = ({
   sectionId,
   beforeChildren,
   children,
-}: SectionContainer) => {
+}: SectionContainerProps) => {
   const sectionDefaultCln = 'relative min-h-screen py-20';
   const divDefaultCln = 'container mx-auto max-w-full px-4';
   return (

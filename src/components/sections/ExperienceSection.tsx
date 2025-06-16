@@ -8,7 +8,7 @@ import React, {
 import Image from 'next/image';
 import { gsap } from 'gsap';
 import { experienceData } from '@/constants/experience';
-import SectionTitle from './SectionTitle';
+import SectionTitle from './common/SectionTitle';
 import SectionContainer from './common/SectionContainer';
 
 const ExperienceSection = () => {
@@ -36,6 +36,8 @@ const ExperienceSection = () => {
       if (keyboardEvent.key !== 'Enter' && keyboardEvent.key !== ' ') {
         return;
       }
+      // 버튼 역할에 맞춰 스페이스/엔터의 기본 동작(스크롤, 클릭 중복)을 막음
+      keyboardEvent.preventDefault();
     }
     const card = cardRef.current;
     if (!card) return;
@@ -75,6 +77,7 @@ const ExperienceSection = () => {
             aria-label={
               isFlipped ? '경력 카드 앞면 보기' : '경력 상세 정보 보기'
             }
+            aria-expanded={isFlipped}
             className='relative h-[500px] w-full transform-gpu cursor-pointer transition-transform duration-500'
             style={{
               transformStyle: 'preserve-3d',

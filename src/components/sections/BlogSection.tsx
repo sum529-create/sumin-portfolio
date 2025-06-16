@@ -1,7 +1,7 @@
 import { blogData } from '@/constants/blogs';
 import { Button } from '../ui/button';
 import { FaExternalLinkAlt } from 'react-icons/fa';
-import SectionTitle from './SectionTitle';
+import SectionTitle from './common/SectionTitle';
 import Link from 'next/link';
 import BlogCard from './blogs/BlogCard';
 import SectionContainer from './common/SectionContainer';

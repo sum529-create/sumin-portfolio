@@ -1,10 +1,10 @@
-import SectionTitle from './SectionTitle';
+import SectionTitle from '@/components/sections/common/SectionTitle';
 import { contacts } from '@/constants/contact';
-import ContactBackground from './contact/ContactBackground';
-import ContactBlock from './contact/ContactBlock';
+import ContactBackground from '@/components/sections/contact/ContactBackground';
+import ContactBlock from '@/components/sections/contact/ContactBlock';
 import { IoMailOpenOutline } from 'react-icons/io5';
 import { FaLink } from 'react-icons/fa6';
-import SectionContainer from './common/SectionContainer';
+import SectionContainer from '@/components/sections/common/SectionContainer';
 
 const ContactSection = () => {
   return (
