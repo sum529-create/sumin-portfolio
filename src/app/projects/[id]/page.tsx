@@ -1,5 +1,5 @@
 import ProjectDetail from '@/components/sections/projects/ProjectDetail';
-import SectionTitle from '@/components/sections/SectionTitle';
+import SectionTitle from '@/components/sections/common/SectionTitle';
 import { projectsSummary } from '@/constants/projects-summary';
 
 export async function generateStaticParams() {
