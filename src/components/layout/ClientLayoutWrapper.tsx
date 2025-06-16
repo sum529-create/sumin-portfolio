@@ -17,7 +17,7 @@ const ClientLayoutWrapper = ({ children }: ClientLayoutWrapperProps) => {
 
       <MainLayout>
         {/* AnimatedBackground를 절대 위치로 전체 화면에 배치 */}
-        <div className='fixed inset-0 h-screen overflow-hidden'>
+        <div className='fixed inset-0 h-[100dvh] w-full overflow-hidden'>
           <AnimatedBackground />
         </div>
         {children}
