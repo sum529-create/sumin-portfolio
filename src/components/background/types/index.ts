@@ -67,4 +67,4 @@ export interface ParticleData {
 export interface ComponentProps {
   scrollData: ScrollData;
   introAnimationProgress: number;
-} 
+}

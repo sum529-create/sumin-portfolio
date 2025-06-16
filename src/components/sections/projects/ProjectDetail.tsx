@@ -4,12 +4,12 @@ import { Button } from '@/components/ui/button';
 import { Tabs } from '@/components/ui/tabs';
 import { ArrowLeft } from 'lucide-react';
 import { notFound, useRouter } from 'next/navigation';
-import ProjectOutline from './tabs/ProjectOutline';
-import ProjectTabList from './tabs/ProjectTabList';
-import ProjectTopSection from './ProjectTopSection';
-import ProjectSkillStack from './tabs/ProjectSkillStack';
-import ProjectRetrospection from './tabs/ProjectRetrospection';
-import ProjectBlog from './tabs/ProjectBlog';
+import ProjectOutline from '@/components/sections/projects/tabs/ProjectOutline';
+import ProjectTabList from '@/components/sections/projects/tabs/ProjectTabList';
+import ProjectTopSection from '@/components/sections/projects/ProjectTopSection';
+import ProjectSkillStack from '@/components/sections/projects/tabs/ProjectSkillStack';
+import ProjectRetrospection from '@/components/sections/projects/tabs/ProjectRetrospection';
+import ProjectBlog from '@/components/sections/projects/tabs/ProjectBlog';
 import { useProjectDetail } from '@/hooks/useProjectData';
 import { projectsSummary } from '@/constants/projects-summary';
 

@@ -5,12 +5,13 @@ import { useFrame, useThree } from '@react-three/fiber';
 import { PerspectiveCamera } from '@react-three/drei';
 import { useIntroProgressStore } from '@/store/introProgressStore';
 import { useScrollPosition } from '@/hooks/useScrollPosition';
-import { CameraRef } from '../types';
-import { easeOutCubic } from '../utils/animations';
-import { GradientBackground } from './GradientBackground';
-import { ParticleSystem } from './ParticleSystem';
-import { Grid } from './Grid';
-import { GlowEffect } from './GlowEffect';
+import { CameraRef } from '@/components/background/types';
+import { easeOutCubic } from '@/components/background/utils/animations';
+import { GradientBackground } from '@/components/background/components/GradientBackground';
+import { ParticleSystem } from '@/components/background/components/ParticleSystem';
+import { Grid } from '@/components/background/components/Grid';
+import { GlowEffect } from '@/components/background/components/GlowEffect';
+import { GlowPoint } from '@/components/background/types';
 
 const MainScene = () => {
   const scrollData = useScrollPosition();

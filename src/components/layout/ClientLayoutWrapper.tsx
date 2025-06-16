@@ -1,8 +1,8 @@
 'use client';
 
-import Loader from '../ui/loader';
-import MainLayout from './MainLayout';
-import { AnimatedBackground } from '../background/AnimatedBackground';
+import Loader from '@/components/ui/loader';
+import MainLayout from '@/components/layout/MainLayout';
+import { AnimatedBackground } from '@/components/background/AnimatedBackground';
 import { ReactNode } from 'react';
 
 interface ClientLayoutWrapperProps {

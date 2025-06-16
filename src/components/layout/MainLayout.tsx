@@ -1,8 +1,8 @@
 'use client';
 
 import { ReactNode } from 'react';
-import Header from './Header';
-import Footer from './Footer';
+import Header from '@/components/layout/Header';
+import Footer from '@/components/layout/Footer';
 import { motion } from 'framer-motion';
 
 interface MainLayoutProps {
@@ -14,7 +14,7 @@ const MainLayout = ({ children }: MainLayoutProps) => {
     <div className='flex min-h-screen flex-col overflow-x-hidden'>
       <Header />
       <motion.main
-        className='flex-grow w-full max-w-[100vw]'
+        className='w-full max-w-[100vw] flex-grow'
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
