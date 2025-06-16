@@ -39,7 +39,25 @@ export function AnimatedBackground(): JSX.Element {
   }, []);
 
   return (
-    <div className='fixed inset-0 -z-10'>
+    <div
+      className='fixed inset-0 -z-10'
+      style={{
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        width: '100%',
+        height: '100%',
+        transform: 'translateZ(0)',
+        WebkitTransform: 'translateZ(0)',
+        willChange: 'transform',
+        WebkitBackfaceVisibility: 'hidden',
+        backfaceVisibility: 'hidden',
+        WebkitPerspective: 1000,
+        perspective: 1000,
+      }}
+    >
       <Suspense fallback={<div className='fixed inset-0 bg-black' />}>
         <DynamicCanvas>
           <MainScene />

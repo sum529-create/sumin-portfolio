@@ -64,18 +64,29 @@
     --chart-5: 340 75% 55%;
   }
   html {
-    height: -webkit-fill-available;
+    height: 100%;
     overflow-x: hidden;
     width: 100%;
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
   }
 
   body {
-    min-height: 100vh;
-    min-height: -webkit-fill-available;
+    height: 100%;
     overflow-x: hidden;
     width: 100%;
     overscroll-behavior-y: none;
     -webkit-overflow-scrolling: touch;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  #__next {
+    height: 100%;
+    width: 100%;
+    position: relative;
+    overflow-x: hidden;
   }
 }
 
