@@ -35,7 +35,7 @@ export const generateMetadata = async ({ params }: PageParams) => {
       description: `노수민의 프로젝트 ${projectId}에 대한 상세 설명 페이지입니다.`,
       images: [
         {
-          url: `https://sumin-portfolio-sigma.vercel.app/og-images/${projectId}.png`,
+          url: `https://sumin-portfolio-sigma.vercel.app/images/${projectId}.png`,
           width: 1200,
           height: 630,
           alt: `노수민의 프로젝트 ${projectId} OG 이미지`,
