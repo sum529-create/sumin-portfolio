@@ -16,7 +16,7 @@ const ContactBackground = () => {
 
       {/* 시공간 왜곡 그라데이션 */}
       <div
-        className='animate-spacetime-warp absolute inset-0 opacity-20'
+        className='absolute inset-0 animate-spacetime-warp opacity-20'
         style={{
           background: `
               radial-gradient(circle at 20% 30%, rgba(139, 92, 246, 0.3) 0%, transparent 50%),

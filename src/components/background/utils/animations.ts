@@ -8,8 +8,8 @@ export function easeOutElastic(x: number): number {
   return x === 0
     ? 0
     : x === 1
-    ? 1
-    : Math.pow(2, -10 * x) * Math.sin((x * 10 - 0.75) * c4) + 1;
+      ? 1
+      : Math.pow(2, -10 * x) * Math.sin((x * 10 - 0.75) * c4) + 1;
 }
 
 // 애니메이션 헬퍼 함수들
@@ -41,6 +41,10 @@ export function calculateScale(
   return baseScale * progress * (1 + burstEffect);
 }
 
-export function calculatePulse(time: number, speed: number, offset: number = 0): number {
+export function calculatePulse(
+  time: number,
+  speed: number,
+  offset: number = 0
+): number {
   return Math.sin(time * speed + offset) * 0.2 + 0.8;
-} 
+}

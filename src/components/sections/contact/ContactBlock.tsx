@@ -17,7 +17,7 @@ const ContactBlock = ({ contact, index }: ContactBlockProps) => {
       target={contact.target}
       rel={contact.rel}
       aria-label={contact.ariaLabel}
-      className='animate-portal-float group relative flex min-w-28 flex-col items-center rounded-2xl border border-purple-500/30 bg-gradient-to-br from-purple-500/10 to-cyan-500/10 p-6 transition-all duration-1000 hover:scale-110 hover:border-purple-400 hover:shadow-[0_0_40px_rgba(139,92,246,0.6)]'
+      className='group relative flex min-w-28 animate-portal-float flex-col items-center rounded-2xl border border-purple-500/30 bg-gradient-to-br from-purple-500/10 to-cyan-500/10 p-6 transition-all duration-1000 hover:scale-110 hover:border-purple-400 hover:shadow-[0_0_40px_rgba(139,92,246,0.6)]'
       style={{ animationDelay: `${index}s` }}
     >
       <div className='mb-3 text-3xl transition-transform duration-300 group-hover:scale-110'>
