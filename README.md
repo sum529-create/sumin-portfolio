@@ -1,6 +1,6 @@
 # Sumin's Portfolio
 
-![Portfolio Preview](public/og-image.png)
+![Portfolio Preview](public/og-main.png)
 
 ## 💻 프로젝트 소개
 
