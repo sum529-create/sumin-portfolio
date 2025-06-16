@@ -1,8 +1,8 @@
 'use client';
 
 import { ReactNode } from 'react';
-import Header from './Header';
-import Footer from './Footer';
+import Header from '@/components/layout/Header';
+import Footer from '@/components/layout/Footer';
 import { motion } from 'framer-motion';
 
 interface MainLayoutProps {

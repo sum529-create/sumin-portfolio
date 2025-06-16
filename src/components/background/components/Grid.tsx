@@ -1,8 +1,8 @@
 import { useRef, useMemo } from 'react';
 import { useFrame } from '@react-three/fiber';
 import { Group, Color } from 'three';
-import { ComponentProps } from '../types';
-import { easeOutCubic } from '../utils/animations';
+import { ComponentProps } from '@/components/background/types';
+import { easeOutCubic } from '@/components/background/utils/animations';
 
 export function Grid({
   scrollData,

@@ -1,8 +1,8 @@
 'use client';
 import { projectsSummary } from '@/constants/projects-summary';
-import SectionTitle from './common/SectionTitle';
-import ProjectCard from './projects/ProjectCard';
-import SectionContainer from './common/SectionContainer';
+import SectionTitle from '@/components/sections/common/SectionTitle';
+import ProjectCard from '@/components/sections/projects/ProjectCard';
+import SectionContainer from '@/components/sections/common/SectionContainer';
 
 export default function ProjectSection() {
   return (

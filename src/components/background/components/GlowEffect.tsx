@@ -1,8 +1,8 @@
 import { useRef, useMemo } from 'react';
 import { useFrame, useThree } from '@react-three/fiber';
 import { Group, Color, MeshBasicMaterial, AdditiveBlending } from 'three';
-import { ComponentProps, GlowPoint } from '../types';
-import { easeOutCubic } from '../utils/animations';
+import { ComponentProps, GlowPoint } from '@/components/background/types';
+import { easeOutCubic } from '@/components/background/utils/animations';
 
 export function GlowEffect({
   scrollData,

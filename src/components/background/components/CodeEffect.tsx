@@ -1,8 +1,8 @@
 import { useRef, useMemo } from 'react';
 import { useFrame, useThree } from '@react-three/fiber';
 import { Group, Color, MeshBasicMaterial } from 'three';
-import { ComponentProps, CodeLine } from '../types';
-import { easeOutCubic } from '../utils/animations';
+import { ComponentProps, CodeLine } from '@/components/background/types';
+import { easeOutCubic } from '@/components/background/utils/animations';
 
 export function CodeEffect({
   scrollData,

@@ -1,8 +1,11 @@
 import { useRef, useMemo } from 'react';
 import { useFrame, useThree } from '@react-three/fiber';
 import { Group, MeshBasicMaterial } from 'three';
-import { ComponentProps, TechElement } from '../types';
-import { easeOutElastic, interpolatePosition } from '../utils/animations';
+import { ComponentProps, TechElement } from '@/components/background/types';
+import {
+  easeOutElastic,
+  interpolatePosition,
+} from '@/components/background/utils/animations';
 
 export function TechElements({
   scrollData,

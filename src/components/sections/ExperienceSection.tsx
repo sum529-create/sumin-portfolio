@@ -8,8 +8,8 @@ import React, {
 import Image from 'next/image';
 import { gsap } from 'gsap';
 import { experienceData } from '@/constants/experience';
-import SectionTitle from './common/SectionTitle';
-import SectionContainer from './common/SectionContainer';
+import SectionTitle from '@/components/sections/common/SectionTitle';
+import SectionContainer from '@/components/sections/common/SectionContainer';
 
 const ExperienceSection = () => {
   const cardRef = useRef(null);

@@ -1,7 +1,7 @@
-import SectionContainer from './common/SectionContainer';
-import SectionTitle from './common/SectionTitle';
-import SkillsDoor from './skills/SkillsDoor';
-import SkillsTechStack from './skills/SkillsTechStack';
+import SectionContainer from '@/components/sections/common/SectionContainer';
+import SectionTitle from '@/components/sections/common/SectionTitle';
+import SkillsDoor from '@/components/sections/skills/SkillsDoor';
+import SkillsTechStack from '@/components/sections/skills/SkillsTechStack';
 
 const SkillsSection = () => {
   return (

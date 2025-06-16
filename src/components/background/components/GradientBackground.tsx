@@ -1,8 +1,11 @@
 import { useRef, useMemo } from 'react';
 import { useFrame } from '@react-three/fiber';
 import { ShaderMaterial } from 'three';
-import { GradientMaterial } from '../types';
-import { gradientVertexShader, gradientFragmentShader } from '../utils/shaders';
+import { GradientMaterial } from '@/components/background/types';
+import {
+  gradientVertexShader,
+  gradientFragmentShader,
+} from '@/components/background/utils/shaders';
 
 interface GradientBackgroundProps {
   introAnimationProgress: number;

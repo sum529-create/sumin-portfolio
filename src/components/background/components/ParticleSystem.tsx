@@ -1,8 +1,20 @@
 import { useRef, useMemo } from 'react';
 import { useFrame } from '@react-three/fiber';
-import { Points, ShaderMaterial } from 'three';
-import { ComponentProps, CustomShaderMaterial, ParticleData } from '../types';
-import { particleVertexShader, particleFragmentShader } from '../utils/shaders';
+import {
+  BufferGeometry,
+  Float32BufferAttribute,
+  Points,
+  ShaderMaterial,
+} from 'three';
+import {
+  ComponentProps,
+  CustomShaderMaterial,
+  ParticleData,
+} from '@/components/background/types';
+import {
+  particleVertexShader,
+  particleFragmentShader,
+} from '@/components/background/utils/shaders';
 
 export function ParticleSystem({
   scrollData,

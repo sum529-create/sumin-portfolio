@@ -9,8 +9,8 @@ import {
   SiChartdotjs,
   SiSupabase,
 } from 'react-icons/si';
-import SkillTechBlock from './SkillTechBlock';
-import SkillTechItem from './SkillTechItem';
+import SkillTechBlock from '@/components/sections/skills/SkillTechBlock';
+import SkillTechItem from '@/components/sections/skills/SkillTechItem';
 import { useIsMobile } from '@/hooks/useMediaQuery';
 import { useEffect, useState } from 'react';
 
