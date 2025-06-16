@@ -64,6 +64,26 @@
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
   }
+
+  /* 모바일 브라우저 주소창 관련 스타일 */
+  html {
+    height: -webkit-fill-available;
+  }
+
+  body {
+    min-height: 100vh;
+    /* iOS Safari에서 주소창이 나타날 때의 높이 대응 */
+    min-height: -webkit-fill-available;
+    /* 커스텀 뷰포트 높이 사용 */
+    min-height: calc(var(--vh, 1vh) * 100);
+  }
+
+  /* iOS Safari에서 스크롤 바운스 효과 제거 */
+  html,
+  body {
+    overscroll-behavior: none;
+    -webkit-overflow-scrolling: touch;
+  }
 }
 
 @layer base {

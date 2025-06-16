@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import localFont from 'next/font/local';
 import './globals.css';
 import ClientLayoutWrapper from '@/components/layout/ClientLayoutWrapper';
+import { ViewportHeightProvider } from '@/components/layout/ViewportHeightProvider';
 
 const pretendard = localFont({
   src: [
@@ -109,8 +110,10 @@ export default function RootLayout({
       className={`${pretendard.variable}`}
       style={{ fontFamily: 'system-ui, Pretendard, sans-serif' }}
     >
-      <body className='min-h-screen overflow-x-hidden bg-background antialiased'>
-        <ClientLayoutWrapper>{children}</ClientLayoutWrapper>
+      <body className='min-h-[calc(var(--vh,1vh)*100)] overflow-x-hidden bg-background antialiased md:min-h-[100vh]'>
+        <ViewportHeightProvider>
+          <ClientLayoutWrapper>{children}</ClientLayoutWrapper>
+        </ViewportHeightProvider>
       </body>
     </html>
   );
