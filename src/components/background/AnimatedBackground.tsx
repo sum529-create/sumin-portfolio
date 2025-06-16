@@ -2,7 +2,7 @@
 
 import { Suspense, useEffect } from 'react';
 import { useIntroProgressStore } from '@/store/introProgressStore';
-import MainScene from './components/MainScene';
+import MainScene from '@/components/background/components/MainScene';
 import dynamic from 'next/dynamic';
 
 const DynamicCanvas = dynamic(
