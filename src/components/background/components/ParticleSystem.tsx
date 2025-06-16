@@ -1,11 +1,6 @@
 import { useRef, useMemo } from 'react';
 import { useFrame } from '@react-three/fiber';
-import {
-  BufferGeometry,
-  Float32BufferAttribute,
-  Points,
-  ShaderMaterial,
-} from 'three';
+import { Points, ShaderMaterial, AdditiveBlending } from 'three';
 import {
   ComponentProps,
   CustomShaderMaterial,
@@ -49,7 +44,7 @@ export function ParticleSystem({
       vertexShader: particleVertexShader,
       fragmentShader: particleFragmentShader,
       transparent: true,
-      blending: 2, // THREE.AdditiveBlending
+      blending: AdditiveBlending,
       depthWrite: false,
     }) as CustomShaderMaterial;
   }, []);
