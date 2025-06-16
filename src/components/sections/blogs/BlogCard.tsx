@@ -75,7 +75,7 @@ const BlogCard = ({ blog, index }: BlogCardProps) => {
             transformOrigin: '0 0',
           }}
         />
-        <div className='relative aspect-[1/1] w-full max-w-md'>
+        <div className='relative aspect-[1/1] w-full md:max-w-md'>
           <Image
             src={blog.imageUrl}
             alt={blog.title}
