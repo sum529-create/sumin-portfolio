@@ -12,11 +12,13 @@ import ContactSection from '@/components/sections/ContactSection';
 import { useScrollStore } from '@/store/scrollStore';
 import { useEffect } from 'react';
 import { useScrollToSection } from '@/hooks/useScrollToSection';
+import { use100vh } from '@/hooks/use100vh';
 
 export default function HomePage() {
   const contentVisible = useLoadingStore((state) => state.contentVisible);
   const targetSection = useScrollStore((state) => state.targetSection);
-  const { setActiveSection, scrollToSection } = useScrollToSection();
+  const { scrollToSection } = useScrollToSection();
+  use100vh();
 
   useEffect(() => {
     if (targetSection) {

@@ -178,6 +178,9 @@ const config: Config = {
         'spacetime-warp': 'spacetimeWarp 8s ease-in-out infinite',
         'portal-float': 'portalFloat 4s ease-in-out infinite',
       },
+      height: {
+        'screen-dynamic': 'calc(var(--vh, 1vh) * 100)', // 커스텀 높이
+      },
     },
   },
   plugins: [require('tailwindcss-animate')],

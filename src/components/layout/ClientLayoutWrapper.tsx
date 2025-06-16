@@ -11,7 +11,7 @@ interface ClientLayoutWrapperProps {
 
 const ClientLayoutWrapper = ({ children }: ClientLayoutWrapperProps) => {
   return (
-    <>
+    <div className='h-screen-dynamic'>
       {/* 페이지 프리로더 */}
       <Loader />
 
@@ -22,7 +22,7 @@ const ClientLayoutWrapper = ({ children }: ClientLayoutWrapperProps) => {
         </div>
         {children}
       </MainLayout>
-    </>
+    </div>
   );
 };
 
