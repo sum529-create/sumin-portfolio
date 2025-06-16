@@ -78,6 +78,12 @@ const config: Config = {
           foreground: '#475569',
         },
         accent: {
+          DEFAULT: '#FAE100',
+          foreground: '#000000',
+          light: '#FFF4A3',
+          dark: '#C5A700',
+        },
+        'accent-sub': {
           DEFAULT: '#EC4899',
           foreground: '#FFFFFF',
           light: '#F472B6',

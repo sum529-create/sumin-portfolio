@@ -15,4 +15,5 @@ const createHighlightStyle = (color: string): HighLightStyle =>
 
 export const TEAL_HIGHLIGHT: HighLightStyle = createHighlightStyle('teal');
 export const PURPLE_HIGHLIGHT: HighLightStyle = createHighlightStyle('purple');
-export const PINK_HIGHLIGHT: HighLightStyle = createHighlightStyle('accent');
+export const PINK_HIGHLIGHT: HighLightStyle =
+  createHighlightStyle('accent-sub');
