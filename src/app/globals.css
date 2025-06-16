@@ -67,21 +67,36 @@
 
   /* 모바일 브라우저 주소창 관련 스타일 */
   html {
+    height: 100%;
     height: -webkit-fill-available;
+    overflow: hidden;
   }
 
   body {
-    min-height: 100vh;
-    /* iOS Safari에서 주소창이 나타날 때의 높이 대응 */
+    min-height: 100%;
     min-height: -webkit-fill-available;
-    /* 커스텀 뷰포트 높이 사용 */
     min-height: calc(var(--vh, 1vh) * 100);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    position: relative;
+    width: 100%;
   }
 
-  /* iOS Safari에서 스크롤 바운스 효과 제거 */
+  /* iOS Safari와 안드로이드 Chrome 공통 스타일 */
   html,
   body {
     overscroll-behavior: none;
+    -webkit-overflow-scrolling: touch;
+    touch-action: pan-y;
+  }
+
+  /* 스크롤 시 주소창이 나타날 때의 레이아웃 시프트 방지 */
+  #__next {
+    min-height: 100%;
+    min-height: -webkit-fill-available;
+    min-height: calc(var(--vh, 1vh) * 100);
+    position: relative;
+    overflow-y: auto;
     -webkit-overflow-scrolling: touch;
   }
 }
