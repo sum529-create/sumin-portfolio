@@ -4,6 +4,7 @@ import { useEffect, useCallback } from 'react';
 
 export const useViewportHeight = () => {
   const setVh = useCallback(() => {
+    if (typeof window === 'undefined') return;
     // 실제 뷰포트 높이를 가져옵니다
     const vh = window.innerHeight * 0.01;
     // CSS 변수로 설정합니다

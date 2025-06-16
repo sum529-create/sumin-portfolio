@@ -34,7 +34,11 @@ const itemVariants = {
 };
 
 // 상수 값들을 컴포넌트 외부로 이동
-const LINES = ['안녕하세요,', '프론트엔드 개발자', ['노수민', ' 입니다']];
+const LINES = [
+  '안녕하세요,',
+  '프론트엔드 개발자',
+  ['노수민', ' 입니다'],
+] as const;
 
 const HeroSection = ({ contentVisible = false }: HeroSectionProps) => {
   const [isVisible, setIsVisible] = useState(false);
@@ -134,7 +138,7 @@ const HeroSection = ({ contentVisible = false }: HeroSectionProps) => {
                 } else {
                   // 일반 텍스트인 경우
                   content = line;
-                  textColorClass = line.includes('프론트엔드')
+                  textColorClass = (line as string).includes('프론트엔드')
                     ? 'text-secondary'
                     : 'text-white';
                 }
@@ -142,15 +146,12 @@ const HeroSection = ({ contentVisible = false }: HeroSectionProps) => {
                 const baseClasses = `text-4xl font-bold md:text-6xl ${textColorClass}`;
 
                 return isLCPLine ? (
-                  <div
-                    key={Array.isArray(line) ? line.join('') : line}
-                    className={baseClasses}
-                  >
+                  <div key={`hero-line-${index}`} className={baseClasses}>
                     {content}
                   </div>
                 ) : (
                   <motion.div
-                    key={Array.isArray(line) ? line.join('') : line}
+                    key={`hero-line-${index}`}
                     variants={prefersReducedMotion ? {} : itemVariants}
                     className={baseClasses}
                   >

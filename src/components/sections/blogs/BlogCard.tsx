@@ -109,7 +109,7 @@ const BlogCard = ({ blog, index }: BlogCardProps) => {
           </p>
           <div className='mt-3 flex items-center gap-1 text-base text-muted md:text-sm'>
             <p>자세히 보기</p>
-            <MdOutlineKeyboardDoubleArrowRight />
+            <MdOutlineKeyboardDoubleArrowRight aria-hidden='true' />
           </div>
         </div>
       </div>
