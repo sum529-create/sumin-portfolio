@@ -6,6 +6,7 @@ import { FaFire, FaBookOpen } from 'react-icons/fa6';
 import { GrPersonalComputer } from 'react-icons/gr';
 import { useEffect, useRef } from 'react';
 import { useIsMobile } from '@/hooks/useMediaQuery';
+import { MdOutlineKeyboardDoubleArrowRight } from 'react-icons/md';
 
 interface BlogCardProps {
   index: number;
@@ -103,9 +104,13 @@ const BlogCard = ({ blog, index }: BlogCardProps) => {
             ) : null}
             {blog.label}
           </span>
-          <p className='line-clamp-4 break-words text-white/90'>
+          <p className='line-clamp-4 break-words text-lg text-white/90 md:text-base'>
             {blog.content}
           </p>
+          <div className='mt-3 flex items-center gap-1 text-base text-muted md:text-sm'>
+            <p>자세히 보기</p>
+            <MdOutlineKeyboardDoubleArrowRight />
+          </div>
         </div>
       </div>
     </Link>
