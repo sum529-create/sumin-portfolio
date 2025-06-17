@@ -9,7 +9,6 @@ export function Grid({
   introAnimationProgress,
 }: ComponentProps): JSX.Element {
   const gridRef = useRef<Group>(null);
-  const gridHelperRef = useRef<GridHelper>(null);
 
   const gridSize = 50;
   const gridDivisions = 20;
@@ -40,7 +39,7 @@ export function Grid({
   }, [gridSize]);
 
   useFrame(({ clock }) => {
-    if (!gridRef.current || !gridHelperRef.current) return;
+    if (!gridRef.current) return;
 
     const time = clock.getElapsedTime();
 
@@ -77,7 +76,6 @@ export function Grid({
   return (
     <group ref={gridRef} position={[0, -20, -10]}>
       <gridHelper
-        ref={gridHelperRef}
         args={[gridSize, gridDivisions, baseColor, baseColor]}
         material={gridMaterial}
         position={[0, 0, 0]}
