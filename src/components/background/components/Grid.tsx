@@ -13,20 +13,20 @@ export function Grid({
 
   const gridSize = 50;
   const gridDivisions = 20;
-  const baseColor = new Color('#1E293B');
+  const baseColor = '#1E293B';
   const highlightColor = new Color('#3B82F6');
 
   // 그리드 머티리얼 생성
   const gridMaterial = useMemo(() => {
     return new LineBasicMaterial({
-      color: baseColor,
+      color: new Color(baseColor),
       transparent: true,
       opacity: 0.3,
       depthWrite: false, // 깊이 버퍼 쓰기 비활성화
       depthTest: true, // 깊이 테스트 활성화
       toneMapped: false, // 톤 매핑 비활성화
     });
-  }, [baseColor]);
+  }, []);
 
   const glowPoints = useMemo(() => {
     return Array.from({ length: 5 }).map((_, i) => ({
