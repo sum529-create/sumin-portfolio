@@ -34,8 +34,11 @@ const itemVariants = {
 };
 
 // 상수 값들을 컴포넌트 외부로 이동
-const HERO_TEXT = `안녕하세요,\n프론트엔드 개발자\n'노수민' 입니다`;
-const LINES = HERO_TEXT.split('\n');
+const LINES = [
+  '안녕하세요,',
+  '프론트엔드 개발자',
+  ['노수민', ' 입니다'],
+] as const;
 
 const HeroSection = ({ contentVisible = false }: HeroSectionProps) => {
   const [isVisible, setIsVisible] = useState(false);
@@ -87,7 +90,7 @@ const HeroSection = ({ contentVisible = false }: HeroSectionProps) => {
         role='main'
       >
         <motion.div
-          className='mx-auto max-w-4xl text-left'
+          className='mx-auto max-w-4xl text-left md:text-center'
           initial={{ opacity: 0 }}
           animate={{
             opacity: isVisible ? 1 : 0,
@@ -119,25 +122,40 @@ const HeroSection = ({ contentVisible = false }: HeroSectionProps) => {
             >
               {LINES.map((line, index) => {
                 const isLCPLine = index === 0;
-                const textColorClass = line.includes('프론트엔드')
-                  ? 'text-secondary'
-                  : line.includes("'노수민'")
-                    ? 'text-accent'
+                let textColorClass;
+                let content;
+
+                if (Array.isArray(line)) {
+                  content = (
+                    <>
+                      <span className='text-5xl text-accent md:text-7xl'>
+                        {line[0]}
+                      </span>
+                      <span className='text-white'>{line[1]}</span>
+                    </>
+                  );
+                  textColorClass = '';
+                } else {
+                  // 일반 텍스트인 경우
+                  content = line;
+                  textColorClass = (line as string).includes('프론트엔드')
+                    ? 'text-secondary'
                     : 'text-white';
+                }
 
                 const baseClasses = `text-4xl font-bold md:text-6xl ${textColorClass}`;
 
                 return isLCPLine ? (
-                  <div key={line} className={baseClasses}>
-                    {line}
+                  <div key={`hero-line-${index}`} className={baseClasses}>
+                    {content}
                   </div>
                 ) : (
                   <motion.div
-                    key={line}
+                    key={`hero-line-${index}`}
                     variants={prefersReducedMotion ? {} : itemVariants}
                     className={baseClasses}
                   >
-                    {line}
+                    {content}
                   </motion.div>
                 );
               })}

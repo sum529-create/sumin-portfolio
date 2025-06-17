@@ -44,7 +44,7 @@ const ExperienceSection = () => {
 
     gsap.to(card, {
       rotationY: isFlipped ? 0 : 180,
-      duration: 0.8,
+      duration: 0.3,
       ease: 'power2.inOut',
     });
 

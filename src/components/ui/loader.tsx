@@ -11,7 +11,6 @@ const Loader = () => {
   useEffect(() => {
     // 초기 로딩 상태 설정
     setIsLoading(true);
-    document.body.style.overflow = 'hidden'; // 스크롤 방지
 
     // 배경 준비를 위한 약간의 지연
     const loadingTimer = setTimeout(() => {
@@ -20,20 +19,18 @@ const Loader = () => {
       // 로딩이 끝난 후 콘텐츠를 표시하기 위한 약간의 추가 지연
       const revealTimer = setTimeout(() => {
         setContentVisible(true);
-        document.body.style.overflow = ''; // 스크롤 다시 활성화
       }, 50);
       return () => clearTimeout(revealTimer);
     }, 500);
 
     return () => {
       clearTimeout(loadingTimer);
-      document.body.style.overflow = '';
     };
   }, [setIsLoading, setContentVisible]);
 
   return (
     <div
-      className='fixed inset-0 z-50 flex items-center justify-center bg-background ease-in-out'
+      className='fixed inset-0 z-50 flex items-center justify-center bg-white ease-in-out'
       role='progressbar'
       aria-busy={isLoading}
       aria-label='페이지 로딩 중'

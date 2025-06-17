@@ -17,6 +17,10 @@ const config: Config = {
     'text-accent-light',
     'bg-accent/8',
     'border-accent/30',
+    'px-2',
+    'text-accent-sub-light',
+    'bg-accent-sub/8',
+    'border-accent-sub/30',
   ],
   theme: {
     extend: {
@@ -42,7 +46,7 @@ const config: Config = {
       },
       colors: {
         background: {
-          DEFAULT: '#FFFFFF',
+          DEFAULT: '#14142e',
           dark: '#0F172A',
         },
         foreground: {
@@ -78,6 +82,12 @@ const config: Config = {
           foreground: '#475569',
         },
         accent: {
+          DEFAULT: '#FAE100',
+          foreground: '#000000',
+          light: '#FFF4A3',
+          dark: '#C5A700',
+        },
+        'accent-sub': {
           DEFAULT: '#EC4899',
           foreground: '#FFFFFF',
           light: '#F472B6',

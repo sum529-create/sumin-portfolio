@@ -89,15 +89,6 @@ export const metadata: Metadata = {
   },
 };
 
-export const viewport = {
-  initialScale: 1,
-  width: 'device-width',
-  height: 'device-height',
-  maximumScale: 5,
-  userScalable: true,
-  themeColor: '#6366f1',
-};
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -109,7 +100,7 @@ export default function RootLayout({
       className={`${pretendard.variable}`}
       style={{ fontFamily: 'system-ui, Pretendard, sans-serif' }}
     >
-      <body className='min-h-screen overflow-x-hidden bg-background antialiased'>
+      <body className='custom-mobile-height min-h-screen overflow-x-hidden bg-background antialiased'>
         <ClientLayoutWrapper>{children}</ClientLayoutWrapper>
       </body>
     </html>
