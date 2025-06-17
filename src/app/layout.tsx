@@ -34,8 +34,7 @@ const pretendard = localFont({
 
 export const metadata: Metadata = {
   metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_URL ||
-      'https://sumin-portfolio-sigma.vercel.app/'
+    process.env.NEXT_PUBLIC_SITE_URL || 'https://sumin.it.kr/'
   ),
   title: {
     default: '프론트엔드 개발자 | 노수민',
@@ -60,9 +59,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'ko_KR',
-    url:
-      process.env.NEXT_PUBLIC_SITE_URL ||
-      'https://sumin-portfolio-sigma.vercel.app/',
+    url: process.env.NEXT_PUBLIC_SITE_URL || 'https://sumin.it.kr/',
     siteName: '노수민의 포트폴리오',
     title: '프론트엔드 개발자 | 노수민',
     description:
