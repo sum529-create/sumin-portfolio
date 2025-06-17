@@ -1,6 +1,6 @@
 import { useRef, useMemo } from 'react';
 import { useFrame } from '@react-three/fiber';
-import { Group, Color, LineBasicMaterial, GridHelper } from 'three';
+import { Group, Color, LineBasicMaterial } from 'three';
 import { ComponentProps } from '@/components/background/types';
 import { easeOutCubic } from '@/components/background/utils/animations';
 
