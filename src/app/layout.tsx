@@ -100,7 +100,7 @@ export default function RootLayout({
       className={`${pretendard.variable}`}
       style={{ fontFamily: 'system-ui, Pretendard, sans-serif' }}
     >
-      <body className='min-h-screen overflow-x-hidden bg-background antialiased'>
+      <body className='custom-mobile-height min-h-screen overflow-x-hidden bg-background antialiased'>
         <ClientLayoutWrapper>{children}</ClientLayoutWrapper>
       </body>
     </html>

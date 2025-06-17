@@ -46,7 +46,7 @@ const config: Config = {
       },
       colors: {
         background: {
-          DEFAULT: '#FFFFFF',
+          DEFAULT: '#14142e',
           dark: '#0F172A',
         },
         foreground: {

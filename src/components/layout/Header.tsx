@@ -259,9 +259,7 @@ const Header = () => {
   const headerClassName = useMemo(
     () =>
       `fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
-          ? 'bg-background/80 backdrop-blur-md shadow-sm'
-          : 'bg-transparent'
+        isScrolled ? 'bg-white/80 backdrop-blur-md shadow-sm' : 'bg-transparent'
       }`,
     [isScrolled]
   );
@@ -374,7 +372,7 @@ const Header = () => {
               aria-hidden='true'
             />
             <motion.div
-              className={`fixed right-0 top-0 z-40 h-screen bg-background/95 backdrop-blur-md md:hidden`}
+              className={`fixed right-0 top-0 z-40 h-screen bg-white/95 backdrop-blur-md md:hidden`}
               style={{ width: `${HEADER.MOBILE_MENU_WIDTH}px` }}
               initial='closed'
               animate='open'
