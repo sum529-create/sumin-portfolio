@@ -30,12 +30,12 @@ export const generateMetadata = async ({ params }: PageParams) => {
       '프론트엔드',
     ],
     openGraph: {
-      url: `https://sumin-portfolio-sigma.vercel.app/projects/${projectId}`,
+      url: `https://sumin.it.kr/projects/${projectId}`,
       title: `노수민의 프로젝트 | ${projectId}`,
       description: `노수민의 프로젝트 ${projectId}에 대한 상세 설명 페이지입니다.`,
       images: [
         {
-          url: `https://sumin-portfolio-sigma.vercel.app/images/${projectId}.png`,
+          url: `https://sumin.it.kr/images/${projectId}.png`,
           width: 1200,
           height: 630,
           alt: `노수민의 프로젝트 ${projectId} OG 이미지`,

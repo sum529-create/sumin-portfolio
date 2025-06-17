@@ -66,6 +66,6 @@ export const projectsSummary: ProjectSummary[] = [
 
     favicon: '/images/portfolio/portfolio-favicon.png',
     githubUrl: 'https://github.com/sum529-create/sumin-portfolio',
-    demoUrl: 'https://sumin-portfolio-sigma.vercel.app/',
+    demoUrl: 'https://sumin.it.kr/',
   },
 ];
