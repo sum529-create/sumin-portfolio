@@ -42,15 +42,17 @@ const ProjectBlog = ({ blogPosts }: ProjectBlogProps) => {
                   <p className='mb-4 text-sm leading-relaxed text-white/80'>
                     {post.description}
                   </p>
-                  {post.tags.map((tag: string, idx: number) => (
-                    <Badge
-                      key={tag}
-                      variant='outline'
-                      className={`border border-white/20 px-3 py-1 text-sm text-white/70 transition-colors duration-200 hover:bg-white/10 ${idx !== 0 ? 'ml-2' : ''}`}
-                    >
-                      {tag}
-                    </Badge>
-                  ))}
+                  <div className='flex flex-wrap gap-2'>
+                    {post.tags.map((tag: string, idx: number) => (
+                      <Badge
+                        key={tag}
+                        variant='outline'
+                        className='border border-white/20 px-3 py-1 text-sm text-white/70 transition-colors duration-200 hover:bg-white/10'
+                      >
+                        {tag}
+                      </Badge>
+                    ))}
+                  </div>
                 </div>
               </Link>
             ))}
