@@ -7,7 +7,7 @@ const IntroSection = () => {
     <SectionContainer sectionId='about'>
       <SectionTitle
         title='Developer Interview'
-        subTitle='자주 받는 질문과 나의 생각'
+        subTitle='저는 이런 생각을 가지고 있어요'
         ariaLabel='개발자 인터뷰 섹션'
       />
       <ul className='grid grid-cols-1 items-center gap-12'>

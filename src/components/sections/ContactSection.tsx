@@ -15,7 +15,7 @@ const ContactSection = () => {
     >
       <SectionTitle
         title='Contact Me'
-        subTitle='저에게 연락해 주세요'
+        subTitle='마지막 한 걸음, 연락으로 이어지길'
         ariaLabel='연락 섹션'
       />
 
