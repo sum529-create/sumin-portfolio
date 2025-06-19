@@ -59,7 +59,7 @@ const ExperienceSection = () => {
     >
       <SectionTitle
         title='Work Experience'
-        subTitle='나의 경력'
+        subTitle='실무에서 다진 프론트엔드 경험'
         ariaLabel='경력 섹션'
       />
       <div className='flex min-h-[500px] items-center justify-center'>

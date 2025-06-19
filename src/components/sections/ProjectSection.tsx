@@ -9,7 +9,7 @@ export default function ProjectSection() {
     <SectionContainer sectionId='projects' divCln='pb-40'>
       <SectionTitle
         title='Projects'
-        subTitle='나의 프로젝트들'
+        subTitle='기획부터 구현까지, 나만의 개발 기록'
         ariaLabel='프로젝트 섹션'
       />
       {projectsSummary.map((data, i) => (
