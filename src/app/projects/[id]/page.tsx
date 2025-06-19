@@ -62,7 +62,7 @@ const page = ({ params }: PageParams) => {
   }
 
   return (
-    <div className='container relative mx-auto min-h-screen max-w-full px-4 py-20 pb-[100px]'>
+    <div className='container relative mx-auto min-h-screen max-w-5xl px-4 py-20 pb-[100px]'>
       <SectionTitle
         title={projectTitle}
         subTitle={`${projectTitle} 프로젝트에 대한 상세 정보입니다.`}
