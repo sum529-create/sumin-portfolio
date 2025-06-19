@@ -33,7 +33,7 @@ export default function ProjectDetail({ projectId }: ProjectDetailProps) {
   const { outline, skillStack, retrospection, blogPosts } = projectDetail;
 
   return (
-    <div className='min-h-screen py-12 md:px-6 lg:px-8'>
+    <div className='min-h-screen'>
       {/* 뒤로가기 버튼 */}
       <div className='mb-10'>
         <Button
