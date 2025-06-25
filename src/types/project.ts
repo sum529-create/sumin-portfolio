@@ -42,7 +42,9 @@ export interface ProjectSummary {
   githubUrl: string;
   demoUrl: string;
 }
+export type ProjectType = 'individual' | 'collaboration';
 export interface ProjectDetail {
+  projectType: ProjectType;
   overview: ProjectOverview;
   outline: ProjectOutlineType;
   skillStack: ProjectTagCard[];

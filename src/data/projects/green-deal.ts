@@ -1,6 +1,7 @@
 import { ProjectDetail } from '@/types/project';
 
 export const greenDealDetail: ProjectDetail = {
+  projectType: 'collaboration',
   overview: {
     period: '2025.02.26 - 2025.03.04',
     role: '프론트엔드 개발',
