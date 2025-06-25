@@ -69,7 +69,13 @@ const ProjectOutline = ({ outline }: ProjectOutlineProps) => {
               </ul>
             </CardBlock>
 
-            <CardBlock title='협업 성과'>
+            <CardBlock
+              title={
+                outline.intro.introText.includes('포트폴리오')
+                  ? '개인 성과'
+                  : '협업 성과'
+              }
+            >
               <ul className='space-y-3 text-sm'>
                 {outline.achievements.collaboration.map((item, index) => (
                   <li

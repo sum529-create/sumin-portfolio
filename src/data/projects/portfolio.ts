@@ -63,7 +63,7 @@ export const portfolioDetail: ProjectDetail = {
     },
     {
       title: 'Documentation',
-      tags: ['Velog', 'Notion', 'GitHub Wiki'],
+      tags: ['Velog'],
       description:
         '개발 과정에서의 문제 해결과 기술적 결정 사항을 블로그와 문서로 정리하여 공유했습니다.',
     },
