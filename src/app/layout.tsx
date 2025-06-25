@@ -56,6 +56,9 @@ export const metadata: Metadata = {
     '프로그래밍',
     '웹 디자인',
   ],
+  verification: {
+    google: process.env.GOOGLE_SITE_VERIFICATION,
+  },
   openGraph: {
     type: 'website',
     locale: 'ko_KR',
