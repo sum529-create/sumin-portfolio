@@ -1,6 +1,7 @@
 import { ProjectDetail } from '@/types/project';
 
 export const portfolioDetail: ProjectDetail = {
+  projectType: 'individual',
   overview: {
     period: '2025.05.15 - 2025.06.11',
     role: '프론트엔드 개발',

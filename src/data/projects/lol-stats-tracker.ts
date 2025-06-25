@@ -1,6 +1,7 @@
 import { ProjectDetail } from '@/types/project';
 
 export const lolStatsTrackerDetail: ProjectDetail = {
+  projectType: 'collaboration',
   overview: {
     period: '2025.03.10 - 2025.03.18',
     role: '프론트엔드 개발',

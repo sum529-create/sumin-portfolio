@@ -1,6 +1,7 @@
 import { ProjectDetail } from '@/types/project';
 
 export const mediClickDetail: ProjectDetail = {
+  projectType: 'collaboration',
   overview: {
     period: '2025.03.20 - 2025.03.27',
     role: '프론트엔드 개발',

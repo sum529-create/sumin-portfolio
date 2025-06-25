@@ -6,14 +6,15 @@ import {
   CardTitle,
 } from '@/components/ui/card';
 import { TabsContent } from '@/components/ui/tabs';
-import { ProjectOutlineType } from '@/types/project';
+import { ProjectOutlineType, ProjectType } from '@/types/project';
 import { Award, Lightbulb, Target, Users } from 'lucide-react';
 
 interface ProjectOutlineProps {
   outline: ProjectOutlineType;
+  projectType: ProjectType;
 }
 
-const ProjectOutline = ({ outline }: ProjectOutlineProps) => {
+const ProjectOutline = ({ outline, projectType }: ProjectOutlineProps) => {
   return (
     <TabsContent value='overview' className='space-y-8'>
       <div className='grid gap-8 lg:grid-cols-2'>
@@ -70,11 +71,7 @@ const ProjectOutline = ({ outline }: ProjectOutlineProps) => {
             </CardBlock>
 
             <CardBlock
-              title={
-                outline.intro.introText.includes('포트폴리오')
-                  ? '개인 성과'
-                  : '협업 성과'
-              }
+              title={projectType === 'individual' ? '개인 성과' : '협업 성과'}
             >
               <ul className='space-y-3 text-sm'>
                 {outline.achievements.collaboration.map((item, index) => (

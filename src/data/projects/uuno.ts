@@ -1,6 +1,7 @@
 import { ProjectDetail } from '@/types/project';
 
 export const uunoDetail: ProjectDetail = {
+  projectType: 'collaboration',
   overview: {
     period: '2025.04.09 - 2025.04.30',
     role: '서브리더 & 프론트엔드 개발',

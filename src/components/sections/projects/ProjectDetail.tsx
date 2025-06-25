@@ -30,7 +30,8 @@ export default function ProjectDetail({ projectId }: ProjectDetailProps) {
   }
   if (!projectDetail) return null;
 
-  const { outline, skillStack, retrospection, blogPosts } = projectDetail;
+  const { projectType, outline, skillStack, retrospection, blogPosts } =
+    projectDetail;
 
   return (
     <div className='min-h-screen'>
@@ -54,7 +55,7 @@ export default function ProjectDetail({ projectId }: ProjectDetailProps) {
         {/* 탭 리스트 */}
         <ProjectTabList />
         {/* 개요 탭 */}
-        <ProjectOutline outline={outline} />
+        <ProjectOutline outline={outline} projectType={projectType} />
         {/* 기술스택 탭 */}
         <ProjectSkillStack skillStack={skillStack} />
         {/* 회고 탭 */}
