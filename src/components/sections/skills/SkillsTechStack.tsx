@@ -158,7 +158,7 @@ const SkillsTechStack = () => {
             <ExperienceListItem
               icon={SiVuedotjs}
               name='Vue.js & Nuxt.js'
-              months='2년 11개월'
+              months='2년 10개월'
               detail='EBS 교육 플랫폼 프론트엔드 개발'
               highlights={exeItems}
               iconClassName='fill-green-400'
