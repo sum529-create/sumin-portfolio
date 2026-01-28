@@ -176,6 +176,7 @@ const SkillsTechStack = () => {
                 icon={SiReactquery}
                 name='TanStack Query'
                 description=''
+                textSize='xs'
                 iconClassName='fill-[#FF4154]'
                 containerClassName='hover:border-red-400/50'
                 iconSize='sm'
@@ -185,6 +186,7 @@ const SkillsTechStack = () => {
                 name='Recharts'
                 description=''
                 textIcon='R'
+                textSize='xs'
                 textIconClassName='bg-pink-500 text-[10px] font-bold text-white'
                 containerClassName='hover:border-pink-400/50'
                 iconSize='sm'
@@ -194,6 +196,7 @@ const SkillsTechStack = () => {
                 name='GrapeJS'
                 description=''
                 textIcon='G'
+                textSize='xs'
                 textIconClassName='bg-indigo-500 text-[10px] font-bold text-white'
                 containerClassName='hover:border-indigo-400/50'
                 iconSize='sm'
@@ -206,6 +209,7 @@ const SkillsTechStack = () => {
                 iconClassName='fill-emerald-400'
                 containerClassName='hover:border-emerald-400/50'
                 iconSize='sm'
+                textSize='xs'
               />
 
               <SkillTechItem
@@ -215,6 +219,7 @@ const SkillsTechStack = () => {
                 iconClassName='fill-[#06B6D4]'
                 containerClassName='hover:border-teal-400/50'
                 iconSize='sm'
+                textSize='xs'
               />
 
               <SkillTechItem
@@ -224,6 +229,7 @@ const SkillsTechStack = () => {
                 textIconClassName='bg-violet-500 text-[10px] font-bold text-white'
                 containerClassName='hover:border-violet-400/50'
                 iconSize='sm'
+                textSize='xs'
               />
 
               <SkillTechItem
@@ -233,6 +239,7 @@ const SkillsTechStack = () => {
                 iconClassName='fill-[#FF6384]'
                 containerClassName='hover:border-orange-400/50'
                 iconSize='sm'
+                textSize='xs'
               />
 
               <SkillTechItem
@@ -242,6 +249,7 @@ const SkillsTechStack = () => {
                 iconClassName='fill-[#3FCF8E]'
                 containerClassName='hover:border-emerald-400/50'
                 iconSize='sm'
+                textSize='xs'
               />
 
               <SkillTechItem
@@ -251,6 +259,7 @@ const SkillsTechStack = () => {
                 iconClassName='fill-sky-400'
                 containerClassName='hover:border-sky-400/50'
                 iconSize='sm'
+                textSize='xs'
               />
 
               <SkillTechItem
@@ -260,6 +269,7 @@ const SkillsTechStack = () => {
                 iconClassName='fill-lime-400'
                 containerClassName='hover:border-lime-400/50'
                 iconSize='sm'
+                textSize='xs'
               />
             </div>
           </SkillTechBlock>

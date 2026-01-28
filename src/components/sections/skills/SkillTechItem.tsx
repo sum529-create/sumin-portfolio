@@ -8,6 +8,7 @@ interface SkillTechItemProps {
   containerClassName?: string;
   iconBgClassName?: string;
   iconSize?: 'sm' | 'md' | 'lg';
+  textSize?: 'xs' | 'sm' | 'md' | 'lg';
   variant?: 'default' | 'highlight';
   experience?: string;
   experienceDetail?: string;
@@ -31,6 +32,28 @@ const containerSizes = {
   lg: 'h-12 w-12',
 };
 
+const textSizeClasses: Record<
+  NonNullable<SkillTechItemProps['textSize']>,
+  { name: string; description: string }
+> = {
+  xs: {
+    name: 'text-[11px] md:text-xs',
+    description: 'text-[10px] md:text-xs text-slate-400',
+  },
+  sm: {
+    name: 'text-sm',
+    description: 'text-xs text-slate-400',
+  },
+  md: {
+    name: 'text-base',
+    description: 'text-sm text-slate-400',
+  },
+  lg: {
+    name: 'text-lg',
+    description: 'text-base text-slate-400',
+  },
+};
+
 const SkillTechItem = ({
   icon: Icon,
   name,
@@ -39,6 +62,7 @@ const SkillTechItem = ({
   containerClassName = '',
   iconBgClassName = 'bg-slate-700',
   iconSize = 'md',
+  textSize = 'sm',
   variant = 'default',
   experience,
   experienceDetail,
@@ -47,6 +71,8 @@ const SkillTechItem = ({
   accentClassName = 'text-green-400',
   layout = 'row',
 }: SkillTechItemProps) => {
+  const sizeClass = textSizeClasses[textSize];
+
   if (variant === 'highlight' && Icon) {
     return (
       <div
@@ -64,7 +90,9 @@ const SkillTechItem = ({
             </div>
           </div>
           <div>
-            <div className='text-sm font-medium text-white md:text-base'>
+            <div
+              className={`${textSizeClasses.md.name} font-medium text-white`}
+            >
               {name}
             </div>
             {experience && (
@@ -107,13 +135,13 @@ const SkillTechItem = ({
               className={
                 isColumn
                   ? 'max-w-[5.5rem] truncate whitespace-nowrap text-[10px] font-medium text-white md:text-[11px]'
-                  : 'text-sm font-medium text-white'
+                  : `${sizeClass.name} font-medium text-white`
               }
             >
               {name}
             </div>
             {description && (
-              <div className='text-xs text-slate-400'>{description}</div>
+              <div className={sizeClass.description}>{description}</div>
             )}
           </div>
         </div>
@@ -135,9 +163,11 @@ const SkillTechItem = ({
           {textIcon || name.charAt(0).toUpperCase()}
         </div>
         <div className='min-w-0 flex-1'>
-          <div className='text-sm font-medium text-white'>{name}</div>
+          <div className={`${sizeClass.name} font-medium text-white`}>
+            {name}
+          </div>
           {description && (
-            <div className='text-xs text-slate-400'>{description}</div>
+            <div className={sizeClass.description}>{description}</div>
           )}
         </div>
       </div>
