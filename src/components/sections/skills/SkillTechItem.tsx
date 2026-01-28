@@ -8,11 +8,16 @@ interface SkillTechItemProps {
   containerClassName?: string;
   iconBgClassName?: string;
   iconSize?: 'sm' | 'md' | 'lg';
+  textSize?: 'xs' | 'sm' | 'md' | 'lg';
   variant?: 'default' | 'highlight';
   experience?: string;
   experienceDetail?: string;
   textIcon?: string;
   textIconClassName?: string;
+  /** 하이라이트 카드에서 기간 텍스트 색상 (기본: Vue 그린) */
+  accentClassName?: string;
+  /** 아이콘-텍스트 레이아웃 방향 (기본: row) */
+  layout?: 'row' | 'column';
 }
 
 const iconSizes = {
@@ -27,6 +32,28 @@ const containerSizes = {
   lg: 'h-12 w-12',
 };
 
+const textSizeClasses: Record<
+  NonNullable<SkillTechItemProps['textSize']>,
+  { name: string; description: string }
+> = {
+  xs: {
+    name: 'text-[11px] md:text-xs',
+    description: 'text-[10px] md:text-xs text-slate-400',
+  },
+  sm: {
+    name: 'text-sm',
+    description: 'text-xs text-slate-400',
+  },
+  md: {
+    name: 'text-base',
+    description: 'text-sm text-slate-400',
+  },
+  lg: {
+    name: 'text-lg',
+    description: 'text-base text-slate-400',
+  },
+};
+
 const SkillTechItem = ({
   icon: Icon,
   name,
@@ -35,12 +62,17 @@ const SkillTechItem = ({
   containerClassName = '',
   iconBgClassName = 'bg-slate-700',
   iconSize = 'md',
+  textSize = 'sm',
   variant = 'default',
   experience,
   experienceDetail,
   textIcon,
   textIconClassName = '',
+  accentClassName = 'text-green-400',
+  layout = 'row',
 }: SkillTechItemProps) => {
+  const sizeClass = textSizeClasses[textSize];
+
   if (variant === 'highlight' && Icon) {
     return (
       <div
@@ -58,11 +90,13 @@ const SkillTechItem = ({
             </div>
           </div>
           <div>
-            <div className='text-sm font-medium text-white md:text-base'>
+            <div
+              className={`${textSizeClasses.md.name} font-medium text-white`}
+            >
               {name}
             </div>
             {experience && (
-              <div className='text-xs font-semibold text-green-400'>
+              <div className={`text-xs font-semibold ${accentClassName}`}>
                 {experience}
               </div>
             )}
@@ -76,22 +110,39 @@ const SkillTechItem = ({
       </div>
     );
   } else if (Icon) {
+    const isColumn = layout === 'column';
     return (
       <div
         className={`rounded-lg border border-slate-600/50 bg-slate-800/80 p-2.5 transition-colors duration-200 ${containerClassName}`}
         role='listitem'
         aria-label={`${name} 기술 스택`}
       >
-        <div className='flex items-center space-x-2'>
+        <div
+          className={
+            isColumn
+              ? 'flex flex-col items-center space-y-2'
+              : 'flex items-center space-x-2'
+          }
+        >
           <div
             className={`flex ${containerSizes[iconSize]} items-center justify-center rounded-md ${iconBgClassName}`}
             aria-hidden='true'
           >
             <Icon className={`${iconSizes[iconSize]} ${iconClassName}`} />
           </div>
-          <div className='min-w-0 flex-1'>
-            <div className='text-sm font-medium text-white'>{name}</div>
-            <div className='text-xs text-slate-400'>{description}</div>
+          <div className={isColumn ? 'mt-0.5 text-center' : 'min-w-0 flex-1'}>
+            <div
+              className={
+                isColumn
+                  ? 'max-w-[5.5rem] truncate whitespace-nowrap text-[10px] font-medium text-white md:text-[11px]'
+                  : `${sizeClass.name} font-medium text-white`
+              }
+            >
+              {name}
+            </div>
+            {description && (
+              <div className={sizeClass.description}>{description}</div>
+            )}
           </div>
         </div>
       </div>
@@ -112,8 +163,12 @@ const SkillTechItem = ({
           {textIcon || name.charAt(0).toUpperCase()}
         </div>
         <div className='min-w-0 flex-1'>
-          <div className='text-sm font-medium text-white'>{name}</div>
-          <div className='text-xs text-slate-400'>{description}</div>
+          <div className={`${sizeClass.name} font-medium text-white`}>
+            {name}
+          </div>
+          {description && (
+            <div className={sizeClass.description}>{description}</div>
+          )}
         </div>
       </div>
     </div>
