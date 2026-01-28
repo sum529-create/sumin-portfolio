@@ -13,6 +13,8 @@ interface SkillTechItemProps {
   experienceDetail?: string;
   textIcon?: string;
   textIconClassName?: string;
+  /** 하이라이트 카드에서 기간 텍스트 색상 (기본: Vue 그린) */
+  accentClassName?: string;
 }
 
 const iconSizes = {
@@ -40,6 +42,7 @@ const SkillTechItem = ({
   experienceDetail,
   textIcon,
   textIconClassName = '',
+  accentClassName = 'text-green-400',
 }: SkillTechItemProps) => {
   if (variant === 'highlight' && Icon) {
     return (
@@ -62,7 +65,7 @@ const SkillTechItem = ({
               {name}
             </div>
             {experience && (
-              <div className='text-xs font-semibold text-green-400'>
+              <div className={`text-xs font-semibold ${accentClassName}`}>
                 {experience}
               </div>
             )}
