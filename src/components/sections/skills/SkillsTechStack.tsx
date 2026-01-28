@@ -8,12 +8,13 @@ import {
   SiTailwindcss,
   SiChartdotjs,
   SiSupabase,
+  SiPostgresql,
+  SiNodedotjs,
+  SiPuppeteer,
 } from 'react-icons/si';
 import type { IconType } from 'react-icons';
 import SkillTechBlock from '@/components/sections/skills/SkillTechBlock';
 import SkillTechItem from '@/components/sections/skills/SkillTechItem';
-import { useIsMobile } from '@/hooks/useMediaQuery';
-import { useEffect, useState } from 'react';
 
 const exeItems = [
   '월 10만명 이상 사용하는 대규모 서비스 운영',
@@ -80,20 +81,15 @@ const ExperienceListItem = ({
     </div>
   );
 };
+
 const SkillsTechStack = () => {
-  const isMobile = useIsMobile();
-  const [isMounted, setIsMounted] = useState<boolean>(false);
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
-  const showContent = isMounted ? !isMobile : true;
   return (
-    <div className='md:skill-box relative inset-0 p-4 md:p-6'>
+    <div className='md:skill-box relative inset-0 h-full p-4 md:p-6'>
       <div
-        className='md:scroll-door-animate grid grid-cols-1 gap-4 md:grid-cols-3 md:gap-6'
+        className='md:scroll-door-animate grid h-full grid-cols-1 gap-4 overflow-y-auto md:grid-cols-3 md:gap-6 md:overflow-hidden'
         role='region'
         aria-label='기술 스택 섹션'
-        {...(showContent && { 'data-direction': 'doorContent' })}
+        data-direction='doorContent'
       >
         {/* 현재 주력기술 */}
         <div>
@@ -104,6 +100,15 @@ const SkillsTechStack = () => {
               description='UI 라이브러리'
               iconClassName='fill-[#61DAFB]'
               containerClassName='hover:border-blue-400/70'
+              iconSize='md'
+            />
+
+            <SkillTechItem
+              icon={SiVuedotjs}
+              name='Vue.js'
+              description='UI 라이브러리'
+              iconClassName='fill-green-400'
+              containerClassName='hover:border-green-400/50'
               iconSize='md'
             />
 
@@ -166,50 +171,97 @@ const SkillsTechStack = () => {
         {/* 프로젝트 경험 */}
         <div>
           <SkillTechBlock color='purple' text='프로젝트 경험'>
-            <SkillTechItem
-              icon={SiReactquery}
-              name='TanStack Query'
-              description='서버 상태 관리'
-              iconClassName='fill-[#FF4154]'
-              containerClassName='hover:border-red-400/50'
-              iconSize='sm'
-            />
+            <div className='grid gap-2 md:grid-cols-2'>
+              <SkillTechItem
+                icon={SiReactquery}
+                name='TanStack Query'
+                description=''
+                iconClassName='fill-[#FF4154]'
+                containerClassName='hover:border-red-400/50'
+                iconSize='sm'
+              />
 
-            <SkillTechItem
-              icon={SiTailwindcss}
-              name='Tailwind CSS'
-              description='CSS 프레임워크'
-              iconClassName='fill-[#06B6D4]'
-              containerClassName='hover:border-teal-400/50'
-              iconSize='sm'
-            />
+              <SkillTechItem
+                name='Recharts'
+                description=''
+                textIcon='R'
+                textIconClassName='bg-pink-500 text-[10px] font-bold text-white'
+                containerClassName='hover:border-pink-400/50'
+                iconSize='sm'
+              />
 
-            <SkillTechItem
-              icon={SiChartdotjs}
-              name='Chart.js'
-              description='데이터 시각화'
-              iconClassName='fill-[#FF6384]'
-              containerClassName='hover:border-orange-400/50'
-              iconSize='sm'
-            />
+              <SkillTechItem
+                name='GrapeJS'
+                description=''
+                textIcon='G'
+                textIconClassName='bg-indigo-500 text-[10px] font-bold text-white'
+                containerClassName='hover:border-indigo-400/50'
+                iconSize='sm'
+              />
 
-            <SkillTechItem
-              name='Zustand'
-              description='상태 관리'
-              textIcon='Z'
-              textIconClassName='bg-violet-500 text-xs font-bold text-white'
-              containerClassName='hover:border-violet-400/50'
-              iconSize='sm'
-            />
+              <SkillTechItem
+                icon={SiPuppeteer}
+                name='Puppeteer'
+                description=''
+                iconClassName='fill-emerald-400'
+                containerClassName='hover:border-emerald-400/50'
+                iconSize='sm'
+              />
 
-            <SkillTechItem
-              icon={SiSupabase}
-              name='Supabase'
-              description='백엔드 서비스'
-              iconClassName='fill-[#3FCF8E]'
-              containerClassName='hover:border-emerald-400/50'
-              iconSize='sm'
-            />
+              <SkillTechItem
+                icon={SiTailwindcss}
+                name='Tailwind CSS'
+                description=''
+                iconClassName='fill-[#06B6D4]'
+                containerClassName='hover:border-teal-400/50'
+                iconSize='sm'
+              />
+
+              <SkillTechItem
+                name='Zustand'
+                description=''
+                textIcon='Z'
+                textIconClassName='bg-violet-500 text-[10px] font-bold text-white'
+                containerClassName='hover:border-violet-400/50'
+                iconSize='sm'
+              />
+
+              <SkillTechItem
+                icon={SiChartdotjs}
+                name='Chart.js'
+                description=''
+                iconClassName='fill-[#FF6384]'
+                containerClassName='hover:border-orange-400/50'
+                iconSize='sm'
+              />
+
+              <SkillTechItem
+                icon={SiSupabase}
+                name='Supabase'
+                description=''
+                iconClassName='fill-[#3FCF8E]'
+                containerClassName='hover:border-emerald-400/50'
+                iconSize='sm'
+              />
+
+              <SkillTechItem
+                icon={SiPostgresql}
+                name='PostgreSQL'
+                description=''
+                iconClassName='fill-sky-400'
+                containerClassName='hover:border-sky-400/50'
+                iconSize='sm'
+              />
+
+              <SkillTechItem
+                icon={SiNodedotjs}
+                name='Node.js + Express'
+                description=''
+                iconClassName='fill-lime-400'
+                containerClassName='hover:border-lime-400/50'
+                iconSize='sm'
+              />
+            </div>
           </SkillTechBlock>
         </div>
       </div>

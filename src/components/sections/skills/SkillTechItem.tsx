@@ -15,6 +15,8 @@ interface SkillTechItemProps {
   textIconClassName?: string;
   /** 하이라이트 카드에서 기간 텍스트 색상 (기본: Vue 그린) */
   accentClassName?: string;
+  /** 아이콘-텍스트 레이아웃 방향 (기본: row) */
+  layout?: 'row' | 'column';
 }
 
 const iconSizes = {
@@ -43,6 +45,7 @@ const SkillTechItem = ({
   textIcon,
   textIconClassName = '',
   accentClassName = 'text-green-400',
+  layout = 'row',
 }: SkillTechItemProps) => {
   if (variant === 'highlight' && Icon) {
     return (
@@ -79,22 +82,39 @@ const SkillTechItem = ({
       </div>
     );
   } else if (Icon) {
+    const isColumn = layout === 'column';
     return (
       <div
         className={`rounded-lg border border-slate-600/50 bg-slate-800/80 p-2.5 transition-colors duration-200 ${containerClassName}`}
         role='listitem'
         aria-label={`${name} 기술 스택`}
       >
-        <div className='flex items-center space-x-2'>
+        <div
+          className={
+            isColumn
+              ? 'flex flex-col items-center space-y-2'
+              : 'flex items-center space-x-2'
+          }
+        >
           <div
             className={`flex ${containerSizes[iconSize]} items-center justify-center rounded-md ${iconBgClassName}`}
             aria-hidden='true'
           >
             <Icon className={`${iconSizes[iconSize]} ${iconClassName}`} />
           </div>
-          <div className='min-w-0 flex-1'>
-            <div className='text-sm font-medium text-white'>{name}</div>
-            <div className='text-xs text-slate-400'>{description}</div>
+          <div className={isColumn ? 'mt-0.5 text-center' : 'min-w-0 flex-1'}>
+            <div
+              className={
+                isColumn
+                  ? 'max-w-[5.5rem] truncate whitespace-nowrap text-[10px] font-medium text-white md:text-[11px]'
+                  : 'text-sm font-medium text-white'
+              }
+            >
+              {name}
+            </div>
+            {description && (
+              <div className='text-xs text-slate-400'>{description}</div>
+            )}
           </div>
         </div>
       </div>
@@ -116,7 +136,9 @@ const SkillTechItem = ({
         </div>
         <div className='min-w-0 flex-1'>
           <div className='text-sm font-medium text-white'>{name}</div>
-          <div className='text-xs text-slate-400'>{description}</div>
+          {description && (
+            <div className='text-xs text-slate-400'>{description}</div>
+          )}
         </div>
       </div>
     </div>
