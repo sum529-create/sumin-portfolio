@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import localFont from 'next/font/local';
 import './globals.css';
 import ClientLayoutWrapper from '@/components/layout/ClientLayoutWrapper';
+import { SITE_URL } from '@/constants/site';
 
 const pretendard = localFont({
   src: [
@@ -33,9 +34,7 @@ const pretendard = localFont({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_URL || 'https://sumin.it.kr/'
-  ),
+  metadataBase: new URL(SITE_URL),
   title: {
     default: '프론트엔드 개발자 | 노수민',
     template: '%s | 노수민의 포트폴리오',
@@ -62,7 +61,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'ko_KR',
-    url: process.env.NEXT_PUBLIC_SITE_URL || 'https://sumin.it.kr/',
+    url: SITE_URL,
     siteName: '노수민의 포트폴리오',
     title: '프론트엔드 개발자 | 노수민',
     description:

@@ -1,6 +1,6 @@
 import { BLOG_LABELS, BlogDataProps } from '@/constants/blogs';
 import gsap from 'gsap';
-import Image from 'next/image';
+import SafeImage from '@/components/ui/SafeImage';
 import Link from 'next/link';
 import { FaFire, FaBookOpen } from 'react-icons/fa6';
 import { GrPersonalComputer } from 'react-icons/gr';
@@ -70,23 +70,21 @@ const BlogCard = ({ blog, index }: BlogCardProps) => {
         onMouseEnter={handleMouseEnter}
       >
         <div
-          className='pointer-events-none absolute -left-1/2 -top-1/2 z-10 hidden h-[200%] w-[500%] animate-shine bg-gradient-to-r from-transparent via-white/50 to-transparent will-change-transform group-hover:block'
+          className='pointer-events-none absolute -left-1/2 -top-1/2 z-10 hidden h-[200%] w-[500%] animate-shine bg-gradient-to-r from-transparent via-white/50 to-transparent will-change-transform motion-reduce:hidden group-hover:block'
           style={{
             filter: 'blur(8px)',
             transformOrigin: '0 0',
           }}
         />
         <div className='relative aspect-[1/1] w-full md:max-w-md'>
-          <Image
+          <SafeImage
             src={blog.imageUrl}
+            fallbackSrc='/images/blog/blog-placeholder.jpg'
             alt={blog.title}
             aria-label={blog.title}
             fill={true}
             sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
             className='object-cover'
-            onError={(e) => {
-              e.currentTarget.src = '/images/blog/blog-placeholder.jpg';
-            }}
             placeholder='blur'
             blurDataURL='data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k='
           />

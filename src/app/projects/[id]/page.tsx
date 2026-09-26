@@ -1,6 +1,7 @@
 import ProjectDetail from '@/components/sections/projects/ProjectDetail';
 import SectionTitle from '@/components/sections/common/SectionTitle';
 import { projectsSummary } from '@/constants/projects-summary';
+import { SITE_URL } from '@/constants/site';
 
 export async function generateStaticParams() {
   return projectsSummary.map(({ id }) => ({ id }));
@@ -30,12 +31,12 @@ export const generateMetadata = async ({ params }: PageParams) => {
       '프론트엔드',
     ],
     openGraph: {
-      url: `https://sumin.it.kr/projects/${projectId}`,
+      url: `${SITE_URL}/projects/${projectId}`,
       title: `노수민의 프로젝트 | ${projectId}`,
       description: `노수민의 프로젝트 ${projectId}에 대한 상세 설명 페이지입니다.`,
       images: [
         {
-          url: `https://sumin.it.kr/images/${projectId}.png`,
+          url: `${SITE_URL}/images/${projectId}.png`,
           width: 1200,
           height: 630,
           alt: `노수민의 프로젝트 ${projectId} OG 이미지`,
