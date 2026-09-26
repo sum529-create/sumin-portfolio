@@ -1,13 +1,15 @@
 import { ScrollData } from '@/components/background/types';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 
-export const useScrollPosition = () => {
-  const [scrollData, setScrollData] = useState<ScrollData>({
+export const scrollDataRef: { current: ScrollData } = {
+  current: {
     scrollY: 0,
     scrollVelocity: 0,
     scrollProgress: 0,
-  });
+  },
+};
 
+export const useScrollPosition = () => {
   useEffect(() => {
     let lastScrollY = window.scrollY;
     let ticking = false;
@@ -19,11 +21,11 @@ export const useScrollPosition = () => {
         document.documentElement.scrollHeight - window.innerHeight;
       const scrollProgress =
         totalScrollable > 0 ? currentScrollY / totalScrollable : 0;
-      setScrollData({
+      scrollDataRef.current = {
         scrollY: currentScrollY,
         scrollVelocity,
         scrollProgress,
-      });
+      };
 
       lastScrollY = currentScrollY;
       ticking = false;
@@ -42,6 +44,4 @@ export const useScrollPosition = () => {
       window.removeEventListener('scroll', onScroll);
     };
   }, []);
-
-  return scrollData;
 };

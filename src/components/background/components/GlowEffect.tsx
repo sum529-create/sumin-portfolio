@@ -1,13 +1,12 @@
 import { useRef, useMemo } from 'react';
 import { useFrame, useThree } from '@react-three/fiber';
 import { Group, Color, MeshBasicMaterial, AdditiveBlending } from 'three';
-import { ComponentProps, GlowPoint } from '@/components/background/types';
+import { GlowPoint } from '@/components/background/types';
 import { easeOutCubic } from '@/components/background/utils/animations';
+import { scrollDataRef } from '@/hooks/useScrollPosition';
+import { introProgressRef } from '@/store/introProgressStore';
 
-export function GlowEffect({
-  scrollData,
-  introAnimationProgress,
-}: ComponentProps): JSX.Element {
+export function GlowEffect(): JSX.Element {
   const glowRef = useRef<Group>(null);
   const { viewport } = useThree();
 
@@ -44,6 +43,7 @@ export function GlowEffect({
     if (!glowRef.current) return;
 
     const time = clock.getElapsedTime();
+    const introAnimationProgress = introProgressRef.current;
 
     glowRef.current.children.forEach((glow, i) => {
       if (i >= glowPoints.length) return;
@@ -81,7 +81,7 @@ export function GlowEffect({
         glow.position.x += Math.sin(time * 0.1 + i * 10) * 0.01;
         glow.position.y += Math.cos(time * 0.1 + i * 10) * 0.01;
 
-        glow.position.y -= scrollData.scrollY * 0.00005;
+        glow.position.y -= scrollDataRef.current.scrollY * 0.00005;
       }
     });
   });

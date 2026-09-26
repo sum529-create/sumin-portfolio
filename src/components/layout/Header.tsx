@@ -49,34 +49,9 @@ const Header = () => {
 
   // 스크롤 이벤트 핸들러 메모이제이션
   const handleScroll = useCallback(() => {
-    setIsScrolled(window.scrollY > 0);
-    // 해당 섹션안에 들어올경우 header nav의 active 상태를 업데이트
-    const currentScrollY =
-      window.scrollY + HEADER.HEIGHT + HEADER.SECTION_OFFSET;
-    const sections = navItems
-      .map((item) => document.getElementById(item.href.substring(1)))
-      .filter((el): el is HTMLElement => Boolean(el));
-
-    if (sections.length === 0) return;
-
-    let closestSection = sections[0];
-    let minDistance = Infinity;
-
-    sections.forEach((section) => {
-      if (!section) return;
-
-      const sectionTop = section.getBoundingClientRect().top + window.scrollY;
-      const distance = Math.abs(sectionTop - currentScrollY);
-
-      if (distance < minDistance) {
-        minDistance = distance;
-        closestSection = section;
-      }
-    });
-    if (closestSection && closestSection.id !== activeSection) {
-      setActiveSection(closestSection.id);
-    }
-  }, [activeSection, navItems]);
+    const next = window.scrollY > 0;
+    setIsScrolled((prev) => (prev === next ? prev : next));
+  }, []);
 
   // 스크롤 위치에 따른 헤더 스타일 변경
   useEffect(() => {
@@ -192,6 +167,7 @@ const Header = () => {
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
 
     return () => {
       observer.disconnect();
@@ -274,7 +250,7 @@ const Header = () => {
       <div className='container mx-auto flex h-16 max-w-5xl items-center justify-between px-4'>
         <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
           <button
-            onClick={(e) => handleNavClick(e, '/')}
+            onClick={(e) => handleNavClick(e, '#home')}
             className='text-xl font-bold text-primary'
             aria-label='홈으로 이동'
           >

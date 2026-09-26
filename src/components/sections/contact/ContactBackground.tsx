@@ -10,9 +10,9 @@ const ContactBackground = () => {
       <div className='absolute right-1/4 top-2/3 h-1 w-1 animate-pulse rounded-full bg-white [animation-delay:2.5s]' />
 
       {/* 워프 링들 */}
-      <div className='absolute left-1/2 top-1/2 h-[300px] w-[300px] -translate-x-1/2 -translate-y-1/2 animate-ping rounded-full border border-purple-500/20' />
-      <div className='absolute left-1/2 top-1/2 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 animate-ping rounded-full border border-cyan-500/20 [animation-delay:1s] [animation-duration:3s]' />
-      <div className='absolute left-1/2 top-1/2 h-[700px] w-[700px] -translate-x-1/2 -translate-y-1/2 animate-ping rounded-full border border-purple-600/20 [animation-delay:2s] [animation-duration:4s]' />
+      <div className='absolute left-1/2 top-1/2 h-[300px] w-[300px] -translate-x-1/2 -translate-y-1/2 animate-ping rounded-full border border-purple-500/20 motion-reduce:animate-none' />
+      <div className='absolute left-1/2 top-1/2 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 animate-ping rounded-full border border-cyan-500/20 motion-reduce:animate-none [animation-delay:1s] [animation-duration:3s]' />
+      <div className='absolute left-1/2 top-1/2 h-[700px] w-[700px] -translate-x-1/2 -translate-y-1/2 animate-ping rounded-full border border-purple-600/20 motion-reduce:animate-none [animation-delay:2s] [animation-duration:4s]' />
 
       {/* 시공간 왜곡 그라데이션 */}
       <div

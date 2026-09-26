@@ -6,14 +6,9 @@ import {
   gradientVertexShader,
   gradientFragmentShader,
 } from '@/components/background/utils/shaders';
+import { introProgressRef } from '@/store/introProgressStore';
 
-interface GradientBackgroundProps {
-  introAnimationProgress: number;
-}
-
-export function GradientBackground({
-  introAnimationProgress,
-}: GradientBackgroundProps): JSX.Element {
+export function GradientBackground(): JSX.Element {
   const materialRef = useRef<GradientMaterial | null>(null);
 
   const shaderMaterial = useMemo<GradientMaterial>(() => {
@@ -32,7 +27,7 @@ export function GradientBackground({
     if (!materialRef.current) return;
 
     materialRef.current.uniforms.time.value = clock.getElapsedTime();
-    materialRef.current.uniforms.introProgress.value = introAnimationProgress;
+    materialRef.current.uniforms.introProgress.value = introProgressRef.current;
   });
 
   return (
