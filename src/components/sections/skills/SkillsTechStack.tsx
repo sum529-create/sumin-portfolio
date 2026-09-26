@@ -26,6 +26,11 @@ const exeItems2 = [
   '법정문서 자동화 및 템플릿 빌더 구축',
   'Puppeteer 기반 PDF 생성 서버 구축',
 ];
+const exeItems3 = [
+  '금융 연계 솔루션 CruzLink',
+  '채널·대외기관 연동 화면',
+  '현재 재직 중',
+];
 
 interface ExperienceListItemProps {
   icon: IconType;
@@ -142,8 +147,19 @@ const SkillsTechStack = () => {
         </div>
 
         {/* 실무 경험 */}
-        <div>
+        <div className='md:overflow-y-auto md:pr-1'>
           <SkillTechBlock color='green' text='실무 경험'>
+            <ExperienceListItem
+              icon={SiReact}
+              name='React & TypeScript'
+              months='재직 중'
+              detail='디리아 금융 연계 솔루션 프론트엔드'
+              highlights={exeItems3}
+              iconClassName='fill-amber-300'
+              monthsClassName='text-amber-300'
+              containerHoverClassName='hover:border-amber-400/60'
+            />
+
             <ExperienceListItem
               icon={SiReact}
               name='React & Next.js & TypeScript'
