@@ -27,8 +27,8 @@ const exeItems2 = [
   'Puppeteer 기반 PDF 생성 서버 구축',
 ];
 const exeItems3 = [
-  '금융 연계 솔루션 CruzLink',
-  '채널·대외기관 연동 화면',
+  'CruzEIMS 인터페이스·전문 관리',
+  '업무분류·할당과 간편등록 화면',
   '현재 재직 중',
 ];
 
@@ -153,7 +153,7 @@ const SkillsTechStack = () => {
               icon={SiReact}
               name='React & TypeScript'
               months='재직 중'
-              detail='디리아 금융 연계 솔루션 프론트엔드'
+              detail='디리아 CruzEIMS 프론트엔드'
               highlights={exeItems3}
               iconClassName='fill-amber-300'
               monthsClassName='text-amber-300'

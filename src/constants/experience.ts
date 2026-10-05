@@ -12,17 +12,25 @@ interface ExperienceItem {
 }
 
 const experienceItem0: ExperienceItem = {
-  company: '디리아 (금융 연계 솔루션)',
+  company: '디리아 (CruzEIMS)',
   department: '프론트엔드',
   period: '재직 중',
-  roleSummary: '금융 채널·대외 연계 솔루션의 프론트엔드 화면 개발',
+  roleSummary: '인터페이스·전문 통합 관리 솔루션의 프론트엔드 개발',
   responsibilities: [
-    '금융권 채널·대외기관 연계 솔루션 CruzLink를 만드는 소프트웨어 기업에서 프론트엔드를 담당',
-    'FEP, MCI, EAI를 아우르는 연계 화면으로 은행·보험·증권·카드사 시스템 연동을 지원',
-    '운영자가 채널 설정과 처리 현황을 확인할 수 있는 UI 구성',
-    'React 기반 화면의 컴포넌트 구조와 사용자 흐름 정리',
+    'CruzEIMS에서 인터페이스, 전문, 연계 시스템, 업무분류를 등록하고 조회하는 관리 화면 개발',
+    '업무분류·업무할당·담당자 설정과 소속 업무 기준 조회 범위 구현',
+    '인터페이스 간편등록의 송수신 업무 선택과 전문ID·업무코드 정합성 검증',
+    '영향도 분석에서 인터페이스 상세로 이어지는 흐름과 내정보의 소속 업무 표시',
   ],
-  techStack: ['React', 'TypeScript', 'Next.js', 'JavaScript'],
+  techStack: [
+    'React',
+    'TypeScript',
+    'Vite',
+    'TanStack Query',
+    'TanStack Form',
+    'Zod',
+    'Tailwind CSS',
+  ],
   theme: 'amber',
 };
 
