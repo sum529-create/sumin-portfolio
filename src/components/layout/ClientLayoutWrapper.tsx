@@ -2,8 +2,16 @@
 
 import Loader from '@/components/ui/loader';
 import MainLayout from '@/components/layout/MainLayout';
-import { AnimatedBackground } from '@/components/background/AnimatedBackground';
+import dynamic from 'next/dynamic';
 import { ReactNode } from 'react';
+
+const AnimatedBackground = dynamic(
+  () =>
+    import('@/components/background/AnimatedBackground').then(
+      (mod) => mod.AnimatedBackground
+    ),
+  { ssr: false }
+);
 
 interface ClientLayoutWrapperProps {
   children: ReactNode;

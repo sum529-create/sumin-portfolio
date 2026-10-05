@@ -40,10 +40,13 @@ export const useProjectDetail = (projectId: string) => {
       }
     };
 
-    if (projectId) {
-      loadProjectDetail();
+    if (!projectId) {
+      setLoading(false);
+      return;
     }
-  }, [projectId]);
+
+    loadProjectDetail();
+  }, [projectId, projectFileName]);
 
   return { projectDetail, loading, error };
 };

@@ -2,7 +2,6 @@ import { useRef, useMemo } from 'react';
 import { useFrame } from '@react-three/fiber';
 import { Points, ShaderMaterial, AdditiveBlending } from 'three';
 import {
-  ComponentProps,
   CustomShaderMaterial,
   ParticleData,
 } from '@/components/background/types';
@@ -10,15 +9,18 @@ import {
   particleVertexShader,
   particleFragmentShader,
 } from '@/components/background/utils/shaders';
+import { scrollDataRef } from '@/hooks/useScrollPosition';
+import { introProgressRef } from '@/store/introProgressStore';
 
-export function ParticleSystem({
-  scrollData,
-  introAnimationProgress,
-}: ComponentProps): JSX.Element {
+export function ParticleSystem(): JSX.Element {
   const particlesRef = useRef<Points>(null);
 
   const particles = useMemo<ParticleData>(() => {
-    const count = 750;
+    const count =
+      typeof window !== 'undefined' &&
+      window.matchMedia('(max-width: 768px)').matches
+        ? 280
+        : 700;
     const positions = new Float32Array(count * 3);
     const sizes = new Float32Array(count);
 
@@ -54,8 +56,9 @@ export function ParticleSystem({
 
     const material = particlesRef.current.material as CustomShaderMaterial;
     material.uniforms.time.value = clock.getElapsedTime();
-    material.uniforms.introProgress.value = introAnimationProgress;
+    material.uniforms.introProgress.value = introProgressRef.current;
 
+    const scrollData = scrollDataRef.current;
     material.uniforms.scrollProgress.value +=
       (scrollData.scrollProgress - material.uniforms.scrollProgress.value) *
       0.03;

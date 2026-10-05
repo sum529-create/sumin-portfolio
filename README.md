@@ -11,7 +11,7 @@
 - 애니메이션과 인터랙션을 통한 역동적인 사용자 경험
 - 블로그 섹션을 통한 기술 공유 및 기록
 
-🔗 [포트폴리오 사이트](https://sumin.it.kr/)
+🔗 [포트폴리오 사이트](https://sum529-create.github.io/sumin-portfolio/)
 
 ### 📆 작업 기간
 

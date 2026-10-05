@@ -1,13 +1,11 @@
 import { useRef, useMemo } from 'react';
 import { useFrame } from '@react-three/fiber';
 import { Group, Color, LineBasicMaterial } from 'three';
-import { ComponentProps } from '@/components/background/types';
 import { easeOutCubic } from '@/components/background/utils/animations';
+import { scrollDataRef } from '@/hooks/useScrollPosition';
+import { introProgressRef } from '@/store/introProgressStore';
 
-export function Grid({
-  scrollData,
-  introAnimationProgress,
-}: ComponentProps): JSX.Element {
+export function Grid(): JSX.Element {
   const gridRef = useRef<Group>(null);
 
   const gridSize = 50;
@@ -42,6 +40,7 @@ export function Grid({
     if (!gridRef.current) return;
 
     const time = clock.getElapsedTime();
+    const introAnimationProgress = introProgressRef.current;
 
     if (introAnimationProgress === 0) {
       gridRef.current.scale.set(0.001, 0.001, 0.001);
@@ -68,7 +67,7 @@ export function Grid({
       gridRef.current.scale.set(1, 1, 1);
       gridRef.current.rotation.x = Math.PI / 2 - Math.sin(time * 0.1) * 0.05;
       gridRef.current.rotation.z = Math.sin(time * 0.05) * 0.05;
-      gridRef.current.position.y = -5 - scrollData.scrollY * 0.00002;
+      gridRef.current.position.y = -5 - scrollDataRef.current.scrollY * 0.00002;
       gridMaterial.opacity = 0.3;
     }
   });

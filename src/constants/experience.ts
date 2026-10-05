@@ -1,3 +1,5 @@
+export type ExperienceTheme = 'amber' | 'sky' | 'violet';
+
 interface ExperienceItem {
   company: string;
   department: string;
@@ -5,7 +7,24 @@ interface ExperienceItem {
   roleSummary: string;
   responsibilities: string[];
   techStack: string[];
+  theme: ExperienceTheme;
+  logoSrc?: string;
 }
+
+const experienceItem0: ExperienceItem = {
+  company: '디리아 (금융 연계 솔루션)',
+  department: '프론트엔드',
+  period: '재직 중',
+  roleSummary: '금융 채널·대외 연계 솔루션의 프론트엔드 화면 개발',
+  responsibilities: [
+    '금융권 채널·대외기관 연계 솔루션 CruzLink를 만드는 소프트웨어 기업에서 프론트엔드를 담당',
+    'FEP, MCI, EAI를 아우르는 연계 화면으로 은행·보험·증권·카드사 시스템 연동을 지원',
+    '운영자가 채널 설정과 처리 현황을 확인할 수 있는 UI 구성',
+    'React 기반 화면의 컴포넌트 구조와 사용자 흐름 정리',
+  ],
+  techStack: ['React', 'TypeScript', 'Next.js', 'JavaScript'],
+  theme: 'amber',
+};
 
 const experienceItem1: ExperienceItem = {
   company: '화이트정보통신 (SaaS HR 솔루션)',
@@ -33,6 +52,8 @@ const experienceItem1: ExperienceItem = {
     'Envoy Proxy',
     'Git',
   ],
+  theme: 'sky',
+  logoSrc: '/whiteinfocm.ico',
 };
 
 const experienceItem2: ExperienceItem = {
@@ -59,9 +80,12 @@ const experienceItem2: ExperienceItem = {
     'Slack',
     'Trello',
   ],
+  theme: 'violet',
+  logoSrc: '/uilab.ico',
 };
 
 export const experienceData: ExperienceItem[] = [
+  experienceItem0,
   experienceItem1,
   experienceItem2,
 ];

@@ -1,4 +1,5 @@
 'use client';
+import { withBasePath } from '@/constants/site';
 import { ProjectSummary } from '@/types/project';
 import dynamic from 'next/dynamic';
 import Link from 'next/link';
@@ -98,7 +99,7 @@ function ProjectCard({ data, i }: CardProps) {
             {/* 메인 이미지 */}
             <Image
               className='h-full w-full object-cover'
-              src={image}
+              src={withBasePath(image)}
               alt={`${title} 프로젝트 스크린샷`}
               fill
               sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'

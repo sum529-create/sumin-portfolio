@@ -7,6 +7,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from '@/components/ui/carousel';
+import { withBasePath } from '@/constants/site';
 import { ProjectDetail, ProjectSummary } from '@/types/project';
 import {
   Award,
@@ -18,6 +19,7 @@ import {
   Users,
 } from 'lucide-react';
 import Image from 'next/image';
+import SafeImage from '@/components/ui/SafeImage';
 import Link from 'next/link';
 
 interface ProjectTopSectionProps {
@@ -38,14 +40,12 @@ const ProjectTopSection = ({
             {projectDetail.projectImages.map((image, index) => (
               <CarouselItem key={index}>
                 <div className='relative aspect-[16/10] bg-black/20 backdrop-blur-sm'>
-                  <Image
+                  <SafeImage
                     src={`/images/${summary.id}/${image}`}
+                    fallbackSrc='/images/project-placeholder.png'
                     alt={`${summary.title} 스크린샷 ${index + 1}`}
                     fill
                     className='object-cover transition-transform duration-300 hover:scale-105'
-                    onError={(e) => {
-                      e.currentTarget.src = '/images/project-placeholder.png';
-                    }}
                   />
                 </div>
               </CarouselItem>
@@ -60,11 +60,13 @@ const ProjectTopSection = ({
       <div className='space-y-8'>
         {/* 프로젝트 파비콘 & 제목 */}
         <div className='flex items-start gap-6'>
-          <div className='flex h-10 w-10 items-center justify-center rounded-2xl border border-white/20 bg-black/20 shadow-lg backdrop-blur-md'>
+          <div className='relative h-10 w-10 shrink-0 overflow-hidden rounded-2xl border border-white/20 bg-black/20 shadow-lg backdrop-blur-md'>
             <Image
-              src={summary.favicon || '/images/default-favicon.png'}
+              src={withBasePath(summary.favicon || '/images/default-favicon.png')}
               fill
+              sizes='40px'
               alt='Project Favicon'
+              className='object-contain'
             />
           </div>
           <div className='flex-1'>

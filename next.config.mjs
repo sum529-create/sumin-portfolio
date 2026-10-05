@@ -4,10 +4,18 @@ import { dirname } from 'path';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
+const isGithubPages = process.env.GITHUB_PAGES === 'true';
+const basePath = isGithubPages
+  ? process.env.NEXT_PUBLIC_BASE_PATH || '/sumin-portfolio'
+  : '';
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  ...(isGithubPages ? { output: 'export' } : {}),
   reactStrictMode: false,
+  ...(basePath ? { basePath, assetPrefix: basePath } : {}),
   images: {
+    unoptimized: isGithubPages,
     formats: ['image/avif', 'image/webp'],
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
@@ -38,32 +46,6 @@ const nextConfig = {
   swcMinify: true,
   poweredByHeader: false,
   compress: true,
-  webpack: (config, { dev, isServer }) => {
-    // 프로덕션 빌드에서만 적용
-    if (!dev && !isServer) {
-      // 코드 스플리팅 최적화
-      config.optimization.splitChunks = {
-        chunks: 'all',
-        minSize: 20000,
-        maxSize: 244000,
-        cacheGroups: {
-          vendor: {
-            test: /[\\/]node_modules[\\/]/,
-            name(module) {
-              const match = module.context.match(
-                /[\\/]node_modules[\\/](.*?)([\\/]|$)/
-              );
-              const packageName = match?.[1];
-              return packageName
-                ? `vendor.${packageName?.replace('@', '')}`
-                : null;
-            },
-          },
-        },
-      };
-    }
-    return config;
-  },
 };
 
 export default nextConfig;

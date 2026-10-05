@@ -3,25 +3,21 @@
 import { useRef, useEffect } from 'react';
 import { useFrame, useThree } from '@react-three/fiber';
 import { PerspectiveCamera } from '@react-three/drei';
-import { useIntroProgressStore } from '@/store/introProgressStore';
-import { useScrollPosition } from '@/hooks/useScrollPosition';
+import { introProgressRef } from '@/store/introProgressStore';
+import { scrollDataRef, useScrollPosition } from '@/hooks/useScrollPosition';
 import { CameraRef } from '@/components/background/types';
 import { easeOutCubic } from '@/components/background/utils/animations';
 import { GradientBackground } from '@/components/background/components/GradientBackground';
 import { ParticleSystem } from '@/components/background/components/ParticleSystem';
 import { Grid } from '@/components/background/components/Grid';
 import { GlowEffect } from '@/components/background/components/GlowEffect';
-import { GlowPoint } from '@/components/background/types';
 
 const MainScene = () => {
-  const scrollData = useScrollPosition();
+  useScrollPosition();
   const { camera } = useThree();
   const cameraRef = useRef<CameraRef>({ targetX: 0, targetY: 0 });
   const initialCameraPosition = useRef({ x: 0, y: 10, z: 60 });
   const initialized = useRef<boolean>(false);
-  const introAnimationProgress = useIntroProgressStore(
-    (state) => state.introAnimationProgress
-  );
 
   // 초기 카메라 위치 설정
   useEffect(() => {
@@ -51,6 +47,8 @@ const MainScene = () => {
 
   // 카메라 애니메이션
   useFrame(() => {
+    const introAnimationProgress = introProgressRef.current;
+
     if (introAnimationProgress === 0) {
       // 초기 위치 유지
       camera.position.set(0, 10, 60);
@@ -90,31 +88,17 @@ const MainScene = () => {
 
       // 스크롤에 따른 미세한 줌 효과
       camera.position.z =
-        40 + Math.sin(scrollData.scrollProgress * Math.PI) * 1.5;
+        40 + Math.sin(scrollDataRef.current.scrollProgress * Math.PI) * 1.5;
     }
   });
 
   return (
     <>
       <PerspectiveCamera makeDefault position={[0, 10, 60]} />
-
-      {/* 배경 그라데이션 */}
-      <GradientBackground introAnimationProgress={introAnimationProgress} />
-      {/* 파티클 시스템 */}
-      <ParticleSystem
-        scrollData={scrollData}
-        introAnimationProgress={introAnimationProgress}
-      />
-      {/* 그리드 */}
-      <Grid
-        scrollData={scrollData}
-        introAnimationProgress={introAnimationProgress}
-      />
-      {/* 글로우 효과 */}
-      <GlowEffect
-        scrollData={scrollData}
-        introAnimationProgress={introAnimationProgress}
-      />
+      <GradientBackground />
+      <ParticleSystem />
+      <Grid />
+      <GlowEffect />
     </>
   );
 };
